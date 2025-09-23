@@ -1,1 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2 Practice Exam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&family=Questrial&display=swap" rel="stylesheet">
+    <style>
+    /* =====================================================================
+       Organic Sage UI — Mobile-first, stable, and soothing
+       Palette preserved; accessibility + mobile ergonomics improved.
+       ===================================================================== */
 
+    /* -------------------------------
+       Design tokens
+    ----------------------------------*/
+    :root {
+      /* Core palette (yours, kept) */
+      --primary-sage: #7A8471;
+      --secondary-sage: #9CAF88;
+      --tertiary-sage: #B8C5A6;
+      --warm-cream: #F8F6F0;
+      --soft-white: #FEFCF7;
+      --forest-shadow: #5A6B52;
+      --border-sage: rgba(122, 132, 113, 0.20);
+      --hover-sage: rgba(156, 175, 136, 0.15);
+
+      /* Extended palette for depth */
+      --deep-forest: #3E4A3A;
+      --moss: #6E7A67;
+      --fern: #8FA081;
+      --dried-clay: #D9CDB4;
+      --amber: #C6AA77;
+      --ink: #2F3A2B;
+      --ink-muted: #5A6B52;
+
+      /* Typography */
+      --font-display: 'Questrial', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+      /* Fluid typography scale */
+      --step--1: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
+      --step-0:  clamp(1rem,     0.96rem + 0.22vw, 1.1rem);
+      --step-1:  clamp(1.125rem, 1.07rem + 0.35vw, 1.3rem);
+      --step-2:  clamp(1.375rem, 1.28rem + 0.55vw, 1.6rem);
+      --step-3:  clamp(1.75rem,  1.58rem + 0.95vw, 2.1rem);
+      --step-4:  clamp(2.25rem,  1.98rem + 1.35vw, 2.7rem);
+
+      /* Rhythm */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-7: 2rem;
+      --space-8: 2.5rem;
+      --space-9: 3rem;
+
+      /* Shape + elevation */
+      --radius-sm: 10px;
+      --radius: 16px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+
+      --shadow-1: 0 1px 2px rgba(34, 41, 32, 0.05), 0 2px 8px rgba(34, 41, 32, 0.06);
+      --shadow-2: 0 4px 18px rgba(34, 41, 32, 0.08), 0 12px 28px rgba(34, 41, 32, 0.06);
+      --shadow-3: 0 10px 40px rgba(34, 41, 32, 0.10), 0 20px 60px rgba(34, 41, 32, 0.08);
+
+      /* Focus ring (AA contrast on cream/white) */
+      --ring: 0 0 0 3px color-mix(in oklab, var(--soft-white) 60%, transparent), 0 0 0 5px color-mix(in srgb, var(--secondary-sage), #2F3A2B 15%);
+
+      /* Motion */
+      --ease-ambient: cubic-bezier(.2,.8,.2,1);
+      --dur-1: 120ms;
+      --dur-2: 200ms;
+      --dur-3: 320ms;
+
+      /* Mobile-safe touch target */
+      --target-min: 44px;
+
+      /* Container max */
+      --container-max: 900px;
+    }
+
+    /* -------------------------------
+       Global reset / mobile stability
+    ----------------------------------*/
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%; /* iOS font scaling fix */
+      text-size-adjust: 100%;
+      hanging-punctuation: first last;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100dvh; /* mobile address bar safe */
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      line-height: 1.6;
+      color: var(--forest-shadow);
+      background:
+        radial-gradient(1200px 1200px at -10% -10%, #FFFFFF 0%, transparent 50%),
+        radial-gradient(1200px 1000px at 110% 10%, #FFF8F0 0%, transparent 50%),
+        linear-gradient(135deg, #F8F6F0 0%, #F5F3ED 100%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    /* Better text wrapping on small screens */
+    :where(p, h1, h2, h3, h4, h5, h6) {
+      text-wrap: pretty;
+      overflow-wrap: anywhere;
+    }
+
+    /* Media defaults */
+    img, svg, video, canvas, audio, iframe {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Links */
+    a { color: var(--primary-sage); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    a:hover { color: var(--deep-forest); }
+
+    /* Utility: hide but readable for screen readers */
+    .visually-hidden {
+      position: absolute !important;
+      height: 1px; width: 1px;
+      overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
+    }
+
+    /* -------------------------------
+       App shell
+    ----------------------------------*/
+    #app-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: max(var(--space-7), env(safe-area-inset-top)) var(--space-4) var(--space-7);
+      width: 100%;
+      min-height: 100dvh;
+      background:
+        radial-gradient(800px 600px at 20% 0%, rgba(156,175,136,0.08) 0%, transparent 70%),
+        radial-gradient(700px 500px at 80% 100%, rgba(90,107,82,0.06) 0%, transparent 65%);
+    }
+
+    /* Container gets subtle translucency on capable browsers */
+    #activity-container {
+      width: 100%;
+      max-width: var(--container-max);
+      background: color-mix(in srgb, var(--soft-white) 88%, white 12%);
+      padding: clamp(24px, 3.2vw, 48px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(122, 132, 113, 0.12);
+      box-shadow: var(--shadow-2);
+      position: relative;
+      isolation: isolate;
+      container-type: inline-size; /* enables container queries where supported */
+    }
+
+    @supports (backdrop-filter: blur(6px)) {
+      #activity-container {
+        background: color-mix(in srgb, var(--soft-white) 76%, white 24%);
+        backdrop-filter: blur(6px) saturate(1.02);
+      }
+    }
+
+    /* Decorative organic edge glow (soft + subtle) */
+    #activity-container::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(1200px 200px at 50% -5%, rgba(156,175,136,0.12), transparent 60%),
+        radial-gradient(800px 1000px at 50% 110%, rgba(122,132,113,0.08), transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Hide screens when needed */
+    .screen.hidden { display: none !important; }
+
+    /* -------------------------------
+       Headings / text
+    ----------------------------------*/
+    h1 {
+      font-family: var(--font-display);
+      font-size: var(--step-4);
+      letter-spacing: 0.2px;
+      color: var(--forest-shadow);
+      margin: 0 0 var(--space-2) 0;
+      text-align: center;
+    }
+
+    h2.rubric {
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      font-weight: 500;
+      color: var(--secondary-sage);
+      margin: 0 0 var(--space-6) 0;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: var(--step-2);
+      color: var(--forest-shadow);
+      margin: var(--space-6) 0 var(--space-3) 0;
+    }
+
+    /* -------------------------------
+       Buttons
+    ----------------------------------*/
+    .activity-btn {
+      min-height: var(--target-min);
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--primary-sage);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 92%, white 8%), var(--primary-sage));
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      transition: transform var(--dur-1) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), opacity var(--dur-1) var(--ease-ambient);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 8px 16px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:hover {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 92%, white 8%), var(--forest-shadow));
+      transform: translateY(-1px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 10px 20px rgba(90, 107, 82, 0.22);
+    }
+
+    .activity-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset, 0 4px 10px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:focus-visible {
+      outline: none;
+      box-shadow: var(--ring), 0 8px 16px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:disabled,
+    .activity-btn[disabled] {
+      background: var(--tertiary-sage);
+      border-color: var(--tertiary-sage);
+      color: color-mix(in srgb, #fff 70%, var(--soft-white) 30%);
+      cursor: not-allowed;
+      opacity: 0.8;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Secondary variant */
+    .activity-btn.secondary {
+      background: transparent;
+      color: var(--primary-sage);
+      border-color: color-mix(in srgb, var(--tertiary-sage) 70%, var(--primary-sage) 30%);
+      box-shadow: none;
+    }
+
+    .activity-btn.secondary:hover { background-color: var(--hover-sage); }
+
+    .activity-btn.secondary:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    /* Button group alignment on small screens */
+    .controls {
+      margin-top: var(--space-7);
+      text-align: center;
+      display: grid;
+      gap: var(--space-3);
+      grid-auto-flow: row;
+    }
+
+    /* -------------------------------
+       Forms / inputs
+    ----------------------------------*/
+    .input-group { margin: var(--space-6) 0; }
+
+    .input-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+      color: var(--primary-sage);
+      letter-spacing: 0.2px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      min-height: var(--target-min);
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--tertiary-sage);
+      background: #fff;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      color: var(--ink);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color var(--dur-2) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient);
+    }
+    
+    /* Specific adjustment for inline inputs to not take full width */
+    p > input[type="text"] {
+        width: auto;
+        min-height: auto;
+        padding: 4px 8px;
+        font-size: 0.95rem;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: color-mix(in srgb, var(--ink-muted) 60%, #fff 40%);
+      opacity: 0.9;
+    }
+
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: none;
+      border-color: var(--secondary-sage);
+      box-shadow: var(--ring);
+      background: color-mix(in srgb, #fff 92%, var(--warm-cream) 8%);
+    }
+
+    input:disabled,
+    textarea:disabled,
+    select:disabled {
+      background: color-mix(in srgb, #fff 85%, var(--warm-cream) 15%);
+      color: var(--ink-muted);
+      cursor: not-allowed;
+    }
+
+    /* Date input caret/tap stability on iOS */
+    input[type="date"] {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Textareas */
+    textarea {
+      resize: vertical;
+    }
+
+    /* Accent color for native radios/checkboxes (fallback when custom not active) */
+    :root { accent-color: var(--primary-sage); }
+
+    /* -------------------------------
+       System Check Screen
+    ----------------------------------*/
+    .system-check-step { margin-bottom: var(--space-7); }
+
+    #code-display-area {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+      flex-wrap: wrap; /* safer on mobile */
+    }
+
+    #generated-code {
+      width: 100%;
+      min-height: 100px;
+      height: 120px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--tertiary-sage);
+      background: #fff;
+      color: var(--ink);
+    }
+
+    #paste-target { margin-top: var(--space-3); }
+
+    #paste-success-msg {
+      color: #2E7D32;
+      font-weight: 800;
+      margin-top: var(--space-2);
+    }
+
+    /* -------------------------------
+       Test Screen
+    ----------------------------------*/
+    .test-header {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      font-weight: 700;
+    }
+
+    #current-level { color: var(--secondary-sage); }
+    #timer { font-size: 1.1rem; color: var(--primary-sage); }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 10px;
+      background-color: var(--border-sage);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary-sage), color-mix(in srgb, var(--secondary-sage) 60%, var(--primary-sage) 40%));
+      transition: width var(--dur-3) var(--ease-ambient);
+    }
+
+    #progress-text {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--secondary-sage);
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-6);
+    }
+    
+    .passage-slide.hidden { display: none; }
+
+    .mc-question {
+      padding: 20px;
+      border: 1px solid var(--border-sage);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, #ffffff 92%, var(--warm-cream) 8%));
+      box-shadow: var(--shadow-1);
+      margin-bottom: var(--space-6);
+    }
+
+    .mc-question-header { margin-bottom: var(--space-4); }
+
+    .mc-question-text {
+      font-weight: 800;
+      font-size: var(--step-1);
+      color: var(--forest-shadow);
+      line-height: 1.45;
+    }
+
+    /* Options */
+    .mc-options-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .mc-option-item input { display: none; }
+
+    .mc-option-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: background-color var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), transform var(--dur-1) var(--ease-ambient);
+      -webkit-tap-highlight-color: transparent;
+      background: #fff;
+    }
+
+    .mc-option-label:hover { background-color: var(--hover-sage); }
+
+    .mc-option-item .option-control {
+      flex-shrink: 0;
+      inline-size: 24px;
+      block-size: 24px;
+      border: 2px solid var(--tertiary-sage);
+      background-color: var(--soft-white);
+      transition: all var(--dur-2) var(--ease-ambient);
+      position: relative;
+      border-radius: 50%;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    .mc-option-item input[type="radio"]:checked + .option-control { border-color: var(--primary-sage); }
+
+    .mc-option-item input[type="radio"]:checked + .option-control::after {
+      content: '';
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: var(--primary-sage);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset;
+    }
+
+    .mc-option-text {
+      color: var(--primary-sage);
+      line-height: 1.4;
+      font-size: 1rem;
+    }
+
+    .mc-option-item input[type="radio"]:focus-visible + .option-control,
+    .mc-option-label:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    /* Slide controls */
+    .mc-slide-student-controls {
+      margin-top: var(--space-7);
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    /* -------------------------------
+       Submission Screen
+    ----------------------------------*/
+    .submission-steps { margin-top: var(--space-7); }
+
+    #submission-code {
+      width: 100%;
+      height: 260px;
+      box-sizing: border-box;
+      margin: var(--space-3) 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.95rem;
+      padding: 12px 14px;
+      border: 1px solid var(--tertiary-sage);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+    }
+    
+    #submission-controls {
+        display: grid;
+        gap: var(--space-3);
+        grid-auto-flow: row;
+        margin-top: var(--space-4);
+    }
+
+    #copy-submission-btn { margin-bottom: var(--space-6); }
+    
+    #submission-status {
+        margin-top: var(--space-4);
+        font-weight: 700;
+        text-align: center;
+    }
+
+    /* -------------------------------
+       Responsive / container queries
+    ----------------------------------*/
+    @media (max-width: 360px) {
+      #activity-container { padding: 18px; }
+      .activity-btn { padding-inline: 14px; }
+    }
+
+    @media (min-width: 768px) {
+      #app-wrapper { padding-inline: var(--space-7); }
+      .controls { grid-auto-flow: column; justify-content: center; }
+      #submission-controls { grid-auto-flow: column; justify-content: center; }
+      .test-header { grid-template-columns: 1fr auto auto; }
+    }
+
+    @media (min-width: 1024px) {
+      #activity-container { box-shadow: var(--shadow-3); }
+      h1 { letter-spacing: 0.3px; }
+    }
+
+    @container (min-width: 520px) {
+      .mc-question { padding: 24px; }
+      .mc-option-label { padding: 14px; }
+    }
+
+    @container (min-width: 760px) {
+      h1 { font-size: clamp(2rem, 2.2vw + 1rem, 2.75rem); }
+      .mc-question-text { font-size: clamp(1.1rem, 0.6vw + 0.9rem, 1.35rem); }
+    }
+
+    /* -------------------------------
+       Accessibility / motion / scroll
+    ----------------------------------*/
+    :focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--secondary-sage) 30%, #fff 70%);
+      color: var(--deep-forest);
+    }
+
+    html, body { overscroll-behavior-y: none; }
+
+    /* -------------------------------
+       Scrollbars (subtle, optional)
+    ----------------------------------*/
+    *::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    *::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--primary-sage) 50%, var(--tertiary-sage) 50%);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* -------------------------------
+       Dark mode (gentle, earthy)
+    ----------------------------------*/
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --soft-white: #1E211C;
+        --warm-cream: #23261F;
+        --forest-shadow: #DDE6D4;
+        --ink: #E9EFE5;
+        --ink-muted: #AEB9AA;
+        --border-sage: rgba(184, 197, 166, 0.25);
+      }
+
+      html, body {
+        background:
+          radial-gradient(1100px 900px at 15% 10%, rgba(156,175,136,0.06), transparent 60%),
+          radial-gradient(900px 900px at 85% 90%, rgba(122,132,113,0.08), transparent 65%),
+          linear-gradient(135deg, #191D18 0%, #1B1E19 100%);
+      }
+
+      #activity-container {
+        background: color-mix(in srgb, #23261F 92%, #1B1E19 8%);
+        border-color: rgba(184, 197, 166, 0.18);
+        box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+      }
+
+      a { color: color-mix(in srgb, var(--secondary-sage) 80%, #C7D3C0 20%); }
+
+      .mc-question {
+        background: linear-gradient(180deg, #20241E 0%, #191D18 100%);
+        border-color: rgba(184, 197, 166, 0.20);
+        box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 10px 30px rgba(0,0,0,0.35);
+      }
+
+      .activity-btn {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 80%, #0F120E 20%), var(--primary-sage));
+        box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 8px 18px rgba(0,0,0,0.35);
+      }
+
+      .activity-btn:hover {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 80%, #0F120E 20%), var(--forest-shadow));
+      }
+
+      input, textarea, select {
+        background: #141713;
+        border-color: rgba(184, 197, 166, 0.25);
+        color: var(--ink);
+      }
+
+      #progress-bar {
+        background: linear-gradient(90deg, var(--secondary-sage), color-mix(in srgb, var(--primary-sage) 70%, #000 30%));
+      }
+    }
+
+    /* -------------------------------
+       Original responsive tweaks, refined
+    ----------------------------------*/
+    @media (max-width: 767px) {
+      #app-wrapper { padding: var(--space-4); }
+      #activity-container { padding: 24px; }
+      h1 { font-size: clamp(1.75rem, 5vw, 2rem); }
+      h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
+      .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
+    }
+    </style>
+</head>
+<body>
+
+    <div id="app-wrapper">
+        <main id="activity-container">
+
+            <!-- Screen 1: Student ID Screen -->
+            <section id="student-id-screen" class="screen">
+                <h1>End of Year Exam</h1>
+                <h2 class="rubric">Welcome! Please enter your Student ID to begin or to resume a previous session. Your progress is saved automatically.</h2>
+                <div class="input-group">
+                    <label for="student-id-input">Student ID</label>
+                    <input type="text" id="student-id-input" placeholder="Enter your ID">
+                </div>
+                <div class="controls">
+                    <button id="start-exam-btn" class="activity-btn">Next</button>
+                </div>
+            </section>
+
+            <!-- Screen 2: Test Screen -->
+            <section id="test-screen" class="screen hidden">
+                <div class="test-header">
+                    <span id="current-level">Current Level: B2</span>
+                    <span id="timer" aria-live="polite">60:00</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <p id="progress-text">Passage 1 of 3</p>
+                <h2 class="rubric">Answer each question to the best of your ability. Use the 'Previous' and 'Next' buttons to navigate between passages. Your work is saved as you go.</h2>
+                
+                <div id="passages-container">
+                    <!-- Passage 1 -->
+                    <div class="passage-slide" data-passage-index="0">
+                        <h3>Reading Passage 1: The Rise of Remote Work and its Economic Impact</h3>
+                        <p>The concept of remote work, or telecommuting, is not new, but the global shift towards this model of employment has been dramatic in recent years. Enabled by advancements in digital communication technology, millions of people now perform their job duties from home rather than a traditional office. This transition is not merely a change in scenery for employees; it carries significant economic implications for businesses, workers, and cities.</p>
+                        <p>For businesses, the primary economic advantage is a potential reduction in overhead costs. Companies can save substantial amounts on rent, utilities, and office maintenance by reducing their physical footprint. This financial flexibility can be redirected towards growth, innovation, or employee benefits. Furthermore, by removing geographical barriers to hiring, companies can access a wider, more diverse talent pool. This can lead to a more skilled and productive workforce. However, businesses also face challenges, such as the initial cost of providing technology for home offices and the difficulty of maintaining a strong company culture and fostering spontaneous collaboration.</p>
+                        <p>From the employee's perspective, the economic benefits are often clear. The most significant saving comes from the elimination of commuting costs, both in terms of money spent on transport and time saved. Remote work can also offer greater flexibility, allowing for a better work-life balance and potentially reducing costs associated with childcare. On the other hand, remote workers may find themselves paying more for home utilities and needing to invest in their own office equipment. There is also the risk of social isolation and the 'always-on' culture, where the line between work and personal life becomes blurred, which can have its own indirect costs on well-being.</p>
+                        <p>The widespread adoption of remote work also has a profound impact on urban economies. Cities with a high concentration of office workers have seen a sharp decline in daytime populations in their central business districts. This affects a whole ecosystem of businesses, from public transport systems to cafes and retail stores that rely on the daily influx of commuters. While this poses a major challenge to city centres, it may also create opportunities for suburban and rural areas to thrive as people spend more of their time and money in their local communities. The long-term economic geography is being redrawn, with consequences that are still unfolding.</p>
+                        
+                        <h3>Questions 1-6</h3>
+                        <p>Do the following statements agree with the information given in the text? Write:</p>
+                        <ul>
+                            <li><strong>TRUE</strong> = the text confirms it.</li>
+                            <li><strong>FALSE</strong> = the text contradicts it.</li>
+                            <li><strong>NOT GIVEN</strong> = the text gives no information about it.</li>
+                        </ul>
+
+                        <div class="mc-question" data-question-number="1">
+                            <div class="mc-question-header"><p class="mc-question-text">1. Remote work is an entirely new concept developed in the 21st century.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q1" id="q1_true" value="TRUE"><label for="q1_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q1" id="q1_false" value="FALSE"><label for="q1_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q1" id="q1_not_given" value="NOT GIVEN"><label for="q1_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="2">
+                            <div class="mc-question-header"><p class="mc-question-text">2. Companies can hire people from different locations when they embrace remote work.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q2" id="q2_true" value="TRUE"><label for="q2_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q2" id="q2_false" value="FALSE"><label for="q2_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q2" id="q2_not_given" value="NOT GIVEN"><label for="q2_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="3">
+                            <div class="mc-question-header"><p class="mc-question-text">3. The only challenge for businesses adopting remote work is the initial technology cost.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q3" id="q3_true" value="TRUE"><label for="q3_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q3" id="q3_false" value="FALSE"><label for="q3_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q3" id="q3_not_given" value="NOT GIVEN"><label for="q3_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="4">
+                            <div class="mc-question-header"><p class="mc-question-text">4. Employees who work remotely save money on transportation.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q4" id="q4_true" value="TRUE"><label for="q4_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q4" id="q4_false" value="FALSE"><label for="q4_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q4" id="q4_not_given" value="NOT GIVEN"><label for="q4_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="5">
+                            <div class="mc-question-header"><p class="mc-question-text">5. All remote workers report a better work-life balance.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q5" id="q5_true" value="TRUE"><label for="q5_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q5" id="q5_false" value="FALSE"><label for="q5_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q5" id="q5_not_given" value="NOT GIVEN"><label for="q5_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="6">
+                            <div class="mc-question-header"><p class="mc-question-text">6. Suburban economies may benefit from the increase in remote work.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q6" id="q6_true" value="TRUE"><label for="q6_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q6" id="q6_false" value="FALSE"><label for="q6_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q6" id="q6_not_given" value="NOT GIVEN"><label for="q6_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <h3>Questions 7-13</h3>
+                        <p>Complete the summary below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
+                        
+                        <div class="mc-question" data-question-number="7"><div class="input-group"><label for="q7">7. The shift to remote work has major ______.</label><input type="text" id="q7" placeholder="Answer for 7"></div></div>
+                        <div class="mc-question" data-question-number="8"><div class="input-group"><label for="q8">8. For companies, a key benefit is the decrease in ______, such as office rent.</label><input type="text" id="q8" placeholder="Answer for 8"></div></div>
+                        <div class="mc-question" data-question-number="9"><div class="input-group"><label for="q9">9. They can also access a wider ______ by hiring without geographical limits.</label><input type="text" id="q9" placeholder="Answer for 9"></div></div>
+                        <div class="mc-question" data-question-number="10"><div class="input-group"><label for="q10">10. However, maintaining a strong ______ can be difficult.</label><input type="text" id="q10" placeholder="Answer for 10"></div></div>
+                        <div class="mc-question" data-question-number="11"><div class="input-group"><label for="q11">11. For employees, the main financial advantage is the reduction in ______.</label><input type="text" id="q11" placeholder="Answer for 11"></div></div>
+                        <div class="mc-question" data-question-number="12"><div class="input-group"><label for="q12">12. A potential downside is the blurring of the line between personal life and work, known as the ______.</label><input type="text" id="q12" placeholder="Answer for 12"></div></div>
+                        <div class="mc-question" data-question-number="13"><div class="input-group"><label for="q13">13. This trend is also reshaping ______, as city centres see fewer commuters.</label><input type="text" id="q13" placeholder="Answer for 13"></div></div>
+                    </div>
+
+                    <!-- Passage 2 -->
+                    <div class="passage-slide hidden" data-passage-index="1">
+                        <h3>Reading Passage 2: Biomimicry: Nature's Guide to Innovation</h3>
+                        <p><strong>A.</strong> For centuries, humans have looked to the natural world for inspiration. From early myths of people flying like birds to the practical use of plant-based medicines, nature has always been a source of ideas. In the modern era, this practice has been given a formal name: biomimicry. Coined in 1982, the term refers to the conscious process of learning from and then emulating nature's forms, processes, and ecosystems to create more sustainable and effective human technologies. At its core, biomimicry operates on a simple but powerful principle: nature has already solved many of the problems we are grappling with.</p>
+                        <p><strong>B.</strong> One of the most famous and easily understood examples of biomimicry is the invention of Velcro. In 1941, Swiss engineer George de Mestral was walking his dog in the Alps. Upon returning home, he noticed that his dog's fur was covered in burrs from a burdock plant. When he examined the burrs under a microscope, he saw they were covered in hundreds of tiny hooks that latched onto the loops in the fabric of his trousers and his dog's fur. This hook-and-loop system inspired him to create the two-sided fastener we know today as Velcro, a technology that is now used globally on everything from shoes to equipment used on spacecraft.</p>
+                        <p><strong>C.</strong> A more complex example of emulating nature's design can be seen in architecture. The Eastgate Centre, a large office and shopping centre in Harare, Zimbabwe, was designed without a conventional air-conditioning system. The architect, Mick Pearce, was inspired by the structure of termite mounds. These mounds maintain an almost constant temperature inside, despite extreme fluctuations in the outside temperature. They achieve this through a system of vents that they constantly open and close. Pearce applied this principle to the Eastgate Centre, using special building materials and a series of vents to draw in cool night air and flush out the warm air generated during the day. This passive cooling system uses less than 10% of the energy of a conventional air-conditioned building of the same size.</p>
+                        <p><strong>D.</strong> The potential applications of biomimicry are vast. Scientists are studying how the shape of a whale's fin can lead to more efficient wind turbine blades. Others are examining the water-repellent properties of the lotus leaf to create self-cleaning surfaces. The core idea is a shift in perspective: instead of seeing nature as a resource to be exploited, we see it as a mentor. It represents a move away from the 'heat, beat, and treat' model of industrial production towards more elegant, energy-efficient, and sustainable solutions that are in harmony with the natural world.</p>
+                        
+                        <h3>Questions 14-17</h3>
+                        <p>The reading passage has four paragraphs, A-D. Which paragraph contains the following information?</p>
+                        
+                        <div class="mc-question" data-question-number="14">
+                            <div class="mc-question-header"><p class="mc-question-text">14. A description of a building that copies a natural cooling method.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q14" id="q14_a" value="A"><label for="q14_a" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q14" id="q14_b" value="B"><label for="q14_b" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q14" id="q14_c" value="C"><label for="q14_c" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q14" id="q14_d" value="D"><label for="q14_d" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="15">
+                            <div class="mc-question-header"><p class="mc-question-text">15. A definition of biomimicry and its guiding philosophy.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q15" id="q15_a" value="A"><label for="q15_a" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q15" id="q15_b" value="B"><label for="q15_b" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q15" id="q15_c" value="C"><label for="q15_c" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q15" id="q15_d" value="D"><label for="q15_d" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="16">
+                            <div class="mc-question-header"><p class="mc-question-text">16. The suggestion that biomimicry involves viewing nature differently.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q16" id="q16_a" value="A"><label for="q16_a" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q16" id="q16_b" value="B"><label for="q16_b" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q16" id="q16_c" value="C"><label for="q16_c" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q16" id="q16_d" value="D"><label for="q16_d" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="17">
+                            <div class="mc-question-header"><p class="mc-question-text">17. The story of an invention inspired by a plant's seeds.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q17" id="q17_a" value="A"><label for="q17_a" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q17" id="q17_b" value="B"><label for="q17_b" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q17" id="q17_c" value="C"><label for="q17_c" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q17" id="q17_d" value="D"><label for="q17_d" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
+                            </div>
+                        </div>
+
+                        <h3>Questions 18-22</h3>
+                        <p>Complete the table below. Choose NO MORE THAN TWO WORDS from the text for each answer.</p>
+                        
+                        <div class="mc-question" data-question-number="18"><div class="input-group"><label for="q18">18. Natural Inspiration: Burrs from a ______</label><input type="text" id="q18"></div></div>
+                        <div class="mc-question" data-question-number="19"><div class="input-group"><label for="q19">19. Key Feature/Principle for Velcro: A ______ system</label><input type="text" id="q19"></div></div>
+                        <div class="mc-question" data-question-number="20"><div class="input-group"><label for="q20">20. Natural Inspiration for Eastgate Centre: ______</label><input type="text" id="q20"></div></div>
+                        <div class="mc-question" data-question-number="21"><div class="input-group"><label for="q21">21. Key Feature/Principle for Eastgate Centre: A ______ system</label><input type="text" id="q21"></div></div>
+                        <div class="mc-question" data-question-number="22"><div class="input-group"><label for="q22">22. Key Feature/Principle for Self-cleaning surfaces from lotus leaf: ______ properties</label><input type="text" id="q22"></div></div>
+
+                        <h3>Questions 23-26</h3>
+                        <p>Answer the questions below. Write NO MORE THAN THREE WORDS for each answer.</p>
+
+                        <div class="mc-question" data-question-number="23"><div class="input-group"><label for="q23">23. What is the formal name for emulating nature's designs in technology?</label><input type="text" id="q23"></div></div>
+                        <div class="mc-question" data-question-number="24"><div class="input-group"><label for="q24">24. What did George de Mestral examine under a microscope?</label><input type="text" id="q24"></div></div>
+                        <div class="mc-question" data-question-number="25"><div class="input-group"><label for="q25">25. How much energy does the Eastgate Centre's cooling system use compared to a standard one?</label><input type="text" id="q25"></div></div>
+                        <div class="mc-question" data-question-number="26"><div class="input-group"><label for="q26">26. Instead of a resource to be exploited, how does biomimicry view nature?</label><input type="text" id="q26"></div></div>
+                    </div>
+
+                    <!-- Passage 3 -->
+                    <div class="passage-slide hidden" data-passage-index="2">
+                        <h3>Reading Passage 3: The Decline of Letter Writing</h3>
+                        <p>Has the art of letter writing been lost to the digital age? In an era of instant messaging and social media updates, the idea of composing a letter, placing it in an envelope, and sending it via postal service can seem slow and inefficient. Critics of this shift argue that we are losing a valuable and intimate form of communication, while proponents of digital media suggest it is simply a natural evolution.</p>
+                        <p>There is a strong argument that the process of letter writing encourages a different, more considered, form of thinking. Unlike an email or a text message, which can be written and sent in seconds, a letter requires time and effort. The physical act of writing by hand, the need to gather one's thoughts without the possibility of an instant 'delete' key, and the awareness that the recipient will read the words at a later date all contribute to a more reflective and deliberate style of communication. The letters of historical figures are often studied as detailed records of their thoughts and feelings, a depth that is arguably absent from a collection of today's fleeting digital messages.</p>
+                        <p>Furthermore, a physical letter carries an emotional weight that digital messages often lack. The choice of paper, the writer's handwriting, even the stamp and postmark, all become part of the message. It is a tangible object that can be kept, reread, and treasured for years. This physical presence creates a powerful connection between the sender and receiver. Receiving a personal letter can feel like receiving a small gift, a piece of the sender's time and attention, which is a rare commodity in our fast-paced world.</p>
+                        <p>However, it is impractical to ignore the advantages of digital communication. Its speed and efficiency are undeniable and essential for the functioning of modern society. We can communicate with people on the other side of the world instantly, share documents and images with a single click, and maintain constant contact with a wide network of friends and family. Digital platforms have made communication more accessible and democratic. To argue for a full return to letter writing would be to ignore the significant benefits that technology has brought us.</p>
+                        <p>Perhaps the solution is not to view these forms of communication as being in competition. A text message is perfect for confirming an arrangement, and an email is ideal for a formal business inquiry. The personal letter, however, could be reserved for occasions where a deeper, more personal connection is desired. It may no longer be our primary method of communication, but it can still be a meaningful one. Its decline in frequency may even increase its value as a special and thoughtful gesture.</p>
+
+                        <h3>Questions 27-32</h3>
+                        <p>Do the following statements reflect the claims of the writer in the text? Write:</p>
+                        <ul>
+                            <li><strong>YES</strong> = the text confirms it.</li>
+                            <li><strong>NO</strong> = the text contradicts it.</li>
+                            <li><strong>NOT GIVEN</strong> = the text gives no information about it.</li>
+                        </ul>
+
+                        <div class="mc-question" data-question-number="27">
+                            <div class="mc-question-header"><p class="mc-question-text">27. The writer believes that letter writing is completely outdated and has no place in the modern world.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q27" id="q27_yes" value="YES"><label for="q27_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q27" id="q27_no" value="NO"><label for="q27_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q27" id="q27_not_given" value="NOT GIVEN"><label for="q27_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="28">
+                            <div class="mc-question-header"><p class="mc-question-text">28. The slowness of writing a letter can be a positive attribute.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q28" id="q28_yes" value="YES"><label for="q28_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q28" id="q28_no" value="NO"><label for="q28_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q28" id="q28_not_given" value="NOT GIVEN"><label for="q28_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="29">
+                            <div class="mc-question-header"><p class="mc-question-text">29. The handwriting on a letter is an important part of its overall message.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q29" id="q29_yes" value="YES"><label for="q29_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q29" id="q29_no" value="NO"><label for="q29_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q29" id="q29_not_given" value="NOT GIVEN"><label for="q29_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="30">
+                            <div class="mc-question-header"><p class="mc-question-text">30. People in the past wrote more letters because they had more free time.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q30" id="q30_yes" value="YES"><label for="q30_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q30" id="q30_no" value="NO"><label for="q30_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q30" id="q30_not_given" value="NOT GIVEN"><label for="q30_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="31">
+                            <div class="mc-question-header"><p class="mc-question-text">31. The writer acknowledges the essential role of digital communication in today's world.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q31" id="q31_yes" value="YES"><label for="q31_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q31" id="q31_no" value="NO"><label for="q31_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q31" id="q31_not_given" value="NOT GIVEN"><label for="q31_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <div class="mc-question" data-question-number="32">
+                            <div class="mc-question-header"><p class="mc-question-text">32. The writer suggests that digital communication and letter writing can coexist.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" name="q32" id="q32_yes" value="YES"><label for="q32_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q32" id="q32_no" value="NO"><label for="q32_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><input type="radio" name="q32" id="q32_not_given" value="NOT GIVEN"><label for="q32_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                            </div>
+                        </div>
+
+                        <h3>Questions 33-40</h3>
+                        <p>Complete the summary below. Write ONE WORD ONLY from the text for each answer.</p>
+                        
+                        <div class="mc-question">
+                            <p>The rise of digital communication has led to a debate about the relevance of letter writing. One view is that writing letters promotes a more (33) <input type="text" id="q33" data-question-number="33" size="15" aria-label="Answer for question 33"> style of thinking than instant messaging. The time and effort involved mean the communication is more deliberate. A physical letter also has an (34) <input type="text" id="q34" data-question-number="34" size="15" aria-label="Answer for question 34"> significance that digital forms lack; it is a (35) <input type="text" id="q35" data-question-number="35" size="15" aria-label="Answer for question 35"> object that can be treasured. The letter creates a powerful (36) <input type="text" id="q36" data-question-number="36" size="15" aria-label="Answer for question 36"> between two people, partly because it represents the sender's time and (37) <input type="text" id="q37" data-question-number="37" size="15" aria-label="Answer for question 37">. On the other hand, the (38) <input type="text" id="q38" data-question-number="38" size="15" aria-label="Answer for question 38"> of digital communication is crucial for modern life, making global contact easy and accessible. The writer suggests that instead of being in (39) <input type="text" id="q39" data-question-number="39" size="15" aria-label="Answer for question 39">, different forms of communication can be used for different purposes. The decline in the use of letters might actually raise their (40) <input type="text" id="q40" data-question-number="40" size="15" aria-label="Answer for question 40"> as a thoughtful act.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mc-slide-student-controls">
+                    <button class="activity-btn secondary" id="prev-passage-btn">Previous</button>
+                    <button class="activity-btn" id="next-passage-btn">Next</button>
+                </div>
+            </section>
+
+            <!-- Screen 3: Submission Screen -->
+            <section id="submission-screen" class="screen hidden">
+                <h1>Submission</h1>
+                <h2 class="rubric">Your exam is complete. Review your answers below. You can download a CSV copy for your records or submit your results directly to your instructor.</h2>
+                <textarea id="submission-code" readonly></textarea>
+                <div id="submission-controls">
+                    <button id="download-csv-btn" class="activity-btn">Download Results as CSV</button>
+                    <button id="submit-btn" class="activity-btn secondary">Submit to Instructor</button>
+                </div>
+                <div id="submission-status" aria-live="polite"></div>
+            </section>
+
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Configuration Constants ---
+    const EXAM_LEVEL = 'B2';
+    const GS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuncyjolsXX1u9plOYDzujafMIROGIkOOjZsn2ko_lbhNbU1mAXZXa5iMHaEKReTPX/exec';
+    const TOTAL_EXAM_TIME = 3600; // 60 minutes in seconds
+
+    const correctAnswers = {
+        '1': 'FALSE', '2': 'TRUE', '3': 'FALSE', '4': 'TRUE', '5': 'NOT GIVEN', '6': 'TRUE',
+        '7': 'economic implications', '8': 'overhead costs', '9': 'talent pool', '10': 'company culture',
+        '11': 'commuting costs', '12': 'always-on culture', '13': 'urban economies',
+        '14': 'C', '15': 'A', '16': 'D', '17': 'B',
+        '18': 'burdock plant', '19': 'hook-and-loop', '20': 'termite mounds',
+        '21': 'passive cooling', '22': 'water-repellent', '23': 'Biomimicry',
+        '24': 'the burrs', '25': 'less than 10%', '26': 'as a mentor',
+        '27': 'NO', '28': 'YES', '29': 'YES', '30': 'NOT GIVEN', '31': 'YES', '32': 'YES',
+        '33': 'considered', '34': 'emotional', '35': 'tangible', '36': 'connection',
+        '37': 'attention', '38': 'speed', '39': 'competition', '40': 'value'
+    };
+
+    // --- State Variables ---
+    let studentID = '';
+    let answers = {};
+    let remainingTime = TOTAL_EXAM_TIME;
+    let timerInterval = null;
+    let currentPassageIndex = 0;
+
+    // --- DOM Element References ---
+    const screens = {
+        studentId: document.getElementById('student-id-screen'),
+        test: document.getElementById('test-screen'),
+        submission: document.getElementById('submission-screen'),
+    };
+    const studentIdInput = document.getElementById('student-id-input');
+    const startExamBtn = document.getElementById('start-exam-btn');
+    const timerDisplay = document.getElementById('timer');
+    const passages = document.querySelectorAll('.passage-slide');
+    const prevBtn = document.getElementById('prev-passage-btn');
+    const nextBtn = document.getElementById('next-passage-btn');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const submissionCode = document.getElementById('submission-code');
+    const downloadCsvBtn = document.getElementById('download-csv-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const submissionStatus = document.getElementById('submission-status');
+    const currentLevelDisplay = document.getElementById('current-level');
+
+    // --- Core Functions ---
+
+    /**
+     * Shows a specific screen and hides all others.
+     * @param {string} screenKey - The key of the screen to show (e.g., 'studentId', 'test').
+     */
+    const showScreen = (screenKey) => {
+        Object.values(screens).forEach(screen => screen.classList.add('hidden'));
+        if (screens[screenKey]) {
+            screens[screenKey].classList.remove('hidden');
+        }
+    };
+
+    /**
+     * Formats seconds into MM:SS format.
+     * @param {number} seconds - The total seconds.
+     * @returns {string} The formatted time string.
+     */
+    const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    };
+
+    /**
+     * Starts the countdown timer.
+     */
+    const startTimer = () => {
+        if (timerInterval) clearInterval(timerInterval);
+        timerDisplay.textContent = formatTime(remainingTime);
+
+        timerInterval = setInterval(() => {
+            remainingTime--;
+            timerDisplay.textContent = formatTime(remainingTime);
+
+            if (remainingTime % 5 === 0) {
+                saveState();
+            }
+
+            if (remainingTime <= 0) {
+                clearInterval(timerInterval);
+                goToSubmissionScreen();
+            }
+        }, 1000);
+    };
+
+    /**
+     * Saves the current application state to localStorage.
+     */
+    const saveState = () => {
+        const state = {
+            studentID: studentID,
+            answers: answers,
+            remainingTime: remainingTime
+        };
+        try {
+            localStorage.setItem('examState', JSON.stringify(state));
+        } catch (e) {
+            console.error("Error saving state to localStorage:", e);
+        }
+    };
+
+    /**
+     * Loads state from localStorage on page load.
+     */
+    const loadState = () => {
+        try {
+            const savedState = JSON.parse(localStorage.getItem('examState'));
+            if (savedState && savedState.studentID) {
+                studentIdInput.value = savedState.studentID;
+            }
+        } catch (e) {
+            console.error("Error loading state from localStorage:", e);
+        }
+    };
+
+    /**
+     * Restores answers and timer from a saved state.
+     * @param {object} savedState - The state object from localStorage.
+     */
+    const restoreSession = (savedState) => {
+        answers = savedState.answers || {};
+        remainingTime = savedState.remainingTime || TOTAL_EXAM_TIME;
+        
+        Object.entries(answers).forEach(([qNum, answer]) => {
+            // Handle radio button questions
+            const radioInputs = document.querySelectorAll(`input[name="q${qNum}"]`);
+            if (radioInputs.length > 0) {
+                const inputToSelect = Array.from(radioInputs).find(input => input.value === answer);
+                if (inputToSelect) inputToSelect.checked = true;
+            } else {
+                // Handle text inputs, including the new inline ones for questions 33-40
+                const textInput = document.getElementById(`q${qNum}`);
+                if (textInput) {
+                    textInput.value = answer;
+                }
+            }
+        });
+    };
+    
+    /**
+     * Shows a specific passage slide and updates navigation controls.
+     * @param {number} index - The index of the passage to show.
+     */
+    const showPassage = (index) => {
+        passages.forEach((passage, i) => {
+            passage.classList.toggle('hidden', i !== index);
+        });
+        currentPassageIndex = index;
+        updateProgressBar();
+        
+        prevBtn.disabled = index === 0;
+        nextBtn.textContent = index === passages.length - 1 ? 'Go to Submission' : 'Next';
+
+        const targetElement = passages[index].querySelector('h3');
+        if (targetElement) {
+            targetElement.focus({ preventScroll: true });
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
+    /**
+     * Updates the progress bar and text based on the current passage.
+     */
+    const updateProgressBar = () => {
+        const progressPercentage = ((currentPassageIndex + 1) / passages.length) * 100;
+        progressBar.style.width = `${progressPercentage}%`;
+        progressText.textContent = `Passage ${currentPassageIndex + 1} of ${passages.length}`;
+    };
+    
+    /**
+     * Transitions the application to the submission screen.
+     */
+    const goToSubmissionScreen = () => {
+        clearInterval(timerInterval);
+        saveState(); // Final save
+        generateSubmissionSummary();
+        showScreen('submission');
+    };
+
+    /**
+     * Generates a summary of answers and displays it in the textarea.
+     */
+    const generateSubmissionSummary = () => {
+        let summary = `Student ID: ${studentID}\n`;
+        summary += `Level: ${EXAM_LEVEL}\n\n`;
+        summary += "--- ANSWERS ---\n";
+        for (let i = 1; i <= Object.keys(correctAnswers).length; i++) {
+            const qNum = String(i);
+            summary += `Question ${qNum}: ${answers[qNum] || 'Not Answered'}\n`;
+        }
+        submissionCode.value = summary;
+    };
+    
+    /**
+     * Sanitizes a string for use in a filename.
+     * @param {string} input - The string to sanitize.
+     * @returns {string} The sanitized string.
+     */
+    const sanitizeFilename = (input) => {
+        return input.replace(/[^a-z0-9_-]/gi, '_').replace(/_{2,}/g, '_');
+    };
+
+    /**
+     * Generates CSV content from the answers.
+     * @returns {string} The CSV content as a string.
+     */
+    const generateCSV = () => {
+        const questionNumbers = Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b));
+        const headers = ['Timestamp', 'StudentID', 'Level', ...questionNumbers];
+        const timestamp = new Date().toISOString();
+        const studentData = [timestamp, studentID, EXAM_LEVEL, ...questionNumbers.map(qNum => answers[qNum] || '')];
+
+        const csvRows = [
+            headers.join(','),
+            studentData.map(d => `"${String(d).replace(/"/g, '""')}"`).join(',')
+        ];
+
+        return csvRows.join('\n');
+    };
+
+    /**
+     * Triggers the download of the results as a CSV file.
+     */
+    const downloadCSV = () => {
+        const csvContent = generateCSV();
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        const sanitizedId = sanitizeFilename(studentID || 'student');
+        link.setAttribute('download', `${sanitizedId}_IELTS_Results.csv`);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+    
+    /**
+     * Submits the results to the Google Apps Script endpoint.
+     */
+    const submitToGoogleSheet = async () => {
+        submitBtn.disabled = true;
+        submissionStatus.textContent = 'Submitting...';
+        
+        const payload = {
+            studentID: studentID,
+            level: EXAM_LEVEL,
+            answers: answers,
+            correctAnswers: correctAnswers
+        };
+        
+        try {
+            const response = await fetch(GS_WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Important for simple POST requests to Apps Script
+                cache: 'no-cache',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+                redirect: 'follow'
+            });
+            // With no-cors, we can't read the response body, but we can assume success if the request doesn't throw an error.
+            submissionStatus.textContent = 'Successfully submitted!';
+            submissionStatus.style.color = 'var(--primary-sage)';
+        } catch (error) {
+            console.error('Submission error:', error);
+            submissionStatus.textContent = 'Error during submission. Please download your results and send them manually.';
+            submissionStatus.style.color = '#C62828';
+        } finally {
+            submitBtn.disabled = false;
+        }
+    };
+
+    /**
+     * Handles answer changes from any input type.
+     * @param {Event} e - The input or change event.
+     */
+    const handleAnswerInput = (e) => {
+        const target = e.target;
+        if (target.matches('input[type="radio"], input[type="text"], select')) {
+            let qNum;
+            // For inline inputs with data-question-number directly on them
+            if (target.dataset.questionNumber) {
+                qNum = target.dataset.questionNumber;
+            } else {
+                // For inputs inside a .mc-question container
+                const questionDiv = target.closest('.mc-question');
+                if (questionDiv) {
+                    qNum = questionDiv.dataset.questionNumber;
+                }
+            }
+
+            if (qNum) {
+                answers[qNum] = target.value;
+                saveState();
+            }
+        }
+    };
+    
+    // --- Event Listeners ---
+
+    startExamBtn.addEventListener('click', () => {
+        const enteredID = studentIdInput.value.trim();
+        if (!enteredID) {
+            alert('Please enter your Student ID.');
+            return;
+        }
+        studentID = enteredID;
+
+        try {
+            const savedState = JSON.parse(localStorage.getItem('examState'));
+            if (savedState && savedState.studentID === studentID) {
+                restoreSession(savedState);
+            } else {
+                answers = {};
+                remainingTime = TOTAL_EXAM_TIME;
+            }
+        } catch (e) {
+            console.error("Could not parse saved state, starting fresh.", e);
+            answers = {};
+            remainingTime = TOTAL_EXAM_TIME;
+        }
+        
+        saveState();
+        showScreen('test');
+        startTimer();
+        showPassage(0);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        if (currentPassageIndex < passages.length - 1) {
+            showPassage(currentPassageIndex + 1);
+        } else {
+            goToSubmissionScreen();
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPassageIndex > 0) {
+            showPassage(currentPassageIndex - 1);
+        }
+    });
+
+    downloadCsvBtn.addEventListener('click', downloadCSV);
+    submitBtn.addEventListener('click', submitToGoogleSheet);
+    
+    // Use a single, delegated event listener for all answer inputs
+    const passagesContainer = document.getElementById('passages-container');
+    passagesContainer.addEventListener('change', handleAnswerInput);
+    passagesContainer.addEventListener('input', handleAnswerInput);
+
+
+    // --- Initialization ---
+    currentLevelDisplay.textContent = `Current Level: ${EXAM_LEVEL}`;
+    loadState();
+    showScreen('studentId');
+
+});
+
+/*
+// --- GOOGLE APPS SCRIPT CODE (for setup in Google Sheets) ---
+// 1. Open a Google Sheet.
+// 2. Go to Extensions > Apps Script.
+// 3. Paste this code and save.
+// 4. Click Deploy > New deployment.
+// 5. Select Type: Web app.
+// 6. Execute as: Me.
+// 7. Who has access: Anyone.
+// 8. Deploy and copy the Web app URL. Paste it into the GS_WEB_APP_URL variable in the HTML file.
+
+const SHEET_NAME = "Submissions"; // You can change this name
+
+function doPost(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sheet = ss.getSheetByName(SHEET_NAME);
+
+    if (!sheet) {
+      sheet = ss.insertSheet(SHEET_NAME);
+    }
+
+    const studentID = data.studentID || 'N/A';
+    const level = data.level || 'N/A';
+    const studentAnswers = data.answers || {};
+    const correctAnswers = data.correctAnswers || {};
+
+    // Get question numbers in a sorted order to ensure consistent column order
+    const questionKeys = Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b));
+
+    // Check if the header is set up. If not, create it.
+    if (sheet.getLastRow() < 2) {
+      sheet.clear(); // Clear the sheet to start fresh
+      
+      // Row 1: Headers (Questions)
+      const headers = ["Timestamp", "StudentID", "Level", ...questionKeys.map(k => `Question ${k}`)];
+      sheet.appendRow(headers);
+      
+      // Row 2: Correct Answers
+      const correctAnswersRow = ["", "", "CORRECT ANSWERS", ...questionKeys.map(key => correctAnswers[key])];
+      sheet.appendRow(correctAnswersRow);
+
+      // Style the header and answer key rows
+      sheet.getRange("1:2").setFontWeight("bold");
+      sheet.getRange("A1:C2").setBackground("#f3f3f3");
+      sheet.getRange("D2:" + sheet.getLastColumn() + "2").setBackground("#d9ead3");
+      sheet.setFrozenRows(2);
+    }
+    
+    // Get the headers from the sheet to ensure correct answer order for the student row
+    const sheetHeaders = sheet.getRange(1, 4, 1, sheet.getLastColumn() - 3).getValues()[0];
+    const studentAnswersInOrder = sheetHeaders.map(header => {
+        const qNum = header.replace('Question ', '');
+        return studentAnswers[qNum] || ""; // Add student answer or empty string if not answered
+    });
+    
+    // Prepare and append the student's complete row
+    const timestamp = new Date();
+    const studentRowData = [timestamp, studentID, level, ...studentAnswersInOrder];
+    sheet.appendRow(studentRowData);
+
+    return ContentService.createTextOutput(JSON.stringify({ "result": "success" })).setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    // Log the detailed error for debugging in Apps Script
+    Logger.log(error.toString());
+    return ContentService.createTextOutput(JSON.stringify({ "result": "error", "error": error.toString() })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+*/
+</script>
+</body>
+</html>
