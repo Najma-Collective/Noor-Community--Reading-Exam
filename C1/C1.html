@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End of Year Exam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&family=Questrial&display=swap" rel="stylesheet">
+    <style>
+    /* =====================================================================
+       Organic Sage UI — Mobile-first, stable, and soothing
+       Palette preserved; accessibility + mobile ergonomics improved.
+       ===================================================================== */
+
+    /* -------------------------------
+       Design tokens
+    ----------------------------------*/
+    :root {
+      /* Core palette (yours, kept) */
+      --primary-sage: #7A8471;
+      --secondary-sage: #9CAF88;
+      --tertiary-sage: #B8C5A6;
+      --warm-cream: #F8F6F0;
+      --soft-white: #FEFCF7;
+      --forest-shadow: #5A6B52;
+      --border-sage: rgba(122, 132, 113, 0.20);
+      --hover-sage: rgba(156, 175, 136, 0.15);
+
+      /* Extended palette for depth */
+      --deep-forest: #3E4A3A;
+      --moss: #6E7A67;
+      --fern: #8FA081;
+      --dried-clay: #D9CDB4;
+      --amber: #C6AA77;
+      --ink: #2F3A2B;
+      --ink-muted: #5A6B52;
+
+      /* Typography */
+      --font-display: 'Questrial', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+      /* Fluid typography scale */
+      --step--1: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
+      --step-0:  clamp(1rem,     0.96rem + 0.22vw, 1.1rem);
+      --step-1:  clamp(1.125rem, 1.07rem + 0.35vw, 1.3rem);
+      --step-2:  clamp(1.375rem, 1.28rem + 0.55vw, 1.6rem);
+      --step-3:  clamp(1.75rem,  1.58rem + 0.95vw, 2.1rem);
+      --step-4:  clamp(2.25rem,  1.98rem + 1.35vw, 2.7rem);
+
+      /* Rhythm */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-7: 2rem;
+      --space-8: 2.5rem;
+      --space-9: 3rem;
+
+      /* Shape + elevation */
+      --radius-sm: 10px;
+      --radius: 16px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+
+      --shadow-1: 0 1px 2px rgba(34, 41, 32, 0.05), 0 2px 8px rgba(34, 41, 32, 0.06);
+      --shadow-2: 0 4px 18px rgba(34, 41, 32, 0.08), 0 12px 28px rgba(34, 41, 32, 0.06);
+      --shadow-3: 0 10px 40px rgba(34, 41, 32, 0.10), 0 20px 60px rgba(34, 41, 32, 0.08);
+
+      /* Focus ring (AA contrast on cream/white) */
+      --ring: 0 0 0 3px color-mix(in oklab, var(--soft-white) 60%, transparent), 0 0 0 5px color-mix(in srgb, var(--secondary-sage), #2F3A2B 15%);
+
+      /* Motion */
+      --ease-ambient: cubic-bezier(.2,.8,.2,1);
+      --dur-1: 120ms;
+      --dur-2: 200ms;
+      --dur-3: 320ms;
+
+      /* Mobile-safe touch target */
+      --target-min: 44px;
+
+      /* Container max */
+      --container-max: 900px;
+    }
+
+    /* -------------------------------
+       Global reset / mobile stability
+    ----------------------------------*/
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%; /* iOS font scaling fix */
+      text-size-adjust: 100%;
+      hanging-punctuation: first last;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100dvh; /* mobile address bar safe */
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      line-height: 1.6;
+      color: var(--forest-shadow);
+      background:
+        radial-gradient(1200px 1200px at -10% -10%, #FFFFFF 0%, transparent 50%),
+        radial-gradient(1200px 1000px at 110% 10%, #FFF8F0 0%, transparent 50%),
+        linear-gradient(135deg, #F8F6F0 0%, #F5F3ED 100%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    /* Better text wrapping on small screens */
+    :where(p, h1, h2, h3, h4, h5, h6) {
+      text-wrap: pretty;
+      overflow-wrap: anywhere;
+    }
+
+    /* Media defaults */
+    img, svg, video, canvas, audio, iframe {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Links */
+    a { color: var(--primary-sage); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    a:hover { color: var(--deep-forest); }
+
+    /* Utility: hide but readable for screen readers */
+    .visually-hidden {
+      position: absolute !important;
+      height: 1px; width: 1px;
+      overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
+    }
+
+    /* -------------------------------
+       App shell
+    ----------------------------------*/
+    #app-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: max(var(--space-7), env(safe-area-inset-top)) var(--space-4) var(--space-7);
+      width: 100%;
+      min-height: 100dvh;
+      background:
+        radial-gradient(800px 600px at 20% 0%, rgba(156,175,136,0.08) 0%, transparent 70%),
+        radial-gradient(700px 500px at 80% 100%, rgba(90,107,82,0.06) 0%, transparent 65%);
+    }
+
+    /* Container gets subtle translucency on capable browsers */
+    #activity-container {
+      width: 100%;
+      max-width: var(--container-max);
+      background: color-mix(in srgb, var(--soft-white) 88%, white 12%);
+      padding: clamp(24px, 3.2vw, 48px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(122, 132, 113, 0.12);
+      box-shadow: var(--shadow-2);
+      position: relative;
+      isolation: isolate;
+      container-type: inline-size; /* enables container queries where supported */
+    }
+
+    @supports (backdrop-filter: blur(6px)) {
+      #activity-container {
+        background: color-mix(in srgb, var(--soft-white) 76%, white 24%);
+        backdrop-filter: blur(6px) saturate(1.02);
+      }
+    }
+
+    /* Decorative organic edge glow (soft + subtle) */
+    #activity-container::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(1200px 200px at 50% -5%, rgba(156,175,136,0.12), transparent 60%),
+        radial-gradient(800px 1000px at 50% 110%, rgba(122,132,113,0.08), transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Hide screens when needed */
+    .screen.hidden { display: none !important; }
+
+    /* -------------------------------
+       Headings / text
+    ----------------------------------*/
+    h1 {
+      font-family: var(--font-display);
+      font-size: var(--step-4);
+      letter-spacing: 0.2px;
+      color: var(--forest-shadow);
+      margin: 0 0 var(--space-2) 0;
+      text-align: center;
+    }
+
+    h2.rubric {
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      font-weight: 500;
+      color: var(--secondary-sage);
+      margin: 0 0 var(--space-6) 0;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: var(--step-2);
+      color: var(--forest-shadow);
+      margin: var(--space-6) 0 var(--space-3) 0;
+    }
+
+    /* -------------------------------
+       Buttons
+    ----------------------------------*/
+    .activity-btn {
+      min-height: var(--target-min);
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--primary-sage);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 92%, white 8%), var(--primary-sage));
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      transition: transform var(--dur-1) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), opacity var(--dur-1) var(--ease-ambient);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 8px 16px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:hover {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 92%, white 8%), var(--forest-shadow));
+      transform: translateY(-1px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 10px 20px rgba(90, 107, 82, 0.22);
+    }
+
+    .activity-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset, 0 4px 10px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:focus-visible {
+      outline: none;
+      box-shadow: var(--ring), 0 8px 16px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:disabled,
+    .activity-btn[disabled] {
+      background: var(--tertiary-sage);
+      border-color: var(--tertiary-sage);
+      color: color-mix(in srgb, #fff 70%, var(--soft-white) 30%);
+      cursor: not-allowed;
+      opacity: 0.8;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Secondary variant */
+    .activity-btn.secondary {
+      background: transparent;
+      color: var(--primary-sage);
+      border-color: color-mix(in srgb, var(--tertiary-sage) 70%, var(--primary-sage) 30%);
+      box-shadow: none;
+    }
+
+    .activity-btn.secondary:hover { background-color: var(--hover-sage); }
+
+    .activity-btn.secondary:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    /* Button group alignment on small screens */
+    .controls {
+      margin-top: var(--space-7);
+      text-align: center;
+      display: grid;
+      gap: var(--space-3);
+      grid-auto-flow: row;
+    }
+
+    /* -------------------------------
+       Forms / inputs
+    ----------------------------------*/
+    .input-group { margin: var(--space-6) 0; }
+
+    .input-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+      color: var(--primary-sage);
+      letter-spacing: 0.2px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      min-height: var(--target-min);
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--tertiary-sage);
+      background: #fff;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      color: var(--ink);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color var(--dur-2) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: color-mix(in srgb, var(--ink-muted) 60%, #fff 40%);
+      opacity: 0.9;
+    }
+
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: none;
+      border-color: var(--secondary-sage);
+      box-shadow: var(--ring);
+      background: color-mix(in srgb, #fff 92%, var(--warm-cream) 8%);
+    }
+
+    input:disabled,
+    textarea:disabled,
+    select:disabled {
+      background: color-mix(in srgb, #fff 85%, var(--warm-cream) 15%);
+      color: var(--ink-muted);
+      cursor: not-allowed;
+    }
+
+    /* Date input caret/tap stability on iOS */
+    input[type="date"] {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Textareas */
+    textarea {
+      resize: vertical;
+    }
+
+    /* Accent color for native radios/checkboxes (fallback when custom not active) */
+    :root { accent-color: var(--primary-sage); }
+
+    /* -------------------------------
+       System Check Screen
+    ----------------------------------*/
+    .system-check-step { margin-bottom: var(--space-7); }
+
+    #code-display-area {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+      flex-wrap: wrap; /* safer on mobile */
+    }
+
+    #generated-code {
+      width: 100%;
+      min-height: 100px;
+      height: 120px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--tertiary-sage);
+      background: #fff;
+      color: var(--ink);
+    }
+
+    #paste-target { margin-top: var(--space-3); }
+
+    #paste-success-msg {
+      color: #2E7D32;
+      font-weight: 800;
+      margin-top: var(--space-2);
+    }
+
+    /* -------------------------------
+       Test Screen
+    ----------------------------------*/
+    .test-header {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      font-weight: 700;
+    }
+
+    #current-level { color: var(--secondary-sage); }
+    #timer { font-size: 1.1rem; color: var(--primary-sage); }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 10px;
+      background-color: var(--border-sage);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary-sage), color-mix(in srgb, var(--secondary-sage) 60%, var(--primary-sage) 40%));
+      transition: width var(--dur-3) var(--ease-ambient);
+    }
+
+    #progress-text {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--secondary-sage);
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-6);
+    }
+    
+    .passage-slide.hidden { display: none; }
+
+    .mc-question {
+      padding: 20px;
+      margin-top: var(--space-5);
+      border: 1px solid var(--border-sage);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, #ffffff 92%, var(--warm-cream) 8%));
+      box-shadow: var(--shadow-1);
+    }
+
+    .mc-question-header { margin-bottom: var(--space-4); }
+
+    .mc-question-text {
+      font-weight: 800;
+      font-size: var(--step-1);
+      color: var(--forest-shadow);
+      line-height: 1.45;
+      margin-bottom: var(--space-4);
+    }
+
+    /* Options */
+    .mc-options-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .mc-option-item input { display: none; }
+
+    .mc-option-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: background-color var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), transform var(--dur-1) var(--ease-ambient);
+      -webkit-tap-highlight-color: transparent;
+      background: #fff;
+    }
+
+    .mc-option-label:hover { background-color: var(--hover-sage); }
+
+    .mc-option-item .option-control {
+      flex-shrink: 0;
+      inline-size: 24px;
+      block-size: 24px;
+      border: 2px solid var(--tertiary-sage);
+      background-color: var(--soft-white);
+      transition: all var(--dur-2) var(--ease-ambient);
+      position: relative;
+      border-radius: 50%;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    .mc-option-item input[type="radio"]:checked + .option-control { border-color: var(--primary-sage); }
+
+    .mc-option-item input[type="radio"]:checked + .option-control::after {
+      content: '';
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: var(--primary-sage);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset;
+    }
+
+    .mc-option-text {
+      color: var(--primary-sage);
+      line-height: 1.4;
+      font-size: 1rem;
+    }
+
+    .mc-option-item input[type="radio"]:focus-visible + .option-control,
+    .mc-option-label:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    /* Slide controls */
+    .mc-slide-student-controls {
+      margin-top: var(--space-7);
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    /* -------------------------------
+       Submission Screen
+    ----------------------------------*/
+    .submission-steps { margin-top: var(--space-7); }
+
+    #submission-code {
+      width: 100%;
+      height: 260px;
+      box-sizing: border-box;
+      margin: var(--space-3) 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.95rem;
+      padding: 12px 14px;
+      border: 1px solid var(--tertiary-sage);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+    }
+    
+    #submission-controls {
+        display: grid;
+        gap: var(--space-3);
+        grid-auto-flow: row;
+        margin-top: var(--space-4);
+    }
+
+    #copy-submission-btn { margin-bottom: var(--space-6); }
+    
+    #submission-status {
+        margin-top: var(--space-4);
+        font-weight: 700;
+        text-align: center;
+    }
+
+    /* -------------------------------
+       Responsive / container queries
+    ----------------------------------*/
+    @media (max-width: 360px) {
+      #activity-container { padding: 18px; }
+      .activity-btn { padding-inline: 14px; }
+    }
+
+    @media (min-width: 768px) {
+      #app-wrapper { padding-inline: var(--space-7); }
+      .controls { grid-auto-flow: column; justify-content: center; }
+      #submission-controls { grid-auto-flow: column; justify-content: center; }
+      .test-header { grid-template-columns: 1fr auto auto; }
+    }
+
+    @media (min-width: 1024px) {
+      #activity-container { box-shadow: var(--shadow-3); }
+      h1 { letter-spacing: 0.3px; }
+    }
+
+    @container (min-width: 520px) {
+      .mc-question { padding: 24px; }
+      .mc-option-label { padding: 14px; }
+    }
+
+    @container (min-width: 760px) {
+      h1 { font-size: clamp(2rem, 2.2vw + 1rem, 2.75rem); }
+      .mc-question-text { font-size: clamp(1.1rem, 0.6vw + 0.9rem, 1.35rem); }
+    }
+
+    /* -------------------------------
+       Accessibility / motion / scroll
+    ----------------------------------*/
+    :focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--secondary-sage) 30%, #fff 70%);
+      color: var(--deep-forest);
+    }
+
+    html, body { overscroll-behavior-y: none; }
+
+    /* -------------------------------
+       Scrollbars (subtle, optional)
+    ----------------------------------*/
+    *::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    *::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--primary-sage) 50%, var(--tertiary-sage) 50%);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* -------------------------------
+       Dark mode (gentle, earthy)
+    ----------------------------------*/
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --soft-white: #1E211C;
+        --warm-cream: #23261F;
+        --forest-shadow: #DDE6D4;
+        --ink: #E9EFE5;
+        --ink-muted: #AEB9AA;
+        --border-sage: rgba(184, 197, 166, 0.25);
+      }
+
+      html, body {
+        background:
+          radial-gradient(1100px 900px at 15% 10%, rgba(156,175,136,0.06), transparent 60%),
+          radial-gradient(900px 900px at 85% 90%, rgba(122,132,113,0.08), transparent 65%),
+          linear-gradient(135deg, #191D18 0%, #1B1E19 100%);
+      }
+
+      #activity-container {
+        background: color-mix(in srgb, #23261F 92%, #1B1E19 8%);
+        border-color: rgba(184, 197, 166, 0.18);
+        box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+      }
+
+      a { color: color-mix(in srgb, var(--secondary-sage) 80%, #C7D3C0 20%); }
+
+      .mc-question {
+        background: linear-gradient(180deg, #20241E 0%, #191D18 100%);
+        border-color: rgba(184, 197, 166, 0.20);
+        box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 10px 30px rgba(0,0,0,0.35);
+      }
+
+      .activity-btn {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 80%, #0F120E 20%), var(--primary-sage));
+        box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 8px 18px rgba(0,0,0,0.35);
+      }
+
+      .activity-btn:hover {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 80%, #0F120E 20%), var(--forest-shadow));
+      }
+
+      input, textarea, select {
+        background: #141713;
+        border-color: rgba(184, 197, 166, 0.25);
+        color: var(--ink);
+      }
+
+      #progress-bar {
+        background: linear-gradient(90deg, var(--secondary-sage), color-mix(in srgb, var(--primary-sage) 70%, #000 30%));
+      }
+    }
+
+    /* -------------------------------
+       Original responsive tweaks, refined
+    ----------------------------------*/
+    @media (max-width: 767px) {
+      #app-wrapper { padding: var(--space-4); }
+      #activity-container { padding: 24px; }
+      h1 { font-size: clamp(1.75rem, 5vw, 2rem); }
+      h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
+      .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
+    }
+
+    /* --- START ADDED RULE FOR INLINE INPUTS --- */
+    /* This rule is added to fulfill the user's request for inline fill-in-the-blank inputs,
+       as the default `width: 100%` on inputs breaks the paragraph flow for this question type. */
+    .mc-question p > input[type="text"],
+    .mc-question p > select {
+        width: 18ch;
+        min-height: auto;
+        padding: 2px 6px;
+        display: inline-block;
+        vertical-align: baseline;
+        height: 1.8em;
+        margin: 0 0.25em;
+        font-size: inherit;
+    }
+    /* --- END ADDED RULE FOR INLINE INPUTS --- */
+    </style>
+</head>
+<body>
+
+    <div id="app-wrapper">
+        <div id="activity-container">
+
+            <!-- Screen 1: Student ID -->
+            <section id="student-id-screen" class="screen">
+                <h1>End of Year Exam</h1>
+                <h2 class="rubric">Welcome! Please enter your Student ID to begin or to resume a previous session. Your progress is saved automatically.</h2>
+                <div class="input-group">
+                    <label for="student-id-input">Student ID</label>
+                    <input type="text" id="student-id-input" placeholder="Enter your ID">
+                </div>
+                <div class="controls">
+                    <button class="activity-btn" id="start-test-btn">Next</button>
+                </div>
+            </section>
+
+            <!-- Screen 2: Test -->
+            <section id="test-screen" class="screen hidden">
+                <header class="test-header">
+                    <span id="current-level">Current Level: C1</span>
+                    <span id="timer" aria-live="polite">60:00</span>
+                </header>
+                <h2 class="rubric">Answer each question to the best of your ability. Use the 'Previous' and 'Next' buttons to navigate between passages. Your work is saved as you go.</h2>
+                
+                <div class="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <div id="progress-text">Passage 1 of 3</div>
+
+                <!-- Passage 1 -->
+                <div class="passage-slide" data-passage-index="0">
+                    <h3 tabindex="-1">Reading Passage 1: The Cognitive Puzzles of Bilingualism</h3>
+                    <p>For decades, researchers have been investigating the effects of bilingualism on the human brain. Early studies, conducted in the mid-20th century, often suggested that being bilingual created a cognitive burden, leading to confusion and developmental delays. This perspective, however, has been overwhelmingly refuted by modern research. The contemporary view is that the bilingual brain is a highly adaptive and efficient system, and that managing two languages confers a range of cognitive advantages.</p>
+                    <p>The core challenge for a bilingual person is one of constant selection. When a bilingual person wishes to speak, both of their languages are typically active in their brain. For example, when a French-English bilingual sees a dog, the words 'chien' and 'dog' are both activated. The brain must then select the appropriate word for the context while inhibiting the other. This process of selection and inhibition is not a burden but rather a form of constant mental exercise. It is believed to strengthen the brain's executive functions—a suite of cognitive abilities responsible for tasks such as attention control, problem-solving, and task switching.</p>
+                    <p>This 'mental gymnastics' appears to have tangible benefits that extend beyond language. Numerous studies have shown that bilingual individuals tend to outperform monolinguals on tasks that require strong executive control. For example, in the classic 'Stroop test', where participants must name the colour of the ink a word is printed in (e.g., the word 'blue' printed in red ink), bilinguals are often faster and more accurate. They are better able to ignore the misleading information (the word itself) and focus on the relevant task (naming the ink colour). This suggests that the skill of inhibiting one language is transferable to other domains that require cognitive flexibility.</p>
+                    <p>Furthermore, this lifelong cognitive training may have a protective effect on the brain as it ages. A growing body of research indicates that bilingualism can delay the onset of symptoms of cognitive decline, including those associated with dementia. This is attributed to the concept of 'cognitive reserve'—the brain's ability to cope with damage by using pre-existing cognitive resources more efficiently. By constantly exercising its executive functions, the bilingual brain builds up this reserve, making it more resilient to the neurological changes that occur in later life. While bilingualism does not prevent such diseases, it appears to provide the brain with the tools to function at a higher level for longer, even when disease is present. This finding has profound implications for public health and our understanding of lifelong learning.</p>
+                    
+                    <h4>Questions 1-6</h4>
+                    <p>Do the following statements agree with the views of the writer in the text? Write:<br>
+                    <b>YES</b> = the statement agrees with the views of the writer<br>
+                    <b>NO</b> = the statement contradicts the views of the writer<br>
+                    <b>NOT GIVEN</b> = it is impossible to say what the writer thinks about this</p>
+
+                    <div class="mc-question" data-question-number="1">
+                        <p class="mc-question-text">1. The earliest research into bilingualism was largely accurate in its conclusions.</p>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q1" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q1" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q1" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="2">
+                        <p class="mc-question-text">2. The need to choose between two active languages is beneficial for the brain.</p>
+                        <div class="mc-options-container">
+                             <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q2" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q2" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q2" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                        </div>
+                    </div>
+                     <div class="mc-question" data-question-number="3">
+                        <p class="mc-question-text">3. Executive functions are solely responsible for language production.</p>
+                        <div class="mc-options-container">
+                             <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q3" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q3" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q3" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                        </div>
+                    </div>
+                     <div class="mc-question" data-question-number="4">
+                        <p class="mc-question-text">4. Bilinguals tend to have better eyesight than monolinguals.</p>
+                        <div class="mc-options-container">
+                             <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q4" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q4" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q4" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                        </div>
+                    </div>
+                     <div class="mc-question" data-question-number="5">
+                        <p class="mc-question-text">5. The cognitive advantages of bilingualism are limited to language-related tasks.</p>
+                        <div class="mc-options-container">
+                             <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q5" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q5" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q5" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                        </div>
+                    </div>
+                     <div class="mc-question" data-question-number="6">
+                        <p class="mc-question-text">6. Bilingualism can stop the development of age-related brain diseases.</p>
+                        <div class="mc-options-container">
+                             <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q6" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q6" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q6" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                        </div>
+                    </div>
+
+                    <h4>Questions 7-13</h4>
+                    <p>Complete the summary below. Choose ONE WORD ONLY from the text for each answer.</p>
+                    <div class="mc-question">
+                        <p>Modern research indicates that managing two languages provides several cognitive advantages. The primary task for a bilingual's brain is one of constant (7)<input type="text" data-question-number="7" aria-label="Question 7">. The brain must choose the correct word while suppressing the word from the other language, a process known as (8)<input type="text" data-question-number="8" aria-label="Question 8">. This mental workout is thought to enhance the brain's (9)<input type="text" data-question-number="9" aria-label="Question 9"> functions. Evidence for these benefits can be seen in experiments where bilinguals show superior performance on tasks requiring (10)<input type="text" data-question-number="10" aria-label="Question 10"> flexibility. This lifelong brain training may also have a (11)<input type="text" data-question-number="11" aria-label="Question 11"> effect in later life. Research suggests bilingualism helps build up a (12)<input type="text" data-question-number="12" aria-label="Question 12"> reserve, which can delay the symptoms of cognitive (13)<input type="text" data-question-number="13" aria-label="Question 13">, although it does not prevent the underlying diseases.</p>
+                    </div>
+                </div>
+
+                <!-- Passage 2 -->
+                <div class="passage-slide hidden" data-passage-index="1">
+                    <h3 tabindex="-1">Reading Passage 2: The Philosophy of Open Data</h3>
+                    <p><b>A</b> The concept of 'open data'—the idea that certain data should be freely available for everyone to use and republish as they wish, without restrictions from copyright or patents—is one of the most significant shifts in information management of the 21st century. At its heart, it is a philosophy built on principles of transparency, collaboration, and innovation. While the movement has gained considerable momentum, its implementation poses complex challenges, balancing the ideal of unrestricted access with practical concerns about privacy, security, and data quality.</p>
+                    <p><b>B</b> The primary argument for open data is its potential to empower citizens and foster democratic accountability. When governments publish data on public spending, crime rates, or environmental quality, they provide citizens and journalists with the raw material to scrutinise official policies and hold leaders accountable. This transparency can lead to more efficient governance and a reduction in corruption. For example, open data initiatives have enabled organisations to track foreign aid spending, ensuring that funds are directed to their intended projects.</p>
+                    <p><b>C</b> Beyond its civic benefits, open data is a powerful engine for economic and scientific innovation. When private companies and researchers are given access to large datasets—such as weather patterns, genomic information, or transport logistics—they can identify new trends and develop novel products and services. Many successful mobile applications, for instance, are built on publicly available mapping and transport data. In the scientific community, open access to research data accelerates discovery by allowing researchers to replicate, verify, and build upon the work of others, rather than starting from scratch.</p>
+                    <p><b>D</b> However, the path to truly open data is fraught with obstacles. One of the most significant is the issue of personal privacy. Much of the data collected by public bodies contains sensitive information about individuals. While techniques like anonymisation can help, there is an ongoing debate about whether it is possible to release detailed data without creating a risk of re-identification, where individuals can be traced. This creates a fundamental tension between the desire for transparency and the right to privacy.</p>
+                    <p><b>E</b> Another major challenge is ensuring data quality and usability. Raw data is often complex, poorly structured, and difficult to interpret without specialist knowledge. For data to be genuinely 'open', it must not only be legally accessible but also practically usable. This requires investment in standardisation, documentation (metadata), and user-friendly platforms. Without this, the data remains 'open' in name only, accessible to a small group of experts but closed to the wider public it is intended to serve. The open data philosophy, therefore, is not just about data release; it is about building a sustainable information ecosystem.</p>
+
+                    <h4>Questions 14-17</h4>
+                    <p>The reading passage has five paragraphs, A-E. Choose the correct heading for paragraphs B-E from the list of headings below.</p>
+                    <div class="mc-question">
+                        <b>List of Headings</b><br>
+                        i. The difficulty of making data truly accessible<br>
+                        ii. A fundamental conflict with individual rights<br>
+                        iii. The potential for new discoveries and business growth<br>
+                        iv. A definition of a modern information philosophy<br>
+                        v. A tool for improving governance and citizen oversight<br>
+                        vi. The technical process of data anonymisation<br>
+                        <hr>
+                        Example: Paragraph A --- iv
+                        <div class="input-group" data-question-number="14">
+                            <label for="q14">14. Paragraph B</label>
+                            <select id="q14"><option value="">Select heading</option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option></select>
+                        </div>
+                        <div class="input-group" data-question-number="15">
+                            <label for="q15">15. Paragraph C</label>
+                            <select id="q15"><option value="">Select heading</option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option></select>
+                        </div>
+                        <div class="input-group" data-question-number="16">
+                            <label for="q16">16. Paragraph D</label>
+                            <select id="q16"><option value="">Select heading</option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option></select>
+                        </div>
+                        <div class="input-group" data-question-number="17">
+                            <label for="q17">17. Paragraph E</label>
+                            <select id="q17"><option value="">Select heading</option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option></select>
+                        </div>
+                    </div>
+                    
+                    <h4>Questions 18-21</h4>
+                    <p>Look at the following statements and the list of concepts below. Match each statement with the correct concept, A, B, C, or D.</p>
+                     <div class="mc-question">
+                        <b>List of Concepts</b><br>
+                        A. Democratic Accountability<br>
+                        B. Scientific Innovation<br>
+                        C. Data Usability<br>
+                        D. Personal Privacy
+                        <hr>
+                        <div class="input-group" data-question-number="18">
+                            <label for="q18">18. This allows scientists to confirm and extend previous findings.</label>
+                            <select id="q18"><option value="">Select concept</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                        </div>
+                         <div class="input-group" data-question-number="19">
+                            <label for="q19">19. This helps ensure that public money is spent correctly.</label>
+                            <select id="q19"><option value="">Select concept</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                        </div>
+                         <div class="input-group" data-question-number="20">
+                            <label for="q20">20. This can be compromised if data is not properly anonymised.</label>
+                            <select id="q20"><option value="">Select concept</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                        </div>
+                         <div class="input-group" data-question-number="21">
+                            <label for="q21">21. This is essential for making complex data understandable to non-specialists.</label>
+                            <select id="q21"><option value="">Select concept</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                        </div>
+                    </div>
+
+                    <h4>Questions 23-26</h4>
+                    <p>Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
+                    <div class="mc-question">
+                        <p>23. The open data movement is based on the ideals of transparency, innovation, and <input type="text" data-question-number="23" aria-label="Question 23">.</p>
+                        <p>24. Open data can fuel economic growth by enabling the development of <input type="text" data-question-number="24" aria-label="Question 24">.</p>
+                        <p>25. There is concern that releasing personal data could lead to the <input type="text" data-question-number="25" aria-label="Question 25"> of individuals.</p>
+                        <p>26. To be useful, open data requires not just legal access but also investment in <input type="text" data-question-number="26" aria-label="Question 26"> and documentation.</p>
+                    </div>
+                </div>
+
+                <!-- Passage 3 -->
+                <div class="passage-slide hidden" data-passage-index="2">
+                    <h3 tabindex="-1">Reading Passage 3: Shifting Paradigms in Urban Planning: The '15-Minute City'</h3>
+                    <p>The modern metropolis, with its sprawling suburbs and reliance on the automobile, is a product of 20th-century planning. This model, however, is facing increasing scrutiny due to its environmental and social costs, including traffic congestion, pollution, and social isolation. In response, a new paradigm is gaining traction among urbanists: the '15-minute city'. Popularised by Professor Carlos Moreno, the concept proposes a radical reorganisation of urban life, where all essential daily needs—work, commerce, healthcare, education, and recreation—are accessible within a 15-minute walk or bike ride from one's home.</p>
+                    <p>The philosophy behind the 15-minute city is 'chrono-urbanism'—planning a city not around space, but around time. It seeks to end the long, stressful commutes that define the lives of millions by creating a 'policentric' city. Instead of a single, dominant city centre where all activity is concentrated, the policentric model envisions a network of self-sufficient, vibrant neighbourhoods. Each neighbourhood would have a mix of housing, offices, shops, parks, and cultural venues. This approach not only saves residents time but also aims to improve quality of life, reduce carbon emissions, and foster a stronger sense of local community.</p>
+                    <p>Implementing such a vision requires a significant departure from conventional planning practices. It involves decentralising services, repurposing existing infrastructure, and prioritising pedestrians and cyclists over cars. A key strategy is 'tactical urbanism', which uses low-cost, temporary changes to public spaces—such as creating pop-up bike lanes or pedestrianising streets—to test and demonstrate the benefits of a more human-scaled environment. Another critical element is the promotion of 'mixed-use' zoning, which allows for a combination of residential, commercial, and business spaces within the same area, a practice often discouraged by 20th-century zoning laws that favoured strict separation.</p>
+                    <p>Critics of the 15-minute city model raise valid concerns. One major issue is the risk of exacerbating social inequality. In cities with high property values, creating highly desirable, walkable neighbourhoods could drive up housing costs, effectively excluding lower-income residents and creating enclaves of privilege. Without robust social housing policies and equity-focused planning, the vision of a city of accessible neighbourhoods could devolve into a city of segregated villages. Another criticism is that the model may be less applicable to sprawling, low-density cities, particularly in North America, where retrofitting car-dependent suburbs presents a monumental challenge.</p>
+                    <p>Despite these challenges, the 15-minute city concept has become a powerful influence on urban planning discourse worldwide. It forces us to question the long-held assumptions that have shaped our cities and to imagine a future that is more local, sustainable, and centred on human well-being. It is less a rigid blueprint and more a guiding principle, adaptable to different local contexts, that prompts a fundamental rethinking of what a city is for.</p>
+
+                    <h4>Questions 27-31</h4>
+                    <p>Choose the correct letter, A, B, C, or D.</p>
+                    <div class="mc-question" data-question-number="27">
+                        <p class="mc-question-text">27. What is the primary problem with the 20th-century city model, according to the text?</p>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" value="A"><span class="option-control"></span><span class="mc-option-text">A. It lacks sufficient housing for a growing population.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" value="B"><span class="option-control"></span><span class="mc-option-text">B. It has significant negative environmental and social effects.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" value="C"><span class="option-control"></span><span class="mc-option-text">C. It was not designed by professional urban planners.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" value="D"><span class="option-control"></span><span class="mc-option-text">D. It prevents the development of a single city centre.</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="28">
+                        <p class="mc-question-text">28. The concept of 'chrono-urbanism' prioritises the organisation of a city around...</p>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" value="A"><span class="option-control"></span><span class="mc-option-text">A. historical preservation.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" value="B"><span class="option-control"></span><span class="mc-option-text">B. architectural style.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" value="C"><span class="option-control"></span><span class="mc-option-text">C. residents' time.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" value="D"><span class="option-control"></span><span class="mc-option-text">D. geographical space.</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="29">
+                        <p class="mc-question-text">29. What is 'tactical urbanism'?</p>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" value="A"><span class="option-control"></span><span class="mc-option-text">A. A long-term strategy for building new infrastructure.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" value="B"><span class="option-control"></span><span class="mc-option-text">B. A method for increasing car traffic through cities.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" value="C"><span class="option-control"></span><span class="mc-option-text">C. The permanent closure of streets to all vehicles.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" value="D"><span class="option-control"></span><span class="mc-option-text">D. The use of temporary, inexpensive changes to test new ideas.</span></label></div>
+                        </div>
+                    </div>
+                     <div class="mc-question" data-question-number="30">
+                        <p class="mc-question-text">30. What is a key potential drawback of the 15-minute city mentioned by critics?</p>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" value="A"><span class="option-control"></span><span class="mc-option-text">A. It could reduce the overall number of jobs in a city.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" value="B"><span class="option-control"></span><span class="mc-option-text">B. It may worsen social and economic divisions.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" value="C"><span class="option-control"></span><span class="mc-option-text">C. It is too focused on environmental issues.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" value="D"><span class="option-control"></span><span class="mc-option-text">D. It will eliminate the need for public transport.</span></label></div>
+                        </div>
+                    </div>
+                     <div class="mc-question" data-question-number="31">
+                        <p class="mc-question-text">31. What is the writer's overall conclusion about the 15-minute city concept?</p>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q31" value="A"><span class="option-control"></span><span class="mc-option-text">A. It is a flawless model that all cities should adopt immediately.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q31" value="B"><span class="option-control"></span><span class="mc-option-text">B. It is an interesting but ultimately impractical idea for most cities.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q31" value="C"><span class="option-control"></span><span class="mc-option-text">C. It is a valuable principle that encourages a positive rethinking of urban life.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q31" value="D"><span class="option-control"></span><span class="mc-option-text">D. It is only applicable to newly built cities, not existing ones.</span></label></div>
+                        </div>
+                    </div>
+
+                    <h4>Questions 32-36</h4>
+                    <p>Complete the summary using the list of words, A-J, below.</p>
+                    <div class="mc-question">
+                         <b>List of Words</b><br>
+                         A. self-sufficient &nbsp; B. zoning &nbsp; C. paradigm &nbsp; D. luxury &nbsp; E. global<br>
+                         F. essential &nbsp; G. equity &nbsp; H. traffic &nbsp; I. industrial &nbsp; J. residents
+                         <hr>
+                         <p>The 15-minute city is a new (32)<select data-question-number="32" aria-label="Question 32"><option value="">Select</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select>in urban planning that challenges the car-dependent model of the past. The goal is for residents to access all (33)<select data-question-number="33" aria-label="Question 33"><option value="">Select</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select>needs within a short walk or bike ride. This would create a 'policentric' city composed of many (34)<select data-question-number="34" aria-label="Question 34"><option value="">Select</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select>neighbourhoods. Achieving this requires new approaches, such as mixed-use (35)<select data-question-number="35" aria-label="Question 35"><option value="">Select</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select>and prioritising pedestrians. However, critics worry that without careful planning focused on (36)<select data-question-number="36" aria-label="Question 36"><option value="">Select</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select>, the model could increase social inequality.
+                         </p>
+                    </div>
+
+                    <h4>Questions 37-40</h4>
+                    <p>Classify the following statements according to the information in the text. Write:<br>
+                    <b>A</b> if it is an argument in favour of the 15-minute city<br>
+                    <b>B</b> if it is a concern raised by critics of the 15-minute city<br>
+                    <b>C</b> if it is a method used to implement the 15-minute city</p>
+                    <div class="mc-question" data-question-number="37">
+                        <p class="mc-question-text">37. It may lead to the creation of exclusive, high-cost neighbourhoods.</p>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q37" value="A"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q37" value="B"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q37" value="C"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                        </div>
+                    </div>
+                     <div class="mc-question" data-question-number="38">
+                        <p class="mc-question-text">38. It aims to reduce residents' reliance on lengthy travel for daily activities.</p>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q38" value="A"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q38" value="B"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q38" value="C"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                        </div>
+                    </div>
+                     <div class="mc-question" data-question-number="39">
+                        <p class="mc-question-text">39. It involves using temporary, low-cost modifications to public areas.</p>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q39" value="A"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q39" value="B"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q39" value="C"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                        </div>
+                    </div>
+                     <div class="mc-question" data-question-number="40">
+                        <p class="mc-question-text">40. It could prove exceptionally difficult to apply in car-centric suburban areas.</p>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q40" value="A"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q40" value="B"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q40" value="C"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls for all slides -->
+                <div class="mc-slide-student-controls">
+                    <button class="activity-btn secondary" id="prev-btn">Previous</button>
+                    <button class="activity-btn" id="next-btn">Next</button>
+                </div>
+
+            </section>
+
+            <!-- Screen 3: Submission -->
+            <section id="submission-screen" class="screen hidden">
+                <h1>Submission</h1>
+                <h2 class="rubric">Your exam is complete. Review your answers below. You can download a CSV copy for your records or submit your results directly to your instructor.</h2>
+                <textarea id="submission-code" readonly></textarea>
+                <div id="submission-controls">
+                    <button class="activity-btn" id="download-csv-btn">Download Results as CSV</button>
+                    <button class="activity-btn secondary" id="submit-btn">Submit to Instructor</button>
+                </div>
+                <div id="submission-status" aria-live="polite"></div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- CONSTANTS AND STATE ---
+            const EXAM_LEVEL = 'C1';
+            const GS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuncyjolsXX1u9plOYDzujafMIROGIkOOjZsn2ko_lbhNbU1mAXZXa5iMHaEKReTPX/exec';
+            const TOTAL_TIME = 3600; // 60 minutes in seconds
+
+            const correctAnswers = {
+                '1': 'NO', '2': 'YES', '3': 'NO', '4': 'NOT GIVEN', '5': 'NO', '6': 'NO',
+                '7': 'selection', '8': 'inhibition', '9': 'executive', '10': 'cognitive', '11': 'protective', '12': 'cognitive', '13': 'decline',
+                '14': 'v', '15': 'iii', '16': 'ii', '17': 'i',
+                '18': 'B', '19': 'A', '20': 'D', '21': 'C',
+                '23': 'collaboration', '24': 'novel products', '25': 're-identification', '26': 'standardisation',
+                '27': 'B', '28': 'C', '29': 'D', '30': 'B', '31': 'C',
+                '32': 'C', '33': 'F', '34': 'A', '35': 'B', '36': 'G',
+                '37': 'B', '38': 'A', '39': 'C', '40': 'B'
+            };
+
+            let studentState = {
+                studentID: '',
+                answers: {},
+                remainingTime: TOTAL_TIME
+            };
+
+            let timerInterval = null;
+            let timeSaveInterval = null;
+            let currentPassageIndex = 0;
+
+            // --- DOM ELEMENTS ---
+            const screens = {
+                studentId: document.getElementById('student-id-screen'),
+                test: document.getElementById('test-screen'),
+                submission: document.getElementById('submission-screen')
+            };
+            const studentIdInput = document.getElementById('student-id-input');
+            const startTestBtn = document.getElementById('start-test-btn');
+            const timerDisplay = document.getElementById('timer');
+            const passageSlides = document.querySelectorAll('.passage-slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const submissionCodeArea = document.getElementById('submission-code');
+            const downloadCsvBtn = document.getElementById('download-csv-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const submissionStatus = document.getElementById('submission-status');
+            const currentLevelDisplay = document.getElementById('current-level');
+
+            // --- FUNCTIONS ---
+
+            const showScreen = (screenName) => {
+                Object.values(screens).forEach(screen => screen.classList.add('hidden'));
+                if (screens[screenName]) {
+                    screens[screenName].classList.remove('hidden');
+                }
+            };
+
+            const saveState = () => {
+                try {
+                    localStorage.setItem('examState', JSON.stringify(studentState));
+                } catch (e) {
+                    console.error("Failed to save state to localStorage:", e);
+                }
+            };
+            
+            const loadState = () => {
+                try {
+                    const savedState = localStorage.getItem('examState');
+                    if (savedState) {
+                        const parsedState = JSON.parse(savedState);
+                        // Only pre-fill ID. The rest is loaded when the user confirms the ID.
+                        if (parsedState.studentID) {
+                            studentIdInput.value = parsedState.studentID;
+                        }
+                    }
+                } catch (e) {
+                    console.error("Failed to load state from localStorage:", e);
+                    localStorage.removeItem('examState');
+                }
+            };
+
+            const populateAnswers = () => {
+                Object.keys(studentState.answers).forEach(qNum => {
+                    const value = studentState.answers[qNum];
+                    // Handle Radio buttons
+                    const radioInputs = document.querySelectorAll(`input[name="q${qNum}"]`);
+                    if (radioInputs.length > 0) {
+                        radioInputs.forEach(input => {
+                            if (input.value === value) {
+                                input.checked = true;
+                            }
+                        });
+                    }
+                    // Handle Text and Select inputs by data-question-number
+                    const otherInput = document.querySelector(`[data-question-number="${qNum}"]`);
+                     if (otherInput && (otherInput.tagName === 'INPUT' || otherInput.tagName === 'SELECT')) {
+                        otherInput.value = value;
+                    }
+                });
+            };
+
+            const updateTimerDisplay = () => {
+                const minutes = Math.floor(studentState.remainingTime / 60).toString().padStart(2, '0');
+                const seconds = (studentState.remainingTime % 60).toString().padStart(2, '0');
+                timerDisplay.textContent = `${minutes}:${seconds}`;
+            };
+            
+            const startTimer = () => {
+                if (timerInterval) clearInterval(timerInterval);
+                if (timeSaveInterval) clearInterval(timeSaveInterval);
+
+                timerInterval = setInterval(() => {
+                    studentState.remainingTime--;
+                    updateTimerDisplay();
+                    if (studentState.remainingTime <= 0) {
+                        clearInterval(timerInterval);
+                        clearInterval(timeSaveInterval);
+                        alert("Time's up!");
+                        goToSubmission();
+                    }
+                }, 1000);
+
+                timeSaveInterval = setInterval(saveState, 5000);
+            };
+
+            const updateProgress = () => {
+                const percentage = ((currentPassageIndex + 1) / passageSlides.length) * 100;
+                progressBar.style.width = `${percentage}%`;
+                progressText.textContent = `Passage ${currentPassageIndex + 1} of ${passageSlides.length}`;
+
+                passageSlides.forEach((slide, index) => {
+                    slide.classList.toggle('hidden', index !== currentPassageIndex);
+                });
+
+                prevBtn.style.visibility = currentPassageIndex === 0 ? 'hidden' : 'visible';
+                
+                if (currentPassageIndex === passageSlides.length - 1) {
+                    nextBtn.textContent = 'Go to Submission';
+                } else {
+                    nextBtn.textContent = 'Next';
+                }
+
+                const currentSlide = passageSlides[currentPassageIndex];
+                const firstHeading = currentSlide.querySelector('h3');
+                if (firstHeading) {
+                    firstHeading.focus();
+                }
+            };
+
+            const handleAnswerChange = (e) => {
+                const target = e.target;
+                let qNum;
+                // For radios, the name attribute is 'q' + number
+                if (target.type === 'radio') {
+                    qNum = target.name.replace('q', '');
+                } 
+                // For others, we use data-question-number
+                else if (target.dataset.questionNumber) {
+                    qNum = target.dataset.questionNumber;
+                }
+                
+                if (qNum) {
+                    studentState.answers[qNum] = target.value.trim();
+                    saveState();
+                }
+            };
+            
+            const sanitizeFilename = (name) => {
+                return name.replace(/[^a-z0-9_-]/gi, '_').replace(/_{2,}/g, '_');
+            };
+
+            const generateCSV = () => {
+                const headers = ['Timestamp', 'StudentID', 'Level'];
+                const studentData = [new Date().toISOString(), studentState.studentID, EXAM_LEVEL];
+                
+                const questionNumbers = Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b));
+                questionNumbers.forEach(qNum => {
+                    headers.push(qNum);
+                    studentData.push(studentState.answers[qNum] || '');
+                });
+
+                const csvContent = [
+                    headers.join(','),
+                    studentData.map(d => `"${String(d).replace(/"/g, '""')}"`).join(',')
+                ].join('\n');
+
+                return csvContent;
+            };
+
+            const downloadCSV = () => {
+                const csvContent = generateCSV();
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement("a");
+                const url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                const filename = `${sanitizeFilename(studentState.studentID || 'student')}_IELTS_Results.csv`;
+                link.setAttribute("download", filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            };
+
+            const generateSubmissionSummary = () => {
+                let summary = `Student ID: ${studentState.studentID}\n`;
+                summary += `Level: ${EXAM_LEVEL}\n`;
+                summary += `Time Remaining: ${timerDisplay.textContent}\n\n`;
+                summary += '--- ANSWERS ---\n';
+                
+                const questionNumbers = Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b));
+                questionNumbers.forEach(qNum => {
+                    summary += `Question ${qNum}: ${studentState.answers[qNum] || '(Not answered)'}\n`;
+                });
+                
+                return summary;
+            };
+
+            const goToSubmission = () => {
+                clearInterval(timerInterval);
+                clearInterval(timeSaveInterval);
+                saveState(); // Final save
+                submissionCodeArea.value = generateSubmissionSummary();
+                showScreen('submission');
+            };
+            
+            const submitToGoogleSheet = async () => {
+                submitBtn.disabled = true;
+                submissionStatus.textContent = 'Submitting...';
+                submissionStatus.style.color = 'var(--primary-sage)';
+
+                const payload = {
+                    studentID: studentState.studentID,
+                    level: EXAM_LEVEL,
+                    answers: studentState.answers,
+                    correctAnswers: correctAnswers
+                };
+
+                try {
+                    const response = await fetch(GS_WEB_APP_URL, {
+                        method: 'POST',
+                        mode: 'cors',
+                        cache: 'no-cache',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        if (result.result === 'success') {
+                            submissionStatus.textContent = 'Successfully submitted!';
+                            submissionStatus.style.color = '#2E7D32';
+                        } else {
+                            throw new Error(result.error || 'Unknown error from server.');
+                        }
+                    } else {
+                         throw new Error(`Network response was not ok. Status: ${response.status}`);
+                    }
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    submissionStatus.textContent = `Error: Could not submit results. Please download the CSV. (${error.message})`;
+                    submissionStatus.style.color = '#C62828';
+                } finally {
+                    submitBtn.disabled = false;
+                }
+            };
+
+            // --- EVENT LISTENERS ---
+
+            startTestBtn.addEventListener('click', () => {
+                const enteredID = studentIdInput.value.trim();
+                if (!enteredID) {
+                    alert('Please enter your Student ID.');
+                    return;
+                }
+                
+                const savedStateRaw = localStorage.getItem('examState');
+                if (savedStateRaw) {
+                    const savedState = JSON.parse(savedStateRaw);
+                    if (savedState.studentID === enteredID) {
+                        // Resuming session
+                        studentState = savedState;
+                        if(studentState.remainingTime <= 0) studentState.remainingTime = TOTAL_TIME;
+                        populateAnswers();
+                    } else {
+                        // New student, clear old state
+                        studentState = { studentID: enteredID, answers: {}, remainingTime: TOTAL_TIME };
+                    }
+                } else {
+                    // No saved state, new session
+                    studentState.studentID = enteredID;
+                }
+                
+                saveState();
+                showScreen('test');
+                updateTimerDisplay();
+                startTimer();
+                updateProgress();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentPassageIndex < passageSlides.length - 1) {
+                    currentPassageIndex++;
+                    updateProgress();
+                } else {
+                    goToSubmission();
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentPassageIndex > 0) {
+                    currentPassageIndex--;
+                    updateProgress();
+                }
+            });
+            
+            screens.test.addEventListener('change', handleAnswerChange);
+            screens.test.addEventListener('input', (e) => {
+                 if(e.target.tagName === 'INPUT' && e.target.type === 'text') {
+                    handleAnswerChange(e);
+                 }
+            });
+
+            downloadCsvBtn.addEventListener('click', downloadCSV);
+            submitBtn.addEventListener('click', submitToGoogleSheet);
+            
+            // --- INITIALIZATION ---
+            currentLevelDisplay.textContent = `Current Level: ${EXAM_LEVEL}`;
+            loadState();
+        });
+
+        /*
+        // --- GOOGLE APPS SCRIPT CODE (for setup in Google Sheets) ---
+        // 1. Open a Google Sheet.
+        // 2. Go to Extensions > Apps Script.
+        // 3. Paste this code and save.
+        // 4. Click Deploy > New deployment.
+        // 5. Select Type: Web app.
+        // 6. Execute as: Me.
+        // 7. Who has access: Anyone.
+        // 8. Deploy and copy the Web app URL. Paste it into the GS_WEB_APP_URL variable in the HTML file.
+
+        const SHEET_NAME = "Submissions"; // You can change this name
+
+        function doPost(e) {
+          try {
+            const data = JSON.parse(e.postData.contents);
+            const ss = SpreadsheetApp.getActiveSpreadsheet();
+            let sheet = ss.getSheetByName(SHEET_NAME);
+
+            if (!sheet) {
+              sheet = ss.insertSheet(SHEET_NAME);
+            }
+
+            const studentID = data.studentID || 'N/A';
+            const level = data.level || 'N/A';
+            const studentAnswers = data.answers || {};
+            const correctAnswers = data.correctAnswers || {};
+
+            // Get question numbers in a sorted order to ensure consistent column order
+            const questionKeys = Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b));
+
+            // Check if the header is set up. If not, create it.
+            if (sheet.getLastRow() < 2) {
+              sheet.clear(); // Clear the sheet to start fresh
+              
+              // Row 1: Headers (Questions)
+              const headers = ["Timestamp", "StudentID", "Level", ...questionKeys.map(k => `Question ${k}`)];
+              sheet.appendRow(headers);
+              
+              // Row 2: Correct Answers
+              const correctAnswersRow = ["", "", "CORRECT ANSWERS", ...questionKeys.map(key => correctAnswers[key])];
+              sheet.appendRow(correctAnswersRow);
+
+              // Style the header and answer key rows
+              sheet.getRange("1:2").setFontWeight("bold");
+              sheet.getRange("A1:C2").setBackground("#f3f3f3");
+              sheet.getRange("D2:" + sheet.getLastColumn() + "2").setBackground("#d9ead3");
+              sheet.setFrozenRows(2);
+            }
+            
+            // Get the headers from the sheet to ensure correct answer order for the student row
+            const sheetHeaders = sheet.getRange(1, 4, 1, sheet.getLastColumn() - 3).getValues()[0];
+            const studentAnswersInOrder = sheetHeaders.map(header => {
+                const qNum = header.replace('Question ', '');
+                return studentAnswers[qNum] || ""; // Add student answer or empty string if not answered
+            });
+            
+            // Prepare and append the student's complete row
+            const timestamp = new Date();
+            const studentRowData = [timestamp, studentID, level, ...studentAnswersInOrder];
+            sheet.appendRow(studentRowData);
+
+            return ContentService.createTextOutput(JSON.stringify({ "result": "success" })).setMimeType(ContentService.MimeType.JSON);
+          } catch (error) {
+            // Log the detailed error for debugging in Apps Script
+            Logger.log(error.toString());
+            return ContentService.createTextOutput(JSON.stringify({ "result": "error", "error": error.toString() })).setMimeType(ContentService.MimeType.JSON);
+          }
+        }
+        */
+    </script>
+</body>
+</html>
