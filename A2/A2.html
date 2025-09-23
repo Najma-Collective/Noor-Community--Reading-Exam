@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End of Year Exam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&family=Questrial&display=swap" rel="stylesheet">
+    <style>
+    /* =====================================================================
+       Organic Sage UI — Mobile-first, stable, and soothing
+       Palette preserved; accessibility + mobile ergonomics improved.
+       ===================================================================== */
+
+    /* -------------------------------
+       Design tokens
+    ----------------------------------*/
+    :root {
+      /* Core palette (yours, kept) */
+      --primary-sage: #7A8471;
+      --secondary-sage: #9CAF88;
+      --tertiary-sage: #B8C5A6;
+      --warm-cream: #F8F6F0;
+      --soft-white: #FEFCF7;
+      --forest-shadow: #5A6B52;
+      --border-sage: rgba(122, 132, 113, 0.20);
+      --hover-sage: rgba(156, 175, 136, 0.15);
+
+      /* Extended palette for depth */
+      --deep-forest: #3E4A3A;
+      --moss: #6E7A67;
+      --fern: #8FA081;
+      --dried-clay: #D9CDB4;
+      --amber: #C6AA77;
+      --ink: #2F3A2B;
+      --ink-muted: #5A6B52;
+
+      /* Typography */
+      --font-display: 'Questrial', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+      /* Fluid typography scale */
+      --step--1: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
+      --step-0:  clamp(1rem,     0.96rem + 0.22vw, 1.1rem);
+      --step-1:  clamp(1.125rem, 1.07rem + 0.35vw, 1.3rem);
+      --step-2:  clamp(1.375rem, 1.28rem + 0.55vw, 1.6rem);
+      --step-3:  clamp(1.75rem,  1.58rem + 0.95vw, 2.1rem);
+      --step-4:  clamp(2.25rem,  1.98rem + 1.35vw, 2.7rem);
+
+      /* Rhythm */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-7: 2rem;
+      --space-8: 2.5rem;
+      --space-9: 3rem;
+
+      /* Shape + elevation */
+      --radius-sm: 10px;
+      --radius: 16px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+
+      --shadow-1: 0 1px 2px rgba(34, 41, 32, 0.05), 0 2px 8px rgba(34, 41, 32, 0.06);
+      --shadow-2: 0 4px 18px rgba(34, 41, 32, 0.08), 0 12px 28px rgba(34, 41, 32, 0.06);
+      --shadow-3: 0 10px 40px rgba(34, 41, 32, 0.10), 0 20px 60px rgba(34, 41, 32, 0.08);
+
+      /* Focus ring (AA contrast on cream/white) */
+      --ring: 0 0 0 3px color-mix(in oklab, var(--soft-white) 60%, transparent), 0 0 0 5px color-mix(in srgb, var(--secondary-sage), #2F3A2B 15%);
+
+      /* Motion */
+      --ease-ambient: cubic-bezier(.2,.8,.2,1);
+      --dur-1: 120ms;
+      --dur-2: 200ms;
+      --dur-3: 320ms;
+
+      /* Mobile-safe touch target */
+      --target-min: 44px;
+
+      /* Container max */
+      --container-max: 900px;
+    }
+
+    /* -------------------------------
+       Global reset / mobile stability
+    ----------------------------------*/
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%; /* iOS font scaling fix */
+      text-size-adjust: 100%;
+      hanging-punctuation: first last;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100dvh; /* mobile address bar safe */
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      line-height: 1.6;
+      color: var(--forest-shadow);
+      background:
+        radial-gradient(1200px 1200px at -10% -10%, #FFFFFF 0%, transparent 50%),
+        radial-gradient(1200px 1000px at 110% 10%, #FFF8F0 0%, transparent 50%),
+        linear-gradient(135deg, #F8F6F0 0%, #F5F3ED 100%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    /* Better text wrapping on small screens */
+    :where(p, h1, h2, h3, h4, h5, h6) {
+      text-wrap: pretty;
+      overflow-wrap: anywhere;
+    }
+
+    /* Media defaults */
+    img, svg, video, canvas, audio, iframe {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Links */
+    a { color: var(--primary-sage); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    a:hover { color: var(--deep-forest); }
+
+    /* Utility: hide but readable for screen readers */
+    .visually-hidden {
+      position: absolute !important;
+      height: 1px; width: 1px;
+      overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
+    }
+
+    /* -------------------------------
+       App shell
+    ----------------------------------*/
+    #app-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: max(var(--space-7), env(safe-area-inset-top)) var(--space-4) var(--space-7);
+      width: 100%;
+      min-height: 100dvh;
+      background:
+        radial-gradient(800px 600px at 20% 0%, rgba(156,175,136,0.08) 0%, transparent 70%),
+        radial-gradient(700px 500px at 80% 100%, rgba(90,107,82,0.06) 0%, transparent 65%);
+    }
+
+    /* Container gets subtle translucency on capable browsers */
+    #activity-container {
+      width: 100%;
+      max-width: var(--container-max);
+      background: color-mix(in srgb, var(--soft-white) 88%, white 12%);
+      padding: clamp(24px, 3.2vw, 48px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(122, 132, 113, 0.12);
+      box-shadow: var(--shadow-2);
+      position: relative;
+      isolation: isolate;
+      container-type: inline-size; /* enables container queries where supported */
+    }
+
+    @supports (backdrop-filter: blur(6px)) {
+      #activity-container {
+        background: color-mix(in srgb, var(--soft-white) 76%, white 24%);
+        backdrop-filter: blur(6px) saturate(1.02);
+      }
+    }
+
+    /* Decorative organic edge glow (soft + subtle) */
+    #activity-container::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(1200px 200px at 50% -5%, rgba(156,175,136,0.12), transparent 60%),
+        radial-gradient(800px 1000px at 50% 110%, rgba(122,132,113,0.08), transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Hide screens when needed */
+    .screen.hidden { display: none !important; }
+
+    /* -------------------------------
+       Headings / text
+    ----------------------------------*/
+    h1 {
+      font-family: var(--font-display);
+      font-size: var(--step-4);
+      letter-spacing: 0.2px;
+      color: var(--forest-shadow);
+      margin: 0 0 var(--space-2) 0;
+      text-align: center;
+    }
+
+    h2.rubric {
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      font-weight: 500;
+      color: var(--secondary-sage);
+      margin: 0 0 var(--space-6) 0;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: var(--step-2);
+      color: var(--forest-shadow);
+      margin: var(--space-6) 0 var(--space-3) 0;
+    }
+
+    /* -------------------------------
+       Buttons
+    ----------------------------------*/
+    .activity-btn {
+      min-height: var(--target-min);
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--primary-sage);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 92%, white 8%), var(--primary-sage));
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      transition: transform var(--dur-1) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), opacity var(--dur-1) var(--ease-ambient);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 8px 16px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:hover {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 92%, white 8%), var(--forest-shadow));
+      transform: translateY(-1px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 10px 20px rgba(90, 107, 82, 0.22);
+    }
+
+    .activity-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset, 0 4px 10px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:focus-visible {
+      outline: none;
+      box-shadow: var(--ring), 0 8px 16px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:disabled,
+    .activity-btn[disabled] {
+      background: var(--tertiary-sage);
+      border-color: var(--tertiary-sage);
+      color: color-mix(in srgb, #fff 70%, var(--soft-white) 30%);
+      cursor: not-allowed;
+      opacity: 0.8;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Secondary variant */
+    .activity-btn.secondary {
+      background: transparent;
+      color: var(--primary-sage);
+      border-color: color-mix(in srgb, var(--tertiary-sage) 70%, var(--primary-sage) 30%);
+      box-shadow: none;
+    }
+
+    .activity-btn.secondary:hover { background-color: var(--hover-sage); }
+
+    .activity-btn.secondary:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    /* Button group alignment on small screens */
+    .controls {
+      margin-top: var(--space-7);
+      text-align: center;
+      display: grid;
+      gap: var(--space-3);
+      grid-auto-flow: row;
+    }
+
+    /* -------------------------------
+       Forms / inputs
+    ----------------------------------*/
+    .input-group { margin: var(--space-6) 0; }
+
+    .input-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+      color: var(--primary-sage);
+      letter-spacing: 0.2px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      min-height: var(--target-min);
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--tertiary-sage);
+      background: #fff;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      color: var(--ink);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color var(--dur-2) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: color-mix(in srgb, var(--ink-muted) 60%, #fff 40%);
+      opacity: 0.9;
+    }
+
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: none;
+      border-color: var(--secondary-sage);
+      box-shadow: var(--ring);
+      background: color-mix(in srgb, #fff 92%, var(--warm-cream) 8%);
+    }
+
+    input:disabled,
+    textarea:disabled,
+    select:disabled {
+      background: color-mix(in srgb, #fff 85%, var(--warm-cream) 15%);
+      color: var(--ink-muted);
+      cursor: not-allowed;
+    }
+
+    /* Date input caret/tap stability on iOS */
+    input[type="date"] {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Textareas */
+    textarea {
+      resize: vertical;
+    }
+
+    /* Accent color for native radios/checkboxes (fallback when custom not active) */
+    :root { accent-color: var(--primary-sage); }
+
+    /* -------------------------------
+       System Check Screen
+    ----------------------------------*/
+    .system-check-step { margin-bottom: var(--space-7); }
+
+    #code-display-area {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+      flex-wrap: wrap; /* safer on mobile */
+    }
+
+    #generated-code {
+      width: 100%;
+      min-height: 100px;
+      height: 120px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--tertiary-sage);
+      background: #fff;
+      color: var(--ink);
+    }
+
+    #paste-target { margin-top: var(--space-3); }
+
+    #paste-success-msg {
+      color: #2E7D32;
+      font-weight: 800;
+      margin-top: var(--space-2);
+    }
+
+    /* -------------------------------
+       Test Screen
+    ----------------------------------*/
+    .test-header {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      font-weight: 700;
+    }
+
+    #current-level { color: var(--secondary-sage); }
+    #timer { font-size: 1.1rem; color: var(--primary-sage); }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 10px;
+      background-color: var(--border-sage);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary-sage), color-mix(in srgb, var(--secondary-sage) 60%, var(--primary-sage) 40%));
+      transition: width var(--dur-3) var(--ease-ambient);
+    }
+
+    #progress-text {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--secondary-sage);
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-6);
+    }
+    
+    .passage-slide.hidden { display: none; }
+
+    .mc-question {
+      padding: 20px;
+      border: 1px solid var(--border-sage);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, #ffffff 92%, var(--warm-cream) 8%));
+      box-shadow: var(--shadow-1);
+    }
+
+    .mc-question-header { margin-bottom: var(--space-4); }
+
+    .mc-question-text {
+      font-weight: 800;
+      font-size: var(--step-1);
+      color: var(--forest-shadow);
+      line-height: 1.45;
+    }
+
+    /* Options */
+    .mc-options-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .mc-option-item input { display: none; }
+
+    .mc-option-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: background-color var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), transform var(--dur-1) var(--ease-ambient);
+      -webkit-tap-highlight-color: transparent;
+      background: #fff;
+    }
+
+    .mc-option-label:hover { background-color: var(--hover-sage); }
+
+    .mc-option-item .option-control {
+      flex-shrink: 0;
+      inline-size: 24px;
+      block-size: 24px;
+      border: 2px solid var(--tertiary-sage);
+      background-color: var(--soft-white);
+      transition: all var(--dur-2) var(--ease-ambient);
+      position: relative;
+      border-radius: 50%;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    .mc-option-item input[type="radio"]:checked + .option-control { border-color: var(--primary-sage); }
+
+    .mc-option-item input[type="radio"]:checked + .option-control::after {
+      content: '';
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: var(--primary-sage);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset;
+    }
+
+    .mc-option-text {
+      color: var(--primary-sage);
+      line-height: 1.4;
+      font-size: 1rem;
+    }
+
+    .mc-option-item input[type="radio"]:focus-visible + .option-control,
+    .mc-option-label:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    /* Slide controls */
+    .mc-slide-student-controls {
+      margin-top: var(--space-7);
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    /* -------------------------------
+       Submission Screen
+    ----------------------------------*/
+    .submission-steps { margin-top: var(--space-7); }
+
+    #submission-code {
+      width: 100%;
+      height: 260px;
+      box-sizing: border-box;
+      margin: var(--space-3) 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.95rem;
+      padding: 12px 14px;
+      border: 1px solid var(--tertiary-sage);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+    }
+    
+    #submission-controls {
+        display: grid;
+        gap: var(--space-3);
+        grid-auto-flow: row;
+        margin-top: var(--space-4);
+    }
+
+    #copy-submission-btn { margin-bottom: var(--space-6); }
+    
+    #submission-status {
+        margin-top: var(--space-4);
+        font-weight: 700;
+        text-align: center;
+    }
+
+    /* -------------------------------
+       Responsive / container queries
+    ----------------------------------*/
+    @media (max-width: 360px) {
+      #activity-container { padding: 18px; }
+      .activity-btn { padding-inline: 14px; }
+    }
+
+    @media (min-width: 768px) {
+      #app-wrapper { padding-inline: var(--space-7); }
+      .controls { grid-auto-flow: column; justify-content: center; }
+      #submission-controls { grid-auto-flow: column; justify-content: center; }
+      .test-header { grid-template-columns: 1fr auto auto; }
+    }
+
+    @media (min-width: 1024px) {
+      #activity-container { box-shadow: var(--shadow-3); }
+      h1 { letter-spacing: 0.3px; }
+    }
+
+    @container (min-width: 520px) {
+      .mc-question { padding: 24px; }
+      .mc-option-label { padding: 14px; }
+    }
+
+    @container (min-width: 760px) {
+      h1 { font-size: clamp(2rem, 2.2vw + 1rem, 2.75rem); }
+      .mc-question-text { font-size: clamp(1.1rem, 0.6vw + 0.9rem, 1.35rem); }
+    }
+
+    /* -------------------------------
+       Accessibility / motion / scroll
+    ----------------------------------*/
+    :focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--secondary-sage) 30%, #fff 70%);
+      color: var(--deep-forest);
+    }
+
+    html, body { overscroll-behavior-y: none; }
+
+    /* -------------------------------
+       Scrollbars (subtle, optional)
+    ----------------------------------*/
+    *::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    *::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--primary-sage) 50%, var(--tertiary-sage) 50%);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* -------------------------------
+       Dark mode (gentle, earthy)
+    ----------------------------------*/
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --soft-white: #1E211C;
+        --warm-cream: #23261F;
+        --forest-shadow: #DDE6D4;
+        --ink: #E9EFE5;
+        --ink-muted: #AEB9AA;
+        --border-sage: rgba(184, 197, 166, 0.25);
+      }
+
+      html, body {
+        background:
+          radial-gradient(1100px 900px at 15% 10%, rgba(156,175,136,0.06), transparent 60%),
+          radial-gradient(900px 900px at 85% 90%, rgba(122,132,113,0.08), transparent 65%),
+          linear-gradient(135deg, #191D18 0%, #1B1E19 100%);
+      }
+
+      #activity-container {
+        background: color-mix(in srgb, #23261F 92%, #1B1E19 8%);
+        border-color: rgba(184, 197, 166, 0.18);
+        box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+      }
+
+      a { color: color-mix(in srgb, var(--secondary-sage) 80%, #C7D3C0 20%); }
+
+      .mc-question {
+        background: linear-gradient(180deg, #20241E 0%, #191D18 100%);
+        border-color: rgba(184, 197, 166, 0.20);
+        box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 10px 30px rgba(0,0,0,0.35);
+      }
+
+      .activity-btn {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 80%, #0F120E 20%), var(--primary-sage));
+        box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 8px 18px rgba(0,0,0,0.35);
+      }
+
+      .activity-btn:hover {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 80%, #0F120E 20%), var(--forest-shadow));
+      }
+
+      input, textarea, select {
+        background: #141713;
+        border-color: rgba(184, 197, 166, 0.25);
+        color: var(--ink);
+      }
+
+      #progress-bar {
+        background: linear-gradient(90deg, var(--secondary-sage), color-mix(in srgb, var(--primary-sage) 70%, #000 30%));
+      }
+    }
+
+    /* -------------------------------
+       Original responsive tweaks, refined
+    ----------------------------------*/
+    @media (max-width: 767px) {
+      #app-wrapper { padding: var(--space-4); }
+      #activity-container { padding: 24px; }
+      h1 { font-size: clamp(1.75rem, 5vw, 2rem); }
+      h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
+      .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
+    }
+    </style>
+</head>
+<body>
+
+    <div id="app-wrapper">
+        <main id="activity-container">
+
+            <!-- Screen 1: Student ID Screen -->
+            <section id="student-id-screen" class="screen">
+                <h1>End of Year Exam</h1>
+                <h2 class="rubric">Welcome! Please enter your Student ID to begin or to resume a previous session. Your progress is saved automatically.</h2>
+                <form onsubmit="return false;">
+                    <div class="input-group">
+                        <label for="student-id">Student ID</label>
+                        <input type="text" id="student-id" placeholder="Enter your ID here">
+                    </div>
+                    <div class="controls">
+                        <button type="button" id="start-exam-btn" class="activity-btn">Next</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Screen 2: Test Screen -->
+            <section id="test-screen" class="screen hidden">
+                <div class="test-header">
+                    <span id="current-level">Current Level: A2</span>
+                    <span id="timer" aria-live="polite">60:00</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <div id="progress-text">Passage 1 of 3</div>
+
+                <h2 class="rubric">Answer each question to the best of your ability. Use the 'Previous' and 'Next' buttons to navigate between passages. Your work is saved as you go.</h2>
+
+                <div id="passages-container">
+                    <!-- Passage 1 -->
+                    <div class="passage-slide" data-passage-index="0">
+                        <h3>Reading Passage 1: An Email About a New Hobby</h3>
+                        <p>Hi Alex,<br>How are you? I'm writing to you because I want to tell you about my new hobby. I joined the local photography club! I started three weeks ago.</p>
+                        <p>Our club meets every Thursday evening at the community centre. The first meeting was great. We learned about the different parts of a camera. My camera is not very new, but it is good enough to learn with. My teacher says the person taking the photo is more important than the camera.</p>
+                        <p>Last week, our meeting was outdoors. We walked around the city centre and took pictures of interesting buildings and people. It was really interesting to look at the city in a new way. I took lots of photos to show you.</p>
+                        <p>The people in the club are very friendly. My favourite part is seeing everyone's photos at the end of the week and talking about them. It is the best part of my week so far!</p>
+                        <p>I have to go now. I have a club meeting tonight!<br>Speak soon,<br>Chloe</p>
+                        
+                        <h3>Questions 1-7</h3>
+                        <p>Read the email. Are the sentences ‘True’, ‘False’ or ‘Not Given’?</p>
+                        <div class="mc-question" data-question-number="1">
+                            <div class="mc-question-header"><p class="mc-question-text">1. Chloe is writing the email to a family member.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q1_opt1" name="q1" value="True"><label for="q1_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q1_opt2" name="q1" value="False"><label for="q1_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q1_opt3" name="q1" value="Not Given"><label for="q1_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="2" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">2. The club meets in the morning.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q2_opt1" name="q2" value="True"><label for="q2_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q2_opt2" name="q2" value="False"><label for="q2_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q2_opt3" name="q2" value="Not Given"><label for="q2_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="3" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">3. Chloe has a new and expensive camera.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q3_opt1" name="q3" value="True"><label for="q3_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q3_opt2" name="q3" value="False"><label for="q3_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q3_opt3" name="q3" value="Not Given"><label for="q3_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="4" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">4. Chloe enjoyed taking photos in the city.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q4_opt1" name="q4" value="True"><label for="q4_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q4_opt2" name="q4" value="False"><label for="q4_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q4_opt3" name="q4" value="Not Given"><label for="q4_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="5" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">5. Last week, the club members took photos of animals.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q5_opt1" name="q5" value="True"><label for="q5_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q5_opt2" name="q5" value="False"><label for="q5_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q5_opt3" name="q5" value="Not Given"><label for="q5_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="6" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">6. Chloe does not like the other people in the club.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q6_opt1" name="q6" value="True"><label for="q6_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q6_opt2" name="q6" value="False"><label for="q6_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q6_opt3" name="q6" value="Not Given"><label for="q6_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                         <div class="mc-question" data-question-number="7" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">7. Chloe thinks the club is the best part of her week.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q7_opt1" name="q7" value="True"><label for="q7_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q7_opt2" name="q7" value="False"><label for="q7_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q7_opt3" name="q7" value="Not Given"><label for="q7_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+
+                        <h3>Questions 8-13</h3>
+                        <p>Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
+                        <div class="mc-question" style="margin-top: var(--space-4);">
+                            <div class="input-group" data-question-number="8"><label for="q8">8. Chloe joined her new club __________ ago.</label><input type="text" id="q8"></div>
+                            <div class="input-group" data-question-number="9"><label for="q9">9. The club meets every week at the __________.</label><input type="text" id="q9"></div>
+                            <div class="input-group" data-question-number="10"><label for="q10">10. The teacher says the __________ is the most important part of photography.</label><input type="text" id="q10"></div>
+                            <div class="input-group" data-question-number="11"><label for="q11">11. Chloe says, ‘I took lots of __________ to show you.’</label><input type="text" id="q11"></div>
+                            <div class="input-group" data-question-number="12"><label for="q12">12. The other club members are very __________.</label><input type="text" id="q12"></div>
+                            <div class="input-group" data-question-number="13"><label for="q13">13. Chloe’s favourite part is __________ everyone’s photos at the end of the week.</label><input type="text" id="q13"></div>
+                        </div>
+                    </div>
+
+                    <!-- Passage 2 -->
+                    <div class="passage-slide hidden" data-passage-index="1">
+                        <h3>Reading Passage 2: Looking for a Flatmate</h3>
+                        <p>My name is Marco and I am looking for a new flatmate. My current flatmate, David, is moving to another city because he found a new job. The room will be available from the 1st of August.</p>
+                        <h4>About the Flat</h4>
+                        <p>The flat is on the third floor of a modern building with an elevator, so you don’t need to worry about stairs. It has two bedrooms, a large living room, a kitchen, and one bathroom which we will share. The available bedroom is not huge, but it is bright and comes furnished with a comfortable bed, a desk for working, and a wardrobe for your clothes. The rent is £500 per month. This price includes the water and internet bills. You will need to pay for electricity and gas separately. This is usually about £40 per person each month. A deposit of £250 is also required.</p>
+                        <h4>About Me</h4>
+                        <p>I am 25 years old and I work as a graphic designer in the city centre. My job is Monday to Friday, 9 am to 5 pm. In my free time, I enjoy relaxing, playing video games, and watching films. I am a quiet and tidy person, so I am looking for someone similar. I don't smoke, and I would much prefer a non-smoker.</p>
+                        <h4>Location</h4>
+                        <p>The flat is in the Easton area. There is a bus stop just outside the building with frequent buses that go to the city centre every 15 minutes. The journey takes about 20 minutes. There is also a large supermarket and a gym within a five-minute walk, which is very convenient.</p>
+                        <p>If you are interested, please send me an email at marco.p@email.com. Tell me a little about yourself (your job, hobbies, etc.).</p>
+
+                        <h3>Questions 14-20</h3>
+                        <p>Read the advertisement. Choose the correct answer A, B, or C.</p>
+                        <div class="mc-question" data-question-number="14">
+                            <div class="mc-question-header"><p class="mc-question-text">14. Why is Marco looking for a new flatmate?</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q14_opt1" name="q14" value="A"><label for="q14_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. He wants to move to a new flat.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q14_opt2" name="q14" value="B"><label for="q14_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. His flat is too big for one person.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q14_opt3" name="q14" value="C"><label for="q14_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. His current flatmate is leaving for work reasons.</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="15" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">15. The monthly rent of £500 includes...</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q15_opt1" name="q15" value="A"><label for="q15_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. all bills.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q15_opt2" name="q15" value="B"><label for="q15_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. water and internet.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q15_opt3" name="q15" value="C"><label for="q15_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. electricity and gas.</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="16" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">16. The available bedroom contains...</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q16_opt1" name="q16" value="A"><label for="q16_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. a bed, a desk, and a TV.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q16_opt2" name="q16" value="B"><label for="q16_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. a desk, a wardrobe, and a bed.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q16_opt3" name="q16" value="C"><label for="q16_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. a wardrobe, a chair, and a bed.</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="17" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">17. What does Marco say about himself?</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q17_opt1" name="q17" value="A"><label for="q17_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. He goes to the gym often.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q17_opt2" name="q17" value="B"><label for="q17_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. He works during the week.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q17_opt3" name="q17" value="C"><label for="q17_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. He enjoys cooking.</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="18" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">18. Marco is looking for a flatmate who is...</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q18_opt1" name="q18" value="A"><label for="q18_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. tidy and doesn't smoke.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q18_opt2" name="q18" value="B"><label for="q18_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. active and likes sports.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q18_opt3" name="q18" value="C"><label for="q18_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. sociable and likes parties.</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="19" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">19. How long is the bus journey to the city centre?</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q19_opt1" name="q19" value="A"><label for="q19_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. Five minutes.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q19_opt2" name="q19" value="B"><label for="q19_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. Fifteen minutes.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q19_opt3" name="q19" value="C"><label for="q19_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. Twenty minutes.</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="20" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">20. What must a person also pay when they move in?</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q20_opt1" name="q20" value="A"><label for="q20_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. A deposit.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q20_opt2" name="q20" value="B"><label for="q20_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. The first gas bill.</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q20_opt3" name="q20" value="C"><label for="q20_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. An agency fee.</span></label></div>
+                            </div>
+                        </div>
+                        
+                        <h3>Questions 21-26</h3>
+                        <p>Answer the questions below. Write NO MORE THAN THREE WORDS AND/OR A NUMBER from the text.</p>
+                        <div class="mc-question" style="margin-top: var(--space-4);">
+                            <div class="input-group" data-question-number="21"><label for="q21">21. What is the name of Marco's current flatmate?</label><input type="text" id="q21"></div>
+                            <div class="input-group" data-question-number="22"><label for="q22">22. On which floor is the flat?</label><input type="text" id="q22"></div>
+                            <div class="input-group" data-question-number="23"><label for="q23">23. What is Marco's job?</label><input type="text" id="q23"></div>
+                            <div class="input-group" data-question-number="24"><label for="q24">24. What two facilities are a five-minute walk away?</label><input type="text" id="q24"></div>
+                            <div class="input-group" data-question-number="25"><label for="q25">25. How often do the buses run to the city centre?</label><input type="text" id="q25"></div>
+                            <div class="input-group" data-question-number="26"><label for="q26">26. What should you include in your email to Marco?</label><input type="text" id="q26"></div>
+                        </div>
+                    </div>
+
+                    <!-- Passage 3 -->
+                    <div class="passage-slide hidden" data-passage-index="2">
+                        <h3>Reading Passage 3: The Invention of the Bicycle</h3>
+                        <p>The bicycle is one of the most popular forms of transport in the world. People use them to travel to work or school, for exercise, or for fun. But who invented it, and why?</p>
+                        <p>The history of the bicycle started with a German man named Karl von Drais. In 1817, he invented a "running machine". It was made of wood and had two wheels, but it had no pedals. To move, a person had to push their feet along the ground.</p>
+                        <p>In the 1860s, French inventors added pedals to the front wheel. This machine was called the velocipede, but it was very uncomfortable on the stone roads and was called the "boneshaker".</p>
+                        <p>Then, in the 1870s, the "high-wheel" bicycle appeared. It had a very big front wheel and a small back wheel. It was faster, but also very dangerous. If the rider hit a small stone, they could easily fall off.</p>
+                        <p>The first modern bicycle, called the "safety bicycle", was created in the 1880s. It had two wheels of the same size and a chain to connect the pedals to the back wheel. This design was much safer and more comfortable. This basic idea became very popular in England and then spread all over the world.</p>
+                        <p>While many people helped to develop it, the "safety bicycle" was the invention that made cycling popular for everyone. Because of this clever design, we now have a convenient and enjoyable way to travel.</p>
+
+                        <h3>Questions 27-33</h3>
+                        <p>Do the following statements agree with the information in the text? Choose: TRUE, FALSE or NOT GIVEN.</p>
+                        <div class="mc-question" data-question-number="27">
+                            <div class="mc-question-header"><p class="mc-question-text">27. The bicycle was invented by one person.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q27_opt1" name="q27" value="True"><label for="q27_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q27_opt2" name="q27" value="False"><label for="q27_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q27_opt3" name="q27" value="Not Given"><label for="q27_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="28" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">28. The first "running machine" had pedals.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q28_opt1" name="q28" value="True"><label for="q28_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q28_opt2" name="q28" value="False"><label for="q28_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q28_opt3" name="q28" value="Not Given"><label for="q28_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="29" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">29. The "boneshaker" was not comfortable to ride.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q29_opt1" name="q29" value="True"><label for="q29_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q29_opt2" name="q29" value="False"><label for="q29_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q29_opt3" name="q29" value="Not Given"><label for="q29_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="30" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">30. The "high-wheel" bicycle was slower than the "boneshaker".</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q30_opt1" name="q30" value="True"><label for="q30_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q30_opt2" name="q30" value="False"><label for="q30_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q30_opt3" name="q30" value="Not Given"><label for="q30_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="31" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">31. The "high-wheel" bicycle was not very safe.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q31_opt1" name="q31" value="True"><label for="q31_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q31_opt2" name="q31" value="False"><label for="q31_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q31_opt3" name="q31" value="Not Given"><label for="q31_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="32" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">32. The "safety bicycle" had two wheels that were different sizes.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q32_opt1" name="q32" value="True"><label for="q32_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q32_opt2" name="q32" value="False"><label for="q32_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q32_opt3" name="q32" value="Not Given"><label for="q32_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        <div class="mc-question" data-question-number="33" style="margin-top: var(--space-4);">
+                            <div class="mc-question-header"><p class="mc-question-text">33. The "safety bicycle" first became popular in Germany.</p></div>
+                            <div class="mc-options-container">
+                                <div class="mc-option-item"><input type="radio" id="q33_opt1" name="q33" value="True"><label for="q33_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q33_opt2" name="q33" value="False"><label for="q33_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><input type="radio" id="q33_opt3" name="q33" value="Not Given"><label for="q33_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                            </div>
+                        </div>
+                        
+                        <h3>Questions 34-40</h3>
+                        <p>Complete the summary below. Write ONE WORD ONLY from the text for each answer.</p>
+                        <div class="mc-question" style="margin-top: var(--space-4);">
+                            <p class="mc-question-text" style="line-height: 2.5;">
+                                The bicycle's history began with a machine that had no <label for="q34" class="visually-hidden">question 34</label><input type="text" id="q34" data-question-number="34" style="width: 120px; display: inline-block; vertical-align: baseline;"> (34). Later, pedals were added, but the ride was very <label for="q35" class="visually-hidden">question 35</label><input type="text" id="q35" data-question-number="35" style="width: 150px; display: inline-block; vertical-align: baseline;"> (35). The "high-wheel" bicycle was fast but <label for="q36" class="visually-hidden">question 36</label><input type="text" id="q36" data-question-number="36" style="width: 120px; display: inline-block; vertical-align: baseline;"> (36). The first modern bicycle was called the "safety bicycle" in the 1880s. It used a <label for="q37" class="visually-hidden">question 37</label><input type="text" id="q37" data-question-number="37" style="width: 100px; display: inline-block; vertical-align: baseline;"> (37) to power the back wheel. The two wheels were the same <label for="q38" class="visually-hidden">question 38</label><input type="text" id="q38" data-question-number="38" style="width: 80px; display: inline-block; vertical-align: baseline;"> (38). The new <label for="q39" class="visually-hidden">question 39</label><input type="text" id="q39" data-question-number="39" style="width: 100px; display: inline-block; vertical-align: baseline;"> (39) was much safer for the rider. Because of this invention, cycling became <label for="q40" class="visually-hidden">question 40</label><input type="text" id="q40" data-question-number="40" style="width: 120px; display: inline-block; vertical-align: baseline;"> (40) all over the world.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mc-slide-student-controls">
+                    <button id="prev-passage-btn" class="activity-btn secondary">Previous</button>
+                    <button id="next-passage-btn" class="activity-btn">Next</button>
+                </div>
+            </section>
+
+            <!-- Screen 3: Submission Screen -->
+            <section id="submission-screen" class="screen hidden">
+                <h1>Submission</h1>
+                <h2 class="rubric">Your exam is complete. Review your answers below. You can download a CSV copy for your records or submit your results directly to your instructor.</h2>
+                <div class="submission-steps">
+                    <label for="submission-code">Your Answers:</label>
+                    <textarea id="submission-code" readonly></textarea>
+                </div>
+                <div id="submission-controls">
+                    <button id="download-csv-btn" class="activity-btn">Download Results as CSV</button>
+                    <button id="submit-btn" class="activity-btn secondary">Submit to Instructor</button>
+                </div>
+                <div id="submission-status" aria-live="polite"></div>
+            </section>
+
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- CONFIGURATION & CONSTANTS ---
+    const EXAM_LEVEL = 'A2';
+    const GS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuncyjolsXX1u9plOYDzujafMIROGIkOOjZsn2ko_lbhNbU1mAXZXa5iMHaEKReTPX/exec';
+    const TOTAL_TIME = 3600; // 60 minutes in seconds
+
+    const correctAnswers = {
+        '1': 'Not Given', '2': 'False', '3': 'False', '4': 'True', '5': 'False', '6': 'False', '7': 'True',
+        '8': 'three weeks', '9': 'community centre', '10': 'person', '11': 'lots of photos', '12': 'friendly', '13': 'seeing',
+        '14': 'C', '15': 'B', '16': 'B', '17': 'B', '18': 'A', '19': 'C', '20': 'A',
+        '21': 'David', '22': 'third floor', '23': 'graphic designer', '24': 'supermarket and gym', '25': 'every 15 minutes', '26': 'about yourself',
+        '27': 'False', '28': 'False', '29': 'True', '30': 'False', '31': 'True', '32': 'False', '33': 'False',
+        '34': 'pedals', '35': 'uncomfortable', '36': 'dangerous', '37': 'chain', '38': 'size', '39': 'design', '40': 'popular'
+    };
+
+    // --- STATE VARIABLES ---
+    let studentID = '';
+    let studentAnswers = {};
+    let timerInterval = null;
+    let remainingTime = TOTAL_TIME;
+    let currentPassageIndex = 0;
+    let timeSaveInterval = null;
+
+    // --- DOM ELEMENT REFERENCES ---
+    const screens = {
+        studentId: document.getElementById('student-id-screen'),
+        test: document.getElementById('test-screen'),
+        submission: document.getElementById('submission-screen'),
+    };
+    const studentIdInput = document.getElementById('student-id');
+    const startExamBtn = document.getElementById('start-exam-btn');
+    const currentLevelDisplay = document.getElementById('current-level');
+    const timerDisplay = document.getElementById('timer');
+    const passageSlides = document.querySelectorAll('.passage-slide');
+    const prevPassageBtn = document.getElementById('prev-passage-btn');
+    const nextPassageBtn = document.getElementById('next-passage-btn');
+    const submissionCodeArea = document.getElementById('submission-code');
+    const downloadCsvBtn = document.getElementById('download-csv-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const submissionStatus = document.getElementById('submission-status');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+
+    // --- FUNCTIONS ---
+
+    /**
+     * Shows a specific screen and hides all others.
+     * @param {string} screenKey - The key of the screen to show ('studentId', 'test', 'submission').
+     */
+    const showScreen = (screenKey) => {
+        Object.values(screens).forEach(screen => screen.classList.add('hidden'));
+        if (screens[screenKey]) {
+            screens[screenKey].classList.remove('hidden');
+        }
+    };
+
+    /**
+     * Saves the current exam state to localStorage.
+     */
+    const saveState = () => {
+        try {
+            const state = {
+                studentID: studentID,
+                answers: studentAnswers,
+                remainingTime: remainingTime,
+            };
+            localStorage.setItem('examState', JSON.stringify(state));
+        } catch (error) {
+            console.error("Could not save state to localStorage:", error);
+        }
+    };
+
+    /**
+     * Loads exam state from localStorage.
+     */
+    const loadState = () => {
+        try {
+            const savedState = localStorage.getItem('examState');
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                studentIdInput.value = state.studentID || '';
+                // The actual restoration of answers and timer happens in startExam()
+                // if the student ID matches the saved one.
+                validateStudentIdInput();
+            }
+        } catch (error) {
+            console.error("Could not load state from localStorage:", error);
+        }
+    };
+    
+    /**
+     * Restores answers and timer from a saved state object.
+     * @param {object} state - The loaded state object from localStorage.
+     */
+    const restoreSession = (state) => {
+        studentAnswers = state.answers || {};
+        remainingTime = state.remainingTime || TOTAL_TIME;
+
+        Object.entries(studentAnswers).forEach(([qNum, answer]) => {
+            const radioInputs = document.querySelectorAll(`input[type="radio"][name="q${qNum}"]`);
+            if (radioInputs.length > 0) {
+                const inputToSelect = Array.from(radioInputs).find(input => input.value === answer);
+                if (inputToSelect) {
+                    inputToSelect.checked = true;
+                }
+            } else {
+                const textInput = document.querySelector(`input[type="text"][data-question-number="${qNum}"], input[type="text"]#q${qNum}`);
+                if (textInput) {
+                    textInput.value = answer;
+                }
+            }
+        });
+        updateTimerDisplay();
+    };
+
+
+    /**
+     * Updates the timer display in MM:SS format.
+     */
+    const updateTimerDisplay = () => {
+        const minutes = Math.floor(remainingTime / 60).toString().padStart(2, '0');
+        const seconds = (remainingTime % 60).toString().padStart(2, '0');
+        timerDisplay.textContent = `${minutes}:${seconds}`;
+    };
+
+    /**
+     * Starts the countdown timer.
+     */
+    const startTimer = () => {
+        timerInterval = setInterval(() => {
+            remainingTime--;
+            updateTimerDisplay();
+            if (remainingTime <= 0) {
+                navigateToSubmission();
+            }
+        }, 1000);
+
+        timeSaveInterval = setInterval(saveState, 5000); // Save time every 5 seconds
+    };
+
+    /**
+     * Updates the progress bar and text.
+     */
+    const updateProgress = () => {
+        const totalPassages = passageSlides.length;
+        const currentPassageNum = currentPassageIndex + 1;
+        const progressPercent = (currentPassageNum / totalPassages) * 100;
+        
+        progressBar.style.width = `${progressPercent}%`;
+        progressText.textContent = `Passage ${currentPassageNum} of ${totalPassages}`;
+    };
+
+    /**
+     * Shows a specific passage slide by its index.
+     * @param {number} index - The index of the passage slide to show.
+     */
+    const showPassage = (index) => {
+        passageSlides.forEach((slide, i) => {
+            slide.classList.toggle('hidden', i !== index);
+        });
+        currentPassageIndex = index;
+        
+        prevPassageBtn.disabled = index === 0;
+        if (index === passageSlides.length - 1) {
+            nextPassageBtn.textContent = 'Go to Submission';
+        } else {
+            nextPassageBtn.textContent = 'Next';
+        }
+        
+        updateProgress();
+        const targetHeading = passageSlides[index].querySelector('h3');
+        if (targetHeading) {
+            targetHeading.focus();
+        }
+    };
+    
+    /**
+     * Handles navigation to the next passage or submission.
+     */
+    const handleNextPassage = () => {
+        if (currentPassageIndex < passageSlides.length - 1) {
+            showPassage(currentPassageIndex + 1);
+        } else {
+            navigateToSubmission();
+        }
+    };
+    
+    /**
+     * Handles navigation to the previous passage.
+     */
+    const handlePrevPassage = () => {
+        if (currentPassageIndex > 0) {
+            showPassage(currentPassageIndex - 1);
+        }
+    };
+
+    /**
+     * Handles changes to any answer input field.
+     * @param {Event} event - The input change event.
+     */
+    const handleAnswerChange = (event) => {
+        const input = event.target;
+        let qNum;
+        if (input.type === 'radio') {
+            qNum = input.name.replace('q', '');
+        } else { // text input
+            const container = input.closest('[data-question-number]');
+            qNum = container ? container.dataset.questionNumber : input.dataset.questionNumber || input.id.replace('q', '');
+        }
+
+        if (qNum) {
+            studentAnswers[qNum] = input.value.trim();
+            saveState();
+        }
+    };
+
+    /**
+     * Generates a summary of the student's answers for display.
+     */
+    const generateSubmissionSummary = () => {
+        let summary = `Student ID: ${studentID}\nLevel: ${EXAM_LEVEL}\n\n--- ANSWERS ---\n`;
+        const totalQuestions = Object.keys(correctAnswers).length;
+        for (let i = 1; i <= totalQuestions; i++) {
+            const qNum = i.toString();
+            summary += `Question ${qNum}: ${studentAnswers[qNum] || 'Not Answered'}\n`;
+        }
+        submissionCodeArea.value = summary;
+    };
+
+    /**
+     * Transitions the application to the final submission screen.
+     */
+    const navigateToSubmission = () => {
+        clearInterval(timerInterval);
+        clearInterval(timeSaveInterval);
+        saveState(); // Final save
+        generateSubmissionSummary();
+        showScreen('submission');
+    };
+    
+    /**
+     * Sanitizes a string for use in a filename.
+     * @param {string} name - The string to sanitize.
+     * @returns {string} The sanitized string.
+     */
+    const sanitizeFilename = (name) => {
+        return name.replace(/[^a-zA-Z0-9_-]/g, '_') || 'student';
+    };
+
+    /**
+     * Generates and triggers a download of the results as a CSV file.
+     */
+    const downloadCSV = () => {
+        const timestamp = new Date().toISOString();
+        const sanitizedId = sanitizeFilename(studentID);
+        const filename = `${sanitizedId}_IELTS_Results.csv`;
+
+        const questionNumbers = Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b));
+        const headers = ['Timestamp', 'StudentID', 'Level', ...questionNumbers];
+        
+        const studentData = [
+            timestamp,
+            studentID,
+            EXAM_LEVEL,
+            ...questionNumbers.map(qNum => studentAnswers[qNum] || '')
+        ];
+
+        const csvContent = [headers, studentData]
+            .map(row => row.map(item => `"${String(item).replace(/"/g, '""')}"`).join(','))
+            .join('\n');
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        if (link.download !== undefined) {
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', filename);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    };
+
+    /**
+     * Submits the exam results to the configured Google Apps Script URL.
+     */
+    const submitToGoogleSheet = async () => {
+        submitBtn.disabled = true;
+        submissionStatus.textContent = 'Submitting...';
+        submissionStatus.style.color = 'var(--secondary-sage)';
+
+        const payload = {
+            studentID: studentID,
+            level: EXAM_LEVEL,
+            answers: studentAnswers,
+            correctAnswers: correctAnswers
+        };
+
+        try {
+            const response = await fetch(GS_WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Note: no-cors means we can't read the response, but the request is sent.
+                cache: 'no-cache',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+                redirect: 'follow'
+            });
+            
+            // Due to 'no-cors', we assume success if the request doesn't throw an error.
+            submissionStatus.textContent = 'Successfully submitted!';
+            submissionStatus.style.color = '#2E7D32';
+
+        } catch (error) {
+            console.error('Submission Error:', error);
+            submissionStatus.textContent = 'Error during submission. Please check your connection or download the CSV.';
+            submissionStatus.style.color = '#D32F2F';
+            submitBtn.disabled = false;
+        }
+    };
+
+    /**
+     * Validates the student ID input and enables/disables the start button.
+     */
+    const validateStudentIdInput = () => {
+        startExamBtn.disabled = studentIdInput.value.trim() === '';
+    };
+    
+    /**
+     * Handles the logic for starting the exam.
+     */
+    const startExam = () => {
+        studentID = studentIdInput.value.trim();
+        if (!studentID) return;
+
+        const savedStateJSON = localStorage.getItem('examState');
+        if (savedStateJSON) {
+            const savedState = JSON.parse(savedStateJSON);
+            if (savedState.studentID === studentID) {
+                restoreSession(savedState);
+            } else {
+                // New student, clear old answers and reset time
+                studentAnswers = {};
+                remainingTime = TOTAL_TIME;
+            }
+        }
+        
+        saveState(); // Save the current (potentially new) student ID
+        
+        currentLevelDisplay.textContent = `Current Level: ${EXAM_LEVEL}`;
+        showScreen('test');
+        showPassage(0);
+        startTimer();
+    };
+
+    // --- INITIALIZATION & EVENT LISTENERS ---
+
+    const init = () => {
+        loadState();
+        studentIdInput.addEventListener('input', validateStudentIdInput);
+        startExamBtn.addEventListener('click', startExam);
+        prevPassageBtn.addEventListener('click', handlePrevPassage);
+        nextPassageBtn.addEventListener('click', handleNextPassage);
+        downloadCsvBtn.addEventListener('click', downloadCSV);
+        submitBtn.addEventListener('click', submitToGoogleSheet);
+        
+        const answerInputs = document.querySelectorAll('#test-screen input[type="radio"], #test-screen input[type="text"]');
+        answerInputs.forEach(input => {
+            input.addEventListener('change', handleAnswerChange);
+            // also save on keyup for text inputs for better responsiveness
+            if (input.type === 'text') {
+                input.addEventListener('keyup', handleAnswerChange);
+            }
+        });
+    };
+
+    init();
+});
+
+/*
+// --- GOOGLE APPS SCRIPT CODE (for setup in Google Sheets) ---
+// 1. Open a Google Sheet.
+// 2. Go to Extensions > Apps Script.
+// 3. Paste this code and save.
+// 4. Click Deploy > New deployment.
+// 5. Select Type: Web app.
+// 6. Execute as: Me.
+// 7. Who has access: Anyone.
+// 8. Deploy and copy the Web app URL. Paste it into the GS_WEB_APP_URL variable in the HTML file.
+
+const SHEET_NAME = "Submissions"; // You can change this name
+
+function doPost(e) {
+  try {
+    // Note: Due to 'no-cors', the payload might arrive as plain text.
+    // We need to handle both JSON and plain text postData.
+    let data;
+    if (e.postData.type === "application/json") {
+        data = JSON.parse(e.postData.contents);
+    } else if (e.postData.type === "text/plain") {
+        data = JSON.parse(e.postData.contents);
+    } else {
+        // Fallback for other content types if necessary
+        data = JSON.parse(e.postData.contents);
+    }
+    
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sheet = ss.getSheetByName(SHEET_NAME);
+
+    if (!sheet) {
+      sheet = ss.insertSheet(SHEET_NAME);
+    }
+
+    const studentID = data.studentID || 'N/A';
+    const level = data.level || 'N/A';
+    const studentAnswers = data.answers || {};
+    const correctAnswers = data.correctAnswers || {};
+
+    // Get question numbers in a sorted order to ensure consistent column order
+    const questionKeys = Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b));
+
+    // Check if the header is set up. If not, create it.
+    if (sheet.getLastRow() < 2) {
+      sheet.clear(); // Clear the sheet to start fresh
+      
+      // Row 1: Headers (Questions)
+      const headers = ["Timestamp", "StudentID", "Level", ...questionKeys.map(k => `Question ${k}`)];
+      sheet.appendRow(headers);
+      
+      // Row 2: Correct Answers
+      const correctAnswersRow = ["", "", "CORRECT ANSWERS", ...questionKeys.map(key => correctAnswers[key])];
+      sheet.appendRow(correctAnswersRow);
+
+      // Style the header and answer key rows
+      sheet.getRange("1:2").setFontWeight("bold");
+      sheet.getRange("A1:C2").setBackground("#f3f3f3");
+      sheet.getRange("D2:" + sheet.getLastColumn() + "2").setBackground("#d9ead3");
+      sheet.setFrozenRows(2);
+    }
+    
+    // Get the headers from the sheet to ensure correct answer order for the student row
+    const sheetHeaders = sheet.getRange(1, 4, 1, sheet.getLastColumn() - 3).getValues()[0];
+    const studentAnswersInOrder = sheetHeaders.map(header => {
+        const qNum = header.replace('Question ', '');
+        return studentAnswers[qNum] || ""; // Add student answer or empty string if not answered
+    });
+    
+    // Prepare and append the student's complete row
+    const timestamp = new Date();
+    const studentRowData = [timestamp, studentID, level, ...studentAnswersInOrder];
+    sheet.appendRow(studentRowData);
+
+    return ContentService.createTextOutput(JSON.stringify({ "result": "success" })).setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    // Log the detailed error for debugging in Apps Script
+    Logger.log(e.postData.contents); // Log the raw post data to see what's coming in
+    Logger.log(error.toString());
+    return ContentService.createTextOutput(JSON.stringify({ "result": "error", "error": error.toString() })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+*/
+</script>
+</body>
+</html>
