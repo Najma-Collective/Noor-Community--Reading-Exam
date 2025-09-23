@@ -707,6 +707,27 @@
       h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
       .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
     }
+
+    /* Inline gap-fill styling shared across activities */
+    .inline-gapfill {
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .inline-gapfill .gap-sentence {
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .inline-gapfill input[type="text"],
+    .inline-gapfill select {
+      width: min(22ch, 100%);
+      min-height: calc(var(--target-min) * 0.6);
+      padding: 6px 10px;
+      display: inline-block;
+      vertical-align: baseline;
+      font-size: inherit;
+    }
     </style>
 </head>
 <body>
@@ -816,47 +837,18 @@
                             <p>This combination of variety, convenience, and quality has transformed the simple audio show into a central part of modern media.</p>
 
                             <h3>Questions 11-20</h3>
-                            <p>Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
-
-                            <div class="mc-question" data-question-number="11">
-                                <label for="q11" class="mc-question-text">11. There has been a __________ in the popularity of podcasts.</label>
-                                <input type="text" id="q11" name="q11">
-                            </div>
-                             <div class="mc-question" data-question-number="12">
-                                <label for="q12" class="mc-question-text">12. Podcasts offer a wide __________ of content.</label>
-                                <input type="text" id="q12" name="q12">
-                            </div>
-                            <div class="mc-question" data-question-number="13">
-                                <label for="q13" class="mc-question-text">13. Listeners can find focused content for almost every __________.</label>
-                                <input type="text" id="q13" name="q13">
-                            </div>
-                            <div class="mc-question" data-question-number="14">
-                                <label for="q14" class="mc-question-text">14. Podcasts are a perfect __________ for modern life.</label>
-                                <input type="text" id="q14" name="q14">
-                            </div>
-                            <div class="mc-question" data-question-number="15">
-                                <label for="q15" class="mc-question-text">15. The ability to __________ is particularly useful for listeners.</label>
-                                <input type="text" id="q15" name="q15">
-                            </div>
-                            <div class="mc-question" data-question-number="16">
-                                <label for="q16" class="mc-question-text">16. Podcasts are a __________ way to learn or be entertained.</label>
-                                <input type="text" id="q16" name="q16">
-                            </div>
-                            <div class="mc-question" data-question-number="17">
-                                <label for="q17" class="mc-question-text">17. Many consumers now expect a high __________ from the shows they listen to.</label>
-                                <input type="text" id="q17" name="q17">
-                            </div>
-                            <div class="mc-question" data-question-number="18">
-                                <label for="q18" class="mc-question-text">18. Many shows now have excellent research and skilled __________.</label>
-                                <input type="text" id="q18" name="q18">
-                            </div>
-                            <div class="mc-question" data-question-number="19">
-                                <label for="q19" class="mc-question-text">19. Listeners can form a strong __________ with the hosts.</label>
-                                <input type="text" id="q19" name="q19">
-                            </div>
-                            <div class="mc-question" data-question-number="20">
-                                <label for="q20" class="mc-question-text">20. Podcasts have become a __________ part of modern media.</label>
-                                <input type="text" id="q20" name="q20">
+                            <div class="mc-question inline-gapfill" data-question-group="11-20">
+                                <p class="mc-question-text">Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
+                                <p class="gap-sentence"><strong>11.</strong> There has been a <label for="q11" class="visually-hidden">Answer for question 11</label><input type="text" id="q11" name="q11" data-question-number="11" aria-label="Question 11 answer"> in the popularity of podcasts.</p>
+                                <p class="gap-sentence"><strong>12.</strong> Podcasts offer a wide <label for="q12" class="visually-hidden">Answer for question 12</label><input type="text" id="q12" name="q12" data-question-number="12" aria-label="Question 12 answer"> of content.</p>
+                                <p class="gap-sentence"><strong>13.</strong> Listeners can find focused content for almost every <label for="q13" class="visually-hidden">Answer for question 13</label><input type="text" id="q13" name="q13" data-question-number="13" aria-label="Question 13 answer">.</p>
+                                <p class="gap-sentence"><strong>14.</strong> Podcasts are a perfect <label for="q14" class="visually-hidden">Answer for question 14</label><input type="text" id="q14" name="q14" data-question-number="14" aria-label="Question 14 answer"> for modern life.</p>
+                                <p class="gap-sentence"><strong>15.</strong> The ability to <label for="q15" class="visually-hidden">Answer for question 15</label><input type="text" id="q15" name="q15" data-question-number="15" aria-label="Question 15 answer"> is particularly useful for listeners.</p>
+                                <p class="gap-sentence"><strong>16.</strong> Podcasts are a <label for="q16" class="visually-hidden">Answer for question 16</label><input type="text" id="q16" name="q16" data-question-number="16" aria-label="Question 16 answer"> way to learn or be entertained.</p>
+                                <p class="gap-sentence"><strong>17.</strong> Many consumers now expect a high <label for="q17" class="visually-hidden">Answer for question 17</label><input type="text" id="q17" name="q17" data-question-number="17" aria-label="Question 17 answer"> from the shows they listen to.</p>
+                                <p class="gap-sentence"><strong>18.</strong> Many shows now have excellent research and skilled <label for="q18" class="visually-hidden">Answer for question 18</label><input type="text" id="q18" name="q18" data-question-number="18" aria-label="Question 18 answer">.</p>
+                                <p class="gap-sentence"><strong>19.</strong> Listeners can form a strong <label for="q19" class="visually-hidden">Answer for question 19</label><input type="text" id="q19" name="q19" data-question-number="19" aria-label="Question 19 answer"> with the hosts.</p>
+                                <p class="gap-sentence"><strong>20.</strong> Podcasts have become a <label for="q20" class="visually-hidden">Answer for question 20</label><input type="text" id="q20" name="q20" data-question-number="20" aria-label="Question 20 answer"> part of modern media.</p>
                             </div>
                         </div>
 
@@ -981,35 +973,15 @@
                             </div>
 
                             <h3>Questions 34-40</h3>
-                            <p>Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
-                            
-                            <div class="mc-question" data-question-number="34">
-                                <label for="q34" class="mc-question-text">34. The Great Pacific Garbage Patch is the largest collection of __________ in the world.</label>
-                                <input type="text" id="q34" name="q34">
-                            </div>
-                            <div class="mc-question" data-question-number="35">
-                                <label for="q35" class="mc-question-text">35. Plastic from land is often carried to the sea by __________.</label>
-                                <input type="text" id="q35" name="q35">
-                            </div>
-                            <div class="mc-question" data-question-number="36">
-                                <label for="q36" class="mc-question-text">36. It is very hard to clean up the tiny __________.</label>
-                                <input type="text" id="q36" name="q36">
-                            </div>
-                            <div class="mc-question" data-question-number="37">
-                                <label for="q37" class="mc-question-text">37. Plastic pollution is a __________ for marine life.</label>
-                                <input type="text" id="q37" name="q37">
-                            </div>
-                             <div class="mc-question" data-question-number="38">
-                                <label for="q38" class="mc-question-text">38. Birds and fish can get caught in old __________.</label>
-                                <input type="text" id="q38" name="q38">
-                            </div>
-                            <div class="mc-question" data-question-number="39">
-                                <label for="q39" class="mc-question-text">39. Environmental groups are trying to find __________.</label>
-                                <input type="text" id="q39" name="q39">
-                            </div>
-                            <div class="mc-question" data-question-number="40">
-                                <label for="q40" class="mc-question-text">40. The text says we can help by __________ correctly.</label>
-                                <input type="text" id="q40" name="q40">
+                            <div class="mc-question inline-gapfill" data-question-group="34-40">
+                                <p class="mc-question-text">Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
+                                <p class="gap-sentence"><strong>34.</strong> The Great Pacific Garbage Patch is the largest collection of <label for="q34" class="visually-hidden">Answer for question 34</label><input type="text" id="q34" name="q34" data-question-number="34" aria-label="Question 34 answer"> in the world.</p>
+                                <p class="gap-sentence"><strong>35.</strong> Plastic from land is often carried to the sea by <label for="q35" class="visually-hidden">Answer for question 35</label><input type="text" id="q35" name="q35" data-question-number="35" aria-label="Question 35 answer">.</p>
+                                <p class="gap-sentence"><strong>36.</strong> It is very hard to clean up the tiny <label for="q36" class="visually-hidden">Answer for question 36</label><input type="text" id="q36" name="q36" data-question-number="36" aria-label="Question 36 answer">.</p>
+                                <p class="gap-sentence"><strong>37.</strong> Plastic pollution is a <label for="q37" class="visually-hidden">Answer for question 37</label><input type="text" id="q37" name="q37" data-question-number="37" aria-label="Question 37 answer"> for marine life.</p>
+                                <p class="gap-sentence"><strong>38.</strong> Birds and fish can get caught in old <label for="q38" class="visually-hidden">Answer for question 38</label><input type="text" id="q38" name="q38" data-question-number="38" aria-label="Question 38 answer">.</p>
+                                <p class="gap-sentence"><strong>39.</strong> Environmental groups are trying to find <label for="q39" class="visually-hidden">Answer for question 39</label><input type="text" id="q39" name="q39" data-question-number="39" aria-label="Question 39 answer">.</p>
+                                <p class="gap-sentence"><strong>40.</strong> The text says we can help by <label for="q40" class="visually-hidden">Answer for question 40</label><input type="text" id="q40" name="q40" data-question-number="40" aria-label="Question 40 answer"> correctly.</p>
                             </div>
                         </div>
                     </div>

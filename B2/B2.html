@@ -715,6 +715,27 @@
       h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
       .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
     }
+
+    /* Inline gap-fill styling shared across activities */
+    .inline-gapfill {
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .inline-gapfill .gap-sentence {
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .inline-gapfill input[type="text"],
+    .inline-gapfill select {
+      width: min(22ch, 100%);
+      min-height: calc(var(--target-min) * 0.6);
+      padding: 6px 10px;
+      display: inline-block;
+      vertical-align: baseline;
+      font-size: inherit;
+    }
     </style>
 </head>
 <body>
@@ -819,15 +840,16 @@
                         </div>
 
                         <h3>Questions 7-13</h3>
-                        <p>Complete the summary below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
-                        
-                        <div class="mc-question" data-question-number="7"><div class="input-group"><label for="q7">7. The shift to remote work has major ______.</label><input type="text" id="q7" placeholder="Answer for 7"></div></div>
-                        <div class="mc-question" data-question-number="8"><div class="input-group"><label for="q8">8. For companies, a key benefit is the decrease in ______, such as office rent.</label><input type="text" id="q8" placeholder="Answer for 8"></div></div>
-                        <div class="mc-question" data-question-number="9"><div class="input-group"><label for="q9">9. They can also access a wider ______ by hiring without geographical limits.</label><input type="text" id="q9" placeholder="Answer for 9"></div></div>
-                        <div class="mc-question" data-question-number="10"><div class="input-group"><label for="q10">10. However, maintaining a strong ______ can be difficult.</label><input type="text" id="q10" placeholder="Answer for 10"></div></div>
-                        <div class="mc-question" data-question-number="11"><div class="input-group"><label for="q11">11. For employees, the main financial advantage is the reduction in ______.</label><input type="text" id="q11" placeholder="Answer for 11"></div></div>
-                        <div class="mc-question" data-question-number="12"><div class="input-group"><label for="q12">12. A potential downside is the blurring of the line between personal life and work, known as the ______.</label><input type="text" id="q12" placeholder="Answer for 12"></div></div>
-                        <div class="mc-question" data-question-number="13"><div class="input-group"><label for="q13">13. This trend is also reshaping ______, as city centres see fewer commuters.</label><input type="text" id="q13" placeholder="Answer for 13"></div></div>
+                        <div class="mc-question inline-gapfill" data-question-group="7-13">
+                            <p class="mc-question-text">Complete the summary below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
+                            <p class="gap-sentence"><strong>7.</strong> The shift to remote work has major <label for="q7" class="visually-hidden">Answer for question 7</label><input type="text" id="q7" data-question-number="7" aria-label="Question 7 answer">.</p>
+                            <p class="gap-sentence"><strong>8.</strong> For companies, a key benefit is the decrease in <label for="q8" class="visually-hidden">Answer for question 8</label><input type="text" id="q8" data-question-number="8" aria-label="Question 8 answer">, such as office rent.</p>
+                            <p class="gap-sentence"><strong>9.</strong> They can also access a wider <label for="q9" class="visually-hidden">Answer for question 9</label><input type="text" id="q9" data-question-number="9" aria-label="Question 9 answer"> by hiring without geographical limits.</p>
+                            <p class="gap-sentence"><strong>10.</strong> However, maintaining a strong <label for="q10" class="visually-hidden">Answer for question 10</label><input type="text" id="q10" data-question-number="10" aria-label="Question 10 answer"> can be difficult.</p>
+                            <p class="gap-sentence"><strong>11.</strong> For employees, the main financial advantage is the reduction in <label for="q11" class="visually-hidden">Answer for question 11</label><input type="text" id="q11" data-question-number="11" aria-label="Question 11 answer">.</p>
+                            <p class="gap-sentence"><strong>12.</strong> A potential downside is the blurring of the line between personal life and work, known as the <label for="q12" class="visually-hidden">Answer for question 12</label><input type="text" id="q12" data-question-number="12" aria-label="Question 12 answer">.</p>
+                            <p class="gap-sentence"><strong>13.</strong> This trend is also reshaping <label for="q13" class="visually-hidden">Answer for question 13</label><input type="text" id="q13" data-question-number="13" aria-label="Question 13 answer">, as city centres see fewer commuters.</p>
+                        </div>
                     </div>
 
                     <!-- Passage 2 -->
@@ -971,10 +993,9 @@
                         </div>
 
                         <h3>Questions 33-40</h3>
-                        <p>Complete the summary below. Write ONE WORD ONLY from the text for each answer.</p>
-                        
-                        <div class="mc-question">
-                            <p>The rise of digital communication has led to a debate about the relevance of letter writing. One view is that writing letters promotes a more (33) <input type="text" id="q33" data-question-number="33" size="15" aria-label="Answer for question 33"> style of thinking than instant messaging. The time and effort involved mean the communication is more deliberate. A physical letter also has an (34) <input type="text" id="q34" data-question-number="34" size="15" aria-label="Answer for question 34"> significance that digital forms lack; it is a (35) <input type="text" id="q35" data-question-number="35" size="15" aria-label="Answer for question 35"> object that can be treasured. The letter creates a powerful (36) <input type="text" id="q36" data-question-number="36" size="15" aria-label="Answer for question 36"> between two people, partly because it represents the sender's time and (37) <input type="text" id="q37" data-question-number="37" size="15" aria-label="Answer for question 37">. On the other hand, the (38) <input type="text" id="q38" data-question-number="38" size="15" aria-label="Answer for question 38"> of digital communication is crucial for modern life, making global contact easy and accessible. The writer suggests that instead of being in (39) <input type="text" id="q39" data-question-number="39" size="15" aria-label="Answer for question 39">, different forms of communication can be used for different purposes. The decline in the use of letters might actually raise their (40) <input type="text" id="q40" data-question-number="40" size="15" aria-label="Answer for question 40"> as a thoughtful act.</p>
+                        <div class="mc-question inline-gapfill" data-question-group="33-40">
+                            <p class="mc-question-text">Complete the summary below. Write ONE WORD ONLY from the text for each answer.</p>
+                            <p class="gap-sentence">The rise of digital communication has led to a debate about the relevance of letter writing. One view is that writing letters promotes a more (33) <label for="q33" class="visually-hidden">Answer for question 33</label><input type="text" id="q33" data-question-number="33" aria-label="Question 33 answer"> style of thinking than instant messaging. The time and effort involved mean the communication is more deliberate. A physical letter also has an (34) <label for="q34" class="visually-hidden">Answer for question 34</label><input type="text" id="q34" data-question-number="34" aria-label="Question 34 answer"> significance that digital forms lack; it is a (35) <label for="q35" class="visually-hidden">Answer for question 35</label><input type="text" id="q35" data-question-number="35" aria-label="Question 35 answer"> object that can be treasured. The letter creates a powerful (36) <label for="q36" class="visually-hidden">Answer for question 36</label><input type="text" id="q36" data-question-number="36" aria-label="Question 36 answer"> between two people, partly because it represents the sender's time and (37) <label for="q37" class="visually-hidden">Answer for question 37</label><input type="text" id="q37" data-question-number="37" aria-label="Question 37 answer">. On the other hand, the (38) <label for="q38" class="visually-hidden">Answer for question 38</label><input type="text" id="q38" data-question-number="38" aria-label="Question 38 answer"> of digital communication is crucial for modern life, making global contact easy and accessible. The writer suggests that instead of being in (39) <label for="q39" class="visually-hidden">Answer for question 39</label><input type="text" id="q39" data-question-number="39" aria-label="Question 39 answer">, different forms of communication can be used for different purposes. The decline in the use of letters might actually raise their (40) <label for="q40" class="visually-hidden">Answer for question 40</label><input type="text" id="q40" data-question-number="40" aria-label="Question 40 answer"> as a thoughtful act.</p>
                         </div>
                     </div>
                 </div>

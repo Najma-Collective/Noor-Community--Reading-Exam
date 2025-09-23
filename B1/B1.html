@@ -707,6 +707,27 @@
       h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
       .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
     }
+
+    /* Inline gap-fill styling shared across activities */
+    .inline-gapfill {
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .inline-gapfill .gap-sentence {
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .inline-gapfill input[type="text"],
+    .inline-gapfill select {
+      width: min(22ch, 100%);
+      min-height: calc(var(--target-min) * 0.6);
+      padding: 6px 10px;
+      display: inline-block;
+      vertical-align: baseline;
+      font-size: inherit;
+    }
     </style>
 </head>
 <body>
@@ -920,9 +941,9 @@
                     </div>
                     <!-- Question 18 is intentionally omitted as per prompt (Example was A---v) -->
 
-                    <div class="mc-question">
+                    <div class="mc-question inline-gapfill">
                         <p class="mc-question-text">Complete the summary below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
-                        <p>For a long time, access to libraries was limited to (19) <label for="q19" class="visually-hidden">Question 19</label><input type="text" id="q19" data-question-number="19"> or scholars. The move towards public libraries for everyone gained importance in the (20) <label for="q20" class="visually-hidden">Question 20</label><input type="text" id="q20" data-question-number="20">. A significant person in this movement was Andrew Carnegie, who was a wealthy (21) <label for="q21" class="visually-hidden">Question 21</label><input type="text" id="q21" data-question-number="21">. He provided funds to build libraries but required the local town to supply the (22) <label for="q22" class="visually-hidden">Question 22</label><input type="text" id="q22" data-question-number="22"> for the building. The main purpose of the first public libraries was to offer (23) <label for="q23" class="visually-hidden">Question 23</label><input type="text" id="q23" data-question-number="23"> to ordinary people. In the present day, libraries are also vital (24) <label for="q24" class="visually-hidden">Question 24</label><input type="text" id="q24" data-question-number="24"> that offer services like free internet access. They have successfully (25) <label for="q25" class="visually-hidden">Question 25</label><input type="text" id="q25" data-question-number="25"> to meet modern needs, while keeping their original (26) <label for="q26" class="visually-hidden">Question 26</label><input type="text" id="q26" data-question-number="26"> of providing open access to all.</p>
+                        <p class="gap-sentence">For a long time, access to libraries was limited to (19) <label for="q19" class="visually-hidden">Question 19</label><input type="text" id="q19" data-question-number="19" aria-label="Question 19 answer"> or scholars. The move towards public libraries for everyone gained importance in the (20) <label for="q20" class="visually-hidden">Question 20</label><input type="text" id="q20" data-question-number="20" aria-label="Question 20 answer">. A significant person in this movement was Andrew Carnegie, who was a wealthy (21) <label for="q21" class="visually-hidden">Question 21</label><input type="text" id="q21" data-question-number="21" aria-label="Question 21 answer">. He provided funds to build libraries but required the local town to supply the (22) <label for="q22" class="visually-hidden">Question 22</label><input type="text" id="q22" data-question-number="22" aria-label="Question 22 answer"> for the building. The main purpose of the first public libraries was to offer (23) <label for="q23" class="visually-hidden">Question 23</label><input type="text" id="q23" data-question-number="23" aria-label="Question 23 answer"> to ordinary people. In the present day, libraries are also vital (24) <label for="q24" class="visually-hidden">Question 24</label><input type="text" id="q24" data-question-number="24" aria-label="Question 24 answer"> that offer services like free internet access. They have successfully (25) <label for="q25" class="visually-hidden">Question 25</label><input type="text" id="q25" data-question-number="25" aria-label="Question 25 answer"> to meet modern needs, while keeping their original (26) <label for="q26" class="visually-hidden">Question 26</label><input type="text" id="q26" data-question-number="26" aria-label="Question 26 answer"> of providing open access to all.</p>
                     </div>
                 </div>
 
@@ -998,10 +1019,10 @@
                         </div>
                     </div>
 
-                    <div class="mc-question">
+                    <div class="mc-question inline-gapfill">
                          <p class="mc-question-text">Complete the summary using the list of words, A-J, below.</p>
-                        <p><b>How Colour Influences Us</b></p>
-                        <p>Colour is a very important part of (34)
+                        <p class="gap-sentence"><b>How Colour Influences Us</b></p>
+                        <p class="gap-sentence">Colour is a very important part of (34)
                             <label for="q34" class="visually-hidden">Question 34</label>
                             <select data-question-number="34" id="q34">
                                 <option value="">Select</option> <option value="A">A. banks</option> <option value="B">B. excitement</option> <option value="C">C. failure</option> <option value="D">D. creativity</option> <option value="E">E. performance</option> <option value="F">F. art</option> <option value="G">G. culture</option> <option value="H">H. communication</option> <option value="I">I. success</option> <option value="J">J. nature</option>
