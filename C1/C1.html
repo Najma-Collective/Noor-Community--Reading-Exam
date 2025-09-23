@@ -1068,6 +1068,7 @@
             const EXAM_LEVEL = 'C1';
             const GS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuncyjolsXX1u9plOYDzujafMIROGIkOOjZsn2ko_lbhNbU1mAXZXa5iMHaEKReTPX/exec';
             const TOTAL_TIME = 3600; // 60 minutes in seconds
+            const SUBMISSION_TIMEOUT_MS = 12000;
 
             const correctAnswers = {
                 '1': 'NO', '2': 'YES', '3': 'NO', '4': 'NOT GIVEN', '5': 'NO', '6': 'NO',
@@ -1288,7 +1289,14 @@
             };
             
             const submitToGoogleSheet = async () => {
+                if (!navigator.onLine) {
+                    submissionStatus.textContent = 'You appear to be offline. Please reconnect or download your results as a backup.';
+                    submissionStatus.style.color = '#E65100';
+                    return;
+                }
+
                 submitBtn.disabled = true;
+                downloadCsvBtn.disabled = true;
                 submissionStatus.textContent = 'Submitting...';
                 submissionStatus.style.color = 'var(--primary-sage)';
 
@@ -1299,32 +1307,65 @@
                     correctAnswers: correctAnswers
                 };
 
-                try {
-                    const response = await fetch(GS_WEB_APP_URL, {
-                        method: 'POST',
-                        mode: 'cors',
-                        cache: 'no-cache',
-                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                        body: JSON.stringify(payload)
-                    });
+                const sendRequest = async (mode) => {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), SUBMISSION_TIMEOUT_MS);
 
-                    if (response.ok) {
-                        const result = await response.json();
-                        if (result.result === 'success') {
-                            submissionStatus.textContent = 'Successfully submitted!';
-                            submissionStatus.style.color = '#2E7D32';
-                        } else {
-                            throw new Error(result.error || 'Unknown error from server.');
-                        }
-                    } else {
-                         throw new Error(`Network response was not ok. Status: ${response.status}`);
+                    try {
+                        return await fetch(GS_WEB_APP_URL, {
+                            method: 'POST',
+                            mode,
+                            cache: 'no-cache',
+                            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                            body: JSON.stringify(payload),
+                            signal: controller.signal
+                        });
+                    } finally {
+                        clearTimeout(timeoutId);
                     }
+                };
+
+                let submissionConfirmed = false;
+
+                try {
+                    const response = await sendRequest('cors');
+
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok. Status: ${response.status}`);
+                    }
+
+                    let result;
+                    try {
+                        result = await response.json();
+                    } catch (parseError) {
+                        throw new Error('Server returned an unexpected response format.');
+                    }
+
+                    if (result.result === 'success') {
+                        submissionStatus.textContent = 'Successfully submitted!';
+                        submissionStatus.style.color = '#2E7D32';
+                        submissionConfirmed = true;
+                        return;
+                    }
+
+                    throw new Error(result.error || 'Unknown error from server.');
                 } catch (error) {
-                    console.error('Submission error:', error);
-                    submissionStatus.textContent = `Error: Could not submit results. Please download the CSV. (${error.message})`;
-                    submissionStatus.style.color = '#C62828';
+                    console.warn('Primary submission attempt failed, trying fallback.', error);
+
+                    try {
+                        await sendRequest('no-cors');
+                        submissionStatus.textContent = 'We sent your results, but could not confirm receipt. Please keep the CSV as proof.';
+                        submissionStatus.style.color = '#E65100';
+                    } catch (fallbackError) {
+                        console.error('Submission error:', fallbackError);
+                        submissionStatus.textContent = `Error: Could not submit results. Please download the CSV. (${fallbackError.message || error.message})`;
+                        submissionStatus.style.color = '#C62828';
+                    }
                 } finally {
-                    submitBtn.disabled = false;
+                    if (!submissionConfirmed) {
+                        submitBtn.disabled = false;
+                        downloadCsvBtn.disabled = false;
+                    }
                 }
             };
 
