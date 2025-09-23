@@ -3,1400 +3,1390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Reading Practice - A1</title>
+    <title>End of Year Exam</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&family=Questrial&display=swap" rel="stylesheet">
     <style>
-        /* =====================================================================
-           Organic Sage UI — Mobile-first, stable, and soothing
-           Palette preserved; accessibility + mobile ergonomics improved.
-           ===================================================================== */
-
-        /* -------------------------------
-           Design tokens
-        ----------------------------------*/
-        :root {
-          /* Core palette (yours, kept) */
-          --primary-sage: #7A8471;
-          --secondary-sage: #9CAF88;
-          --tertiary-sage: #B8C5A6;
-          --warm-cream: #F8F6F0;
-          --soft-white: #FEFCF7;
-          --forest-shadow: #5A6B52;
-          --border-sage: rgba(122, 132, 113, 0.20);
-          --hover-sage: rgba(156, 175, 136, 0.15);
-
-          /* Extended palette for depth */
-          --deep-forest: #3E4A3A;
-          --moss: #6E7A67;
-          --fern: #8FA081;
-          --dried-clay: #D9CDB4;
-          --amber: #C6AA77;
-          --ink: #2F3A2B;
-          --ink-muted: #5A6B52;
-
-          /* Typography */
-          --font-display: 'Questrial', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
-          --font-body: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
-
-          /* Fluid typography scale */
-          --step--1: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
-          --step-0:  clamp(1rem,     0.96rem + 0.22vw, 1.1rem);
-          --step-1:  clamp(1.125rem, 1.07rem + 0.35vw, 1.3rem);
-          --step-2:  clamp(1.375rem, 1.28rem + 0.55vw, 1.6rem);
-          --step-3:  clamp(1.75rem,  1.58rem + 0.95vw, 2.1rem);
-          --step-4:  clamp(2.25rem,  1.98rem + 1.35vw, 2.7rem);
-
-          /* Rhythm */
-          --space-1: 0.25rem;
-          --space-2: 0.5rem;
-          --space-3: 0.75rem;
-          --space-4: 1rem;
-          --space-5: 1.25rem;
-          --space-6: 1.5rem;
-          --space-7: 2rem;
-          --space-8: 2.5rem;
-          --space-9: 3rem;
-
-          /* Shape + elevation */
-          --radius-sm: 10px;
-          --radius: 16px;
-          --radius-lg: 20px;
-          --radius-xl: 28px;
-
-          --shadow-1: 0 1px 2px rgba(34, 41, 32, 0.05), 0 2px 8px rgba(34, 41, 32, 0.06);
-          --shadow-2: 0 4px 18px rgba(34, 41, 32, 0.08), 0 12px 28px rgba(34, 41, 32, 0.06);
-          --shadow-3: 0 10px 40px rgba(34, 41, 32, 0.10), 0 20px 60px rgba(34, 41, 32, 0.08);
-
-          /* Focus ring (AA contrast on cream/white) */
-          --ring: 0 0 0 3px color-mix(in oklab, var(--soft-white) 60%, transparent), 0 0 0 5px color-mix(in srgb, var(--secondary-sage), #2F3A2B 15%);
-
-          /* Motion */
-          --ease-ambient: cubic-bezier(.2,.8,.2,1);
-          --dur-1: 120ms;
-          --dur-2: 200ms;
-          --dur-3: 320ms;
-
-          /* Mobile-safe touch target */
-          --target-min: 44px;
-
-          /* Container max */
-          --container-max: 900px;
-        }
-
-        /* -------------------------------
-           Global reset / mobile stability
-        ----------------------------------*/
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
-        }
-
-        html {
-          -webkit-text-size-adjust: 100%; /* iOS font scaling fix */
-          text-size-adjust: 100%;
-          hanging-punctuation: first last;
-        }
-
-        html, body {
-          margin: 0;
-          padding: 0;
-          width: 100%;
-          min-height: 100dvh; /* mobile address bar safe */
-          font-family: var(--font-body);
-          font-size: var(--step-0);
-          line-height: 1.6;
-          color: var(--forest-shadow);
-          background:
-            radial-gradient(1200px 1200px at -10% -10%, #FFFFFF 0%, transparent 50%),
-            radial-gradient(1200px 1000px at 110% 10%, #FFF8F0 0%, transparent 50%),
-            linear-gradient(135deg, #F8F6F0 0%, #F5F3ED 100%);
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          text-rendering: optimizeLegibility;
-          overflow-x: hidden;
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-          html { scroll-behavior: smooth; }
-        }
-
-        /* Better text wrapping on small screens */
-        :where(p, h1, h2, h3, h4, h5, h6) {
-          text-wrap: pretty;
-          overflow-wrap: anywhere;
-        }
-
-        /* Media defaults */
-        img, svg, video, canvas, audio, iframe {
-          display: block;
-          max-width: 100%;
-          height: auto;
-        }
-
-        /* Links */
-        a { color: var(--primary-sage); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-        a:hover { color: var(--deep-forest); }
-
-        /* Utility: hide but readable for screen readers */
-        .visually-hidden {
-          position: absolute !important;
-          height: 1px; width: 1px;
-          overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
-          white-space: nowrap;
-        }
-
-        /* -------------------------------
-           App shell
-        ----------------------------------*/
-        #app-wrapper {
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          padding: max(var(--space-7), env(safe-area-inset-top)) var(--space-4) var(--space-7);
-          width: 100%;
-          min-height: 100dvh;
-          background:
-            radial-gradient(800px 600px at 20% 0%, rgba(156,175,136,0.08) 0%, transparent 70%),
-            radial-gradient(700px 500px at 80% 100%, rgba(90,107,82,0.06) 0%, transparent 65%);
-        }
-
-        /* Container gets subtle translucency on capable browsers */
-        #activity-container {
-          width: 100%;
-          max-width: var(--container-max);
-          background: color-mix(in srgb, var(--soft-white) 88%, white 12%);
-          padding: clamp(24px, 3.2vw, 48px);
-          border-radius: var(--radius-lg);
-          border: 1px solid rgba(122, 132, 113, 0.12);
-          box-shadow: var(--shadow-2);
-          position: relative;
-          isolation: isolate;
-          container-type: inline-size; /* enables container queries where supported */
-        }
-
-        @supports (backdrop-filter: blur(6px)) {
-          #activity-container {
-            background: color-mix(in srgb, var(--soft-white) 76%, white 24%);
-            backdrop-filter: blur(6px) saturate(1.02);
-          }
-        }
-
-        /* Decorative organic edge glow (soft + subtle) */
-        #activity-container::before {
-          content: "";
-          position: absolute;
-          inset: -1px;
-          border-radius: inherit;
-          background:
-            radial-gradient(1200px 200px at 50% -5%, rgba(156,175,136,0.12), transparent 60%),
-            radial-gradient(800px 1000px at 50% 110%, rgba(122,132,113,0.08), transparent 70%);
-          z-index: -1;
-          pointer-events: none;
-        }
-
-        /* Hide screens when needed */
-        .screen.hidden { display: none !important; }
-
-        /* -------------------------------
-           Headings / text
-        ----------------------------------*/
-        h1 {
-          font-family: var(--font-display);
-          font-size: var(--step-4);
-          letter-spacing: 0.2px;
-          color: var(--forest-shadow);
-          margin: 0 0 var(--space-2) 0;
-          text-align: center;
-        }
-
-        h2.rubric {
-          font-family: var(--font-body);
-          font-size: var(--step-0);
-          font-weight: 500;
-          color: var(--secondary-sage);
-          margin: 0 0 var(--space-6) 0;
-          text-align: center;
-          line-height: 1.5;
-        }
-
-        h3 {
-          font-family: var(--font-display);
-          font-size: var(--step-2);
-          color: var(--forest-shadow);
-          margin: var(--space-6) 0 var(--space-3) 0;
-        }
-
-        /* -------------------------------
-           Buttons
-        ----------------------------------*/
-        .activity-btn {
-          min-height: var(--target-min);
-          padding: 12px 20px;
-          border-radius: 12px;
-          border: 1px solid var(--primary-sage);
-          background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 92%, white 8%), var(--primary-sage));
-          color: #fff;
-          font-weight: 700;
-          font-size: 1rem;
-          letter-spacing: 0.2px;
-          cursor: pointer;
-          text-decoration: none;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          -webkit-tap-highlight-color: transparent;
-          touch-action: manipulation;
-          user-select: none;
-          transition: transform var(--dur-1) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), opacity var(--dur-1) var(--ease-ambient);
-          box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 8px 16px rgba(90, 107, 82, 0.20);
-        }
-
-        .activity-btn:hover {
-          background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 92%, white 8%), var(--forest-shadow));
-          transform: translateY(-1px);
-          box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 10px 20px rgba(90, 107, 82, 0.22);
-        }
-
-        .activity-btn:active {
-          transform: translateY(0);
-          box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset, 0 4px 10px rgba(90, 107, 82, 0.20);
-        }
-
-        .activity-btn:focus-visible {
-          outline: none;
-          box-shadow: var(--ring), 0 8px 16px rgba(90, 107, 82, 0.20);
-        }
-
-        .activity-btn:disabled,
-        .activity-btn[disabled] {
-          background: var(--tertiary-sage);
-          border-color: var(--tertiary-sage);
-          color: color-mix(in srgb, #fff 70%, var(--soft-white) 30%);
-          cursor: not-allowed;
-          opacity: 0.8;
-          transform: none;
-          box-shadow: none;
-        }
-
-        /* Secondary variant */
-        .activity-btn.secondary {
-          background: transparent;
-          color: var(--primary-sage);
-          border-color: color-mix(in srgb, var(--tertiary-sage) 70%, var(--primary-sage) 30%);
-          box-shadow: none;
-        }
-
-        .activity-btn.secondary:hover { background-color: var(--hover-sage); }
-
-        .activity-btn.secondary:focus-visible {
-          outline: none;
-          box-shadow: var(--ring);
-        }
-
-        /* Button group alignment on small screens */
-        .controls {
-          margin-top: var(--space-7);
-          text-align: center;
-          display: grid;
-          gap: var(--space-3);
-          grid-auto-flow: row;
-        }
-
-        /* -------------------------------
-           Forms / inputs
-        ----------------------------------*/
-        .input-group { margin: var(--space-6) 0; }
-
-        .input-group label {
-          display: block;
-          font-weight: 700;
-          margin-bottom: var(--space-2);
-          color: var(--primary-sage);
-          letter-spacing: 0.2px;
-        }
-
-        input[type="text"],
-        input[type="date"],
-        textarea,
-        select {
-          width: 100%;
-          min-height: var(--target-min);
-          padding: 12px 14px;
-          border-radius: 10px;
-          border: 1px solid var(--tertiary-sage);
-          background: #fff;
-          font-size: 1rem;
-          font-family: var(--font-body);
-          color: var(--ink);
-          box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
-          appearance: none;
-          -webkit-appearance: none;
-          transition: border-color var(--dur-2) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient);
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-          color: color-mix(in srgb, var(--ink-muted) 60%, #fff 40%);
-          opacity: 0.9;
-        }
-
-        input:focus-visible,
-        textarea:focus-visible,
-        select:focus-visible {
-          outline: none;
-          border-color: var(--secondary-sage);
-          box-shadow: var(--ring);
-          background: color-mix(in srgb, #fff 92%, var(--warm-cream) 8%);
-        }
-
-        input:disabled,
-        textarea:disabled,
-        select:disabled {
-          background: color-mix(in srgb, #fff 85%, var(--warm-cream) 15%);
-          color: var(--ink-muted);
-          cursor: not-allowed;
-        }
-
-        /* Date input caret/tap stability on iOS */
-        input[type="date"] {
-          -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Textareas */
-        textarea {
-          resize: vertical;
-        }
-
-        /* Accent color for native radios/checkboxes (fallback when custom not active) */
-        :root { accent-color: var(--primary-sage); }
-
-        /* -------------------------------
-           System Check Screen
-        ----------------------------------*/
-        .system-check-step { margin-bottom: var(--space-7); }
-
-        #code-display-area {
-          display: flex;
-          align-items: center;
-          gap: var(--space-3);
-          margin-top: var(--space-3);
-          flex-wrap: wrap; /* safer on mobile */
-        }
-
-        #generated-code {
-          width: 100%;
-          min-height: 100px;
-          height: 120px;
-          resize: vertical;
-          font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
-          font-size: 0.95rem;
-          line-height: 1.45;
-          padding: 12px 14px;
-          border-radius: 10px;
-          border: 1px solid var(--tertiary-sage);
-          background: #fff;
-          color: var(--ink);
-        }
-
-        #paste-target { margin-top: var(--space-3); }
-
-        #paste-success-msg {
-          color: #2E7D32;
-          font-weight: 800;
-          margin-top: var(--space-2);
-        }
-
-        /* -------------------------------
-           Test Screen
-        ----------------------------------*/
-        .test-header {
-          display: grid;
-          grid-template-columns: 1fr auto auto;
-          align-items: center;
-          gap: var(--space-3);
-          margin-bottom: var(--space-4);
-          font-weight: 700;
-        }
-
-        #current-level { color: var(--secondary-sage); }
-        #timer { font-size: 1.1rem; color: var(--primary-sage); }
-
-        .progress-bar-container {
-          width: 100%;
-          height: 10px;
-          background-color: var(--border-sage);
-          border-radius: 999px;
-          overflow: hidden;
-        }
-
-        #progress-bar {
-          height: 100%;
-          width: 0%;
-          background: linear-gradient(90deg, var(--primary-sage), color-mix(in srgb, var(--secondary-sage) 60%, var(--primary-sage) 40%));
-          transition: width var(--dur-3) var(--ease-ambient);
-        }
-
-        #progress-text {
-          text-align: right;
-          font-size: 0.9rem;
-          color: var(--secondary-sage);
-          margin-top: var(--space-2);
-          margin-bottom: var(--space-6);
-        }
-        
-        .passage-slide.hidden { display: none; }
-
-        .mc-question {
-          margin-top: 1rem;
-          padding: 20px;
-          border: 1px solid var(--border-sage);
-          border-radius: 16px;
-          background: linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, #ffffff 92%, var(--warm-cream) 8%));
-          box-shadow: var(--shadow-1);
-        }
-
-        .mc-question-header { margin-bottom: var(--space-4); }
-
-        .mc-question-text {
-          font-weight: 800;
-          font-size: var(--step-1);
-          color: var(--forest-shadow);
-          line-height: 1.45;
-        }
-
-        /* Options */
-        .mc-options-container {
-          display: flex;
-          flex-direction: column;
-          gap: var(--space-3);
-        }
-
-        .mc-option-item input { display: none; }
-
-        .mc-option-label {
-          display: flex;
-          align-items: center;
-          gap: var(--space-3);
-          cursor: pointer;
-          padding: 12px;
-          border-radius: 10px;
-          border: 1px solid transparent;
-          transition: background-color var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), transform var(--dur-1) var(--ease-ambient);
-          -webkit-tap-highlight-color: transparent;
-          background: #fff;
-        }
-
-        .mc-option-label:hover { background-color: var(--hover-sage); }
-
-        .mc-option-item .option-control {
-          flex-shrink: 0;
-          inline-size: 24px;
-          block-size: 24px;
-          border: 2px solid var(--tertiary-sage);
-          background-color: var(--soft-white);
-          transition: all var(--dur-2) var(--ease-ambient);
-          position: relative;
-          border-radius: 50%;
-          box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
-        }
-
-        .mc-option-item input[type="radio"]:checked + .option-control { border-color: var(--primary-sage); }
-
-        .mc-option-item input[type="radio"]:checked + .option-control::after {
-          content: '';
-          position: absolute;
-          inset: 50% auto auto 50%;
-          transform: translate(-50%, -50%);
-          width: 14px;
-          height: 14px;
-          border-radius: 50%;
-          background-color: var(--primary-sage);
-          box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset;
-        }
-
-        .mc-option-text {
-          color: var(--primary-sage);
-          line-height: 1.4;
-          font-size: 1rem;
-        }
-
-        .mc-option-item input[type="radio"]:focus-visible + .option-control,
-        .mc-option-label:focus-visible {
-          outline: none;
-          box-shadow: var(--ring);
-        }
-
-        /* Slide controls */
-        .mc-slide-student-controls {
-          margin-top: var(--space-7);
-          display: flex;
-          justify-content: space-between;
-          gap: var(--space-3);
-          flex-wrap: wrap;
-        }
-
-        /* -------------------------------
-           Submission Screen
-        ----------------------------------*/
-        .submission-steps { margin-top: var(--space-7); }
-
-        #submission-code {
-          width: 100%;
-          height: 260px;
-          box-sizing: border-box;
-          margin: var(--space-3) 0;
-          font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
-          font-size: 0.95rem;
-          padding: 12px 14px;
-          border: 1px solid var(--tertiary-sage);
-          border-radius: 10px;
-          background: #fff;
-          color: var(--ink);
-        }
-        
-        #submission-controls {
-            display: grid;
-            gap: var(--space-3);
-            grid-auto-flow: row;
-            margin-top: var(--space-4);
-        }
-
-        #copy-submission-btn { margin-bottom: var(--space-6); }
-        
-        #submission-status {
-            margin-top: var(--space-4);
-            font-weight: 700;
-            text-align: center;
-        }
-
-        /* -------------------------------
-           Responsive / container queries
-        ----------------------------------*/
-        @media (max-width: 360px) {
-          #activity-container { padding: 18px; }
-          .activity-btn { padding-inline: 14px; }
-        }
-
-        @media (min-width: 768px) {
-          #app-wrapper { padding-inline: var(--space-7); }
-          .controls { grid-auto-flow: column; justify-content: center; }
-          #submission-controls { grid-auto-flow: column; justify-content: center; }
-          .test-header { grid-template-columns: 1fr auto auto; }
-        }
-
-        @media (min-width: 1024px) {
-          #activity-container { box-shadow: var(--shadow-3); }
-          h1 { letter-spacing: 0.3px; }
-        }
-
-        @container (min-width: 520px) {
-          .mc-question { padding: 24px; }
-          .mc-option-label { padding: 14px; }
-        }
-
-        @container (min-width: 760px) {
-          h1 { font-size: clamp(2rem, 2.2vw + 1rem, 2.75rem); }
-          .mc-question-text { font-size: clamp(1.1rem, 0.6vw + 0.9rem, 1.35rem); }
-        }
-
-        /* -------------------------------
-           Accessibility / motion / scroll
-        ----------------------------------*/
-        :focus-visible {
-          outline: none;
-          box-shadow: var(--ring);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          * {
-            animation: none !important;
-            transition: none !important;
-            scroll-behavior: auto !important;
-          }
-        }
-
-        ::selection {
-          background: color-mix(in srgb, var(--secondary-sage) 30%, #fff 70%);
-          color: var(--deep-forest);
-        }
-
-        html, body { overscroll-behavior-y: none; }
-
-        /* -------------------------------
-           Scrollbars (subtle, optional)
-        ----------------------------------*/
-        *::-webkit-scrollbar {
-          width: 10px;
-          height: 10px;
-        }
-        *::-webkit-scrollbar-thumb {
-          background: color-mix(in srgb, var(--primary-sage) 50%, var(--tertiary-sage) 50%);
-          border-radius: 999px;
-          border: 2px solid transparent;
-          background-clip: padding-box;
-        }
-        *::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
-        /* -------------------------------
-           Dark mode (gentle, earthy)
-        ----------------------------------*/
-        @media (prefers-color-scheme: dark) {
-          :root {
-            --soft-white: #1E211C;
-            --warm-cream: #23261F;
-            --forest-shadow: #DDE6D4;
-            --ink: #E9EFE5;
-            --ink-muted: #AEB9AA;
-            --border-sage: rgba(184, 197, 166, 0.25);
-          }
-
-          html, body {
-            background:
-              radial-gradient(1100px 900px at 15% 10%, rgba(156,175,136,0.06), transparent 60%),
-              radial-gradient(900px 900px at 85% 90%, rgba(122,132,113,0.08), transparent 65%),
-              linear-gradient(135deg, #191D18 0%, #1B1E19 100%);
-          }
-
-          #activity-container {
-            background: color-mix(in srgb, #23261F 92%, #1B1E19 8%);
-            border-color: rgba(184, 197, 166, 0.18);
-            box-shadow: 0 12px 36px rgba(0,0,0,0.35);
-          }
-
-          a { color: color-mix(in srgb, var(--secondary-sage) 80%, #C7D3C0 20%); }
-
-          .mc-question {
-            background: linear-gradient(180deg, #20241E 0%, #191D18 100%);
-            border-color: rgba(184, 197, 166, 0.20);
-            box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 10px 30px rgba(0,0,0,0.35);
-          }
-
-          .activity-btn {
-            background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 80%, #0F120E 20%), var(--primary-sage));
-            box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 8px 18px rgba(0,0,0,0.35);
-          }
-
-          .activity-btn:hover {
-            background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 80%, #0F120E 20%), var(--forest-shadow));
-          }
-
-          input, textarea, select {
-            background: #141713;
-            border-color: rgba(184, 197, 166, 0.25);
-            color: var(--ink);
-          }
-
-          #progress-bar {
-            background: linear-gradient(90deg, var(--secondary-sage), color-mix(in srgb, var(--primary-sage) 70%, #000 30%));
-          }
-        }
-
-        /* -------------------------------
-           Original responsive tweaks, refined
-        ----------------------------------*/
-        @media (max-width: 767px) {
-          #app-wrapper { padding: var(--space-4); }
-          #activity-container { padding: 24px; }
-          h1 { font-size: clamp(1.75rem, 5vw, 2rem); }
-          h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
-          .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
-        }
+    /* =====================================================================
+       Organic Sage UI — Mobile-first, stable, and soothing
+       Palette preserved; accessibility + mobile ergonomics improved.
+       ===================================================================== */
+
+    /* -------------------------------
+       Design tokens
+    ----------------------------------*/
+    :root {
+      /* Core palette (yours, kept) */
+      --primary-sage: #7A8471;
+      --secondary-sage: #9CAF88;
+      --tertiary-sage: #B8C5A6;
+      --warm-cream: #F8F6F0;
+      --soft-white: #FEFCF7;
+      --forest-shadow: #5A6B52;
+      --border-sage: rgba(122, 132, 113, 0.20);
+      --hover-sage: rgba(156, 175, 136, 0.15);
+
+      /* Extended palette for depth */
+      --deep-forest: #3E4A3A;
+      --moss: #6E7A67;
+      --fern: #8FA081;
+      --dried-clay: #D9CDB4;
+      --amber: #C6AA77;
+      --ink: #2F3A2B;
+      --ink-muted: #5A6B52;
+
+      /* Typography */
+      --font-display: 'Questrial', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+      /* Fluid typography scale */
+      --step--1: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
+      --step-0:  clamp(1rem,     0.96rem + 0.22vw, 1.1rem);
+      --step-1:  clamp(1.125rem, 1.07rem + 0.35vw, 1.3rem);
+      --step-2:  clamp(1.375rem, 1.28rem + 0.55vw, 1.6rem);
+      --step-3:  clamp(1.75rem,  1.58rem + 0.95vw, 2.1rem);
+      --step-4:  clamp(2.25rem,  1.98rem + 1.35vw, 2.7rem);
+
+      /* Rhythm */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-7: 2rem;
+      --space-8: 2.5rem;
+      --space-9: 3rem;
+
+      /* Shape + elevation */
+      --radius-sm: 10px;
+      --radius: 16px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+
+      --shadow-1: 0 1px 2px rgba(34, 41, 32, 0.05), 0 2px 8px rgba(34, 41, 32, 0.06);
+      --shadow-2: 0 4px 18px rgba(34, 41, 32, 0.08), 0 12px 28px rgba(34, 41, 32, 0.06);
+      --shadow-3: 0 10px 40px rgba(34, 41, 32, 0.10), 0 20px 60px rgba(34, 41, 32, 0.08);
+
+      /* Focus ring (AA contrast on cream/white) */
+      --ring: 0 0 0 3px color-mix(in oklab, var(--soft-white) 60%, transparent), 0 0 0 5px color-mix(in srgb, var(--secondary-sage), #2F3A2B 15%);
+
+      /* Motion */
+      --ease-ambient: cubic-bezier(.2,.8,.2,1);
+      --dur-1: 120ms;
+      --dur-2: 200ms;
+      --dur-3: 320ms;
+
+      /* Mobile-safe touch target */
+      --target-min: 44px;
+
+      /* Container max */
+      --container-max: 900px;
+    }
+
+    /* -------------------------------
+       Global reset / mobile stability
+    ----------------------------------*/
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%; /* iOS font scaling fix */
+      text-size-adjust: 100%;
+      hanging-punctuation: first last;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100dvh; /* mobile address bar safe */
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      line-height: 1.6;
+      color: var(--forest-shadow);
+      background:
+        radial-gradient(1200px 1200px at -10% -10%, #FFFFFF 0%, transparent 50%),
+        radial-gradient(1200px 1000px at 110% 10%, #FFF8F0 0%, transparent 50%),
+        linear-gradient(135deg, #F8F6F0 0%, #F5F3ED 100%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    /* Better text wrapping on small screens */
+    :where(p, h1, h2, h3, h4, h5, h6) {
+      text-wrap: pretty;
+      overflow-wrap: anywhere;
+    }
+
+    /* Media defaults */
+    img, svg, video, canvas, audio, iframe {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Links */
+    a { color: var(--primary-sage); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    a:hover { color: var(--deep-forest); }
+
+    /* Utility: hide but readable for screen readers */
+    .visually-hidden {
+      position: absolute !important;
+      height: 1px; width: 1px;
+      overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
+    }
+
+    /* -------------------------------
+       App shell
+    ----------------------------------*/
+    #app-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: max(var(--space-7), env(safe-area-inset-top)) var(--space-4) var(--space-7);
+      width: 100%;
+      min-height: 100dvh;
+      background:
+        radial-gradient(800px 600px at 20% 0%, rgba(156,175,136,0.08) 0%, transparent 70%),
+        radial-gradient(700px 500px at 80% 100%, rgba(90,107,82,0.06) 0%, transparent 65%);
+    }
+
+    /* Container gets subtle translucency on capable browsers */
+    #activity-container {
+      width: 100%;
+      max-width: var(--container-max);
+      background: color-mix(in srgb, var(--soft-white) 88%, white 12%);
+      padding: clamp(24px, 3.2vw, 48px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(122, 132, 113, 0.12);
+      box-shadow: var(--shadow-2);
+      position: relative;
+      isolation: isolate;
+      container-type: inline-size; /* enables container queries where supported */
+    }
+
+    @supports (backdrop-filter: blur(6px)) {
+      #activity-container {
+        background: color-mix(in srgb, var(--soft-white) 76%, white 24%);
+        backdrop-filter: blur(6px) saturate(1.02);
+      }
+    }
+
+    /* Decorative organic edge glow (soft + subtle) */
+    #activity-container::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(1200px 200px at 50% -5%, rgba(156,175,136,0.12), transparent 60%),
+        radial-gradient(800px 1000px at 50% 110%, rgba(122,132,113,0.08), transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Hide screens when needed */
+    .screen.hidden { display: none !important; }
+
+    /* -------------------------------
+       Headings / text
+    ----------------------------------*/
+    h1 {
+      font-family: var(--font-display);
+      font-size: var(--step-4);
+      letter-spacing: 0.2px;
+      color: var(--forest-shadow);
+      margin: 0 0 var(--space-2) 0;
+      text-align: center;
+    }
+
+    h2.rubric {
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      font-weight: 500;
+      color: var(--secondary-sage);
+      margin: 0 0 var(--space-6) 0;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: var(--step-2);
+      color: var(--forest-shadow);
+      margin: var(--space-6) 0 var(--space-3) 0;
+    }
+
+    /* -------------------------------
+       Buttons
+    ----------------------------------*/
+    .activity-btn {
+      min-height: var(--target-min);
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--primary-sage);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 92%, white 8%), var(--primary-sage));
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      transition: transform var(--dur-1) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), opacity var(--dur-1) var(--ease-ambient);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 8px 16px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:hover {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 92%, white 8%), var(--forest-shadow));
+      transform: translateY(-1px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 10px 20px rgba(90, 107, 82, 0.22);
+    }
+
+    .activity-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset, 0 4px 10px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:focus-visible {
+      outline: none;
+      box-shadow: var(--ring), 0 8px 16px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:disabled,
+    .activity-btn[disabled] {
+      background: var(--tertiary-sage);
+      border-color: var(--tertiary-sage);
+      color: color-mix(in srgb, #fff 70%, var(--soft-white) 30%);
+      cursor: not-allowed;
+      opacity: 0.8;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Secondary variant */
+    .activity-btn.secondary {
+      background: transparent;
+      color: var(--primary-sage);
+      border-color: color-mix(in srgb, var(--tertiary-sage) 70%, var(--primary-sage) 30%);
+      box-shadow: none;
+    }
+
+    .activity-btn.secondary:hover { background-color: var(--hover-sage); }
+
+    .activity-btn.secondary:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    /* Button group alignment on small screens */
+    .controls {
+      margin-top: var(--space-7);
+      text-align: center;
+      display: grid;
+      gap: var(--space-3);
+      grid-auto-flow: row;
+    }
+
+    /* -------------------------------
+       Forms / inputs
+    ----------------------------------*/
+    .input-group { margin: var(--space-6) 0; }
+
+    .input-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+      color: var(--primary-sage);
+      letter-spacing: 0.2px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      min-height: var(--target-min);
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--tertiary-sage);
+      background: #fff;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      color: var(--ink);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color var(--dur-2) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: color-mix(in srgb, var(--ink-muted) 60%, #fff 40%);
+      opacity: 0.9;
+    }
+
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: none;
+      border-color: var(--secondary-sage);
+      box-shadow: var(--ring);
+      background: color-mix(in srgb, #fff 92%, var(--warm-cream) 8%);
+    }
+
+    input:disabled,
+    textarea:disabled,
+    select:disabled {
+      background: color-mix(in srgb, #fff 85%, var(--warm-cream) 15%);
+      color: var(--ink-muted);
+      cursor: not-allowed;
+    }
+
+    /* Date input caret/tap stability on iOS */
+    input[type="date"] {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Textareas */
+    textarea {
+      resize: vertical;
+    }
+
+    /* Accent color for native radios/checkboxes (fallback when custom not active) */
+    :root { accent-color: var(--primary-sage); }
+
+    /* -------------------------------
+       System Check Screen
+    ----------------------------------*/
+    .system-check-step { margin-bottom: var(--space-7); }
+
+    #code-display-area {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+      flex-wrap: wrap; /* safer on mobile */
+    }
+
+    #generated-code {
+      width: 100%;
+      min-height: 100px;
+      height: 120px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--tertiary-sage);
+      background: #fff;
+      color: var(--ink);
+    }
+
+    #paste-target { margin-top: var(--space-3); }
+
+    #paste-success-msg {
+      color: #2E7D32;
+      font-weight: 800;
+      margin-top: var(--space-2);
+    }
+
+    /* -------------------------------
+       Test Screen
+    ----------------------------------*/
+    .test-header {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      font-weight: 700;
+    }
+
+    #current-level { color: var(--secondary-sage); }
+    #timer { font-size: 1.1rem; color: var(--primary-sage); }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 10px;
+      background-color: var(--border-sage);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary-sage), color-mix(in srgb, var(--secondary-sage) 60%, var(--primary-sage) 40%));
+      transition: width var(--dur-3) var(--ease-ambient);
+    }
+
+    #progress-text {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--secondary-sage);
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-6);
+    }
+    
+    .passage-slide.hidden { display: none; }
+
+    .mc-question {
+      padding: 20px;
+      border: 1px solid var(--border-sage);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, #ffffff 92%, var(--warm-cream) 8%));
+      box-shadow: var(--shadow-1);
+      margin-bottom: var(--space-5);
+    }
+
+    .mc-question-header { margin-bottom: var(--space-4); }
+
+    .mc-question-text {
+      font-weight: 800;
+      font-size: var(--step-1);
+      color: var(--forest-shadow);
+      line-height: 1.45;
+    }
+
+    /* Options */
+    .mc-options-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .mc-option-item input { display: none; }
+
+    .mc-option-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: background-color var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), transform var(--dur-1) var(--ease-ambient);
+      -webkit-tap-highlight-color: transparent;
+      background: #fff;
+    }
+
+    .mc-option-label:hover { background-color: var(--hover-sage); }
+
+    .mc-option-item .option-control {
+      flex-shrink: 0;
+      inline-size: 24px;
+      block-size: 24px;
+      border: 2px solid var(--tertiary-sage);
+      background-color: var(--soft-white);
+      transition: all var(--dur-2) var(--ease-ambient);
+      position: relative;
+      border-radius: 50%;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    .mc-option-item input[type="radio"]:checked + .option-control { border-color: var(--primary-sage); }
+
+    .mc-option-item input[type="radio"]:checked + .option-control::after {
+      content: '';
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: var(--primary-sage);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset;
+    }
+
+    .mc-option-text {
+      color: var(--primary-sage);
+      line-height: 1.4;
+      font-size: 1rem;
+    }
+
+    .mc-option-item input[type="radio"]:focus-visible + .option-control,
+    .mc-option-label:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    /* Slide controls */
+    .mc-slide-student-controls {
+      margin-top: var(--space-7);
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    /* -------------------------------
+       Submission Screen
+    ----------------------------------*/
+    .submission-steps { margin-top: var(--space-7); }
+
+    #submission-code {
+      width: 100%;
+      height: 260px;
+      box-sizing: border-box;
+      margin: var(--space-3) 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.95rem;
+      padding: 12px 14px;
+      border: 1px solid var(--tertiary-sage);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+    }
+    
+    #submission-controls {
+        display: grid;
+        gap: var(--space-3);
+        grid-auto-flow: row;
+        margin-top: var(--space-4);
+    }
+
+    #copy-submission-btn { margin-bottom: var(--space-6); }
+    
+    #submission-status {
+        margin-top: var(--space-4);
+        font-weight: 700;
+        text-align: center;
+    }
+
+    /* -------------------------------
+       Responsive / container queries
+    ----------------------------------*/
+    @media (max-width: 360px) {
+      #activity-container { padding: 18px; }
+      .activity-btn { padding-inline: 14px; }
+    }
+
+    @media (min-width: 768px) {
+      #app-wrapper { padding-inline: var(--space-7); }
+      .controls { grid-auto-flow: column; justify-content: center; }
+      #submission-controls { grid-auto-flow: column; justify-content: center; }
+      .test-header { grid-template-columns: 1fr auto auto; }
+    }
+
+    @media (min-width: 1024px) {
+      #activity-container { box-shadow: var(--shadow-3); }
+      h1 { letter-spacing: 0.3px; }
+    }
+
+    @container (min-width: 520px) {
+      .mc-question { padding: 24px; }
+      .mc-option-label { padding: 14px; }
+    }
+
+    @container (min-width: 760px) {
+      h1 { font-size: clamp(2rem, 2.2vw + 1rem, 2.75rem); }
+      .mc-question-text { font-size: clamp(1.1rem, 0.6vw + 0.9rem, 1.35rem); }
+    }
+
+    /* -------------------------------
+       Accessibility / motion / scroll
+    ----------------------------------*/
+    :focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--secondary-sage) 30%, #fff 70%);
+      color: var(--deep-forest);
+    }
+
+    html, body { overscroll-behavior-y: none; }
+
+    /* -------------------------------
+       Scrollbars (subtle, optional)
+    ----------------------------------*/
+    *::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    *::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--primary-sage) 50%, var(--tertiary-sage) 50%);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* -------------------------------
+       Dark mode (gentle, earthy)
+    ----------------------------------*/
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --soft-white: #1E211C;
+        --warm-cream: #23261F;
+        --forest-shadow: #DDE6D4;
+        --ink: #E9EFE5;
+        --ink-muted: #AEB9AA;
+        --border-sage: rgba(184, 197, 166, 0.25);
+      }
+
+      html, body {
+        background:
+          radial-gradient(1100px 900px at 15% 10%, rgba(156,175,136,0.06), transparent 60%),
+          radial-gradient(900px 900px at 85% 90%, rgba(122,132,113,0.08), transparent 65%),
+          linear-gradient(135deg, #191D18 0%, #1B1E19 100%);
+      }
+
+      #activity-container {
+        background: color-mix(in srgb, #23261F 92%, #1B1E19 8%);
+        border-color: rgba(184, 197, 166, 0.18);
+        box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+      }
+
+      a { color: color-mix(in srgb, var(--secondary-sage) 80%, #C7D3C0 20%); }
+
+      .mc-question {
+        background: linear-gradient(180deg, #20241E 0%, #191D18 100%);
+        border-color: rgba(184, 197, 166, 0.20);
+        box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 10px 30px rgba(0,0,0,0.35);
+      }
+
+      .activity-btn {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 80%, #0F120E 20%), var(--primary-sage));
+        box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 8px 18px rgba(0,0,0,0.35);
+      }
+
+      .activity-btn:hover {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 80%, #0F120E 20%), var(--forest-shadow));
+      }
+
+      input, textarea, select {
+        background: #141713;
+        border-color: rgba(184, 197, 166, 0.25);
+        color: var(--ink);
+      }
+
+      #progress-bar {
+        background: linear-gradient(90deg, var(--secondary-sage), color-mix(in srgb, var(--primary-sage) 70%, #000 30%));
+      }
+    }
+
+    /* -------------------------------
+       Original responsive tweaks, refined
+    ----------------------------------*/
+    @media (max-width: 767px) {
+      #app-wrapper { padding: var(--space-4); }
+      #activity-container { padding: 24px; }
+      h1 { font-size: clamp(1.75rem, 5vw, 2rem); }
+      h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
+      .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
+    }
     </style>
 </head>
 <body>
-
     <div id="app-wrapper">
         <div id="activity-container">
 
             <!-- Screen 1: Student ID -->
-            <div id="id-screen" class="screen">
-                <h1>IELTS Reading Practice</h1>
-                <h2 class="rubric">Please enter your Student ID to begin.</h2>
+            <section id="student-id-screen" class="screen">
+                <h1>End of Year Exam</h1>
+                <h2 class="rubric">Welcome! Please enter your Student ID to begin or to resume a previous session. Your progress is saved automatically.</h2>
                 <div class="input-group">
                     <label for="student-id">Student ID</label>
-                    <input type="text" id="student-id" placeholder="Enter your ID here">
+                    <input type="text" id="student-id" name="student-id" placeholder="Enter your ID here">
                 </div>
                 <div class="controls">
                     <button id="start-btn" class="activity-btn">Next</button>
                 </div>
-            </div>
+            </section>
 
             <!-- Screen 2: Test -->
-            <div id="test-screen" class="screen hidden">
+            <section id="test-screen" class="screen hidden">
                 <div class="test-header">
-                    <span id="current-level">Current Level: A1</span>
-                    <div class="progress-bar-container">
-                        <div id="progress-bar"></div>
-                    </div>
-                    <span id="timer">60:00</span>
+                    <span id="current-level"></span>
+                    <span id="timer" aria-live="polite">60:00</span>
                 </div>
-                <p id="progress-text">Passage 1 of 3</p>
+                <h2 class="rubric">Answer each question to the best of your ability. Use the 'Previous' and 'Next' buttons to navigate between passages. Your work is saved as you go.</h2>
+                <div class="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <div id="progress-text"></div>
 
-                <!-- Passage Slide 1 -->
-                <div class="passage-slide" data-slide-index="0">
+                <!-- Passage 1 -->
+                <div class="passage-slide" data-passage-index="0">
                     <h3>Reading Passage 1: Questions 1-7</h3>
-                    <h2 class="rubric">Read the five short texts. For questions 1-7, choose the correct text (A-E). You may use each letter more than once.</h2>
-                    
-                    <p><b>A. CITY MUSEUM</b><br>Open: 10 am – 4 pm Tuesday – Sunday<br>CLOSED MONDAY</p>
-                    <p><b>B. PARK SPORTS CLUB</b><br>Tennis & Football<br>Open Every Day<br>9 am – 5 pm</p>
-                    <p><b>C. CITY LIBRARY</b><br>For books and computer use<br>Mon–Fri: 9 am–6 pm<br>Sat: 10 am–2 pm, Sun: Closed</p>
-                    <p><b>D. Message</b><br>To: Sam<br>From: Maria<br>Hi Sam,<br>Let's go to the park. I am free on Tuesday at 11 am. Is that good for you?<br>Maria</p>
-                    <p><b>E. For Sale: Bicycle</b><br>Red, almost new. Price: £50<br>Call David on 555-2345 after 5 pm.</p>
+                    <p>Read the five short texts. For questions 1-7, choose the correct text (A-E). You may use each letter more than once.</p>
+                    <div style="margin-bottom: var(--space-6);">
+                        <p><strong>A. CITY MUSEUM</strong><br>Open: 10 am – 4 pm Tuesday – Sunday<br>CLOSED MONDAY</p>
+                        <p><strong>B. PARK SPORTS CLUB</strong><br>Tennis & Football<br>Open Every Day<br>9 am – 5 pm</p>
+                        <p><strong>C. CITY LIBRARY</strong><br>For books and computer use<br>Mon–Fri: 9 am–6 pm<br>Sat: 10 am–2 pm, Sun: Closed</p>
+                        <p><strong>D. Message</strong><br>To: Sam<br>From: Maria<br>Hi Sam, Let's go to the park. I am free on Tuesday at 11 am. Is that good for you? Maria</p>
+                        <p><strong>E. For Sale: Bicycle</strong><br>Red, almost new. Price: £50<br>Call David on 555-2345 after 5 pm.</p>
+                    </div>
 
-                    <div class="mc-question">
-                        <p class="mc-question-text">1. This place is open seven days a week.</p>
-                        <select data-question-id="1">
-                            <option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option>
-                        </select>
+                    <div class="mc-question" data-question-number="1">
+                        <div class="mc-question-header"><label for="q1-select" class="mc-question-text">1. This place is open seven days a week.</label></div>
+                        <select id="q1-select" data-question-number="1"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">2. You can use a computer here.</p>
-                        <select data-question-id="2">
-                            <option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option>
-                        </select>
+                    <div class="mc-question" data-question-number="2">
+                        <div class="mc-question-header"><label for="q2-select" class="mc-question-text">2. You can use a computer here.</label></div>
+                        <select id="q2-select" data-question-number="2"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">3. This is a personal message to a friend.</p>
-                        <select data-question-id="3">
-                            <option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option>
-                        </select>
+                    <div class="mc-question" data-question-number="3">
+                        <div class="mc-question-header"><label for="q3-select" class="mc-question-text">3. This is a personal message to a friend.</label></div>
+                        <select id="q3-select" data-question-number="3"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">4. This is about selling something.</p>
-                        <select data-question-id="4">
-                            <option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option>
-                        </select>
+                    <div class="mc-question" data-question-number="4">
+                        <div class="mc-question-header"><label for="q4-select" class="mc-question-text">4. This is about selling something.</label></div>
+                        <select id="q4-select" data-question-number="4"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">5. This place is not open on Mondays.</p>
-                        <select data-question-id="5">
-                            <option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option>
-                        </select>
+                    <div class="mc-question" data-question-number="5">
+                        <div class="mc-question-header"><label for="q5-select" class="mc-question-text">5. This place is not open on Mondays.</label></div>
+                        <select id="q5-select" data-question-number="5"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">6. You should call after 5 pm.</p>
-                        <select data-question-id="6">
-                            <option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option>
-                        </select>
+                    <div class="mc-question" data-question-number="6">
+                        <div class="mc-question-header"><label for="q6-select" class="mc-question-text">6. You should call after 5 pm.</label></div>
+                        <select id="q6-select" data-question-number="6"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">7. This place closes at 2 pm on one day of the weekend.</p>
-                        <select data-question-id="7">
-                           <option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option>
-                        </select>
+                    <div class="mc-question" data-question-number="7">
+                        <div class="mc-question-header"><label for="q7-select" class="mc-question-text">7. This place closes at 2 pm on one day of the weekend.</label></div>
+                        <select id="q7-select" data-question-number="7"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
                     </div>
                 </div>
 
-                <!-- Passage Slide 2 -->
-                <div class="passage-slide hidden" data-slide-index="1">
+                <!-- Passage 2 -->
+                <div class="passage-slide hidden" data-passage-index="1">
                     <h3>Reading Passage 2: Questions 8-20</h3>
-                    <h2 class="rubric">My Name is Fatima</h2>
-                    <p>My name is Fatima, and I am a student. I am from Morocco. I live in a small house in Casablanca with my mother, father, and my two brothers. My father is a doctor at a hospital. My mother is a teacher at a school. My brothers are students, like me.</p>
-                    <p>I go to a big school near my house. I walk to school every morning with my brothers. My favourite subject is English because I like to learn new words. I also like Art. I do not like Maths. For me, it is difficult.</p>
-                    <p>In the evening, I do my homework in my room. After my homework, I watch television with my family in the living room. We like to watch films. On the weekend, we go to the park or we visit my grandmother. She lives in a different city, so we travel by train.</p>
-
-                    <h3 style="margin-top: 2rem;">Questions 8-14</h3>
-                    <h2 class="rubric">Read the text about Fatima. Are the sentences ‘True’ or ‘False’?</h2>
+                    <div style="margin-bottom: var(--space-6);">
+                        <h4>My Name is Fatima</h4>
+                        <p>My name is Fatima, and I am a student. I am from Morocco. I live in a small house in Casablanca with my mother, father, and my two brothers. My father is a doctor at a hospital. My mother is a teacher at a school. My brothers are students, like me.</p>
+                        <p>I go to a big school near my house. I walk to school every morning with my brothers. My favourite subject is English because I like to learn new words. I also like Art. I do not like Maths. For me, it is difficult.</p>
+                        <p>In the evening, I do my homework in my room. After my homework, I watch television with my family in the living room. We like to watch films. On the weekend, we go to the park or we visit my grandmother. She lives in a different city, so we travel by train.</p>
+                    </div>
                     
-                    <div class="mc-question">
-                        <p class="mc-question-text">8. Fatima lives with four other people.</p>
+                    <div class="mc-question" data-question-number="8">
+                        <div class="mc-question-header"><p class="mc-question-text">8. Fatima lives with four other people.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q8" value="True" data-question-id="8"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q8" value="False" data-question-id="8"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q8-true" name="q8" value="True"><label for="q8-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q8-false" name="q8" value="False"><label for="q8-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">9. Her mother works at a hospital.</p>
+                    <div class="mc-question" data-question-number="9">
+                        <div class="mc-question-header"><p class="mc-question-text">9. Her mother works at a hospital.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q9" value="True" data-question-id="9"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q9" value="False" data-question-id="9"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q9-true" name="q9" value="True"><label for="q9-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q9-false" name="q9" value="False"><label for="q9-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">10. Fatima takes the bus to school.</p>
+                    <div class="mc-question" data-question-number="10">
+                        <div class="mc-question-header"><p class="mc-question-text">10. Fatima takes the bus to school.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q10" value="True" data-question-id="10"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q10" value="False" data-question-id="10"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q10-true" name="q10" value="True"><label for="q10-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q10-false" name="q10" value="False"><label for="q10-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">11. She likes English because she enjoys learning new words.</p>
+                     <div class="mc-question" data-question-number="11">
+                        <div class="mc-question-header"><p class="mc-question-text">11. She likes English because she enjoys learning new words.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q11" value="True" data-question-id="11"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q11" value="False" data-question-id="11"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q11-true" name="q11" value="True"><label for="q11-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q11-false" name="q11" value="False"><label for="q11-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">12. She thinks Maths is easy.</p>
+                    <div class="mc-question" data-question-number="12">
+                        <div class="mc-question-header"><p class="mc-question-text">12. She thinks Maths is easy.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q12" value="True" data-question-id="12"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q12" value="False" data-question-id="12"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q12-true" name="q12" value="True"><label for="q12-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q12-false" name="q12" value="False"><label for="q12-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">13. She watches television before she does her homework.</p>
+                    <div class="mc-question" data-question-number="13">
+                        <div class="mc-question-header"><p class="mc-question-text">13. She watches television before she does her homework.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q13" value="True" data-question-id="13"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q13" value="False" data-question-id="13"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q13-true" name="q13" value="True"><label for="q13-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q13-false" name="q13" value="False"><label for="q13-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">14. Her family travels by train to see her grandmother.</p>
+                    <div class="mc-question" data-question-number="14">
+                        <div class="mc-question-header"><p class="mc-question-text">14. Her family travels by train to see her grandmother.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q14" value="True" data-question-id="14"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q14" value="False" data-question-id="14"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q14-true" name="q14" value="True"><label for="q14-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q14-false" name="q14" value="False"><label for="q14-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
 
-                    <h3 style="margin-top: 2rem;">Questions 15-20</h3>
-                    <h2 class="rubric">Complete the sentences about Fatima. Write ONE WORD from the text for each answer.</h2>
-                    
-                    <div class="mc-question">
-                        <p class="mc-question-text">15. Fatima lives in a small __________ with her family.</p>
-                        <input type="text" data-question-id="15">
+                    <div class="mc-question" data-question-number="15">
+                        <div class="mc-question-header"><label for="q15-input" class="mc-question-text">15. Fatima lives in a small __________ with her family.</label></div>
+                        <input type="text" id="q15-input" data-question-number="15">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">16. Her father works as a __________.</p>
-                        <input type="text" data-question-id="16">
+                    <div class="mc-question" data-question-number="16">
+                        <div class="mc-question-header"><label for="q16-input" class="mc-question-text">16. Her father works as a __________.</label></div>
+                        <input type="text" id="q16-input" data-question-number="16">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">17. Fatima's school is __________ her house.</p>
-                        <input type="text" data-question-id="17">
+                    <div class="mc-question" data-question-number="17">
+                        <div class="mc-question-header"><label for="q17-input" class="mc-question-text">17. Fatima's school is __________ her house.</label></div>
+                        <input type="text" id="q17-input" data-question-number="17">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">18. She does her homework in her __________.</p>
-                        <input type="text" data-question-id="18">
+                    <div class="mc-question" data-question-number="18">
+                        <div class="mc-question-header"><label for="q18-input" class="mc-question-text">18. She does her homework in her __________.</label></div>
+                        <input type="text" id="q18-input" data-question-number="18">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">19. After her homework, Fatima watches __________ with her family.</p>
-                        <input type="text" data-question-id="19">
+                    <div class="mc-question" data-question-number="19">
+                        <div class="mc-question-header"><label for="q19-input" class="mc-question-text">19. After her homework, Fatima watches __________ with her family.</label></div>
+                        <input type="text" id="q19-input" data-question-number="19">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">20. On the weekend, the family sometimes visits her __________.</p>
-                        <input type="text" data-question-id="20">
+                    <div class="mc-question" data-question-number="20">
+                        <div class="mc-question-header"><label for="q20-input" class="mc-question-text">20. On the weekend, the family sometimes visits her __________.</label></div>
+                        <input type="text" id="q20-input" data-question-number="20">
                     </div>
+
                 </div>
 
-                <!-- Passage Slide 3 -->
-                <div class="passage-slide hidden" data-slide-index="2">
+                <!-- Passage 3 -->
+                <div class="passage-slide hidden" data-passage-index="2">
                     <h3>Reading Passage 3: Questions 21-40</h3>
-                    <h2 class="rubric">A Visit to the City Farm</h2>
-                    <p>Every Sunday morning, my family goes to the city farm. The farm is not big, but it has lots of interesting animals. It is near our home.</p>
-                    <p>First, we go to see the sheep. The sheep are white and make a soft noise. I like to watch the small lambs. They are very cute.</p>
-                    <p>Next, we go to the chicken house. My father likes the chickens. They are brown and red, and they look for food in the grass. We can see the fresh eggs in a basket.</p>
-                    <p>After that, we go to the garden. The farm has a garden with many flowers and plants. My mother likes the red and yellow flowers. Sometimes, a worker is in the garden.</p>
-                    <p>Finally, we go home at 1 pm. We always have a nice time. I am happy after our visit to the city farm.</p>
-                    
-                    <h3 style="margin-top: 2rem;">Questions 21-30</h3>
-                    <h2 class="rubric">Read the text about the city farm. Choose the correct answer A, B, or C.</h2>
-
-                    <div class="mc-question">
-                        <p class="mc-question-text">21. When does the family go to the city farm?</p>
-                        <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q21" value="A" data-question-id="21"><span class="option-control"></span><span class="mc-option-text">A. Every day</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q21" value="B" data-question-id="21"><span class="option-control"></span><span class="mc-option-text">B. Every Saturday</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q21" value="C" data-question-id="21"><span class="option-control"></span><span class="mc-option-text">C. Every Sunday</span></label></div>
-                        </div>
-                    </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">22. The text says the farm is...</p>
-                        <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q22" value="A" data-question-id="22"><span class="option-control"></span><span class="mc-option-text">A. far from their home.</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q22" value="B" data-question-id="22"><span class="option-control"></span><span class="mc-option-text">B. not very big.</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q22" value="C" data-question-id="22"><span class="option-control"></span><span class="mc-option-text">C. very noisy.</span></label></div>
-                        </div>
-                    </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">23. The writer thinks the lambs are...</p>
-                        <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q23" value="A" data-question-id="23"><span class="option-control"></span><span class="mc-option-text">A. very small.</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q23" value="B" data-question-id="23"><span class="option-control"></span><span class="mc-option-text">B. very cute.</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q23" value="C" data-question-id="23"><span class="option-control"></span><span class="mc-option-text">C. very white.</span></label></div>
-                        </div>
-                    </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">24. Who in the family likes the chickens?</p>
-                        <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q24" value="A" data-question-id="24"><span class="option-control"></span><span class="mc-option-text">A. The writer</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q24" value="B" data-question-id="24"><span class="option-control"></span><span class="mc-option-text">B. The mother</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q24" value="C" data-question-id="24"><span class="option-control"></span><span class="mc-option-text">C. The father</span></label></div>
-                        </div>
-                    </div>
-                     <div class="mc-question">
-                        <p class="mc-question-text">25. Where can they see the eggs?</p>
-                        <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q25" value="A" data-question-id="25"><span class="option-control"></span><span class="mc-option-text">A. In the grass</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q25" value="B" data-question-id="25"><span class="option-control"></span><span class="mc-option-text">B. In a basket</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q25" value="C" data-question-id="25"><span class="option-control"></span><span class="mc-option-text">C. In the garden</span></label></div>
-                        </div>
-                    </div>
-                     <div class="mc-question">
-                        <p class="mc-question-text">26. What does the mother like at the farm?</p>
-                        <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q26" value="A" data-question-id="26"><span class="option-control"></span><span class="mc-option-text">A. The sheep</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q26" value="B" data-question-id="26"><span class="option-control"></span><span class="mc-option-text">B. The eggs</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q26" value="C" data-question-id="26"><span class="option-control"></span><span class="mc-option-text">C. The flowers</span></label></div>
-                        </div>
-                    </div>
-                     <div class="mc-question">
-                        <p class="mc-question-text">27. What time do they go home?</p>
-                        <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" value="A" data-question-id="27"><span class="option-control"></span><span class="mc-option-text">A. In the morning</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" value="B" data-question-id="27"><span class="option-control"></span><span class="mc-option-text">B. At one o'clock</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" value="C" data-question-id="27"><span class="option-control"></span><span class="mc-option-text">C. In the evening</span></label></div>
-                        </div>
-                    </div>
-                     <div class="mc-question">
-                        <p class="mc-question-text">28. The family has a __________ time at the farm.</p>
-                        <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" value="A" data-question-id="28"><span class="option-control"></span><span class="mc-option-text">A. nice</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" value="B" data-question-id="28"><span class="option-control"></span><span class="mc-option-text">B. long</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" value="C" data-question-id="28"><span class="option-control"></span><span class="mc-option-text">C. quiet</span></label></div>
-                        </div>
-                    </div>
-                     <div class="mc-question">
-                        <p class="mc-question-text">29. Who is sometimes in the garden?</p>
-                        <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" value="A" data-question-id="29"><span class="option-control"></span><span class="mc-option-text">A. The father</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" value="B" data-question-id="29"><span class="option-control"></span><span class="mc-option-text">B. A worker</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" value="C" data-question-id="29"><span class="option-control"></span><span class="mc-option-text">C. The writer</span></label></div>
-                        </div>
-                    </div>
-                     <div class="mc-question">
-                        <p class="mc-question-text">30. How does the writer feel after the visit?</p>
-                        <div class="mc-options-container">
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" value="A" data-question-id="30"><span class="option-control"></span><span class="mc-option-text">A. Tired</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" value="B" data-question-id="30"><span class="option-control"></span><span class="mc-option-text">B. Sad</span></label></div>
-                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" value="C" data-question-id="30"><span class="option-control"></span><span class="mc-option-text">C. Happy</span></label></div>
-                        </div>
+                    <div style="margin-bottom: var(--space-6);">
+                        <h4>A Visit to the City Farm</h4>
+                        <p>Every Sunday morning, my family goes to the city farm. The farm is not big, but it has lots of interesting animals. It is near our home.</p>
+                        <p>First, we go to see the sheep. The sheep are white and make a soft noise. I like to watch the small lambs. They are very cute.</p>
+                        <p>Next, we go to the chicken house. My father likes the chickens. They are brown and red, and they look for food in the grass. We can see the fresh eggs in a basket.</p>
+                        <p>After that, we go to the garden. The farm has a garden with many flowers and plants. My mother likes the red and yellow flowers. Sometimes, a worker is in the garden.</p>
+                        <p>Finally, we go home at 1 pm. We always have a nice time. I am happy after our visit to the city farm.</p>
                     </div>
 
-                    <h3 style="margin-top: 2rem;">Questions 31-40</h3>
-                    <h2 class="rubric">Complete the sentences about the city farm. Write ONE WORD from the text for each answer.</h2>
+                    <div class="mc-question" data-question-number="21">
+                        <div class="mc-question-header"><p class="mc-question-text">21. When does the family go to the city farm?</p></div>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><input type="radio" id="q21-a" name="q21" value="A"><label for="q21-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. Every day</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q21-b" name="q21" value="B"><label for="q21-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. Every Saturday</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q21-c" name="q21" value="C"><label for="q21-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. Every Sunday</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="22">
+                        <div class="mc-question-header"><p class="mc-question-text">22. The text says the farm is...</p></div>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><input type="radio" id="q22-a" name="q22" value="A"><label for="q22-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. far from their home.</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q22-b" name="q22" value="B"><label for="q22-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. not very big.</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q22-c" name="q22" value="C"><label for="q22-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. very noisy.</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="23">
+                        <div class="mc-question-header"><p class="mc-question-text">23. The writer thinks the lambs are...</p></div>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><input type="radio" id="q23-a" name="q23" value="A"><label for="q23-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. very small.</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q23-b" name="q23" value="B"><label for="q23-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. very cute.</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q23-c" name="q23" value="C"><label for="q23-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. very white.</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="24">
+                        <div class="mc-question-header"><p class="mc-question-text">24. Who in the family likes the chickens?</p></div>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><input type="radio" id="q24-a" name="q24" value="A"><label for="q24-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. The writer</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q24-b" name="q24" value="B"><label for="q24-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. The mother</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q24-c" name="q24" value="C"><label for="q24-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. The father</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="25">
+                        <div class="mc-question-header"><p class="mc-question-text">25. Where can they see the eggs?</p></div>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><input type="radio" id="q25-a" name="q25" value="A"><label for="q25-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. In the grass</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q25-b" name="q25" value="B"><label for="q25-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. In a basket</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q25-c" name="q25" value="C"><label for="q25-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. In the garden</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="26">
+                        <div class="mc-question-header"><p class="mc-question-text">26. What does the mother like at the farm?</p></div>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><input type="radio" id="q26-a" name="q26" value="A"><label for="q26-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. The sheep</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q26-b" name="q26" value="B"><label for="q26-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. The eggs</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q26-c" name="q26" value="C"><label for="q26-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. The flowers</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="27">
+                        <div class="mc-question-header"><p class="mc-question-text">27. What time do they go home?</p></div>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><input type="radio" id="q27-a" name="q27" value="A"><label for="q27-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. In the morning</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q27-b" name="q27" value="B"><label for="q27-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. At one o'clock</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q27-c" name="q27" value="C"><label for="q27-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. In the evening</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="28">
+                        <div class="mc-question-header"><p class="mc-question-text">28. The family has a __________ time at the farm.</p></div>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><input type="radio" id="q28-a" name="q28" value="A"><label for="q28-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. nice</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q28-b" name="q28" value="B"><label for="q28-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. long</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q28-c" name="q28" value="C"><label for="q28-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. quiet</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="29">
+                        <div class="mc-question-header"><p class="mc-question-text">29. Who is sometimes in the garden?</p></div>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><input type="radio" id="q29-a" name="q29" value="A"><label for="q29-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. The father</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q29-b" name="q29" value="B"><label for="q29-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. A worker</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q29-c" name="q29" value="C"><label for="q29-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. The writer</span></label></div>
+                        </div>
+                    </div>
+                    <div class="mc-question" data-question-number="30">
+                        <div class="mc-question-header"><p class="mc-question-text">30. How does the writer feel after the visit?</p></div>
+                        <div class="mc-options-container">
+                            <div class="mc-option-item"><input type="radio" id="q30-a" name="q30" value="A"><label for="q30-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. Tired</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q30-b" name="q30" value="B"><label for="q30-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. Sad</span></label></div>
+                            <div class="mc-option-item"><input type="radio" id="q30-c" name="q30" value="C"><label for="q30-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. Happy</span></label></div>
+                        </div>
+                    </div>
 
-                    <div class="mc-question">
-                        <p class="mc-question-text">31. The city farm is near the writer's __________.</p>
-                        <input type="text" data-question-id="31">
+                    <div class="mc-question" data-question-number="31">
+                        <div class="mc-question-header"><label for="q31-input" class="mc-question-text">31. The city farm is near the writer's __________.</label></div>
+                        <input type="text" id="q31-input" data-question-number="31">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">32. The farm has many interesting __________.</p>
-                        <input type="text" data-question-id="32">
+                    <div class="mc-question" data-question-number="32">
+                        <div class="mc-question-header"><label for="q32-input" class="mc-question-text">32. The farm has many interesting __________.</label></div>
+                        <input type="text" id="q32-input" data-question-number="32">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">33. The sheep are the colour __________.</p>
-                        <input type="text" data-question-id="33">
+                    <div class="mc-question" data-question-number="33">
+                        <div class="mc-question-header"><label for="q33-input" class="mc-question-text">33. The sheep are the colour __________.</label></div>
+                        <input type="text" id="q33-input" data-question-number="33">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">34. The writer likes to watch the small __________.</p>
-                        <input type="text" data-question-id="34">
+                    <div class="mc-question" data-question-number="34">
+                        <div class="mc-question-header"><label for="q34-input" class="mc-question-text">34. The writer likes to watch the small __________.</label></div>
+                        <input type="text" id="q34-input" data-question-number="34">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">35. The chickens are brown and __________.</p>
-                        <input type="text" data-question-id="35">
+                    <div class="mc-question" data-question-number="35">
+                        <div class="mc-question-header"><label for="q35-input" class="mc-question-text">35. The chickens are brown and __________.</label></div>
+                        <input type="text" id="q35-input" data-question-number="35">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">36. The chickens search for __________ in the grass.</p>
-                        <input type="text" data-question-id="36">
+                    <div class="mc-question" data-question-number="36">
+                        <div class="mc-question-header"><label for="q36-input" class="mc-question-text">36. The chickens search for __________ in the grass.</label></div>
+                        <input type="text" id="q36-input" data-question-number="36">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">37. The farm's garden has flowers and __________.</p>
-                        <input type="text" data-question-id="37">
+                    <div class="mc-question" data-question-number="37">
+                        <div class="mc-question-header"><label for="q37-input" class="mc-question-text">37. The farm's garden has flowers and __________.</label></div>
+                        <input type="text" id="q37-input" data-question-number="37">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">38. The mother likes the red and __________ flowers.</p>
-                        <input type="text" data-question-id="38">
+                    <div class="mc-question" data-question-number="38">
+                        <div class="mc-question-header"><label for="q38-input" class="mc-question-text">38. The mother likes the red and __________ flowers.</label></div>
+                        <input type="text" id="q38-input" data-question-number="38">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">39. The sheep make a __________ noise.</p>
-                        <input type="text" data-question-id="39">
+                    <div class="mc-question" data-question-number="39">
+                        <div class="mc-question-header"><label for="q39-input" class="mc-question-text">39. The sheep make a __________ noise.</label></div>
+                        <input type="text" id="q39-input" data-question-number="39">
                     </div>
-                    <div class="mc-question">
-                        <p class="mc-question-text">40. In the basket, the eggs are __________.</p>
-                        <input type="text" data-question-id="40">
+                    <div class="mc-question" data-question-number="40">
+                        <div class="mc-question-header"><label for="q40-input" class="mc-question-text">40. In the basket, the eggs are __________.</label></div>
+                        <input type="text" id="q40-input" data-question-number="40">
                     </div>
+
                 </div>
 
-                <!-- Navigation Controls -->
                 <div class="mc-slide-student-controls">
-                    <button id="prev-slide-btn" class="activity-btn secondary">Previous</button>
-                    <button id="next-slide-btn" class="activity-btn">Next</button>
+                    <button id="prev-btn" class="activity-btn secondary">Previous</button>
+                    <button id="next-btn" class="activity-btn">Next</button>
                 </div>
-            </div>
+            </section>
 
             <!-- Screen 3: Submission -->
-            <div id="submission-screen" class="screen hidden">
+            <section id="submission-screen" class="screen hidden">
                 <h1>Submission</h1>
-                <h2 class="rubric">Your test is complete. Please download your results or submit them to your instructor.</h2>
-                <div class="input-group">
-                    <label for="submission-code">Your Results Summary</label>
-                    <textarea id="submission-code" readonly></textarea>
-                </div>
+                <h2 class="rubric">Your exam is complete. Review your answers below. You can download a CSV copy for your records or submit your results directly to your instructor.</h2>
+                <textarea id="submission-code" readonly></textarea>
                 <div id="submission-controls">
                     <button id="download-csv-btn" class="activity-btn">Download Results as CSV</button>
-                    <button id="submit-instructor-btn" class="activity-btn">Submit to Instructor</button>
+                    <button id="submit-btn" class="activity-btn secondary">Submit to Instructor</button>
                 </div>
-                <div id="submission-status"></div>
-                 <div class="controls" style="margin-top: 1.5rem;">
-                    <button id="start-new-btn" class="activity-btn secondary">Start New Test</button>
-                </div>
-            </div>
+                <div id="submission-status" aria-live="polite"></div>
+            </section>
 
         </div>
     </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- CONSTANTS ---
+        const EXAM_LEVEL = 'A1';
+        const GS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuncyjolsXX1u9plOYDzujafMIROGIkOOjZsn2ko_lbhNbU1mAXZXa5iMHaEKReTPX/exec';
+        const TOTAL_TIME = 3600; // 60 minutes in seconds
 
-    // --- CONFIGURATION ---
-    const EXAM_LEVEL = 'A1';
-    const GS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuncyjolsXX1u9plOYDzujafMIROGIkOOjZsn2ko_lbhNbU1mAXZXa5iMHaEKReTPX/exec';
-    const TOTAL_QUESTIONS = 40;
-    const EXAM_DURATION_MINUTES = 60;
-    const LOCAL_STORAGE_KEY = `ieltsAppState_${EXAM_LEVEL}`;
-
-    // --- DOM ELEMENTS ---
-    const screens = {
-        id: document.getElementById('id-screen'),
-        test: document.getElementById('test-screen'),
-        submission: document.getElementById('submission-screen')
-    };
-    const studentIdInput = document.getElementById('student-id');
-    const startBtn = document.getElementById('start-btn');
-    const timerDisplay = document.getElementById('timer');
-    const levelDisplay = document.getElementById('current-level');
-    const progressBar = document.getElementById('progress-bar');
-    const progressText = document.getElementById('progress-text');
-    const passageSlides = document.querySelectorAll('.passage-slide');
-    const prevSlideBtn = document.getElementById('prev-slide-btn');
-    const nextSlideBtn = document.getElementById('next-slide-btn');
-    const submissionCodeTextarea = document.getElementById('submission-code');
-    const downloadCsvBtn = document.getElementById('download-csv-btn');
-    const submitInstructorBtn = document.getElementById('submit-instructor-btn');
-    const submissionStatus = document.getElementById('submission-status');
-    const startNewBtn = document.getElementById('start-new-btn');
-
-    // --- STATE MANAGEMENT ---
-    let timerInterval;
-    let appState = {
-        studentID: '',
-        answers: {},
-        currentSlide: 0,
-        timerEndTime: null,
-        testInProgress: false
-    };
-
-    const saveState = () => {
-        try {
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(appState));
-        } catch (e) {
-            console.error("Could not save state to localStorage:", e);
-        }
-    };
-
-    const loadState = () => {
-        const savedState = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if (savedState) {
-            appState = JSON.parse(savedState);
-            return true;
-        }
-        return false;
-    };
-    
-    const clearState = () => {
-        localStorage.removeItem(LOCAL_STORAGE_KEY);
-        appState = {
-            studentID: '',
-            answers: {},
-            currentSlide: 0,
-            timerEndTime: null,
-            testInProgress: false
+        const correctAnswers = {
+            '1': 'B', '2': 'C', '3': 'D', '4': 'E', '5': 'A', '6': 'E', '7': 'C',
+            '8': 'True', '9': 'False', '10': 'False', '11': 'True', '12': 'False', '13': 'False', '14': 'True',
+            '15': 'house', '16': 'doctor', '17': 'near', '18': 'room', '19': 'television', '20': 'grandmother',
+            '21': 'C', '22': 'B', '23': 'B', '24': 'C', '25': 'B', '26': 'C', '27': 'B', '28': 'A', '29': 'B', '30': 'C',
+            '31': 'home', '32': 'animals', '33': 'white', '34': 'lambs', '35': 'red', '36': 'food', '37': 'plants', '38': 'yellow', '39': 'soft', '40': 'fresh'
         };
-         clearInterval(timerInterval);
-    };
 
-    // --- SCREEN MANAGEMENT ---
-    const showScreen = (screenName) => {
-        Object.values(screens).forEach(screen => screen.classList.add('hidden'));
-        if (screens[screenName]) {
-            screens[screenName].classList.remove('hidden');
+        // --- DOM ELEMENTS ---
+        const screens = {
+            studentId: document.getElementById('student-id-screen'),
+            test: document.getElementById('test-screen'),
+            submission: document.getElementById('submission-screen')
+        };
+        const studentIdInput = document.getElementById('student-id');
+        const startBtn = document.getElementById('start-btn');
+        const currentLevelSpan = document.getElementById('current-level');
+        const timerSpan = document.getElementById('timer');
+        const passageSlides = document.querySelectorAll('.passage-slide');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const submissionCodeTextarea = document.getElementById('submission-code');
+        const downloadCsvBtn = document.getElementById('download-csv-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const submissionStatus = document.getElementById('submission-status');
+
+        // --- STATE VARIABLES ---
+        let studentID = '';
+        let studentAnswers = {};
+        let timerInterval = null;
+        let remainingTime = TOTAL_TIME;
+        let currentPassageIndex = 0;
+
+        // --- INITIALIZATION ---
+        function init() {
+            currentLevelSpan.textContent = `Current Level: ${EXAM_LEVEL}`;
+            loadState();
+            addEventListeners();
         }
-    };
 
-    // --- TEST LOGIC ---
-    const startTest = () => {
-        appState.studentID = studentIdInput.value.trim();
-        if (!appState.studentID) {
-            alert('Please enter a Student ID.');
-            return;
+        function addEventListeners() {
+            startBtn.addEventListener('click', startExam);
+            studentIdInput.addEventListener('input', () => {
+                startBtn.disabled = studentIdInput.value.trim() === '';
+            });
+
+            prevBtn.addEventListener('click', () => showPassage(currentPassageIndex - 1));
+            nextBtn.addEventListener('click', () => {
+                if (currentPassageIndex === passageSlides.length - 1) {
+                    goToSubmissionScreen();
+                } else {
+                    showPassage(currentPassageIndex + 1);
+                }
+            });
+
+            screens.test.addEventListener('change', handleAnswerChange);
+            screens.test.addEventListener('input', (e) => {
+                if(e.target.type === 'text') {
+                    handleAnswerChange(e);
+                }
+            });
+
+            downloadCsvBtn.addEventListener('click', downloadCSV);
+            submitBtn.addEventListener('click', submitToGoogleSheet);
         }
-        
-        if (!appState.testInProgress) {
-            appState.testInProgress = true;
-            appState.timerEndTime = Date.now() + EXAM_DURATION_MINUTES * 60 * 1000;
+
+        // --- SCREEN MANAGEMENT ---
+        function showScreen(screenId) {
+            Object.values(screens).forEach(screen => screen.classList.add('hidden'));
+            screens[screenId].classList.remove('hidden');
         }
 
-        levelDisplay.textContent = `Current Level: ${EXAM_LEVEL}`;
-        showScreen('test');
-        showSlide(appState.currentSlide);
-        startTimer();
-        saveState();
-    };
-
-    const showSlide = (index) => {
-        appState.currentSlide = index;
-        passageSlides.forEach((slide, i) => {
-            slide.classList.toggle('hidden', i !== index);
-        });
-        updateProgressBar();
-        updateNavButtons();
-        saveState();
-    };
-
-    const updateProgressBar = () => {
-        const progress = ((appState.currentSlide + 1) / passageSlides.length) * 100;
-        progressBar.style.width = `${progress}%`;
-        progressText.textContent = `Passage ${appState.currentSlide + 1} of ${passageSlides.length}`;
-    };
-
-    const updateNavButtons = () => {
-        prevSlideBtn.disabled = appState.currentSlide === 0;
-        if (appState.currentSlide === passageSlides.length - 1) {
-            nextSlideBtn.textContent = 'Go to Submission';
-        } else {
-            nextSlideBtn.textContent = 'Next';
-        }
-    };
-
-    const handleNavigation = (direction) => {
-        const newIndex = appState.currentSlide + direction;
-        if (newIndex >= 0 && newIndex < passageSlides.length) {
-            showSlide(newIndex);
-        } else if (newIndex === passageSlides.length) {
-            finishTest();
-        }
-    };
-
-    // --- TIMER LOGIC ---
-    const startTimer = () => {
-        if (timerInterval) clearInterval(timerInterval);
-        
-        timerInterval = setInterval(() => {
-            const now = Date.now();
-            const timeLeft = appState.timerEndTime - now;
-
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                timerDisplay.textContent = '00:00';
-                finishTest();
+        function startExam() {
+            const enteredID = studentIdInput.value.trim();
+            if (!enteredID) {
+                alert('Please enter a Student ID.');
                 return;
             }
 
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        }, 1000);
-    };
-
-    // --- ANSWER HANDLING ---
-    const recordAnswer = (event) => {
-        const input = event.target;
-        const questionId = input.dataset.questionId;
-        if (questionId) {
-            appState.answers[questionId] = input.value.trim();
-            saveState();
+            const savedState = JSON.parse(localStorage.getItem('examState'));
+            if (savedState && savedState.studentID !== enteredID) {
+                // New student, reset state
+                localStorage.removeItem('examState');
+                studentID = enteredID;
+                studentAnswers = {};
+                remainingTime = TOTAL_TIME;
+            } else {
+                studentID = enteredID;
+            }
+            
+            showScreen('test');
+            showPassage(0);
+            startTimer(remainingTime);
         }
-    };
 
-    const repopulateAnswers = () => {
-        studentIdInput.value = appState.studentID || '';
-        Object.keys(appState.answers).forEach(qId => {
-            const value = appState.answers[qId];
-            const inputs = document.querySelectorAll(`[data-question-id="${qId}"]`);
-            inputs.forEach(input => {
-                if (input.type === 'radio') {
-                    if (input.value === value) {
-                        input.checked = true;
-                    }
+        // --- STATE MANAGEMENT (LOCAL STORAGE) ---
+        function loadState() {
+            const savedState = JSON.parse(localStorage.getItem('examState'));
+            if (savedState) {
+                studentIdInput.value = savedState.studentID || '';
+                studentAnswers = savedState.answers || {};
+                remainingTime = savedState.remainingTime || TOTAL_TIME;
+                startBtn.disabled = studentIdInput.value.trim() === '';
+            } else {
+                startBtn.disabled = true;
+            }
+        }
+
+        function saveState() {
+            const state = {
+                studentID: studentID,
+                answers: studentAnswers,
+                remainingTime: remainingTime
+            };
+            localStorage.setItem('examState', JSON.stringify(state));
+        }
+
+        function populateAnswers() {
+            Object.keys(studentAnswers).forEach(qNum => {
+                const answer = studentAnswers[qNum];
+                const radioInputs = document.querySelectorAll(`input[type="radio"][name="q${qNum}"]`);
+                if (radioInputs.length > 0) {
+                    const inputToSelect = document.querySelector(`input[name="q${qNum}"][value="${answer}"]`);
+                    if (inputToSelect) inputToSelect.checked = true;
                 } else {
-                    input.value = value;
+                    const textOrSelectInput = document.querySelector(`[data-question-number="${qNum}"]:not(.mc-question)`);
+                    if (textOrSelectInput) textOrSelectInput.value = answer;
                 }
             });
-        });
-    };
-
-    // --- SUBMISSION LOGIC ---
-    const finishTest = () => {
-        clearInterval(timerInterval);
-        appState.testInProgress = false;
-        saveState();
-        prepareSubmission();
-        showScreen('submission');
-    };
-    
-    const prepareSubmission = () => {
-        let submissionText = `Student ID: ${appState.studentID}\nLevel: ${EXAM_LEVEL}\n\n-- Answers --\n`;
-        for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
-            const answer = appState.answers[i] || 'No Answer';
-            submissionText += `Question ${i}: ${answer}\n`;
-        }
-        submissionCodeTextarea.value = submissionText;
-    };
-
-    const downloadCSV = () => {
-        let csvContent = "data:text/csv;charset=utf-8,";
-        csvContent += "Level,QuestionNumber,StudentAnswer\r\n";
-        for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
-            const answer = appState.answers[i] || '';
-            csvContent += `${EXAM_LEVEL},${i},"${answer}"\r\n`;
         }
 
-        const encodedUri = encodeURI(csvContent);
-        const link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        const fileName = `${appState.studentID || 'student'}_IELTS_Results.csv`;
-        link.setAttribute("download", fileName);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
+        // --- TEST FUNCTIONALITY ---
+        function showPassage(index) {
+            if (index < 0 || index >= passageSlides.length) return;
 
-    const submitToGoogleSheet = async () => {
-        const data = {
-            studentID: appState.studentID,
-            level: EXAM_LEVEL,
-            answers: appState.answers
-        };
+            passageSlides[currentPassageIndex].classList.add('hidden');
+            currentPassageIndex = index;
+            passageSlides[currentPassageIndex].classList.remove('hidden');
+            
+            passageSlides[currentPassageIndex].querySelector('h3').focus();
 
-        submissionStatus.textContent = 'Submitting...';
-        submitInstructorBtn.disabled = true;
+            updateNavigationButtons();
+            updateProgressBar();
+            populateAnswers(); // Repopulate answers when switching slides
+        }
 
-        try {
-            const response = await fetch(GS_WEB_APP_URL, {
-                method: 'POST',
-                mode: 'no-cors', // Important for simple POST requests to Apps Script
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentPassageIndex === 0;
+            if (currentPassageIndex === passageSlides.length - 1) {
+                nextBtn.textContent = 'Go to Submission';
+            } else {
+                nextBtn.textContent = 'Next';
+            }
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentPassageIndex + 1) / passageSlides.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `Passage ${currentPassageIndex + 1} of ${passageSlides.length}`;
+        }
+        
+        function handleAnswerChange(event) {
+            const target = event.target;
+            const questionNumber = target.name.replace('q', '') || target.dataset.questionNumber;
+            if (questionNumber) {
+                studentAnswers[questionNumber] = target.value;
+                saveState();
+            }
+        }
+
+        // --- TIMER ---
+        function startTimer(duration) {
+            remainingTime = duration;
+            clearInterval(timerInterval); // Clear any existing timer
+            timerInterval = setInterval(() => {
+                remainingTime--;
+                timerSpan.textContent = formatTime(remainingTime);
+                
+                if (remainingTime % 5 === 0) { // Save time every 5 seconds
+                    saveState();
+                }
+
+                if (remainingTime <= 0) {
+                    clearInterval(timerInterval);
+                    goToSubmissionScreen();
+                }
+            }, 1000);
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+        }
+
+        // --- SUBMISSION ---
+        function goToSubmissionScreen() {
+            clearInterval(timerInterval);
+            remainingTime = 0;
+            saveState(); // Final save
+            showScreen('submission');
+            generateSummary();
+        }
+
+        function generateSummary() {
+            let summary = `Student ID: ${studentID}\n`;
+            summary += `Level: ${EXAM_LEVEL}\n\n`;
+            summary += '--- ANSWERS ---\n';
+            for (let i = 1; i <= Object.keys(correctAnswers).length; i++) {
+                const qNum = String(i);
+                summary += `Question ${qNum}: ${studentAnswers[qNum] || 'Not Answered'}\n`;
+            }
+            submissionCodeTextarea.value = summary;
+        }
+
+        function sanitizeStudentID(id) {
+            return id.replace(/[^a-zA-Z0-9_-]/g, '_');
+        }
+
+        function downloadCSV() {
+            const headers = ['Timestamp', 'StudentID', 'Level', ...Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b))];
+            const sortedAnswers = headers.slice(3).map(qNum => studentAnswers[qNum] || '');
+            
+            const timestamp = new Date().toISOString();
+            const row = [timestamp, studentID, EXAM_LEVEL, ...sortedAnswers];
+            
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += headers.join(",") + "\r\n";
+            csvContent += row.map(item => `"${String(item).replace(/"/g, '""')}"`).join(",") + "\r\n";
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `${sanitizeStudentID(studentID)}_IELTS_Results.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        async function submitToGoogleSheet() {
+            submitBtn.disabled = true;
+            submissionStatus.textContent = 'Submitting...';
+            submissionStatus.style.color = 'var(--primary-sage)';
+
+            const payload = {
+                studentID: studentID,
+                level: EXAM_LEVEL,
+                answers: studentAnswers,
+                correctAnswers: correctAnswers
+            };
+
+            try {
+                const response = await fetch(GS_WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    if(result.result === 'success') {
+                        submissionStatus.textContent = 'Successfully submitted!';
+                        submissionStatus.style.color = '#2E7D32';
+                        localStorage.removeItem('examState'); // Clear state on successful submission
+                    } else {
+                        throw new Error(result.error || 'Submission failed.');
+                    }
+                } else {
+                    throw new Error(`Server responded with status: ${response.status}`);
+                }
+            } catch (error) {
+                console.error('Submission Error:', error);
+                submissionStatus.textContent = `Error: Could not submit results. Please download the CSV. (${error.message})`;
+                submissionStatus.style.color = '#D32F2F';
+                submitBtn.disabled = false;
+            }
+        }
+        
+        /*
+        // --- GOOGLE APPS SCRIPT CODE (for setup in Google Sheets) ---
+        // 1. Open a Google Sheet.
+        // 2. Go to Extensions > Apps Script.
+        // 3. Paste this code and save.
+        // 4. Click Deploy > New deployment.
+        // 5. Select Type: Web app.
+        // 6. Execute as: Me.
+        // 7. Who has access: Anyone.
+        // 8. Deploy and copy the Web app URL. Paste it into the GS_WEB_APP_URL variable in the HTML file.
+
+        const SHEET_NAME = "Submissions"; // You can change this name
+
+        function doPost(e) {
+          try {
+            const data = JSON.parse(e.postData.contents);
+            const ss = SpreadsheetApp.getActiveSpreadsheet();
+            let sheet = ss.getSheetByName(SHEET_NAME);
+
+            if (!sheet) {
+              sheet = ss.insertSheet(SHEET_NAME);
+            }
+
+            const studentID = data.studentID || 'N/A';
+            const level = data.level || 'N/A';
+            const studentAnswers = data.answers || {};
+            const correctAnswers = data.correctAnswers || {};
+
+            // Get question numbers in a sorted order to ensure consistent column order
+            const questionKeys = Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b));
+
+            // Check if the header is set up. If not, create it.
+            if (sheet.getLastRow() < 2) {
+              sheet.clear(); // Clear the sheet to start fresh
+              
+              // Row 1: Headers (Questions)
+              const headers = ["Timestamp", "StudentID", "Level", ...questionKeys.map(k => `Question ${k}`)];
+              sheet.appendRow(headers);
+              
+              // Row 2: Correct Answers
+              const correctAnswersRow = ["", "", "CORRECT ANSWERS", ...questionKeys.map(key => correctAnswers[key])];
+              sheet.appendRow(correctAnswersRow);
+
+              // Style the header and answer key rows
+              sheet.getRange("1:2").setFontWeight("bold");
+              sheet.getRange("A1:C2").setBackground("#f3f3f3");
+              sheet.getRange("D2:" + sheet.getLastColumn() + "2").setBackground("#d9ead3");
+              sheet.setFrozenRows(2);
+            }
+            
+            // Get the headers from the sheet to ensure correct answer order for the student row
+            const sheetHeaders = sheet.getRange(1, 4, 1, sheet.getLastColumn() - 3).getValues()[0];
+            const studentAnswersInOrder = sheetHeaders.map(header => {
+                const qNum = header.replace('Question ', '');
+                return studentAnswers[qNum] || ""; // Add student answer or empty string if not answered
             });
             
-            // NOTE: With no-cors, we can't read the response body. 
-            // We assume success if the request doesn't throw an error.
-            submissionStatus.textContent = 'Successfully submitted!';
-            submissionStatus.style.color = 'green';
-            
-        } catch (error) {
-            console.error('Error submitting to Google Sheet:', error);
-            submissionStatus.textContent = 'Error: Could not submit. Please download CSV and send manually.';
-            submissionStatus.style.color = 'red';
-        } finally {
-            submitInstructorBtn.disabled = false;
+            // Prepare and append the student's complete row
+            const timestamp = new Date();
+            const studentRowData = [timestamp, studentID, level, ...studentAnswersInOrder];
+            sheet.appendRow(studentRowData);
+
+            return ContentService.createTextOutput(JSON.stringify({ "result": "success" })).setMimeType(ContentService.MimeType.JSON);
+          } catch (error) {
+            // Log the detailed error for debugging in Apps Script
+            Logger.log(error.toString());
+            return ContentService.createTextOutput(JSON.stringify({ "result": "error", "error": error.toString() })).setMimeType(ContentService.MimeType.JSON);
+          }
         }
-    };
+        */
 
-    // --- INITIALIZATION ---
-    const init = () => {
-        if (loadState() && appState.testInProgress) {
-            // Restore an in-progress test
-            repopulateAnswers();
-            levelDisplay.textContent = `Current Level: ${EXAM_LEVEL}`;
-            showScreen('test');
-            showSlide(appState.currentSlide);
-            startTimer();
-        } else {
-            // Start fresh
-            showScreen('id');
-        }
-
-        // --- EVENT LISTENERS ---
-        startBtn.addEventListener('click', startTest);
-        nextSlideBtn.addEventListener('click', () => handleNavigation(1));
-        prevSlideBtn.addEventListener('click', () => handleNavigation(-1));
-        downloadCsvBtn.addEventListener('click', downloadCSV);
-        submitInstructorBtn.addEventListener('click', submitToGoogleSheet);
-        
-        startNewBtn.addEventListener('click', () => {
-            if(confirm('Are you sure you want to start a new test? Your current results will be cleared.')) {
-                clearState();
-                window.location.reload();
-            }
-        });
-
-        document.getElementById('test-screen').addEventListener('change', recordAnswer);
-        document.getElementById('test-screen').addEventListener('keyup', recordAnswer);
-        studentIdInput.addEventListener('keyup', (e) => {
-            appState.studentID = e.target.value.trim();
-            saveState();
-        });
-    };
-
-    init();
-
-});
-
-/*
-// --- GOOGLE APPS SCRIPT CODE (for setup in Google Sheets) ---
-// 1. Open a Google Sheet.
-// 2. Go to Extensions > Apps Script.
-// 3. Paste this code and save.
-// 4. Click Deploy > New deployment.
-// 5. Select Type: Web app.
-// 6. Execute as: Me.
-// 7. Who has access: Anyone.
-// 8. Deploy and copy the Web app URL. Paste it into the GS_WEB_APP_URL variable in the HTML file.
-
-function doPost(e) {
-  try {
-    // Attempt to parse the incoming data
-    var data;
-    try {
-        data = JSON.parse(e.postData.contents);
-    } catch(parseError) {
-        // If parsing fails, it might be form-data from a redirect. Log and handle.
-        Logger.log("Could not parse JSON. Raw data: " + e.postData.contents);
-        // You might want to handle this case differently or just return an error.
-        return ContentService.createTextOutput(JSON.stringify({ "result": "error", "error": "Invalid JSON format" })).setMimeType(ContentService.MimeType.JSON);
-    }
-
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
-    if (!sheet) {
-      sheet = SpreadsheetApp.getActiveSpreadsheet().insertSheet("Sheet1");
-      // Create a more detailed header row
-      var headers = ["Timestamp", "StudentID", "Level"];
-      for (var i = 1; i <= 40; i++) { // Assuming a max of 40 questions for this example
-        headers.push("Q" + i);
-      }
-      sheet.appendRow(headers);
-    }
-    
-    var timestamp = new Date();
-    var studentID = data.studentID || "N/A";
-    var level = data.level || "N/A";
-    var answers = data.answers || {};
-    
-    var row = [timestamp, studentID, level];
-    // Populate answers in their respective columns
-    for (var i = 1; i <= 40; i++) {
-      row.push(answers[i] || ""); // Push empty string if answer doesn't exist
-    }
-    
-    sheet.appendRow(row);
-    
-    return ContentService.createTextOutput(JSON.stringify({ "result": "success", "studentID": studentID })).setMimeType(ContentService.MimeType.JSON);
-  
-  } catch (error) {
-    Logger.log(error.toString());
-    return ContentService.createTextOutput(JSON.stringify({ "result": "error", "error": error.toString() })).setMimeType(ContentService.MimeType.JSON);
-  }
-}
-*/
-</script>
-
+        // --- START THE APP ---
+        init();
+    });
+    </script>
 </body>
 </html>
