@@ -709,21 +709,26 @@
       .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
     }
 
-    /* --- START ADDED RULE FOR INLINE INPUTS --- */
-    /* This rule is added to fulfill the user's request for inline fill-in-the-blank inputs,
-       as the default `width: 100%` on inputs breaks the paragraph flow for this question type. */
-    .mc-question p > input[type="text"],
-    .mc-question p > select {
-        width: 18ch;
-        min-height: auto;
-        padding: 2px 6px;
-        display: inline-block;
-        vertical-align: baseline;
-        height: 1.8em;
-        margin: 0 0.25em;
-        font-size: inherit;
+    /* Inline gap-fill styling shared across activities */
+    .inline-gapfill {
+      display: grid;
+      gap: var(--space-2);
     }
-    /* --- END ADDED RULE FOR INLINE INPUTS --- */
+
+    .inline-gapfill .gap-sentence {
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .inline-gapfill input[type="text"],
+    .inline-gapfill select {
+      width: min(22ch, 100%);
+      min-height: calc(var(--target-min) * 0.6);
+      padding: 6px 10px;
+      display: inline-block;
+      vertical-align: baseline;
+      font-size: inherit;
+    }
     </style>
 </head>
 <body>
@@ -821,9 +826,9 @@
                     </div>
 
                     <h4>Questions 7-13</h4>
-                    <p>Complete the summary below. Choose ONE WORD ONLY from the text for each answer.</p>
-                    <div class="mc-question">
-                        <p>Modern research indicates that managing two languages provides several cognitive advantages. The primary task for a bilingual's brain is one of constant (7)<input type="text" data-question-number="7" aria-label="Question 7">. The brain must choose the correct word while suppressing the word from the other language, a process known as (8)<input type="text" data-question-number="8" aria-label="Question 8">. This mental workout is thought to enhance the brain's (9)<input type="text" data-question-number="9" aria-label="Question 9"> functions. Evidence for these benefits can be seen in experiments where bilinguals show superior performance on tasks requiring (10)<input type="text" data-question-number="10" aria-label="Question 10"> flexibility. This lifelong brain training may also have a (11)<input type="text" data-question-number="11" aria-label="Question 11"> effect in later life. Research suggests bilingualism helps build up a (12)<input type="text" data-question-number="12" aria-label="Question 12"> reserve, which can delay the symptoms of cognitive (13)<input type="text" data-question-number="13" aria-label="Question 13">, although it does not prevent the underlying diseases.</p>
+                    <div class="mc-question inline-gapfill" data-question-group="7-13">
+                        <p class="mc-question-text">Complete the summary below. Choose ONE WORD ONLY from the text for each answer.</p>
+                        <p class="gap-sentence">Modern research indicates that managing two languages provides several cognitive advantages. The primary task for a bilingual's brain is one of constant (7)<input type="text" data-question-number="7" aria-label="Question 7">. The brain must choose the correct word while suppressing the word from the other language, a process known as (8)<input type="text" data-question-number="8" aria-label="Question 8">. This mental workout is thought to enhance the brain's (9)<input type="text" data-question-number="9" aria-label="Question 9"> functions. Evidence for these benefits can be seen in experiments where bilinguals show superior performance on tasks requiring (10)<input type="text" data-question-number="10" aria-label="Question 10"> flexibility. This lifelong brain training may also have a (11)<input type="text" data-question-number="11" aria-label="Question 11"> effect in later life. Research suggests bilingualism helps build up a (12)<input type="text" data-question-number="12" aria-label="Question 12"> reserve, which can delay the symptoms of cognitive (13)<input type="text" data-question-number="13" aria-label="Question 13">, although it does not prevent the underlying diseases.</p>
                     </div>
                 </div>
 

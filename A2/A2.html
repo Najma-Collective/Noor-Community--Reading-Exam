@@ -706,6 +706,27 @@
       h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
       .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
     }
+
+    /* Inline gap-fill styling shared across activities */
+    .inline-gapfill {
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .inline-gapfill .gap-sentence {
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .inline-gapfill input[type="text"],
+    .inline-gapfill select {
+      width: min(22ch, 100%);
+      min-height: calc(var(--target-min) * 0.6);
+      padding: 6px 10px;
+      display: inline-block;
+      vertical-align: baseline;
+      font-size: inherit;
+    }
     </style>
 </head>
 <body>
@@ -811,14 +832,14 @@
                         </div>
 
                         <h3>Questions 8-13</h3>
-                        <p>Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
-                        <div class="mc-question" style="margin-top: var(--space-4);">
-                            <div class="input-group" data-question-number="8"><label for="q8">8. Chloe joined her new club __________ ago.</label><input type="text" id="q8"></div>
-                            <div class="input-group" data-question-number="9"><label for="q9">9. The club meets every week at the __________.</label><input type="text" id="q9"></div>
-                            <div class="input-group" data-question-number="10"><label for="q10">10. The teacher says the __________ is the most important part of photography.</label><input type="text" id="q10"></div>
-                            <div class="input-group" data-question-number="11"><label for="q11">11. Chloe says, ‘I took lots of __________ to show you.’</label><input type="text" id="q11"></div>
-                            <div class="input-group" data-question-number="12"><label for="q12">12. The other club members are very __________.</label><input type="text" id="q12"></div>
-                            <div class="input-group" data-question-number="13"><label for="q13">13. Chloe’s favourite part is __________ everyone’s photos at the end of the week.</label><input type="text" id="q13"></div>
+                        <div class="mc-question inline-gapfill" data-question-group="8-13">
+                            <p class="mc-question-text">Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
+                            <p class="gap-sentence"><strong>8.</strong> Chloe joined her new club <label for="q8" class="visually-hidden">Answer for question 8</label><input type="text" id="q8" data-question-number="8" aria-label="Question 8 answer"> ago.</p>
+                            <p class="gap-sentence"><strong>9.</strong> The club meets every week at the <label for="q9" class="visually-hidden">Answer for question 9</label><input type="text" id="q9" data-question-number="9" aria-label="Question 9 answer">.</p>
+                            <p class="gap-sentence"><strong>10.</strong> The teacher says the <label for="q10" class="visually-hidden">Answer for question 10</label><input type="text" id="q10" data-question-number="10" aria-label="Question 10 answer"> is the most important part of photography.</p>
+                            <p class="gap-sentence"><strong>11.</strong> Chloe says, “I took lots of <label for="q11" class="visually-hidden">Answer for question 11</label><input type="text" id="q11" data-question-number="11" aria-label="Question 11 answer"> to show you.”</p>
+                            <p class="gap-sentence"><strong>12.</strong> The other club members are very <label for="q12" class="visually-hidden">Answer for question 12</label><input type="text" id="q12" data-question-number="12" aria-label="Question 12 answer">.</p>
+                            <p class="gap-sentence"><strong>13.</strong> Chloe’s favourite part is <label for="q13" class="visually-hidden">Answer for question 13</label><input type="text" id="q13" data-question-number="13" aria-label="Question 13 answer"> everyone’s photos at the end of the week.</p>
                         </div>
                     </div>
 
@@ -975,10 +996,10 @@
                         </div>
                         
                         <h3>Questions 34-40</h3>
-                        <p>Complete the summary below. Write ONE WORD ONLY from the text for each answer.</p>
-                        <div class="mc-question" style="margin-top: var(--space-4);">
-                            <p class="mc-question-text" style="line-height: 2.5;">
-                                The bicycle's history began with a machine that had no <label for="q34" class="visually-hidden">question 34</label><input type="text" id="q34" data-question-number="34" style="width: 120px; display: inline-block; vertical-align: baseline;"> (34). Later, pedals were added, but the ride was very <label for="q35" class="visually-hidden">question 35</label><input type="text" id="q35" data-question-number="35" style="width: 150px; display: inline-block; vertical-align: baseline;"> (35). The "high-wheel" bicycle was fast but <label for="q36" class="visually-hidden">question 36</label><input type="text" id="q36" data-question-number="36" style="width: 120px; display: inline-block; vertical-align: baseline;"> (36). The first modern bicycle was called the "safety bicycle" in the 1880s. It used a <label for="q37" class="visually-hidden">question 37</label><input type="text" id="q37" data-question-number="37" style="width: 100px; display: inline-block; vertical-align: baseline;"> (37) to power the back wheel. The two wheels were the same <label for="q38" class="visually-hidden">question 38</label><input type="text" id="q38" data-question-number="38" style="width: 80px; display: inline-block; vertical-align: baseline;"> (38). The new <label for="q39" class="visually-hidden">question 39</label><input type="text" id="q39" data-question-number="39" style="width: 100px; display: inline-block; vertical-align: baseline;"> (39) was much safer for the rider. Because of this invention, cycling became <label for="q40" class="visually-hidden">question 40</label><input type="text" id="q40" data-question-number="40" style="width: 120px; display: inline-block; vertical-align: baseline;"> (40) all over the world.
+                        <div class="mc-question inline-gapfill" data-question-group="34-40">
+                            <p class="mc-question-text">Complete the summary below. Write ONE WORD ONLY from the text for each answer.</p>
+                            <p class="gap-sentence">
+                                The bicycle's history began with a machine that had no <label for="q34" class="visually-hidden">Answer for question 34</label><input type="text" id="q34" data-question-number="34" aria-label="Question 34 answer"> (34). Later, pedals were added, but the ride was very <label for="q35" class="visually-hidden">Answer for question 35</label><input type="text" id="q35" data-question-number="35" aria-label="Question 35 answer"> (35). The "high-wheel" bicycle was fast but <label for="q36" class="visually-hidden">Answer for question 36</label><input type="text" id="q36" data-question-number="36" aria-label="Question 36 answer"> (36). The first modern bicycle was called the "safety bicycle" in the 1880s. It used a <label for="q37" class="visually-hidden">Answer for question 37</label><input type="text" id="q37" data-question-number="37" aria-label="Question 37 answer"> (37) to power the back wheel. The two wheels were the same <label for="q38" class="visually-hidden">Answer for question 38</label><input type="text" id="q38" data-question-number="38" aria-label="Question 38 answer"> (38). The new <label for="q39" class="visually-hidden">Answer for question 39</label><input type="text" id="q39" data-question-number="39" aria-label="Question 39 answer"> (39) was much safer for the rider. Because of this invention, cycling became <label for="q40" class="visually-hidden">Answer for question 40</label><input type="text" id="q40" data-question-number="40" aria-label="Question 40 answer"> (40) all over the world.
                             </p>
                         </div>
                     </div>

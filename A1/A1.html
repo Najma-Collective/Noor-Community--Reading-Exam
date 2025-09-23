@@ -707,6 +707,27 @@
       h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
       .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
     }
+
+    /* Inline gap-fill styling shared across activities */
+    .inline-gapfill {
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .inline-gapfill .gap-sentence {
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .inline-gapfill input[type="text"],
+    .inline-gapfill select {
+      width: min(22ch, 100%);
+      min-height: calc(var(--target-min) * 0.6);
+      padding: 6px 10px;
+      display: inline-block;
+      vertical-align: baseline;
+      font-size: inherit;
+    }
     </style>
 </head>
 <body>
@@ -840,29 +861,14 @@
                         </div>
                     </div>
 
-                    <div class="mc-question" data-question-number="15">
-                        <div class="mc-question-header"><label for="q15-input" class="mc-question-text">15. Fatima lives in a small __________ with her family.</label></div>
-                        <input type="text" id="q15-input" data-question-number="15">
-                    </div>
-                    <div class="mc-question" data-question-number="16">
-                        <div class="mc-question-header"><label for="q16-input" class="mc-question-text">16. Her father works as a __________.</label></div>
-                        <input type="text" id="q16-input" data-question-number="16">
-                    </div>
-                    <div class="mc-question" data-question-number="17">
-                        <div class="mc-question-header"><label for="q17-input" class="mc-question-text">17. Fatima's school is __________ her house.</label></div>
-                        <input type="text" id="q17-input" data-question-number="17">
-                    </div>
-                    <div class="mc-question" data-question-number="18">
-                        <div class="mc-question-header"><label for="q18-input" class="mc-question-text">18. She does her homework in her __________.</label></div>
-                        <input type="text" id="q18-input" data-question-number="18">
-                    </div>
-                    <div class="mc-question" data-question-number="19">
-                        <div class="mc-question-header"><label for="q19-input" class="mc-question-text">19. After her homework, Fatima watches __________ with her family.</label></div>
-                        <input type="text" id="q19-input" data-question-number="19">
-                    </div>
-                    <div class="mc-question" data-question-number="20">
-                        <div class="mc-question-header"><label for="q20-input" class="mc-question-text">20. On the weekend, the family sometimes visits her __________.</label></div>
-                        <input type="text" id="q20-input" data-question-number="20">
+                    <div class="mc-question inline-gapfill" data-question-group="15-20">
+                        <p class="mc-question-text">Complete the sentences below. Write ONE WORD from the text for each answer.</p>
+                        <p class="gap-sentence"><strong>15.</strong> Fatima lives in a small <label for="q15-input" class="visually-hidden">Answer for question 15</label><input type="text" id="q15-input" data-question-number="15" aria-label="Question 15 answer"> with her family.</p>
+                        <p class="gap-sentence"><strong>16.</strong> Her father works as a <label for="q16-input" class="visually-hidden">Answer for question 16</label><input type="text" id="q16-input" data-question-number="16" aria-label="Question 16 answer">.</p>
+                        <p class="gap-sentence"><strong>17.</strong> Fatima's school is <label for="q17-input" class="visually-hidden">Answer for question 17</label><input type="text" id="q17-input" data-question-number="17" aria-label="Question 17 answer"> her house.</p>
+                        <p class="gap-sentence"><strong>18.</strong> She does her homework in her <label for="q18-input" class="visually-hidden">Answer for question 18</label><input type="text" id="q18-input" data-question-number="18" aria-label="Question 18 answer">.</p>
+                        <p class="gap-sentence"><strong>19.</strong> After her homework, Fatima watches <label for="q19-input" class="visually-hidden">Answer for question 19</label><input type="text" id="q19-input" data-question-number="19" aria-label="Question 19 answer"> with her family.</p>
+                        <p class="gap-sentence"><strong>20.</strong> On the weekend, the family sometimes visits her <label for="q20-input" class="visually-hidden">Answer for question 20</label><input type="text" id="q20-input" data-question-number="20" aria-label="Question 20 answer">.</p>
                     </div>
 
                 </div>
@@ -960,45 +966,18 @@
                         </div>
                     </div>
 
-                    <div class="mc-question" data-question-number="31">
-                        <div class="mc-question-header"><label for="q31-input" class="mc-question-text">31. The city farm is near the writer's __________.</label></div>
-                        <input type="text" id="q31-input" data-question-number="31">
-                    </div>
-                    <div class="mc-question" data-question-number="32">
-                        <div class="mc-question-header"><label for="q32-input" class="mc-question-text">32. The farm has many interesting __________.</label></div>
-                        <input type="text" id="q32-input" data-question-number="32">
-                    </div>
-                    <div class="mc-question" data-question-number="33">
-                        <div class="mc-question-header"><label for="q33-input" class="mc-question-text">33. The sheep are the colour __________.</label></div>
-                        <input type="text" id="q33-input" data-question-number="33">
-                    </div>
-                    <div class="mc-question" data-question-number="34">
-                        <div class="mc-question-header"><label for="q34-input" class="mc-question-text">34. The writer likes to watch the small __________.</label></div>
-                        <input type="text" id="q34-input" data-question-number="34">
-                    </div>
-                    <div class="mc-question" data-question-number="35">
-                        <div class="mc-question-header"><label for="q35-input" class="mc-question-text">35. The chickens are brown and __________.</label></div>
-                        <input type="text" id="q35-input" data-question-number="35">
-                    </div>
-                    <div class="mc-question" data-question-number="36">
-                        <div class="mc-question-header"><label for="q36-input" class="mc-question-text">36. The chickens search for __________ in the grass.</label></div>
-                        <input type="text" id="q36-input" data-question-number="36">
-                    </div>
-                    <div class="mc-question" data-question-number="37">
-                        <div class="mc-question-header"><label for="q37-input" class="mc-question-text">37. The farm's garden has flowers and __________.</label></div>
-                        <input type="text" id="q37-input" data-question-number="37">
-                    </div>
-                    <div class="mc-question" data-question-number="38">
-                        <div class="mc-question-header"><label for="q38-input" class="mc-question-text">38. The mother likes the red and __________ flowers.</label></div>
-                        <input type="text" id="q38-input" data-question-number="38">
-                    </div>
-                    <div class="mc-question" data-question-number="39">
-                        <div class="mc-question-header"><label for="q39-input" class="mc-question-text">39. The sheep make a __________ noise.</label></div>
-                        <input type="text" id="q39-input" data-question-number="39">
-                    </div>
-                    <div class="mc-question" data-question-number="40">
-                        <div class="mc-question-header"><label for="q40-input" class="mc-question-text">40. In the basket, the eggs are __________.</label></div>
-                        <input type="text" id="q40-input" data-question-number="40">
+                    <div class="mc-question inline-gapfill" data-question-group="31-40">
+                        <p class="mc-question-text">Complete the sentences below. Write ONE WORD from the text for each answer.</p>
+                        <p class="gap-sentence"><strong>31.</strong> The city farm is near the writer's <label for="q31-input" class="visually-hidden">Answer for question 31</label><input type="text" id="q31-input" data-question-number="31" aria-label="Question 31 answer">.</p>
+                        <p class="gap-sentence"><strong>32.</strong> The farm has many interesting <label for="q32-input" class="visually-hidden">Answer for question 32</label><input type="text" id="q32-input" data-question-number="32" aria-label="Question 32 answer">.</p>
+                        <p class="gap-sentence"><strong>33.</strong> The sheep are the colour <label for="q33-input" class="visually-hidden">Answer for question 33</label><input type="text" id="q33-input" data-question-number="33" aria-label="Question 33 answer">.</p>
+                        <p class="gap-sentence"><strong>34.</strong> The writer likes to watch the small <label for="q34-input" class="visually-hidden">Answer for question 34</label><input type="text" id="q34-input" data-question-number="34" aria-label="Question 34 answer">.</p>
+                        <p class="gap-sentence"><strong>35.</strong> The chickens are brown and <label for="q35-input" class="visually-hidden">Answer for question 35</label><input type="text" id="q35-input" data-question-number="35" aria-label="Question 35 answer">.</p>
+                        <p class="gap-sentence"><strong>36.</strong> The chickens search for <label for="q36-input" class="visually-hidden">Answer for question 36</label><input type="text" id="q36-input" data-question-number="36" aria-label="Question 36 answer"> in the grass.</p>
+                        <p class="gap-sentence"><strong>37.</strong> The farm's garden has flowers and <label for="q37-input" class="visually-hidden">Answer for question 37</label><input type="text" id="q37-input" data-question-number="37" aria-label="Question 37 answer">.</p>
+                        <p class="gap-sentence"><strong>38.</strong> The mother likes the red and <label for="q38-input" class="visually-hidden">Answer for question 38</label><input type="text" id="q38-input" data-question-number="38" aria-label="Question 38 answer"> flowers.</p>
+                        <p class="gap-sentence"><strong>39.</strong> The sheep make a <label for="q39-input" class="visually-hidden">Answer for question 39</label><input type="text" id="q39-input" data-question-number="39" aria-label="Question 39 answer"> noise.</p>
+                        <p class="gap-sentence"><strong>40.</strong> In the basket, the eggs are <label for="q40-input" class="visually-hidden">Answer for question 40</label><input type="text" id="q40-input" data-question-number="40" aria-label="Question 40 answer">.</p>
                     </div>
 
                 </div>
