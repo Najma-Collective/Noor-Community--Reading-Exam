@@ -715,6 +715,35 @@
       h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
       .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
     }
+
+    .inline-gap {
+      display: inline-block;
+      width: clamp(8ch, 32vw, 18ch);
+      min-height: 2.2em;
+      padding: 0.35em 0.5em;
+      margin: 0 0.3em 0.3em;
+      font: inherit;
+      line-height: 1.3;
+      vertical-align: baseline;
+    }
+
+    .inline-gap::placeholder {
+      color: color-mix(in srgb, var(--ink-muted) 55%, #fff 45%);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 600px) {
+      .test-header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: var(--space-2);
+      }
+
+      .test-header span {
+        width: 100%;
+      }
+    }
     </style>
 </head>
 <body>
@@ -821,13 +850,27 @@
                         <h3>Questions 7-13</h3>
                         <p>Complete the summary below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
                         
-                        <div class="mc-question" data-question-number="7"><div class="input-group"><label for="q7">7. The shift to remote work has major ______.</label><input type="text" id="q7" placeholder="Answer for 7"></div></div>
-                        <div class="mc-question" data-question-number="8"><div class="input-group"><label for="q8">8. For companies, a key benefit is the decrease in ______, such as office rent.</label><input type="text" id="q8" placeholder="Answer for 8"></div></div>
-                        <div class="mc-question" data-question-number="9"><div class="input-group"><label for="q9">9. They can also access a wider ______ by hiring without geographical limits.</label><input type="text" id="q9" placeholder="Answer for 9"></div></div>
-                        <div class="mc-question" data-question-number="10"><div class="input-group"><label for="q10">10. However, maintaining a strong ______ can be difficult.</label><input type="text" id="q10" placeholder="Answer for 10"></div></div>
-                        <div class="mc-question" data-question-number="11"><div class="input-group"><label for="q11">11. For employees, the main financial advantage is the reduction in ______.</label><input type="text" id="q11" placeholder="Answer for 11"></div></div>
-                        <div class="mc-question" data-question-number="12"><div class="input-group"><label for="q12">12. A potential downside is the blurring of the line between personal life and work, known as the ______.</label><input type="text" id="q12" placeholder="Answer for 12"></div></div>
-                        <div class="mc-question" data-question-number="13"><div class="input-group"><label for="q13">13. This trend is also reshaping ______, as city centres see fewer commuters.</label><input type="text" id="q13" placeholder="Answer for 13"></div></div>
+                        <div class="mc-question" data-question-number="7">
+                            <p class="mc-question-text">7. The shift to remote work has major <input type="text" id="q7" data-question-number="7" aria-label="Question 7" class="inline-gap">.</p>
+                        </div>
+                        <div class="mc-question" data-question-number="8">
+                            <p class="mc-question-text">8. For companies, a key benefit is the decrease in <input type="text" id="q8" data-question-number="8" aria-label="Question 8" class="inline-gap">, such as office rent.</p>
+                        </div>
+                        <div class="mc-question" data-question-number="9">
+                            <p class="mc-question-text">9. They can also access a wider <input type="text" id="q9" data-question-number="9" aria-label="Question 9" class="inline-gap"> by hiring without geographical limits.</p>
+                        </div>
+                        <div class="mc-question" data-question-number="10">
+                            <p class="mc-question-text">10. However, maintaining a strong <input type="text" id="q10" data-question-number="10" aria-label="Question 10" class="inline-gap"> can be difficult.</p>
+                        </div>
+                        <div class="mc-question" data-question-number="11">
+                            <p class="mc-question-text">11. For employees, the main financial advantage is the reduction in <input type="text" id="q11" data-question-number="11" aria-label="Question 11" class="inline-gap">.</p>
+                        </div>
+                        <div class="mc-question" data-question-number="12">
+                            <p class="mc-question-text">12. A potential downside is the blurring of the line between personal life and work, known as the <input type="text" id="q12" data-question-number="12" aria-label="Question 12" class="inline-gap">.</p>
+                        </div>
+                        <div class="mc-question" data-question-number="13">
+                            <p class="mc-question-text">13. This trend is also reshaping <input type="text" id="q13" data-question-number="13" aria-label="Question 13" class="inline-gap">, as city centres see fewer commuters.</p>
+                        </div>
                     </div>
 
                     <!-- Passage 2 -->
@@ -884,19 +927,37 @@
                         <h3>Questions 18-22</h3>
                         <p>Complete the table below. Choose NO MORE THAN TWO WORDS from the text for each answer.</p>
                         
-                        <div class="mc-question" data-question-number="18"><div class="input-group"><label for="q18">18. Natural Inspiration: Burrs from a ______</label><input type="text" id="q18"></div></div>
-                        <div class="mc-question" data-question-number="19"><div class="input-group"><label for="q19">19. Key Feature/Principle for Velcro: A ______ system</label><input type="text" id="q19"></div></div>
-                        <div class="mc-question" data-question-number="20"><div class="input-group"><label for="q20">20. Natural Inspiration for Eastgate Centre: ______</label><input type="text" id="q20"></div></div>
-                        <div class="mc-question" data-question-number="21"><div class="input-group"><label for="q21">21. Key Feature/Principle for Eastgate Centre: A ______ system</label><input type="text" id="q21"></div></div>
-                        <div class="mc-question" data-question-number="22"><div class="input-group"><label for="q22">22. Key Feature/Principle for Self-cleaning surfaces from lotus leaf: ______ properties</label><input type="text" id="q22"></div></div>
+                        <div class="mc-question" data-question-number="18">
+                            <p class="mc-question-text">18. Natural Inspiration: Burrs from a <input type="text" id="q18" data-question-number="18" aria-label="Question 18" class="inline-gap"></p>
+                        </div>
+                        <div class="mc-question" data-question-number="19">
+                            <p class="mc-question-text">19. Key Feature/Principle for Velcro: A <input type="text" id="q19" data-question-number="19" aria-label="Question 19" class="inline-gap"> system</p>
+                        </div>
+                        <div class="mc-question" data-question-number="20">
+                            <p class="mc-question-text">20. Natural Inspiration for Eastgate Centre: <input type="text" id="q20" data-question-number="20" aria-label="Question 20" class="inline-gap"></p>
+                        </div>
+                        <div class="mc-question" data-question-number="21">
+                            <p class="mc-question-text">21. Key Feature/Principle for Eastgate Centre: A <input type="text" id="q21" data-question-number="21" aria-label="Question 21" class="inline-gap"> system</p>
+                        </div>
+                        <div class="mc-question" data-question-number="22">
+                            <p class="mc-question-text">22. Key Feature/Principle for Self-cleaning surfaces from lotus leaf: <input type="text" id="q22" data-question-number="22" aria-label="Question 22" class="inline-gap"> properties</p>
+                        </div>
 
                         <h3>Questions 23-26</h3>
                         <p>Answer the questions below. Write NO MORE THAN THREE WORDS for each answer.</p>
 
-                        <div class="mc-question" data-question-number="23"><div class="input-group"><label for="q23">23. What is the formal name for emulating nature's designs in technology?</label><input type="text" id="q23"></div></div>
-                        <div class="mc-question" data-question-number="24"><div class="input-group"><label for="q24">24. What did George de Mestral examine under a microscope?</label><input type="text" id="q24"></div></div>
-                        <div class="mc-question" data-question-number="25"><div class="input-group"><label for="q25">25. How much energy does the Eastgate Centre's cooling system use compared to a standard one?</label><input type="text" id="q25"></div></div>
-                        <div class="mc-question" data-question-number="26"><div class="input-group"><label for="q26">26. Instead of a resource to be exploited, how does biomimicry view nature?</label><input type="text" id="q26"></div></div>
+                        <div class="mc-question" data-question-number="23">
+                            <p class="mc-question-text">23. What is the formal name for emulating nature's designs in technology? <input type="text" id="q23" data-question-number="23" aria-label="Question 23" class="inline-gap"></p>
+                        </div>
+                        <div class="mc-question" data-question-number="24">
+                            <p class="mc-question-text">24. What did George de Mestral examine under a microscope? <input type="text" id="q24" data-question-number="24" aria-label="Question 24" class="inline-gap"></p>
+                        </div>
+                        <div class="mc-question" data-question-number="25">
+                            <p class="mc-question-text">25. How much energy does the Eastgate Centre's cooling system use compared to a standard one? <input type="text" id="q25" data-question-number="25" aria-label="Question 25" class="inline-gap"></p>
+                        </div>
+                        <div class="mc-question" data-question-number="26">
+                            <p class="mc-question-text">26. Instead of a resource to be exploited, how does biomimicry view nature? <input type="text" id="q26" data-question-number="26" aria-label="Question 26" class="inline-gap"></p>
+                        </div>
                     </div>
 
                     <!-- Passage 3 -->
@@ -974,7 +1035,7 @@
                         <p>Complete the summary below. Write ONE WORD ONLY from the text for each answer.</p>
                         
                         <div class="mc-question">
-                            <p>The rise of digital communication has led to a debate about the relevance of letter writing. One view is that writing letters promotes a more (33) <input type="text" id="q33" data-question-number="33" size="15" aria-label="Answer for question 33"> style of thinking than instant messaging. The time and effort involved mean the communication is more deliberate. A physical letter also has an (34) <input type="text" id="q34" data-question-number="34" size="15" aria-label="Answer for question 34"> significance that digital forms lack; it is a (35) <input type="text" id="q35" data-question-number="35" size="15" aria-label="Answer for question 35"> object that can be treasured. The letter creates a powerful (36) <input type="text" id="q36" data-question-number="36" size="15" aria-label="Answer for question 36"> between two people, partly because it represents the sender's time and (37) <input type="text" id="q37" data-question-number="37" size="15" aria-label="Answer for question 37">. On the other hand, the (38) <input type="text" id="q38" data-question-number="38" size="15" aria-label="Answer for question 38"> of digital communication is crucial for modern life, making global contact easy and accessible. The writer suggests that instead of being in (39) <input type="text" id="q39" data-question-number="39" size="15" aria-label="Answer for question 39">, different forms of communication can be used for different purposes. The decline in the use of letters might actually raise their (40) <input type="text" id="q40" data-question-number="40" size="15" aria-label="Answer for question 40"> as a thoughtful act.</p>
+            <p>The rise of digital communication has led to a debate about the relevance of letter writing. One view is that writing letters promotes a more (33) <input type="text" id="q33" data-question-number="33" size="15" aria-label="Answer for question 33" class="inline-gap"> style of thinking than instant messaging. The time and effort involved mean the communication is more deliberate. A physical letter also has an (34) <input type="text" id="q34" data-question-number="34" size="15" aria-label="Answer for question 34" class="inline-gap"> significance that digital forms lack; it is a (35) <input type="text" id="q35" data-question-number="35" size="15" aria-label="Answer for question 35" class="inline-gap"> object that can be treasured. The letter creates a powerful (36) <input type="text" id="q36" data-question-number="36" size="15" aria-label="Answer for question 36" class="inline-gap"> between two people, partly because it represents the sender's time and (37) <input type="text" id="q37" data-question-number="37" size="15" aria-label="Answer for question 37" class="inline-gap">. On the other hand, the (38) <input type="text" id="q38" data-question-number="38" size="15" aria-label="Answer for question 38" class="inline-gap"> of digital communication is crucial for modern life, making global contact easy and accessible. The writer suggests that instead of being in (39) <input type="text" id="q39" data-question-number="39" size="15" aria-label="Answer for question 39" class="inline-gap">, different forms of communication can be used for different purposes. The decline in the use of letters might actually raise their (40) <input type="text" id="q40" data-question-number="40" size="15" aria-label="Answer for question 40" class="inline-gap"> as a thoughtful act.</p>
                         </div>
                     </div>
                 </div>

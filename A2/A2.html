@@ -706,6 +706,35 @@
       h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
       .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
     }
+
+    .inline-gap {
+      display: inline-block;
+      width: clamp(8ch, 32vw, 18ch);
+      min-height: 2.2em;
+      padding: 0.35em 0.5em;
+      margin: 0 0.3em 0.3em;
+      font: inherit;
+      line-height: 1.3;
+      vertical-align: baseline;
+    }
+
+    .inline-gap::placeholder {
+      color: color-mix(in srgb, var(--ink-muted) 55%, #fff 45%);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 600px) {
+      .test-header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: var(--space-2);
+      }
+
+      .test-header span {
+        width: 100%;
+      }
+    }
     </style>
 </head>
 <body>
@@ -813,12 +842,12 @@
                         <h3>Questions 8-13</h3>
                         <p>Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
                         <div class="mc-question" style="margin-top: var(--space-4);">
-                            <div class="input-group" data-question-number="8"><label for="q8">8. Chloe joined her new club __________ ago.</label><input type="text" id="q8"></div>
-                            <div class="input-group" data-question-number="9"><label for="q9">9. The club meets every week at the __________.</label><input type="text" id="q9"></div>
-                            <div class="input-group" data-question-number="10"><label for="q10">10. The teacher says the __________ is the most important part of photography.</label><input type="text" id="q10"></div>
-                            <div class="input-group" data-question-number="11"><label for="q11">11. Chloe says, ‘I took lots of __________ to show you.’</label><input type="text" id="q11"></div>
-                            <div class="input-group" data-question-number="12"><label for="q12">12. The other club members are very __________.</label><input type="text" id="q12"></div>
-                            <div class="input-group" data-question-number="13"><label for="q13">13. Chloe’s favourite part is __________ everyone’s photos at the end of the week.</label><input type="text" id="q13"></div>
+                            <p class="mc-question-text">8. Chloe joined her new club <input type="text" id="q8" data-question-number="8" aria-label="Question 8" class="inline-gap"> ago.</p>
+                            <p class="mc-question-text">9. The club meets every week at the <input type="text" id="q9" data-question-number="9" aria-label="Question 9" class="inline-gap">.</p>
+                            <p class="mc-question-text">10. The teacher says the <input type="text" id="q10" data-question-number="10" aria-label="Question 10" class="inline-gap"> is the most important part of photography.</p>
+                            <p class="mc-question-text">11. Chloe says, ‘I took lots of <input type="text" id="q11" data-question-number="11" aria-label="Question 11" class="inline-gap"> to show you.’</p>
+                            <p class="mc-question-text">12. The other club members are very <input type="text" id="q12" data-question-number="12" aria-label="Question 12" class="inline-gap">.</p>
+                            <p class="mc-question-text">13. Chloe’s favourite part is <input type="text" id="q13" data-question-number="13" aria-label="Question 13" class="inline-gap"> everyone’s photos at the end of the week.</p>
                         </div>
                     </div>
 

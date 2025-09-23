@@ -707,6 +707,35 @@
       h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
       .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
     }
+
+    .inline-gap {
+      display: inline-block;
+      width: clamp(8ch, 32vw, 18ch);
+      min-height: 2.2em;
+      padding: 0.35em 0.5em;
+      margin: 0 0.3em 0.3em;
+      font: inherit;
+      line-height: 1.3;
+      vertical-align: baseline;
+    }
+
+    .inline-gap::placeholder {
+      color: color-mix(in srgb, var(--ink-muted) 55%, #fff 45%);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 600px) {
+      .test-header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: var(--space-2);
+      }
+
+      .test-header span {
+        width: 100%;
+      }
+    }
     </style>
 </head>
 <body>
@@ -841,28 +870,22 @@
                     </div>
 
                     <div class="mc-question" data-question-number="15">
-                        <div class="mc-question-header"><label for="q15-input" class="mc-question-text">15. Fatima lives in a small __________ with her family.</label></div>
-                        <input type="text" id="q15-input" data-question-number="15">
+                        <p class="mc-question-text">15. Fatima lives in a small <input type="text" id="q15-input" data-question-number="15" aria-label="Question 15" class="inline-gap"> with her family.</p>
                     </div>
                     <div class="mc-question" data-question-number="16">
-                        <div class="mc-question-header"><label for="q16-input" class="mc-question-text">16. Her father works as a __________.</label></div>
-                        <input type="text" id="q16-input" data-question-number="16">
+                        <p class="mc-question-text">16. Her father works as a <input type="text" id="q16-input" data-question-number="16" aria-label="Question 16" class="inline-gap">.</p>
                     </div>
                     <div class="mc-question" data-question-number="17">
-                        <div class="mc-question-header"><label for="q17-input" class="mc-question-text">17. Fatima's school is __________ her house.</label></div>
-                        <input type="text" id="q17-input" data-question-number="17">
+                        <p class="mc-question-text">17. Fatima's school is <input type="text" id="q17-input" data-question-number="17" aria-label="Question 17" class="inline-gap"> her house.</p>
                     </div>
                     <div class="mc-question" data-question-number="18">
-                        <div class="mc-question-header"><label for="q18-input" class="mc-question-text">18. She does her homework in her __________.</label></div>
-                        <input type="text" id="q18-input" data-question-number="18">
+                        <p class="mc-question-text">18. She does her homework in her <input type="text" id="q18-input" data-question-number="18" aria-label="Question 18" class="inline-gap">.</p>
                     </div>
                     <div class="mc-question" data-question-number="19">
-                        <div class="mc-question-header"><label for="q19-input" class="mc-question-text">19. After her homework, Fatima watches __________ with her family.</label></div>
-                        <input type="text" id="q19-input" data-question-number="19">
+                        <p class="mc-question-text">19. After her homework, Fatima watches <input type="text" id="q19-input" data-question-number="19" aria-label="Question 19" class="inline-gap"> with her family.</p>
                     </div>
                     <div class="mc-question" data-question-number="20">
-                        <div class="mc-question-header"><label for="q20-input" class="mc-question-text">20. On the weekend, the family sometimes visits her __________.</label></div>
-                        <input type="text" id="q20-input" data-question-number="20">
+                        <p class="mc-question-text">20. On the weekend, the family sometimes visits her <input type="text" id="q20-input" data-question-number="20" aria-label="Question 20" class="inline-gap">.</p>
                     </div>
 
                 </div>
@@ -961,44 +984,34 @@
                     </div>
 
                     <div class="mc-question" data-question-number="31">
-                        <div class="mc-question-header"><label for="q31-input" class="mc-question-text">31. The city farm is near the writer's __________.</label></div>
-                        <input type="text" id="q31-input" data-question-number="31">
+                        <p class="mc-question-text">31. The city farm is near the writer's <input type="text" id="q31-input" data-question-number="31" aria-label="Question 31" class="inline-gap">.</p>
                     </div>
                     <div class="mc-question" data-question-number="32">
-                        <div class="mc-question-header"><label for="q32-input" class="mc-question-text">32. The farm has many interesting __________.</label></div>
-                        <input type="text" id="q32-input" data-question-number="32">
+                        <p class="mc-question-text">32. The farm has many interesting <input type="text" id="q32-input" data-question-number="32" aria-label="Question 32" class="inline-gap">.</p>
                     </div>
                     <div class="mc-question" data-question-number="33">
-                        <div class="mc-question-header"><label for="q33-input" class="mc-question-text">33. The sheep are the colour __________.</label></div>
-                        <input type="text" id="q33-input" data-question-number="33">
+                        <p class="mc-question-text">33. The sheep are the colour <input type="text" id="q33-input" data-question-number="33" aria-label="Question 33" class="inline-gap">.</p>
                     </div>
                     <div class="mc-question" data-question-number="34">
-                        <div class="mc-question-header"><label for="q34-input" class="mc-question-text">34. The writer likes to watch the small __________.</label></div>
-                        <input type="text" id="q34-input" data-question-number="34">
+                        <p class="mc-question-text">34. The writer likes to watch the small <input type="text" id="q34-input" data-question-number="34" aria-label="Question 34" class="inline-gap">.</p>
                     </div>
                     <div class="mc-question" data-question-number="35">
-                        <div class="mc-question-header"><label for="q35-input" class="mc-question-text">35. The chickens are brown and __________.</label></div>
-                        <input type="text" id="q35-input" data-question-number="35">
+                        <p class="mc-question-text">35. The chickens are brown and <input type="text" id="q35-input" data-question-number="35" aria-label="Question 35" class="inline-gap">.</p>
                     </div>
                     <div class="mc-question" data-question-number="36">
-                        <div class="mc-question-header"><label for="q36-input" class="mc-question-text">36. The chickens search for __________ in the grass.</label></div>
-                        <input type="text" id="q36-input" data-question-number="36">
+                        <p class="mc-question-text">36. The chickens search for <input type="text" id="q36-input" data-question-number="36" aria-label="Question 36" class="inline-gap"> in the grass.</p>
                     </div>
                     <div class="mc-question" data-question-number="37">
-                        <div class="mc-question-header"><label for="q37-input" class="mc-question-text">37. The farm's garden has flowers and __________.</label></div>
-                        <input type="text" id="q37-input" data-question-number="37">
+                        <p class="mc-question-text">37. The farm's garden has flowers and <input type="text" id="q37-input" data-question-number="37" aria-label="Question 37" class="inline-gap">.</p>
                     </div>
                     <div class="mc-question" data-question-number="38">
-                        <div class="mc-question-header"><label for="q38-input" class="mc-question-text">38. The mother likes the red and __________ flowers.</label></div>
-                        <input type="text" id="q38-input" data-question-number="38">
+                        <p class="mc-question-text">38. The mother likes the red and <input type="text" id="q38-input" data-question-number="38" aria-label="Question 38" class="inline-gap"> flowers.</p>
                     </div>
                     <div class="mc-question" data-question-number="39">
-                        <div class="mc-question-header"><label for="q39-input" class="mc-question-text">39. The sheep make a __________ noise.</label></div>
-                        <input type="text" id="q39-input" data-question-number="39">
+                        <p class="mc-question-text">39. The sheep make a <input type="text" id="q39-input" data-question-number="39" aria-label="Question 39" class="inline-gap"> noise.</p>
                     </div>
                     <div class="mc-question" data-question-number="40">
-                        <div class="mc-question-header"><label for="q40-input" class="mc-question-text">40. In the basket, the eggs are __________.</label></div>
-                        <input type="text" id="q40-input" data-question-number="40">
+                        <p class="mc-question-text">40. In the basket, the eggs are <input type="text" id="q40-input" data-question-number="40" aria-label="Question 40" class="inline-gap">.</p>
                     </div>
 
                 </div>

@@ -712,16 +712,43 @@
     /* --- START ADDED RULE FOR INLINE INPUTS --- */
     /* This rule is added to fulfill the user's request for inline fill-in-the-blank inputs,
        as the default `width: 100%` on inputs breaks the paragraph flow for this question type. */
-    .mc-question p > input[type="text"],
+    .inline-gap {
+        display: inline-block;
+        width: clamp(8ch, 32vw, 18ch);
+        min-height: 2.2em;
+        padding: 0.35em 0.5em;
+        margin: 0 0.3em 0.3em;
+        font: inherit;
+        line-height: 1.3;
+        vertical-align: baseline;
+    }
+
+    .inline-gap::placeholder {
+        color: color-mix(in srgb, var(--ink-muted) 55%, #fff 45%);
+        opacity: 0.9;
+    }
+
     .mc-question p > select {
-        width: 18ch;
-        min-height: auto;
-        padding: 2px 6px;
+        width: clamp(10ch, 36vw, 20ch);
+        min-height: 2.2em;
+        padding: 0.35em 0.5em;
         display: inline-block;
         vertical-align: baseline;
-        height: 1.8em;
-        margin: 0 0.25em;
-        font-size: inherit;
+        margin: 0 0.3em 0.3em;
+        font: inherit;
+    }
+
+    @media (max-width: 600px) {
+      .test-header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: var(--space-2);
+      }
+
+      .test-header span {
+        width: 100%;
+      }
     }
     /* --- END ADDED RULE FOR INLINE INPUTS --- */
     </style>
@@ -823,7 +850,7 @@
                     <h4>Questions 7-13</h4>
                     <p>Complete the summary below. Choose ONE WORD ONLY from the text for each answer.</p>
                     <div class="mc-question">
-                        <p>Modern research indicates that managing two languages provides several cognitive advantages. The primary task for a bilingual's brain is one of constant (7)<input type="text" data-question-number="7" aria-label="Question 7">. The brain must choose the correct word while suppressing the word from the other language, a process known as (8)<input type="text" data-question-number="8" aria-label="Question 8">. This mental workout is thought to enhance the brain's (9)<input type="text" data-question-number="9" aria-label="Question 9"> functions. Evidence for these benefits can be seen in experiments where bilinguals show superior performance on tasks requiring (10)<input type="text" data-question-number="10" aria-label="Question 10"> flexibility. This lifelong brain training may also have a (11)<input type="text" data-question-number="11" aria-label="Question 11"> effect in later life. Research suggests bilingualism helps build up a (12)<input type="text" data-question-number="12" aria-label="Question 12"> reserve, which can delay the symptoms of cognitive (13)<input type="text" data-question-number="13" aria-label="Question 13">, although it does not prevent the underlying diseases.</p>
+                        <p>Modern research indicates that managing two languages provides several cognitive advantages. The primary task for a bilingual's brain is one of constant (7)<input type="text" data-question-number="7" aria-label="Question 7" class="inline-gap">. The brain must choose the correct word while suppressing the word from the other language, a process known as (8)<input type="text" data-question-number="8" aria-label="Question 8" class="inline-gap">. This mental workout is thought to enhance the brain's (9)<input type="text" data-question-number="9" aria-label="Question 9" class="inline-gap"> functions. Evidence for these benefits can be seen in experiments where bilinguals show superior performance on tasks requiring (10)<input type="text" data-question-number="10" aria-label="Question 10" class="inline-gap"> flexibility. This lifelong brain training may also have a (11)<input type="text" data-question-number="11" aria-label="Question 11" class="inline-gap"> effect in later life. Research suggests bilingualism helps build up a (12)<input type="text" data-question-number="12" aria-label="Question 12" class="inline-gap"> reserve, which can delay the symptoms of cognitive (13)<input type="text" data-question-number="13" aria-label="Question 13" class="inline-gap">, although it does not prevent the underlying diseases.</p>
                     </div>
                 </div>
 
@@ -896,10 +923,10 @@
                     <h4>Questions 23-26</h4>
                     <p>Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
                     <div class="mc-question">
-                        <p>23. The open data movement is based on the ideals of transparency, innovation, and <input type="text" data-question-number="23" aria-label="Question 23">.</p>
-                        <p>24. Open data can fuel economic growth by enabling the development of <input type="text" data-question-number="24" aria-label="Question 24">.</p>
-                        <p>25. There is concern that releasing personal data could lead to the <input type="text" data-question-number="25" aria-label="Question 25"> of individuals.</p>
-                        <p>26. To be useful, open data requires not just legal access but also investment in <input type="text" data-question-number="26" aria-label="Question 26"> and documentation.</p>
+                        <p>23. The open data movement is based on the ideals of transparency, innovation, and <input type="text" data-question-number="23" aria-label="Question 23" class="inline-gap">.</p>
+                        <p>24. Open data can fuel economic growth by enabling the development of <input type="text" data-question-number="24" aria-label="Question 24" class="inline-gap">.</p>
+                        <p>25. There is concern that releasing personal data could lead to the <input type="text" data-question-number="25" aria-label="Question 25" class="inline-gap"> of individuals.</p>
+                        <p>26. To be useful, open data requires not just legal access but also investment in <input type="text" data-question-number="26" aria-label="Question 26" class="inline-gap"> and documentation.</p>
                     </div>
                 </div>
 
