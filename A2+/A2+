@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End of Year Exam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&family=Questrial&display=swap" rel="stylesheet">
+    <style>
+    /* =====================================================================
+       Organic Sage UI — Mobile-first, stable, and soothing
+       Palette preserved; accessibility + mobile ergonomics improved.
+       ===================================================================== */
+
+    /* -------------------------------
+       Design tokens
+    ----------------------------------*/
+    :root {
+      /* Core palette (yours, kept) */
+      --primary-sage: #7A8471;
+      --secondary-sage: #9CAF88;
+      --tertiary-sage: #B8C5A6;
+      --warm-cream: #F8F6F0;
+      --soft-white: #FEFCF7;
+      --forest-shadow: #5A6B52;
+      --border-sage: rgba(122, 132, 113, 0.20);
+      --hover-sage: rgba(156, 175, 136, 0.15);
+
+      /* Extended palette for depth */
+      --deep-forest: #3E4A3A;
+      --moss: #6E7A67;
+      --fern: #8FA081;
+      --dried-clay: #D9CDB4;
+      --amber: #C6AA77;
+      --ink: #2F3A2B;
+      --ink-muted: #5A6B52;
+
+      /* Typography */
+      --font-display: 'Questrial', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+      /* Fluid typography scale */
+      --step--1: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
+      --step-0:  clamp(1rem,     0.96rem + 0.22vw, 1.1rem);
+      --step-1:  clamp(1.125rem, 1.07rem + 0.35vw, 1.3rem);
+      --step-2:  clamp(1.375rem, 1.28rem + 0.55vw, 1.6rem);
+      --step-3:  clamp(1.75rem,  1.58rem + 0.95vw, 2.1rem);
+      --step-4:  clamp(2.25rem,  1.98rem + 1.35vw, 2.7rem);
+
+      /* Rhythm */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-7: 2rem;
+      --space-8: 2.5rem;
+      --space-9: 3rem;
+
+      /* Shape + elevation */
+      --radius-sm: 10px;
+      --radius: 16px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+
+      --shadow-1: 0 1px 2px rgba(34, 41, 32, 0.05), 0 2px 8px rgba(34, 41, 32, 0.06);
+      --shadow-2: 0 4px 18px rgba(34, 41, 32, 0.08), 0 12px 28px rgba(34, 41, 32, 0.06);
+      --shadow-3: 0 10px 40px rgba(34, 41, 32, 0.10), 0 20px 60px rgba(34, 41, 32, 0.08);
+
+      /* Focus ring (AA contrast on cream/white) */
+      --ring: 0 0 0 3px color-mix(in oklab, var(--soft-white) 60%, transparent), 0 0 0 5px color-mix(in srgb, var(--secondary-sage), #2F3A2B 15%);
+
+      /* Motion */
+      --ease-ambient: cubic-bezier(.2,.8,.2,1);
+      --dur-1: 120ms;
+      --dur-2: 200ms;
+      --dur-3: 320ms;
+
+      /* Mobile-safe touch target */
+      --target-min: 44px;
+
+      /* Container max */
+      --container-max: 900px;
+    }
+
+    /* -------------------------------
+       Global reset / mobile stability
+    ----------------------------------*/
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%; /* iOS font scaling fix */
+      text-size-adjust: 100%;
+      hanging-punctuation: first last;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100dvh; /* mobile address bar safe */
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      line-height: 1.6;
+      color: var(--forest-shadow);
+      background:
+        radial-gradient(1200px 1200px at -10% -10%, #FFFFFF 0%, transparent 50%),
+        radial-gradient(1200px 1000px at 110% 10%, #FFF8F0 0%, transparent 50%),
+        linear-gradient(135deg, #F8F6F0 0%, #F5F3ED 100%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    /* Better text wrapping on small screens */
+    :where(p, h1, h2, h3, h4, h5, h6) {
+      text-wrap: pretty;
+      overflow-wrap: anywhere;
+    }
+
+    /* Media defaults */
+    img, svg, video, canvas, audio, iframe {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Links */
+    a { color: var(--primary-sage); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    a:hover { color: var(--deep-forest); }
+
+    /* Utility: hide but readable for screen readers */
+    .visually-hidden {
+      position: absolute !important;
+      height: 1px; width: 1px;
+      overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
+    }
+
+    /* -------------------------------
+       App shell
+    ----------------------------------*/
+    #app-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: max(var(--space-7), env(safe-area-inset-top)) var(--space-4) var(--space-7);
+      width: 100%;
+      min-height: 100dvh;
+      background:
+        radial-gradient(800px 600px at 20% 0%, rgba(156,175,136,0.08) 0%, transparent 70%),
+        radial-gradient(700px 500px at 80% 100%, rgba(90,107,82,0.06) 0%, transparent 65%);
+    }
+
+    /* Container gets subtle translucency on capable browsers */
+    #activity-container {
+      width: 100%;
+      max-width: var(--container-max);
+      background: color-mix(in srgb, var(--soft-white) 88%, white 12%);
+      padding: clamp(24px, 3.2vw, 48px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(122, 132, 113, 0.12);
+      box-shadow: var(--shadow-2);
+      position: relative;
+      isolation: isolate;
+      container-type: inline-size; /* enables container queries where supported */
+    }
+
+    @supports (backdrop-filter: blur(6px)) {
+      #activity-container {
+        background: color-mix(in srgb, var(--soft-white) 76%, white 24%);
+        backdrop-filter: blur(6px) saturate(1.02);
+      }
+    }
+
+    /* Decorative organic edge glow (soft + subtle) */
+    #activity-container::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(1200px 200px at 50% -5%, rgba(156,175,136,0.12), transparent 60%),
+        radial-gradient(800px 1000px at 50% 110%, rgba(122,132,113,0.08), transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Hide screens when needed */
+    .screen.hidden { display: none !important; }
+
+    /* -------------------------------
+       Headings / text
+    ----------------------------------*/
+    h1 {
+      font-family: var(--font-display);
+      font-size: var(--step-4);
+      letter-spacing: 0.2px;
+      color: var(--forest-shadow);
+      margin: 0 0 var(--space-2) 0;
+      text-align: center;
+    }
+
+    h2.rubric {
+      font-family: var(--font-body);
+      font-size: var(--step-0);
+      font-weight: 500;
+      color: var(--secondary-sage);
+      margin: 0 0 var(--space-6) 0;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: var(--step-2);
+      color: var(--forest-shadow);
+      margin: var(--space-6) 0 var(--space-3) 0;
+    }
+
+    /* -------------------------------
+       Buttons
+    ----------------------------------*/
+    .activity-btn {
+      min-height: var(--target-min);
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--primary-sage);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 92%, white 8%), var(--primary-sage));
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      transition: transform var(--dur-1) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), opacity var(--dur-1) var(--ease-ambient);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 8px 16px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:hover {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 92%, white 8%), var(--forest-shadow));
+      transform: translateY(-1px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 10px 20px rgba(90, 107, 82, 0.22);
+    }
+
+    .activity-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset, 0 4px 10px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:focus-visible {
+      outline: none;
+      box-shadow: var(--ring), 0 8px 16px rgba(90, 107, 82, 0.20);
+    }
+
+    .activity-btn:disabled,
+    .activity-btn[disabled] {
+      background: var(--tertiary-sage);
+      border-color: var(--tertiary-sage);
+      color: color-mix(in srgb, #fff 70%, var(--soft-white) 30%);
+      cursor: not-allowed;
+      opacity: 0.8;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Secondary variant */
+    .activity-btn.secondary {
+      background: transparent;
+      color: var(--primary-sage);
+      border-color: color-mix(in srgb, var(--tertiary-sage) 70%, var(--primary-sage) 30%);
+      box-shadow: none;
+    }
+
+    .activity-btn.secondary:hover { background-color: var(--hover-sage); }
+
+    .activity-btn.secondary:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    /* Button group alignment on small screens */
+    .controls {
+      margin-top: var(--space-7);
+      text-align: center;
+      display: grid;
+      gap: var(--space-3);
+      grid-auto-flow: row;
+    }
+
+    /* -------------------------------
+       Forms / inputs
+    ----------------------------------*/
+    .input-group { margin: var(--space-6) 0; }
+
+    .input-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+      color: var(--primary-sage);
+      letter-spacing: 0.2px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      min-height: var(--target-min);
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--tertiary-sage);
+      background: #fff;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      color: var(--ink);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color var(--dur-2) var(--ease-ambient), box-shadow var(--dur-2) var(--ease-ambient), background var(--dur-2) var(--ease-ambient);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: color-mix(in srgb, var(--ink-muted) 60%, #fff 40%);
+      opacity: 0.9;
+    }
+
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: none;
+      border-color: var(--secondary-sage);
+      box-shadow: var(--ring);
+      background: color-mix(in srgb, #fff 92%, var(--warm-cream) 8%);
+    }
+
+    input:disabled,
+    textarea:disabled,
+    select:disabled {
+      background: color-mix(in srgb, #fff 85%, var(--warm-cream) 15%);
+      color: var(--ink-muted);
+      cursor: not-allowed;
+    }
+
+    /* Date input caret/tap stability on iOS */
+    input[type="date"] {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Textareas */
+    textarea {
+      resize: vertical;
+    }
+
+    /* Accent color for native radios/checkboxes (fallback when custom not active) */
+    :root { accent-color: var(--primary-sage); }
+
+    /* -------------------------------
+       System Check Screen
+    ----------------------------------*/
+    .system-check-step { margin-bottom: var(--space-7); }
+
+    #code-display-area {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+      flex-wrap: wrap; /* safer on mobile */
+    }
+
+    #generated-code {
+      width: 100%;
+      min-height: 100px;
+      height: 120px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--tertiary-sage);
+      background: #fff;
+      color: var(--ink);
+    }
+
+    #paste-target { margin-top: var(--space-3); }
+
+    #paste-success-msg {
+      color: #2E7D32;
+      font-weight: 800;
+      margin-top: var(--space-2);
+    }
+
+    /* -------------------------------
+       Test Screen
+    ----------------------------------*/
+    .test-header {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      font-weight: 700;
+    }
+
+    #current-level { color: var(--secondary-sage); }
+    #timer { font-size: 1.1rem; color: var(--primary-sage); }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 10px;
+      background-color: var(--border-sage);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary-sage), color-mix(in srgb, var(--secondary-sage) 60%, var(--primary-sage) 40%));
+      transition: width var(--dur-3) var(--ease-ambient);
+    }
+
+    #progress-text {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--secondary-sage);
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-6);
+    }
+    
+    .passage-slide.hidden { display: none; }
+
+    .mc-question {
+      padding: 20px;
+      border: 1px solid var(--border-sage);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, #ffffff 92%, var(--warm-cream) 8%));
+      box-shadow: var(--shadow-1);
+      margin-bottom: var(--space-4);
+    }
+
+    .mc-question-header { margin-bottom: var(--space-4); }
+
+    .mc-question-text {
+      font-weight: 800;
+      font-size: var(--step-1);
+      color: var(--forest-shadow);
+      line-height: 1.45;
+    }
+
+    /* Options */
+    .mc-options-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .mc-option-item input { display: none; }
+
+    .mc-option-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: background-color var(--dur-2) var(--ease-ambient), border-color var(--dur-2) var(--ease-ambient), transform var(--dur-1) var(--ease-ambient);
+      -webkit-tap-highlight-color: transparent;
+      background: #fff;
+    }
+
+    .mc-option-label:hover { background-color: var(--hover-sage); }
+
+    .mc-option-item .option-control {
+      flex-shrink: 0;
+      inline-size: 24px;
+      block-size: 24px;
+      border: 2px solid var(--tertiary-sage);
+      background-color: var(--soft-white);
+      transition: all var(--dur-2) var(--ease-ambient);
+      position: relative;
+      border-radius: 50%;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    .mc-option-item input[type="radio"]:checked + .option-control { border-color: var(--primary-sage); }
+
+    .mc-option-item input[type="radio"]:checked + .option-control::after {
+      content: '';
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: var(--primary-sage);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset;
+    }
+
+    .mc-option-text {
+      color: var(--primary-sage);
+      line-height: 1.4;
+      font-size: 1rem;
+    }
+
+    .mc-option-item input[type="radio"]:focus-visible + .option-control,
+    .mc-option-label:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    /* Slide controls */
+    .mc-slide-student-controls {
+      margin-top: var(--space-7);
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    /* -------------------------------
+       Submission Screen
+    ----------------------------------*/
+    .submission-steps { margin-top: var(--space-7); }
+
+    #submission-code {
+      width: 100%;
+      height: 260px;
+      box-sizing: border-box;
+      margin: var(--space-3) 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 0.95rem;
+      padding: 12px 14px;
+      border: 1px solid var(--tertiary-sage);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+    }
+    
+    #submission-controls {
+        display: grid;
+        gap: var(--space-3);
+        grid-auto-flow: row;
+        margin-top: var(--space-4);
+    }
+
+    #copy-submission-btn { margin-bottom: var(--space-6); }
+    
+    #submission-status {
+        margin-top: var(--space-4);
+        font-weight: 700;
+        text-align: center;
+    }
+
+    /* -------------------------------
+       Responsive / container queries
+    ----------------------------------*/
+    @media (max-width: 360px) {
+      #activity-container { padding: 18px; }
+      .activity-btn { padding-inline: 14px; }
+    }
+
+    @media (min-width: 768px) {
+      #app-wrapper { padding-inline: var(--space-7); }
+      .controls { grid-auto-flow: column; justify-content: center; }
+      #submission-controls { grid-auto-flow: column; justify-content: center; }
+      .test-header { grid-template-columns: 1fr auto auto; }
+    }
+
+    @media (min-width: 1024px) {
+      #activity-container { box-shadow: var(--shadow-3); }
+      h1 { letter-spacing: 0.3px; }
+    }
+
+    @container (min-width: 520px) {
+      .mc-question { padding: 24px; }
+      .mc-option-label { padding: 14px; }
+    }
+
+    @container (min-width: 760px) {
+      h1 { font-size: clamp(2rem, 2.2vw + 1rem, 2.75rem); }
+      .mc-question-text { font-size: clamp(1.1rem, 0.6vw + 0.9rem, 1.35rem); }
+    }
+
+    /* -------------------------------
+       Accessibility / motion / scroll
+    ----------------------------------*/
+    :focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    ::selection {
+      background: color-mix(in srgb, var(--secondary-sage) 30%, #fff 70%);
+      color: var(--deep-forest);
+    }
+
+    html, body { overscroll-behavior-y: none; }
+
+    /* -------------------------------
+       Scrollbars (subtle, optional)
+    ----------------------------------*/
+    *::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    *::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--primary-sage) 50%, var(--tertiary-sage) 50%);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* -------------------------------
+       Dark mode (gentle, earthy)
+    ----------------------------------*/
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --soft-white: #1E211C;
+        --warm-cream: #23261F;
+        --forest-shadow: #DDE6D4;
+        --ink: #E9EFE5;
+        --ink-muted: #AEB9AA;
+        --border-sage: rgba(184, 197, 166, 0.25);
+      }
+
+      html, body {
+        background:
+          radial-gradient(1100px 900px at 15% 10%, rgba(156,175,136,0.06), transparent 60%),
+          radial-gradient(900px 900px at 85% 90%, rgba(122,132,113,0.08), transparent 65%),
+          linear-gradient(135deg, #191D18 0%, #1B1E19 100%);
+      }
+
+      #activity-container {
+        background: color-mix(in srgb, #23261F 92%, #1B1E19 8%);
+        border-color: rgba(184, 197, 166, 0.18);
+        box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+      }
+
+      a { color: color-mix(in srgb, var(--secondary-sage) 80%, #C7D3C0 20%); }
+
+      .mc-question {
+        background: linear-gradient(180deg, #20241E 0%, #191D18 100%);
+        border-color: rgba(184, 197, 166, 0.20);
+        box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 10px 30px rgba(0,0,0,0.35);
+      }
+
+      .activity-btn {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--primary-sage) 80%, #0F120E 20%), var(--primary-sage));
+        box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 8px 18px rgba(0,0,0,0.35);
+      }
+
+      .activity-btn:hover {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--forest-shadow) 80%, #0F120E 20%), var(--forest-shadow));
+      }
+
+      input, textarea, select {
+        background: #141713;
+        border-color: rgba(184, 197, 166, 0.25);
+        color: var(--ink);
+      }
+
+      #progress-bar {
+        background: linear-gradient(90deg, var(--secondary-sage), color-mix(in srgb, var(--primary-sage) 70%, #000 30%));
+      }
+    }
+
+    /* -------------------------------
+       Original responsive tweaks, refined
+    ----------------------------------*/
+    @media (max-width: 767px) {
+      #app-wrapper { padding: var(--space-4); }
+      #activity-container { padding: 24px; }
+      h1 { font-size: clamp(1.75rem, 5vw, 2rem); }
+      h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
+      .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
+    }
+    </style>
+</head>
+<body>
+
+    <div id="app-wrapper">
+        <div id="activity-container">
+
+            <!-- Screen 1: Student ID -->
+            <section id="student-id-screen" class="screen">
+                <h1>End of Year Exam</h1>
+                <h2 class="rubric">Welcome! Please enter your Student ID to begin or to resume a previous session. Your progress is saved automatically.</h2>
+                <div class="input-group">
+                    <label for="student-id-input">Student ID</label>
+                    <input type="text" id="student-id-input" placeholder="Enter your ID">
+                </div>
+                <div class="controls">
+                    <button id="start-exam-btn" class="activity-btn" disabled>Next</button>
+                </div>
+            </section>
+
+            <!-- Screen 2: Test -->
+            <section id="test-screen" class="screen hidden">
+                <div class="test-header">
+                    <span id="current-level"></span>
+                    <div></div>
+                    <div id="timer" aria-live="polite">60:00</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+                <div id="progress-text"></div>
+                
+                <h2 class="rubric">Answer each question to the best of your ability. Use the 'Previous' and 'Next' buttons to navigate between passages. Your work is saved as you go.</h2>
+
+                <form id="exam-form">
+                    <div id="passages-container">
+
+                        <!-- Passage 1 -->
+                        <div class="passage-slide" data-passage-index="0">
+                            <h3>Four Online Book Reviews</h3>
+                            <p>Here’s what our readers think about this month’s popular books.</p>
+                            
+                            <h4>A. The Lighthouse Mystery by Sarah Jenkins</h4>
+                            <p>I couldn't put this book down! It's a classic detective story set in a small, isolated village. The main character, Detective Miles, is a retired police officer who has to solve the strange disappearance of the lighthouse keeper. The plot has so many twists and turns that keep you guessing. I was sure I knew who the criminal was, but the ending completely surprised me. I would highly recommend this to anyone who loves a good, page-turning mystery. - Liam</p>
+
+                            <h4>B. A Journey to the Stars by Kenichi Tanaka</h4>
+                            <p>This is a science-fiction novel about the first human mission to Mars. The author does a fantastic job of describing the technology and the challenges the astronauts face. However, for me, the story focused too much on the technical details. I felt the characters weren't very well developed, so I didn't feel an emotional connection to them or their journey. It's a good read if you are passionate about space travel, but less so if you prefer character-driven stories. - Chloe</p>
+
+                            <h4>C. Drawing for Beginners by Maria Rossi</h4>
+                            <p>I bought this book because I wanted to learn a new creative skill. It's full of easy-to-follow lessons with clear instructions and helpful pictures for each step. Last night, I followed the lesson on drawing faces, and my family was very impressed! The book also includes a great section on basic skills, like understanding light and shadow. It has given me much more confidence with a pencil. A perfect book for any new artist. - David</p>
+
+                            <h4>D. The Last Elephant by David Wilson</h4>
+                            <p>This non-fiction book is about the work of conservationists trying to protect elephants in Africa. It's a powerful and sometimes sad story about the dangers that elephants face from poaching and habitat loss. The author, a wildlife photographer, includes many of his own stunning photographs. The book is well-researched and full of facts, but it's also a very personal and emotional account. It really makes you think about our responsibility to protect these amazing animals. - Fatima</p>
+
+                            <h3>Questions 1-10</h3>
+                            <p>Look at the four book reviews, A-D. For which review are the following statements true? Write the correct letter A, B, C, or D next to each statement. You may use any letter more than once.</p>
+
+                            <div class="mc-question" data-question-number="1">
+                                <label for="q1" class="mc-question-text">1. This review is about a book that teaches a practical skill.</label>
+                                <select id="q1" name="q1"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                            </div>
+                            <div class="mc-question" data-question-number="2">
+                                <label for="q2" class="mc-question-text">2. This review mentions the writer was surprised by the story's conclusion.</label>
+                                <select id="q2" name="q2"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                            </div>
+                            <div class="mc-question" data-question-number="3">
+                                <label for="q3" class="mc-question-text">3. This review criticises the way the people in the story were written.</label>
+                                <select id="q3" name="q3"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                            </div>
+                            <div class="mc-question" data-question-number="4">
+                                <label for="q4" class="mc-question-text">4. This review is about a book containing real facts rather than a fictional story.</label>
+                                <select id="q4" name="q4"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                            </div>
+                            <div class="mc-question" data-question-number="5">
+                                <label for="q5" class="mc-question-text">5. This review says the book helped the reader feel more self-assured.</label>
+                                <select id="q5" name="q5"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                            </div>
+                            <div class="mc-question" data-question-number="6">
+                                <label for="q6" class="mc-question-text">6. This review is for a crime story.</label>
+                                <select id="q6" name="q6"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                            </div>
+                            <div class="mc-question" data-question-number="7">
+                                <label for="q7" class="mc-question-text">7. This review mentions the book includes beautiful pictures taken by the author.</label>
+                                <select id="q7" name="q7"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                            </div>
+                            <div class="mc-question" data-question-number="8">
+                                <label for="q8" class="mc-question-text">8. This review is for a book set in the future or in space.</label>
+                                <select id="q8" name="q8"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                            </div>
+                             <div class="mc-question" data-question-number="9">
+                                <label for="q9" class="mc-question-text">9. This review says the book contains lessons that are easy to follow.</label>
+                                <select id="q9" name="q9"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                            </div>
+                             <div class="mc-question" data-question-number="10">
+                                <label for="q10" class="mc-question-text">10. This review suggests the story is moving and makes the reader reflect.</label>
+                                <select id="q10" name="q10"><option value="">Select...</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                            </div>
+                        </div>
+
+                        <!-- Passage 2 -->
+                        <div class="passage-slide hidden" data-passage-index="1">
+                            <h3>The Rise of the Modern Podcast</h3>
+                            <p>In many countries around the world, listening to podcasts has become a very popular activity. In the last ten years, their number has grown enormously. But what are the reasons for this huge increase in popularity?</p>
+                            <p>Firstly, podcasts offer a huge variety of content. In the past, radio was limited to a few topics like news and music. Now, there is a podcast for almost every interest, from science and history to comedy and storytelling. This variety attracts a wide range of listeners who are looking for special, focused content.</p>
+                            <p>Secondly, they have become a perfect medium for modern life. People can listen to podcasts while doing other things, such as driving, exercising, or doing housework. Many people download episodes to their phones and listen without needing an internet connection. This makes them a popular choice for commuters, people at the gym, or anyone with a busy schedule. It is a convenient way to learn something new or be entertained.</p>
+                            <p>Finally, the quality of podcasts has become very important. There is a growing number of high-quality shows with excellent research, sound design, and skilled hosts. Many independent creators can now produce shows that are as good as those from large media companies. Listeners appreciate this and often form a strong connection with their favourite podcast hosts.</p>
+                            <p>This combination of variety, convenience, and quality has transformed the simple audio show into a central part of modern media.</p>
+
+                            <h3>Questions 11-20</h3>
+                            <p>Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
+
+                            <div class="mc-question" data-question-number="11">
+                                <label for="q11" class="mc-question-text">11. There has been a __________ in the popularity of podcasts.</label>
+                                <input type="text" id="q11" name="q11">
+                            </div>
+                             <div class="mc-question" data-question-number="12">
+                                <label for="q12" class="mc-question-text">12. Podcasts offer a wide __________ of content.</label>
+                                <input type="text" id="q12" name="q12">
+                            </div>
+                            <div class="mc-question" data-question-number="13">
+                                <label for="q13" class="mc-question-text">13. Listeners can find focused content for almost every __________.</label>
+                                <input type="text" id="q13" name="q13">
+                            </div>
+                            <div class="mc-question" data-question-number="14">
+                                <label for="q14" class="mc-question-text">14. Podcasts are a perfect __________ for modern life.</label>
+                                <input type="text" id="q14" name="q14">
+                            </div>
+                            <div class="mc-question" data-question-number="15">
+                                <label for="q15" class="mc-question-text">15. The ability to __________ is particularly useful for listeners.</label>
+                                <input type="text" id="q15" name="q15">
+                            </div>
+                            <div class="mc-question" data-question-number="16">
+                                <label for="q16" class="mc-question-text">16. Podcasts are a __________ way to learn or be entertained.</label>
+                                <input type="text" id="q16" name="q16">
+                            </div>
+                            <div class="mc-question" data-question-number="17">
+                                <label for="q17" class="mc-question-text">17. Many consumers now expect a high __________ from the shows they listen to.</label>
+                                <input type="text" id="q17" name="q17">
+                            </div>
+                            <div class="mc-question" data-question-number="18">
+                                <label for="q18" class="mc-question-text">18. Many shows now have excellent research and skilled __________.</label>
+                                <input type="text" id="q18" name="q18">
+                            </div>
+                            <div class="mc-question" data-question-number="19">
+                                <label for="q19" class="mc-question-text">19. Listeners can form a strong __________ with the hosts.</label>
+                                <input type="text" id="q19" name="q19">
+                            </div>
+                            <div class="mc-question" data-question-number="20">
+                                <label for="q20" class="mc-question-text">20. Podcasts have become a __________ part of modern media.</label>
+                                <input type="text" id="q20" name="q20">
+                            </div>
+                        </div>
+
+                        <!-- Passage 3 -->
+                        <div class="passage-slide hidden" data-passage-index="2">
+                            <h3>An Ocean of Plastic</h3>
+                            <p>The Great Pacific Garbage Patch is a huge area of plastic rubbish floating in the middle of the North Pacific Ocean. It is the largest collection of ocean plastic in the world, located between Hawaii and California. It is not a solid island of plastic that you can walk on. Instead, it is made up of billions of pieces of plastic, some large and some very small, spread over an enormous area.</p>
+                            <p>Most of the rubbish comes from land. Plastic bags, bottles, and other items are not recycled and are carried by rivers out to the sea. Other plastic, like fishing nets and equipment, is lost from boats. Sunlight and ocean waves break the larger pieces of plastic down into tiny pieces called microplastics. These microplastics are very difficult to clean up because they are so small.</p>
+                            <p>This plastic pollution is a serious problem for marine life. Sea turtles can mistake plastic bags for jellyfish, their favourite food, and eat them. Birds and fish can get caught in old fishing nets. The microplastics are also eaten by small sea creatures, which are then eaten by bigger fish. This means the plastic can enter the food chain, which is dangerous for animals and potentially for humans too.</p>
+                            <p>Scientists and environmental groups are working to find solutions. Some organisations have developed special systems to collect the larger pieces of plastic from the ocean. However, everyone agrees that the most important solution is to stop the plastic from getting into the ocean in the first place. We can all help by reducing our use of single-use plastic, such as straws and bags, and by recycling correctly.</p>
+
+                            <h3>Questions 21-28</h3>
+                            <p>Read the text and choose the correct answer, A, B, or C.</p>
+                            
+                            <div class="mc-question" data-question-number="21">
+                                <p class="mc-question-text">21. What is the main topic of the text?</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q21" value="A"><span class="option-control"></span><span class="mc-option-text">A. The life of sea turtles</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q21" value="B"><span class="option-control"></span><span class="mc-option-text">B. A large area of plastic waste in the sea</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q21" value="C"><span class="option-control"></span><span class="mc-option-text">C. How to recycle plastic bottles</span></label></div>
+                                </div>
+                            </div>
+                            <div class="mc-question" data-question-number="22">
+                                <p class="mc-question-text">22. Where is the Great Pacific Garbage Patch?</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q22" value="A"><span class="option-control"></span><span class="mc-option-text">A. In the Atlantic Ocean</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q22" value="B"><span class="option-control"></span><span class="mc-option-text">B. Between Hawaii and California</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q22" value="C"><span class="option-control"></span><span class="mc-option-text">C. Near the coast of Japan</span></label></div>
+                                </div>
+                            </div>
+                            <div class="mc-question" data-question-number="23">
+                                <p class="mc-question-text">23. The text says the garbage patch is mostly made of...</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q23" value="A"><span class="option-control"></span><span class="mc-option-text">A. one giant piece of plastic.</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q23" value="B"><span class="option-control"></span><span class="mc-option-text">B. billions of separate plastic items.</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q23" value="C"><span class="option-control"></span><span class="mc-option-text">C. old ships and boats.</span></label></div>
+                                </div>
+                            </div>
+                             <div class="mc-question" data-question-number="24">
+                                <p class="mc-question-text">24. What are microplastics?</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q24" value="A"><span class="option-control"></span><span class="mc-option-text">A. A type of fishing net</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q24" value="B"><span class="option-control"></span><span class="mc-option-text">B. Plastic that is easy to collect</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q24" value="C"><span class="option-control"></span><span class="mc-option-text">C. Very small pieces of plastic</span></label></div>
+                                </div>
+                            </div>
+                            <div class="mc-question" data-question-number="25">
+                                <p class="mc-question-text">25. Why are plastic bags dangerous for sea turtles?</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q25" value="A"><span class="option-control"></span><span class="mc-option-text">A. They look like food.</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q25" value="B"><span class="option-control"></span><span class="mc-option-text">B. They are difficult to see.</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q25" value="C"><span class="option-control"></span><span class="mc-option-text">C. They are very sharp.</span></label></div>
+                                </div>
+                            </div>
+                            <div class="mc-question" data-question-number="26">
+                                <p class="mc-question-text">26. According to the text, how does plastic enter the food chain?</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q26" value="A"><span class="option-control"></span><span class="mc-option-text">A. Birds feed plastic to their babies.</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q26" value="B"><span class="option-control"></span><span class="mc-option-text">B. Large fish eat plastic bags directly.</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q26" value="C"><span class="option-control"></span><span class="mc-option-text">C. Small creatures eat microplastics.</span></label></div>
+                                </div>
+                            </div>
+                            <div class="mc-question" data-question-number="27">
+                                <p class="mc-question-text">27. What is the most important solution mentioned in the text?</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" value="A"><span class="option-control"></span><span class="mc-option-text">A. Using special systems to clean the ocean</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" value="B"><span class="option-control"></span><span class="mc-option-text">B. Asking fishermen to be more careful</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" value="C"><span class="option-control"></span><span class="mc-option-text">C. Preventing plastic from reaching the sea</span></label></div>
+                                </div>
+                            </div>
+                            <div class="mc-question" data-question-number="28">
+                                <p class="mc-question-text">28. The text suggests that individuals can help by...</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" value="A"><span class="option-control"></span><span class="mc-option-text">A. using less single-use plastic.</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" value="B"><span class="option-control"></span><span class="mc-option-text">B. going to the beach to collect rubbish.</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" value="C"><span class="option-control"></span><span class="mc-option-text">C. studying to become a scientist.</span></label></div>
+                                </div>
+                            </div>
+
+                            <h3>Questions 29-33</h3>
+                            <p>Do the following statements agree with the information in the text? Choose:<br>TRUE = the text confirms it.<br>FALSE = the text contradicts it.<br>NOT GIVEN = the text gives no information about it.</p>
+
+                            <div class="mc-question" data-question-number="29">
+                                <p class="mc-question-text">29. The garbage patch is easy to see from a plane.</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" value="TRUE"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" value="FALSE"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                </div>
+                            </div>
+                            <div class="mc-question" data-question-number="30">
+                                <p class="mc-question-text">30. All of the rubbish in the patch comes from boats.</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" value="TRUE"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" value="FALSE"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                </div>
+                            </div>
+                            <div class="mc-question" data-question-number="31">
+                                <p class="mc-question-text">31. Sunlight helps to break down plastic into smaller pieces.</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q31" value="TRUE"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q31" value="FALSE"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q31" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                </div>
+                            </div>
+                            <div class="mc-question" data-question-number="32">
+                                <p class="mc-question-text">32. Fishing nets are not a problem for marine animals.</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q32" value="TRUE"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q32" value="FALSE"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q32" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                </div>
+                            </div>
+                            <div class="mc-question" data-question-number="33">
+                                <p class="mc-question-text">33. Scientists have already found a perfect solution to the problem.</p>
+                                <div class="mc-options-container">
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q33" value="TRUE"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q33" value="FALSE"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                    <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q33" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                </div>
+                            </div>
+
+                            <h3>Questions 34-40</h3>
+                            <p>Complete the sentences below. Write NO MORE THAN TWO WORDS from the text for each answer.</p>
+                            
+                            <div class="mc-question" data-question-number="34">
+                                <label for="q34" class="mc-question-text">34. The Great Pacific Garbage Patch is the largest collection of __________ in the world.</label>
+                                <input type="text" id="q34" name="q34">
+                            </div>
+                            <div class="mc-question" data-question-number="35">
+                                <label for="q35" class="mc-question-text">35. Plastic from land is often carried to the sea by __________.</label>
+                                <input type="text" id="q35" name="q35">
+                            </div>
+                            <div class="mc-question" data-question-number="36">
+                                <label for="q36" class="mc-question-text">36. It is very hard to clean up the tiny __________.</label>
+                                <input type="text" id="q36" name="q36">
+                            </div>
+                            <div class="mc-question" data-question-number="37">
+                                <label for="q37" class="mc-question-text">37. Plastic pollution is a __________ for marine life.</label>
+                                <input type="text" id="q37" name="q37">
+                            </div>
+                             <div class="mc-question" data-question-number="38">
+                                <label for="q38" class="mc-question-text">38. Birds and fish can get caught in old __________.</label>
+                                <input type="text" id="q38" name="q38">
+                            </div>
+                            <div class="mc-question" data-question-number="39">
+                                <label for="q39" class="mc-question-text">39. Environmental groups are trying to find __________.</label>
+                                <input type="text" id="q39" name="q39">
+                            </div>
+                            <div class="mc-question" data-question-number="40">
+                                <label for="q40" class="mc-question-text">40. The text says we can help by __________ correctly.</label>
+                                <input type="text" id="q40" name="q40">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="mc-slide-student-controls">
+                    <button id="prev-passage-btn" class="activity-btn secondary">Previous</button>
+                    <button id="next-passage-btn" class="activity-btn">Next</button>
+                </div>
+            </section>
+
+            <!-- Screen 3: Submission -->
+            <section id="submission-screen" class="screen hidden">
+                <h1>Submission</h1>
+                <h2 class="rubric">Your exam is complete. Review your answers below. You can download a CSV copy for your records or submit your results directly to your instructor.</h2>
+                <textarea id="submission-code" readonly></textarea>
+                <div id="submission-controls">
+                    <button id="download-csv-btn" class="activity-btn">Download Results as CSV</button>
+                    <button id="submit-btn" class="activity-btn secondary">Submit to Instructor</button>
+                </div>
+                <div id="submission-status" aria-live="polite"></div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- CONSTANTS ---
+        const EXAM_LEVEL = 'A2+';
+        const GS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuncyjolsXX1u9plOYDzujafMIROGIkOOjZsn2ko_lbhNbU1mAXZXa5iMHaEKReTPX/exec';
+        const TOTAL_TIME = 3600; // 60 minutes in seconds
+
+        const correctAnswers = {
+            '1': 'C', '2': 'A', '3': 'B', '4': 'D', '5': 'C', '6': 'A', '7': 'D', '8': 'B', '9': 'C', '10': 'D',
+            '11': 'huge increase', '12': 'huge variety', '13': 'interest', '14': 'perfect medium', '15': 'download episodes',
+            '16': 'convenient way', '17': 'high quality', '18': 'skilled hosts', '19': 'strong connection', '20': 'central part',
+            '21': 'B', '22': 'B', '23': 'B', '24': 'C', '25': 'A', '26': 'C', '27': 'C', '28': 'A',
+            '29': 'NOT GIVEN', '30': 'FALSE', '31': 'TRUE', '32': 'FALSE', '33': 'FALSE',
+            '34': 'ocean plastic', '35': 'rivers', '36': 'microplastics', '37': 'serious problem', '38': 'fishing nets',
+            '39': 'solutions', '40': 'recycling'
+        };
+
+        // --- DOM ELEMENTS ---
+        const screens = {
+            studentId: document.getElementById('student-id-screen'),
+            test: document.getElementById('test-screen'),
+            submission: document.getElementById('submission-screen')
+        };
+        const studentIdInput = document.getElementById('student-id-input');
+        const startExamBtn = document.getElementById('start-exam-btn');
+        const currentLevelEl = document.getElementById('current-level');
+        const timerEl = document.getElementById('timer');
+        const passagesContainer = document.getElementById('passages-container');
+        const passageSlides = document.querySelectorAll('.passage-slide');
+        const prevPassageBtn = document.getElementById('prev-passage-btn');
+        const nextPassageBtn = document.getElementById('next-passage-btn');
+        const submissionCodeEl = document.getElementById('submission-code');
+        const downloadCsvBtn = document.getElementById('download-csv-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const submissionStatusEl = document.getElementById('submission-status');
+        const examForm = document.getElementById('exam-form');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+
+        // --- STATE ---
+        let studentID = '';
+        let answers = {};
+        let remainingTime = TOTAL_TIME;
+        let timerInterval = null;
+        let currentPassageIndex = 0;
+
+        // --- FUNCTIONS ---
+
+        const showScreen = (screenName) => {
+            Object.values(screens).forEach(screen => screen.classList.add('hidden'));
+            if (screens[screenName]) {
+                screens[screenName].classList.remove('hidden');
+            }
+        };
+
+        const updateTimerDisplay = () => {
+            const minutes = Math.floor(remainingTime / 60).toString().padStart(2, '0');
+            const seconds = (remainingTime % 60).toString().padStart(2, '0');
+            timerEl.textContent = `${minutes}:${seconds}`;
+        };
+
+        const startTimer = () => {
+            if (timerInterval) clearInterval(timerInterval);
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                remainingTime--;
+                updateTimerDisplay();
+                if (remainingTime % 5 === 0) {
+                    saveState();
+                }
+                if (remainingTime <= 0) {
+                    clearInterval(timerInterval);
+                    goToSubmissionScreen();
+                }
+            }, 1000);
+        };
+
+        const saveState = () => {
+            try {
+                const state = {
+                    studentID,
+                    answers,
+                    remainingTime,
+                };
+                localStorage.setItem('examState', JSON.stringify(state));
+            } catch (e) {
+                console.error("Could not save state to localStorage:", e);
+            }
+        };
+
+        const loadState = () => {
+            try {
+                const savedState = localStorage.getItem('examState');
+                if (savedState) {
+                    const state = JSON.parse(savedState);
+                    studentIdInput.value = state.studentID || '';
+                    if (studentIdInput.value.trim() !== '') {
+                        startExamBtn.disabled = false;
+                    }
+                    // Answers and time will be restored if the same student ID is used to start the exam.
+                }
+            } catch (e) {
+                console.error("Could not load state from localStorage:", e);
+                localStorage.removeItem('examState');
+            }
+        };
+
+        const restoreSession = (state) => {
+            answers = state.answers || {};
+            remainingTime = state.remainingTime || TOTAL_TIME;
+
+            Object.entries(answers).forEach(([qNum, answer]) => {
+                const inputs = document.getElementsByName(`q${qNum}`);
+                if (inputs.length > 0) {
+                    const firstInput = inputs[0];
+                    if (firstInput.type === 'radio') {
+                        const matchingRadio = document.querySelector(`input[name="q${qNum}"][value="${answer}"]`);
+                        if (matchingRadio) matchingRadio.checked = true;
+                    } else {
+                        firstInput.value = answer;
+                    }
+                }
+            });
+        };
+        
+        const showPassage = (index) => {
+            currentPassageIndex = index;
+            passageSlides.forEach((slide, i) => {
+                slide.classList.toggle('hidden', i !== index);
+            });
+
+            prevPassageBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+            nextPassageBtn.textContent = index === passageSlides.length - 1 ? 'Go to Submission' : 'Next';
+
+            const progress = ((index + 1) / passageSlides.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `Passage ${index + 1} of ${passageSlides.length}`;
+
+            const firstFocusable = passageSlides[index].querySelector('h3, input, select');
+            if (firstFocusable) {
+                firstFocusable.focus();
+            }
+        };
+
+        const handleAnswerChange = (event) => {
+            const target = event.target;
+            const questionContainer = target.closest('.mc-question');
+            if (questionContainer) {
+                const qNum = questionContainer.dataset.questionNumber;
+                answers[qNum] = target.value.trim();
+                saveState();
+            }
+        };
+        
+        const generateSubmissionSummary = () => {
+            let summary = `Student ID: ${studentID}\n`;
+            summary += `Level: ${EXAM_LEVEL}\n`;
+            summary += `Timestamp: ${new Date().toISOString()}\n\n`;
+            summary += '--- ANSWERS ---\n';
+            for (let i = 1; i <= Object.keys(correctAnswers).length; i++) {
+                const qNum = i.toString();
+                summary += `Q${qNum}: ${answers[qNum] || 'Not Answered'}\n`;
+            }
+            submissionCodeEl.value = summary;
+        };
+
+        const sanitizeStudentID = (id) => {
+             return id.replace(/[^a-zA-Z0-9_-]/g, '_');
+        };
+        
+        const downloadCSV = () => {
+            const headers = ['Timestamp', 'StudentID', 'Level'];
+            const questionNumbers = Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b));
+            headers.push(...questionNumbers);
+
+            const row = [
+                new Date().toISOString(),
+                studentID,
+                EXAM_LEVEL
+            ];
+            questionNumbers.forEach(qNum => {
+                row.push(answers[qNum] || '');
+            });
+
+            const csvContent = "data:text/csv;charset=utf-8," 
+                + headers.join(',') + '\n' 
+                + row.map(item => `"${item.replace(/"/g, '""')}"`).join(',');
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            const safeFilename = sanitizeStudentID(studentID);
+            link.setAttribute("download", `${safeFilename}_IELTS_Results.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+
+        const submitToGoogleSheet = async () => {
+            submitBtn.disabled = true;
+            downloadCsvBtn.disabled = true;
+            submissionStatusEl.textContent = 'Submitting...';
+
+            const payload = {
+                studentID,
+                level: EXAM_LEVEL,
+                answers,
+                correctAnswers
+            };
+
+            try {
+                const response = await fetch(GS_WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8', // Google Apps Script requires text/plain for doPost with stringified JSON
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (result.result === "success") {
+                    submissionStatusEl.textContent = 'Successfully submitted!';
+                    submissionStatusEl.style.color = 'green';
+                } else {
+                    throw new Error(result.error || 'Unknown error during submission.');
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                submissionStatusEl.textContent = `Error: Could not submit. Please download your results and send them manually. (${error.message})`;
+                submissionStatusEl.style.color = 'red';
+                submitBtn.disabled = false; // Re-enable on error
+                downloadCsvBtn.disabled = false;
+            }
+        };
+
+        const goToSubmissionScreen = () => {
+            clearInterval(timerInterval);
+            timerEl.textContent = "00:00";
+            generateSubmissionSummary();
+            showScreen('submission');
+        };
+
+        // --- EVENT LISTENERS & INITIALIZATION ---
+
+        studentIdInput.addEventListener('input', () => {
+            startExamBtn.disabled = studentIdInput.value.trim() === '';
+        });
+
+        startExamBtn.addEventListener('click', () => {
+            const enteredID = studentIdInput.value.trim();
+            if (!enteredID) return;
+
+            studentID = enteredID;
+            
+            const savedStateJSON = localStorage.getItem('examState');
+            if (savedStateJSON) {
+                const savedState = JSON.parse(savedStateJSON);
+                if (savedState.studentID === studentID) {
+                    restoreSession(savedState);
+                } else {
+                    // New student ID, so clear old answers and reset timer
+                    answers = {};
+                    remainingTime = TOTAL_TIME;
+                }
+            }
+            
+            saveState(); // Save the new (or confirmed) student ID
+            currentLevelEl.textContent = `Current Level: ${EXAM_LEVEL}`;
+            showScreen('test');
+            showPassage(0);
+            startTimer();
+        });
+
+        prevPassageBtn.addEventListener('click', () => {
+            if (currentPassageIndex > 0) {
+                showPassage(currentPassageIndex - 1);
+            }
+        });
+
+        nextPassageBtn.addEventListener('click', () => {
+            if (currentPassageIndex < passageSlides.length - 1) {
+                showPassage(currentPassageIndex + 1);
+            } else {
+                goToSubmissionScreen();
+            }
+        });
+
+        examForm.addEventListener('change', handleAnswerChange);
+        examForm.addEventListener('input', (e) => {
+            if (e.target.type === 'text') {
+                handleAnswerChange(e);
+            }
+        });
+
+        downloadCsvBtn.addEventListener('click', downloadCSV);
+        submitBtn.addEventListener('click', submitToGoogleSheet);
+        
+        // Initial setup
+        loadState();
+        showScreen('studentId');
+
+        /*
+        // --- GOOGLE APPS SCRIPT CODE (for setup in Google Sheets) ---
+        // 1. Open a Google Sheet.
+        // 2. Go to Extensions > Apps Script.
+        // 3. Paste this code and save.
+        // 4. Click Deploy > New deployment.
+        // 5. Select Type: Web app.
+        // 6. Execute as: Me.
+        // 7. Who has access: Anyone.
+        // 8. Deploy and copy the Web app URL. Paste it into the GS_WEB_APP_URL variable in the HTML file.
+
+        const SHEET_NAME = "Submissions"; // You can change this name
+
+        function doPost(e) {
+          try {
+            const data = JSON.parse(e.postData.contents);
+            const ss = SpreadsheetApp.getActiveSpreadsheet();
+            let sheet = ss.getSheetByName(SHEET_NAME);
+
+            if (!sheet) {
+              sheet = ss.insertSheet(SHEET_NAME);
+            }
+
+            const studentID = data.studentID || 'N/A';
+            const level = data.level || 'N/A';
+            const studentAnswers = data.answers || {};
+            const correctAnswers = data.correctAnswers || {};
+
+            // Get question numbers in a sorted order to ensure consistent column order
+            const questionKeys = Object.keys(correctAnswers).sort((a, b) => parseInt(a) - parseInt(b));
+
+            // Check if the header is set up. If not, create it.
+            if (sheet.getLastRow() < 2) {
+              sheet.clear(); // Clear the sheet to start fresh
+              
+              // Row 1: Headers (Questions)
+              const headers = ["Timestamp", "StudentID", "Level", ...questionKeys.map(k => `Question ${k}`)];
+              sheet.appendRow(headers);
+              
+              // Row 2: Correct Answers
+              const correctAnswersRow = ["", "", "CORRECT ANSWERS", ...questionKeys.map(key => correctAnswers[key])];
+              sheet.appendRow(correctAnswersRow);
+
+              // Style the header and answer key rows
+              sheet.getRange("1:2").setFontWeight("bold");
+              sheet.getRange("A1:C2").setBackground("#f3f3f3");
+              sheet.getRange("D2:" + sheet.getLastColumn() + "2").setBackground("#d9ead3");
+              sheet.setFrozenRows(2);
+            }
+            
+            // Get the headers from the sheet to ensure correct answer order for the student row
+            const sheetHeaders = sheet.getRange(1, 4, 1, sheet.getLastColumn() - 3).getValues()[0];
+            const studentAnswersInOrder = sheetHeaders.map(header => {
+                const qNum = header.replace('Question ', '');
+                return studentAnswers[qNum] || ""; // Add student answer or empty string if not answered
+            });
+            
+            // Prepare and append the student's complete row
+            const timestamp = new Date();
+            const studentRowData = [timestamp, studentID, level, ...studentAnswersInOrder];
+            sheet.appendRow(studentRowData);
+
+            return ContentService.createTextOutput(JSON.stringify({ "result": "success" })).setMimeType(ContentService.MimeType.JSON);
+          } catch (error) {
+            // Log the detailed error for debugging in Apps Script
+            Logger.log(error.toString());
+            return ContentService.createTextOutput(JSON.stringify({ "result": "error", "error": error.toString() })).setMimeType(ContentService.MimeType.JSON);
+          }
+        }
+        */
+
+    });
+    </script>
+</body>
+</html>
