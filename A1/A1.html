@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level A1 End of Year Reading Exam</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&family=Questrial&display=swap" rel="stylesheet">
     <style>
     /* =====================================================================
        Organic Sage UI — Mobile-first, stable, and soothing
@@ -37,8 +34,8 @@
       --ink-muted: #5A6B52;
 
       /* Typography */
-      --font-display: 'Questrial', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
-      --font-body: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-display: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
       /* Fluid typography scale */
       --step--1: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
@@ -109,6 +106,7 @@
       font-size: var(--step-0);
       line-height: 1.6;
       color: var(--forest-shadow);
+      background-color: var(--warm-cream);
       background:
         radial-gradient(1200px 1200px at -10% -10%, #FFFFFF 0%, transparent 50%),
         radial-gradient(1200px 1000px at 110% 10%, #FFF8F0 0%, transparent 50%),
@@ -121,6 +119,21 @@
 
     @media (prefers-reduced-motion: no-preference) {
       html { scroll-behavior: smooth; }
+    }
+
+    @media (prefers-reduced-data: reduce) {
+      body {
+        background: var(--warm-cream);
+      }
+
+      #activity-container {
+        box-shadow: none;
+        background: #fff;
+      }
+
+      .activity-btn {
+        box-shadow: none;
+      }
     }
 
     /* Better text wrapping on small screens */
@@ -799,6 +812,11 @@
     </style>
 </head>
 <body>
+    <noscript>
+        <div style="padding:1rem; background:#fff3cd; color:#664d03; text-align:center; font-weight:600;">
+            JavaScript is required to run this exam experience. Please enable it and reload the page.
+        </div>
+    </noscript>
     <div id="app-wrapper">
         <div id="activity-container">
 
@@ -1116,11 +1134,49 @@
         const STORAGE_KEY = `examState-${EXAM_LEVEL}`;
 
         const LEGACY_STORAGE_KEY = 'examState';
+        const storage = (() => {
+            let storageHealthy = true;
 
-        if (LEGACY_STORAGE_KEY !== STORAGE_KEY && localStorage.getItem(LEGACY_STORAGE_KEY)) {
+            const testAvailability = () => {
+                try {
+                    const testKey = '__exam_storage_test__';
+                    window.localStorage.setItem(testKey, '1');
+                    window.localStorage.removeItem(testKey);
+                    return true;
+                } catch (error) {
+                    console.warn('Local storage unavailable, falling back to memory only mode.', error);
+                    return false;
+                }
+            };
 
-            localStorage.removeItem(LEGACY_STORAGE_KEY);
+            const isSupported = typeof window !== 'undefined' && 'localStorage' in window && testAvailability();
 
+            const safeRun = (operation) => {
+                if (!isSupported || !storageHealthy) {
+                    return null;
+                }
+
+                try {
+                    return operation();
+                } catch (error) {
+                    storageHealthy = false;
+                    console.warn('Local storage operation failed, disabling further writes.', error);
+                    return null;
+                }
+            };
+
+            return {
+                getItem: (key) => safeRun(() => window.localStorage.getItem(key)),
+                setItem: (key, value) => safeRun(() => window.localStorage.setItem(key, value)),
+                removeItem: (key) => safeRun(() => window.localStorage.removeItem(key)),
+                isAvailable: () => isSupported && storageHealthy
+            };
+        })();
+
+        let fallbackState = null;
+
+        if (LEGACY_STORAGE_KEY !== STORAGE_KEY && storage.getItem(LEGACY_STORAGE_KEY)) {
+            storage.removeItem(LEGACY_STORAGE_KEY);
         }
 
         const supportsHasSelector = typeof CSS !== 'undefined' && CSS.supports && CSS.supports('selector(:has(*))');
@@ -1155,6 +1211,32 @@
         const downloadCsvBtn = document.getElementById('download-csv-btn');
         const submitBtn = document.getElementById('submit-btn');
         const submissionStatus = document.getElementById('submission-status');
+
+        const getStoredState = () => {
+            const rawState = storage.getItem(STORAGE_KEY);
+            if (rawState) {
+                try {
+                    return JSON.parse(rawState);
+                } catch (error) {
+                    console.warn('Saved state could not be parsed. Resetting.', error);
+                }
+            }
+            return fallbackState;
+        };
+
+        const persistState = (state) => {
+            fallbackState = state;
+            if (storage.isAvailable()) {
+                storage.setItem(STORAGE_KEY, JSON.stringify(state));
+            }
+        };
+
+        const clearPersistedState = () => {
+            fallbackState = null;
+            if (storage.isAvailable()) {
+                storage.removeItem(STORAGE_KEY);
+            }
+        };
 
         // --- STATE VARIABLES ---
         let studentID = '';
@@ -1232,10 +1314,10 @@
                 return;
             }
 
-            const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
+            const savedState = getStoredState();
             if (savedState && savedState.studentID !== enteredID) {
                 // New student, reset state
-                localStorage.removeItem(STORAGE_KEY);
+                clearPersistedState();
                 studentID = enteredID;
                 studentAnswers = {};
                 remainingTime = TOTAL_TIME;
@@ -1250,8 +1332,9 @@
 
         // --- STATE MANAGEMENT (LOCAL STORAGE) ---
         function loadState() {
-            const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
+            const savedState = getStoredState();
             if (savedState) {
+                fallbackState = savedState;
                 studentIdInput.value = savedState.studentID || '';
                 studentAnswers = savedState.answers || {};
                 remainingTime = savedState.remainingTime || TOTAL_TIME;
@@ -1267,7 +1350,7 @@
                 answers: studentAnswers,
                 remainingTime: remainingTime
             };
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            persistState(state);
         }
 
         function populateAnswers() {
@@ -1454,7 +1537,7 @@
                 if (result.result === 'success') {
                     submissionStatus.textContent = 'Successfully submitted!';
                     submissionStatus.style.color = '#2E7D32';
-                    localStorage.removeItem(STORAGE_KEY);
+                    clearPersistedState();
                     submissionConfirmed = true;
                     return;
                 }
