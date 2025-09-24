@@ -79,7 +79,7 @@
       --dur-3: 320ms;
 
       /* Mobile-safe touch target */
-      --target-min: 44px;
+      --target-min: 38px;
 
       /* Container max */
       --container-max: 900px;
@@ -494,6 +494,13 @@
 
     .mc-option-label:hover { background-color: var(--hover-sage); }
 
+    .mc-option-label:has(input[type="radio"]:checked),
+    .mc-option-label.is-checked {
+      border-color: color-mix(in srgb, var(--primary-sage) 55%, transparent);
+      background-color: color-mix(in srgb, var(--primary-sage) 12%, #fff 88%);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary-sage) 45%, transparent 55%);
+    }
+
     .mc-option-item .option-control {
       flex-shrink: 0;
       inline-size: 24px;
@@ -506,9 +513,11 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
     }
 
-    .mc-option-item input[type="radio"]:checked + .option-control { border-color: var(--primary-sage); }
+    .mc-option-label input[type="radio"]:checked + .option-control,
+    .mc-option-item input[type="radio"]:checked + label .option-control { border-color: var(--primary-sage); }
 
-    .mc-option-item input[type="radio"]:checked + .option-control::after {
+    .mc-option-label input[type="radio"]:checked + .option-control::after,
+    .mc-option-item input[type="radio"]:checked + label .option-control::after {
       content: '';
       position: absolute;
       inset: 50% auto auto 50%;
@@ -526,10 +535,17 @@
       font-size: 1rem;
     }
 
-    .mc-option-item input[type="radio"]:focus-visible + .option-control,
+    .mc-option-label input[type="radio"]:focus-visible + .option-control,
+    .mc-option-item input[type="radio"]:focus-visible + label .option-control {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
     .mc-option-label:focus-visible {
       outline: none;
       box-shadow: var(--ring);
+      border-color: color-mix(in srgb, var(--primary-sage) 55%, transparent);
+      background-color: color-mix(in srgb, var(--primary-sage) 12%, #fff 88%);
     }
 
     /* Slide controls */
@@ -714,8 +730,8 @@
       display: inline-flex;
       align-items: center;
       width: clamp(6.5ch, 24vw, 11ch);
-      min-height: 2.5rem;
-      padding: 0.4em 0.55em;
+      min-height: clamp(2rem, 4.8vw, 2.3rem);
+      padding: 0.35em 0.5em;
       margin: 0 0.25em 0.3em;
       font: inherit;
       line-height: 1.2;
@@ -1056,6 +1072,18 @@
 
         // --- CONSTANTS ---
         const EXAM_LEVEL = 'A2+';
+
+        const STORAGE_KEY = `examState-${EXAM_LEVEL}`;
+
+        const LEGACY_STORAGE_KEY = 'examState';
+
+        if (LEGACY_STORAGE_KEY !== STORAGE_KEY && localStorage.getItem(LEGACY_STORAGE_KEY)) {
+
+            localStorage.removeItem(LEGACY_STORAGE_KEY);
+
+        }
+
+        const supportsHasSelector = typeof CSS !== 'undefined' && CSS.supports && CSS.supports('selector(:has(*))');
         const GS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuncyjolsXX1u9plOYDzujafMIROGIkOOjZsn2ko_lbhNbU1mAXZXa5iMHaEKReTPX/exec';
         const TOTAL_TIME = 3600; // 60 minutes in seconds
         const SUBMISSION_TIMEOUT_MS = 12000;
@@ -1099,6 +1127,28 @@
         let timerInterval = null;
         let currentPassageIndex = 0;
 
+        const styleRadioGroup = (radioName) => {
+            if (supportsHasSelector || !radioName) return;
+            const radios = document.querySelectorAll(`input[type="radio"][name="${radioName}"]`);
+            radios.forEach(radio => {
+                const label = radio.closest('.mc-option-label');
+                if (label) {
+                    label.classList.toggle('is-checked', radio.checked);
+                }
+            });
+        };
+
+        const refreshAllRadioStyles = () => {
+            if (supportsHasSelector) return;
+            const seen = new Set();
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                if (radio.name && !seen.has(radio.name)) {
+                    seen.add(radio.name);
+                    styleRadioGroup(radio.name);
+                }
+            });
+        };
+
         // --- FUNCTIONS ---
 
         const showScreen = (screenName) => {
@@ -1137,7 +1187,7 @@
                     answers,
                     remainingTime,
                 };
-                localStorage.setItem('examState', JSON.stringify(state));
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
             } catch (e) {
                 console.error("Could not save state to localStorage:", e);
             }
@@ -1145,7 +1195,7 @@
 
         const loadState = () => {
             try {
-                const savedState = localStorage.getItem('examState');
+                const savedState = localStorage.getItem(STORAGE_KEY);
                 if (savedState) {
                     const state = JSON.parse(savedState);
                     studentIdInput.value = state.studentID || '';
@@ -1156,7 +1206,7 @@
                 }
             } catch (e) {
                 console.error("Could not load state from localStorage:", e);
-                localStorage.removeItem('examState');
+                localStorage.removeItem(STORAGE_KEY);
             }
         };
 
@@ -1170,12 +1220,16 @@
                     const firstInput = inputs[0];
                     if (firstInput.type === 'radio') {
                         const matchingRadio = document.querySelector(`input[name="q${qNum}"][value="${answer}"]`);
-                        if (matchingRadio) matchingRadio.checked = true;
+                        if (matchingRadio) {
+                            matchingRadio.checked = true;
+                            styleRadioGroup(matchingRadio.name);
+                        }
                     } else {
                         firstInput.value = answer;
                     }
                 }
             });
+            refreshAllRadioStyles();
         };
         
         const showPassage = (index) => {
@@ -1195,6 +1249,7 @@
             if (firstFocusable) {
                 firstFocusable.focus();
             }
+            refreshAllRadioStyles();
         };
 
         const handleAnswerChange = (event) => {
@@ -1203,6 +1258,9 @@
             if (questionContainer) {
                 const qNum = questionContainer.dataset.questionNumber;
                 answers[qNum] = target.value.trim();
+                if (target.type === 'radio') {
+                    styleRadioGroup(target.name);
+                }
                 saveState();
             }
         };
@@ -1353,7 +1411,7 @@
 
             studentID = enteredID;
             
-            const savedStateJSON = localStorage.getItem('examState');
+            const savedStateJSON = localStorage.getItem(STORAGE_KEY);
             if (savedStateJSON) {
                 const savedState = JSON.parse(savedStateJSON);
                 if (savedState.studentID === studentID) {
@@ -1395,8 +1453,9 @@
 
         downloadCsvBtn.addEventListener('click', downloadCSV);
         submitBtn.addEventListener('click', submitToGoogleSheet);
-        
+
         // Initial setup
+        refreshAllRadioStyles();
         loadState();
         showScreen('studentId');
 

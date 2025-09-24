@@ -79,7 +79,7 @@
       --dur-3: 320ms;
 
       /* Mobile-safe touch target */
-      --target-min: 44px;
+      --target-min: 38px;
 
       /* Container max */
       --container-max: 900px;
@@ -493,6 +493,13 @@
 
     .mc-option-label:hover { background-color: var(--hover-sage); }
 
+    .mc-option-label:has(input[type="radio"]:checked),
+    .mc-option-label.is-checked {
+      border-color: color-mix(in srgb, var(--primary-sage) 55%, transparent);
+      background-color: color-mix(in srgb, var(--primary-sage) 12%, #fff 88%);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary-sage) 45%, transparent 55%);
+    }
+
     .mc-option-item .option-control {
       flex-shrink: 0;
       inline-size: 24px;
@@ -505,9 +512,11 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
     }
 
-    .mc-option-item input[type="radio"]:checked + .option-control { border-color: var(--primary-sage); }
+    .mc-option-label input[type="radio"]:checked + .option-control,
+    .mc-option-item input[type="radio"]:checked + label .option-control { border-color: var(--primary-sage); }
 
-    .mc-option-item input[type="radio"]:checked + .option-control::after {
+    .mc-option-label input[type="radio"]:checked + .option-control::after,
+    .mc-option-item input[type="radio"]:checked + label .option-control::after {
       content: '';
       position: absolute;
       inset: 50% auto auto 50%;
@@ -525,10 +534,17 @@
       font-size: 1rem;
     }
 
-    .mc-option-item input[type="radio"]:focus-visible + .option-control,
+    .mc-option-label input[type="radio"]:focus-visible + .option-control,
+    .mc-option-item input[type="radio"]:focus-visible + label .option-control {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
     .mc-option-label:focus-visible {
       outline: none;
       box-shadow: var(--ring);
+      border-color: color-mix(in srgb, var(--primary-sage) 55%, transparent);
+      background-color: color-mix(in srgb, var(--primary-sage) 12%, #fff 88%);
     }
 
     /* Slide controls */
@@ -713,8 +729,8 @@
       display: inline-flex;
       align-items: center;
       width: clamp(6.5ch, 24vw, 11ch);
-      min-height: 2.5rem;
-      padding: 0.4em 0.55em;
+      min-height: clamp(2rem, 4.8vw, 2.3rem);
+      padding: 0.35em 0.5em;
       margin: 0 0.25em 0.3em;
       font: inherit;
       line-height: 1.2;
@@ -788,57 +804,57 @@
                         <div class="mc-question" data-question-number="1">
                             <div class="mc-question-header"><p class="mc-question-text">1. Chloe is writing the email to a family member.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q1_opt1" name="q1" value="True"><label for="q1_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q1_opt2" name="q1" value="False"><label for="q1_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q1_opt3" name="q1" value="Not Given"><label for="q1_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q1_opt1" name="q1" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q1_opt2" name="q1" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q1_opt3" name="q1" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="2" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">2. The club meets in the morning.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q2_opt1" name="q2" value="True"><label for="q2_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q2_opt2" name="q2" value="False"><label for="q2_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q2_opt3" name="q2" value="Not Given"><label for="q2_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q2_opt1" name="q2" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q2_opt2" name="q2" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q2_opt3" name="q2" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="3" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">3. Chloe has a new and expensive camera.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q3_opt1" name="q3" value="True"><label for="q3_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q3_opt2" name="q3" value="False"><label for="q3_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q3_opt3" name="q3" value="Not Given"><label for="q3_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q3_opt1" name="q3" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q3_opt2" name="q3" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q3_opt3" name="q3" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="4" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">4. Chloe enjoyed taking photos in the city.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q4_opt1" name="q4" value="True"><label for="q4_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q4_opt2" name="q4" value="False"><label for="q4_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q4_opt3" name="q4" value="Not Given"><label for="q4_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q4_opt1" name="q4" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q4_opt2" name="q4" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q4_opt3" name="q4" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="5" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">5. Last week, the club members took photos of animals.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q5_opt1" name="q5" value="True"><label for="q5_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q5_opt2" name="q5" value="False"><label for="q5_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q5_opt3" name="q5" value="Not Given"><label for="q5_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q5_opt1" name="q5" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q5_opt2" name="q5" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q5_opt3" name="q5" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="6" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">6. Chloe does not like the other people in the club.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q6_opt1" name="q6" value="True"><label for="q6_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q6_opt2" name="q6" value="False"><label for="q6_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q6_opt3" name="q6" value="Not Given"><label for="q6_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q6_opt1" name="q6" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q6_opt2" name="q6" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q6_opt3" name="q6" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                          <div class="mc-question" data-question-number="7" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">7. Chloe thinks the club is the best part of her week.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q7_opt1" name="q7" value="True"><label for="q7_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q7_opt2" name="q7" value="False"><label for="q7_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q7_opt3" name="q7" value="Not Given"><label for="q7_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q7_opt1" name="q7" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q7_opt2" name="q7" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q7_opt3" name="q7" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
 
@@ -871,57 +887,57 @@
                         <div class="mc-question" data-question-number="14">
                             <div class="mc-question-header"><p class="mc-question-text">14. Why is Marco looking for a new flatmate?</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q14_opt1" name="q14" value="A"><label for="q14_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. He wants to move to a new flat.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q14_opt2" name="q14" value="B"><label for="q14_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. His flat is too big for one person.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q14_opt3" name="q14" value="C"><label for="q14_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. His current flatmate is leaving for work reasons.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q14_opt1" name="q14" value="A"><span class="option-control"></span><span class="mc-option-text">A. He wants to move to a new flat.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q14_opt2" name="q14" value="B"><span class="option-control"></span><span class="mc-option-text">B. His flat is too big for one person.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q14_opt3" name="q14" value="C"><span class="option-control"></span><span class="mc-option-text">C. His current flatmate is leaving for work reasons.</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="15" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">15. The monthly rent of £500 includes...</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q15_opt1" name="q15" value="A"><label for="q15_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. all bills.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q15_opt2" name="q15" value="B"><label for="q15_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. water and internet.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q15_opt3" name="q15" value="C"><label for="q15_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. electricity and gas.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q15_opt1" name="q15" value="A"><span class="option-control"></span><span class="mc-option-text">A. all bills.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q15_opt2" name="q15" value="B"><span class="option-control"></span><span class="mc-option-text">B. water and internet.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q15_opt3" name="q15" value="C"><span class="option-control"></span><span class="mc-option-text">C. electricity and gas.</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="16" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">16. The available bedroom contains...</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q16_opt1" name="q16" value="A"><label for="q16_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. a bed, a desk, and a TV.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q16_opt2" name="q16" value="B"><label for="q16_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. a desk, a wardrobe, and a bed.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q16_opt3" name="q16" value="C"><label for="q16_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. a wardrobe, a chair, and a bed.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q16_opt1" name="q16" value="A"><span class="option-control"></span><span class="mc-option-text">A. a bed, a desk, and a TV.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q16_opt2" name="q16" value="B"><span class="option-control"></span><span class="mc-option-text">B. a desk, a wardrobe, and a bed.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q16_opt3" name="q16" value="C"><span class="option-control"></span><span class="mc-option-text">C. a wardrobe, a chair, and a bed.</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="17" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">17. What does Marco say about himself?</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q17_opt1" name="q17" value="A"><label for="q17_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. He goes to the gym often.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q17_opt2" name="q17" value="B"><label for="q17_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. He works during the week.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q17_opt3" name="q17" value="C"><label for="q17_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. He enjoys cooking.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q17_opt1" name="q17" value="A"><span class="option-control"></span><span class="mc-option-text">A. He goes to the gym often.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q17_opt2" name="q17" value="B"><span class="option-control"></span><span class="mc-option-text">B. He works during the week.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q17_opt3" name="q17" value="C"><span class="option-control"></span><span class="mc-option-text">C. He enjoys cooking.</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="18" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">18. Marco is looking for a flatmate who is...</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q18_opt1" name="q18" value="A"><label for="q18_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. tidy and doesn't smoke.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q18_opt2" name="q18" value="B"><label for="q18_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. active and likes sports.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q18_opt3" name="q18" value="C"><label for="q18_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. sociable and likes parties.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q18_opt1" name="q18" value="A"><span class="option-control"></span><span class="mc-option-text">A. tidy and doesn't smoke.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q18_opt2" name="q18" value="B"><span class="option-control"></span><span class="mc-option-text">B. active and likes sports.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q18_opt3" name="q18" value="C"><span class="option-control"></span><span class="mc-option-text">C. sociable and likes parties.</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="19" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">19. How long is the bus journey to the city centre?</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q19_opt1" name="q19" value="A"><label for="q19_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. Five minutes.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q19_opt2" name="q19" value="B"><label for="q19_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. Fifteen minutes.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q19_opt3" name="q19" value="C"><label for="q19_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. Twenty minutes.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q19_opt1" name="q19" value="A"><span class="option-control"></span><span class="mc-option-text">A. Five minutes.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q19_opt2" name="q19" value="B"><span class="option-control"></span><span class="mc-option-text">B. Fifteen minutes.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q19_opt3" name="q19" value="C"><span class="option-control"></span><span class="mc-option-text">C. Twenty minutes.</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="20" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">20. What must a person also pay when they move in?</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q20_opt1" name="q20" value="A"><label for="q20_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A. A deposit.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q20_opt2" name="q20" value="B"><label for="q20_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B. The first gas bill.</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q20_opt3" name="q20" value="C"><label for="q20_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C. An agency fee.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q20_opt1" name="q20" value="A"><span class="option-control"></span><span class="mc-option-text">A. A deposit.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q20_opt2" name="q20" value="B"><span class="option-control"></span><span class="mc-option-text">B. The first gas bill.</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q20_opt3" name="q20" value="C"><span class="option-control"></span><span class="mc-option-text">C. An agency fee.</span></label></div>
                             </div>
                         </div>
                         
@@ -952,57 +968,57 @@
                         <div class="mc-question" data-question-number="27">
                             <div class="mc-question-header"><p class="mc-question-text">27. The bicycle was invented by one person.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q27_opt1" name="q27" value="True"><label for="q27_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q27_opt2" name="q27" value="False"><label for="q27_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q27_opt3" name="q27" value="Not Given"><label for="q27_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q27_opt1" name="q27" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q27_opt2" name="q27" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q27_opt3" name="q27" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="28" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">28. The first "running machine" had pedals.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q28_opt1" name="q28" value="True"><label for="q28_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q28_opt2" name="q28" value="False"><label for="q28_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q28_opt3" name="q28" value="Not Given"><label for="q28_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q28_opt1" name="q28" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q28_opt2" name="q28" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q28_opt3" name="q28" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="29" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">29. The "boneshaker" was not comfortable to ride.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q29_opt1" name="q29" value="True"><label for="q29_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q29_opt2" name="q29" value="False"><label for="q29_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q29_opt3" name="q29" value="Not Given"><label for="q29_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q29_opt1" name="q29" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q29_opt2" name="q29" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q29_opt3" name="q29" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="30" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">30. The "high-wheel" bicycle was slower than the "boneshaker".</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q30_opt1" name="q30" value="True"><label for="q30_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q30_opt2" name="q30" value="False"><label for="q30_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q30_opt3" name="q30" value="Not Given"><label for="q30_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q30_opt1" name="q30" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q30_opt2" name="q30" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q30_opt3" name="q30" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="31" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">31. The "high-wheel" bicycle was not very safe.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q31_opt1" name="q31" value="True"><label for="q31_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q31_opt2" name="q31" value="False"><label for="q31_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q31_opt3" name="q31" value="Not Given"><label for="q31_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q31_opt1" name="q31" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q31_opt2" name="q31" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q31_opt3" name="q31" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="32" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">32. The "safety bicycle" had two wheels that were different sizes.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q32_opt1" name="q32" value="True"><label for="q32_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q32_opt2" name="q32" value="False"><label for="q32_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q32_opt3" name="q32" value="Not Given"><label for="q32_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q32_opt1" name="q32" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q32_opt2" name="q32" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q32_opt3" name="q32" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         <div class="mc-question" data-question-number="33" style="margin-top: var(--space-4);">
                             <div class="mc-question-header"><p class="mc-question-text">33. The "safety bicycle" first became popular in Germany.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" id="q33_opt1" name="q33" value="True"><label for="q33_opt1" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q33_opt2" name="q33" value="False"><label for="q33_opt2" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
-                                <div class="mc-option-item"><input type="radio" id="q33_opt3" name="q33" value="Not Given"><label for="q33_opt3" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q33_opt1" name="q33" value="True"><span class="option-control"></span><span class="mc-option-text">True</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q33_opt2" name="q33" value="False"><span class="option-control"></span><span class="mc-option-text">False</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q33_opt3" name="q33" value="Not Given"><span class="option-control"></span><span class="mc-option-text">Not Given</span></label></div>
                             </div>
                         </div>
                         
@@ -1045,6 +1061,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURATION & CONSTANTS ---
     const EXAM_LEVEL = 'A2';
+
+    const STORAGE_KEY = `examState-${EXAM_LEVEL}`;
+
+    const LEGACY_STORAGE_KEY = 'examState';
+
+    if (LEGACY_STORAGE_KEY !== STORAGE_KEY && localStorage.getItem(LEGACY_STORAGE_KEY)) {
+
+        localStorage.removeItem(LEGACY_STORAGE_KEY);
+
+    }
+
+    const supportsHasSelector = typeof CSS !== 'undefined' && CSS.supports && CSS.supports('selector(:has(*))');
     const GS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuncyjolsXX1u9plOYDzujafMIROGIkOOjZsn2ko_lbhNbU1mAXZXa5iMHaEKReTPX/exec';
     const TOTAL_TIME = 3600; // 60 minutes in seconds
     const SUBMISSION_TIMEOUT_MS = 12000;
@@ -1086,6 +1114,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
     const progressText = document.getElementById('progress-text');
 
+    const styleRadioGroup = (radioName) => {
+        if (supportsHasSelector || !radioName) return;
+        const radios = document.querySelectorAll(`input[type="radio"][name="${radioName}"]`);
+        radios.forEach(radio => {
+            const label = radio.closest('.mc-option-label');
+            if (label) {
+                label.classList.toggle('is-checked', radio.checked);
+            }
+        });
+    };
+
+    const refreshAllRadioStyles = () => {
+        if (supportsHasSelector) return;
+        const seen = new Set();
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            if (radio.name && !seen.has(radio.name)) {
+                seen.add(radio.name);
+                styleRadioGroup(radio.name);
+            }
+        });
+    };
+
     // --- FUNCTIONS ---
 
     /**
@@ -1109,7 +1159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 answers: studentAnswers,
                 remainingTime: remainingTime,
             };
-            localStorage.setItem('examState', JSON.stringify(state));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         } catch (error) {
             console.error("Could not save state to localStorage:", error);
         }
@@ -1120,7 +1170,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const loadState = () => {
         try {
-            const savedState = localStorage.getItem('examState');
+            const savedState = localStorage.getItem(STORAGE_KEY);
             if (savedState) {
                 const state = JSON.parse(savedState);
                 studentIdInput.value = state.studentID || '';
@@ -1147,6 +1197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const inputToSelect = Array.from(radioInputs).find(input => input.value === answer);
                 if (inputToSelect) {
                     inputToSelect.checked = true;
+                    styleRadioGroup(inputToSelect.name);
                 }
             } else {
                 const textInput = document.querySelector(`input[type="text"][data-question-number="${qNum}"], input[type="text"]#q${qNum}`);
@@ -1156,6 +1207,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         updateTimerDisplay();
+        refreshAllRadioStyles();
     };
 
 
@@ -1217,6 +1269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetHeading) {
             targetHeading.focus();
         }
+        refreshAllRadioStyles();
     };
     
     /**
@@ -1255,6 +1308,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (qNum) {
             studentAnswers[qNum] = input.value.trim();
+            if (input.type === 'radio') {
+                styleRadioGroup(input.name);
+            }
             saveState();
         }
     };
@@ -1426,7 +1482,7 @@ document.addEventListener('DOMContentLoaded', () => {
         studentID = studentIdInput.value.trim();
         if (!studentID) return;
 
-        const savedStateJSON = localStorage.getItem('examState');
+        const savedStateJSON = localStorage.getItem(STORAGE_KEY);
         if (savedStateJSON) {
             const savedState = JSON.parse(savedStateJSON);
             if (savedState.studentID === studentID) {
@@ -1465,6 +1521,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.addEventListener('keyup', handleAnswerChange);
             }
         });
+        refreshAllRadioStyles();
     };
 
     init();

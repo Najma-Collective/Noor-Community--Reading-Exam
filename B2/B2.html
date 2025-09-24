@@ -79,7 +79,7 @@
       --dur-3: 320ms;
 
       /* Mobile-safe touch target */
-      --target-min: 44px;
+      --target-min: 38px;
 
       /* Container max */
       --container-max: 900px;
@@ -502,6 +502,13 @@
 
     .mc-option-label:hover { background-color: var(--hover-sage); }
 
+    .mc-option-label:has(input[type="radio"]:checked),
+    .mc-option-label.is-checked {
+      border-color: color-mix(in srgb, var(--primary-sage) 55%, transparent);
+      background-color: color-mix(in srgb, var(--primary-sage) 12%, #fff 88%);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary-sage) 45%, transparent 55%);
+    }
+
     .mc-option-item .option-control {
       flex-shrink: 0;
       inline-size: 24px;
@@ -514,9 +521,11 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
     }
 
-    .mc-option-item input[type="radio"]:checked + .option-control { border-color: var(--primary-sage); }
+    .mc-option-label input[type="radio"]:checked + .option-control,
+    .mc-option-item input[type="radio"]:checked + label .option-control { border-color: var(--primary-sage); }
 
-    .mc-option-item input[type="radio"]:checked + .option-control::after {
+    .mc-option-label input[type="radio"]:checked + .option-control::after,
+    .mc-option-item input[type="radio"]:checked + label .option-control::after {
       content: '';
       position: absolute;
       inset: 50% auto auto 50%;
@@ -534,10 +543,17 @@
       font-size: 1rem;
     }
 
-    .mc-option-item input[type="radio"]:focus-visible + .option-control,
+    .mc-option-label input[type="radio"]:focus-visible + .option-control,
+    .mc-option-item input[type="radio"]:focus-visible + label .option-control {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
     .mc-option-label:focus-visible {
       outline: none;
       box-shadow: var(--ring);
+      border-color: color-mix(in srgb, var(--primary-sage) 55%, transparent);
+      background-color: color-mix(in srgb, var(--primary-sage) 12%, #fff 88%);
     }
 
     /* Slide controls */
@@ -722,8 +738,8 @@
       display: inline-flex;
       align-items: center;
       width: clamp(6.5ch, 24vw, 11ch);
-      min-height: 2.5rem;
-      padding: 0.4em 0.55em;
+      min-height: clamp(2rem, 4.8vw, 2.3rem);
+      padding: 0.35em 0.5em;
       margin: 0 0.25em 0.3em;
       font: inherit;
       line-height: 1.2;
@@ -799,54 +815,54 @@
                         <div class="mc-question" data-question-number="1">
                             <div class="mc-question-header"><p class="mc-question-text">1. Remote work is an entirely new concept developed in the 21st century.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q1" id="q1_true" value="TRUE"><label for="q1_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q1" id="q1_false" value="FALSE"><label for="q1_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q1" id="q1_not_given" value="NOT GIVEN"><label for="q1_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q1" id="q1_true" value="TRUE"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q1" id="q1_false" value="FALSE"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q1" id="q1_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="2">
                             <div class="mc-question-header"><p class="mc-question-text">2. Companies can hire people from different locations when they embrace remote work.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q2" id="q2_true" value="TRUE"><label for="q2_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q2" id="q2_false" value="FALSE"><label for="q2_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q2" id="q2_not_given" value="NOT GIVEN"><label for="q2_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q2" id="q2_true" value="TRUE"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q2" id="q2_false" value="FALSE"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q2" id="q2_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="3">
                             <div class="mc-question-header"><p class="mc-question-text">3. The only challenge for businesses adopting remote work is the initial technology cost.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q3" id="q3_true" value="TRUE"><label for="q3_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q3" id="q3_false" value="FALSE"><label for="q3_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q3" id="q3_not_given" value="NOT GIVEN"><label for="q3_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q3" id="q3_true" value="TRUE"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q3" id="q3_false" value="FALSE"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q3" id="q3_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="4">
                             <div class="mc-question-header"><p class="mc-question-text">4. Employees who work remotely save money on transportation.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q4" id="q4_true" value="TRUE"><label for="q4_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q4" id="q4_false" value="FALSE"><label for="q4_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q4" id="q4_not_given" value="NOT GIVEN"><label for="q4_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q4" id="q4_true" value="TRUE"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q4" id="q4_false" value="FALSE"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q4" id="q4_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="5">
                             <div class="mc-question-header"><p class="mc-question-text">5. All remote workers report a better work-life balance.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q5" id="q5_true" value="TRUE"><label for="q5_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q5" id="q5_false" value="FALSE"><label for="q5_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q5" id="q5_not_given" value="NOT GIVEN"><label for="q5_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q5" id="q5_true" value="TRUE"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q5" id="q5_false" value="FALSE"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q5" id="q5_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="6">
                             <div class="mc-question-header"><p class="mc-question-text">6. Suburban economies may benefit from the increase in remote work.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q6" id="q6_true" value="TRUE"><label for="q6_true" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q6" id="q6_false" value="FALSE"><label for="q6_false" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q6" id="q6_not_given" value="NOT GIVEN"><label for="q6_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q6" id="q6_true" value="TRUE"><span class="option-control"></span><span class="mc-option-text">TRUE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q6" id="q6_false" value="FALSE"><span class="option-control"></span><span class="mc-option-text">FALSE</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q6" id="q6_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
@@ -890,40 +906,40 @@
                         <div class="mc-question" data-question-number="14">
                             <div class="mc-question-header"><p class="mc-question-text">14. A description of a building that copies a natural cooling method.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q14" id="q14_a" value="A"><label for="q14_a" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q14" id="q14_b" value="B"><label for="q14_b" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q14" id="q14_c" value="C"><label for="q14_c" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q14" id="q14_d" value="D"><label for="q14_d" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q14" id="q14_a" value="A"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q14" id="q14_b" value="B"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q14" id="q14_c" value="C"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q14" id="q14_d" value="D"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="15">
                             <div class="mc-question-header"><p class="mc-question-text">15. A definition of biomimicry and its guiding philosophy.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q15" id="q15_a" value="A"><label for="q15_a" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q15" id="q15_b" value="B"><label for="q15_b" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q15" id="q15_c" value="C"><label for="q15_c" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q15" id="q15_d" value="D"><label for="q15_d" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q15" id="q15_a" value="A"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q15" id="q15_b" value="B"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q15" id="q15_c" value="C"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q15" id="q15_d" value="D"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="16">
                             <div class="mc-question-header"><p class="mc-question-text">16. The suggestion that biomimicry involves viewing nature differently.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q16" id="q16_a" value="A"><label for="q16_a" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q16" id="q16_b" value="B"><label for="q16_b" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q16" id="q16_c" value="C"><label for="q16_c" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q16" id="q16_d" value="D"><label for="q16_d" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q16" id="q16_a" value="A"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q16" id="q16_b" value="B"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q16" id="q16_c" value="C"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q16" id="q16_d" value="D"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="17">
                             <div class="mc-question-header"><p class="mc-question-text">17. The story of an invention inspired by a plant's seeds.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q17" id="q17_a" value="A"><label for="q17_a" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q17" id="q17_b" value="B"><label for="q17_b" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q17" id="q17_c" value="C"><label for="q17_c" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q17" id="q17_d" value="D"><label for="q17_d" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q17" id="q17_a" value="A"><span class="option-control"></span><span class="mc-option-text">A</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q17" id="q17_b" value="B"><span class="option-control"></span><span class="mc-option-text">B</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q17" id="q17_c" value="C"><span class="option-control"></span><span class="mc-option-text">C</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q17" id="q17_d" value="D"><span class="option-control"></span><span class="mc-option-text">D</span></label></div>
                             </div>
                         </div>
 
@@ -983,54 +999,54 @@
                         <div class="mc-question" data-question-number="27">
                             <div class="mc-question-header"><p class="mc-question-text">27. The writer believes that letter writing is completely outdated and has no place in the modern world.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q27" id="q27_yes" value="YES"><label for="q27_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q27" id="q27_no" value="NO"><label for="q27_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q27" id="q27_not_given" value="NOT GIVEN"><label for="q27_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" id="q27_yes" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" id="q27_no" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q27" id="q27_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="28">
                             <div class="mc-question-header"><p class="mc-question-text">28. The slowness of writing a letter can be a positive attribute.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q28" id="q28_yes" value="YES"><label for="q28_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q28" id="q28_no" value="NO"><label for="q28_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q28" id="q28_not_given" value="NOT GIVEN"><label for="q28_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" id="q28_yes" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" id="q28_no" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q28" id="q28_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="29">
                             <div class="mc-question-header"><p class="mc-question-text">29. The handwriting on a letter is an important part of its overall message.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q29" id="q29_yes" value="YES"><label for="q29_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q29" id="q29_no" value="NO"><label for="q29_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q29" id="q29_not_given" value="NOT GIVEN"><label for="q29_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" id="q29_yes" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" id="q29_no" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q29" id="q29_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="30">
                             <div class="mc-question-header"><p class="mc-question-text">30. People in the past wrote more letters because they had more free time.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q30" id="q30_yes" value="YES"><label for="q30_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q30" id="q30_no" value="NO"><label for="q30_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q30" id="q30_not_given" value="NOT GIVEN"><label for="q30_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" id="q30_yes" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" id="q30_no" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q30" id="q30_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="31">
                             <div class="mc-question-header"><p class="mc-question-text">31. The writer acknowledges the essential role of digital communication in today's world.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q31" id="q31_yes" value="YES"><label for="q31_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q31" id="q31_no" value="NO"><label for="q31_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q31" id="q31_not_given" value="NOT GIVEN"><label for="q31_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q31" id="q31_yes" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q31" id="q31_no" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q31" id="q31_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
                         <div class="mc-question" data-question-number="32">
                             <div class="mc-question-header"><p class="mc-question-text">32. The writer suggests that digital communication and letter writing can coexist.</p></div>
                             <div class="mc-options-container">
-                                <div class="mc-option-item"><input type="radio" name="q32" id="q32_yes" value="YES"><label for="q32_yes" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q32" id="q32_no" value="NO"><label for="q32_no" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
-                                <div class="mc-option-item"><input type="radio" name="q32" id="q32_not_given" value="NOT GIVEN"><label for="q32_not_given" class="mc-option-label"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q32" id="q32_yes" value="YES"><span class="option-control"></span><span class="mc-option-text">YES</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q32" id="q32_no" value="NO"><span class="option-control"></span><span class="mc-option-text">NO</span></label></div>
+                                <div class="mc-option-item"><label class="mc-option-label"><input type="radio" name="q32" id="q32_not_given" value="NOT GIVEN"><span class="option-control"></span><span class="mc-option-text">NOT GIVEN</span></label></div>
                             </div>
                         </div>
 
@@ -1068,6 +1084,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Configuration Constants ---
     const EXAM_LEVEL = 'B2';
+
+    const STORAGE_KEY = `examState-${EXAM_LEVEL}`;
+
+    const LEGACY_STORAGE_KEY = 'examState';
+
+    if (LEGACY_STORAGE_KEY !== STORAGE_KEY && localStorage.getItem(LEGACY_STORAGE_KEY)) {
+
+        localStorage.removeItem(LEGACY_STORAGE_KEY);
+
+    }
+
+    const supportsHasSelector = typeof CSS !== 'undefined' && CSS.supports && CSS.supports('selector(:has(*))');
     const GS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuncyjolsXX1u9plOYDzujafMIROGIkOOjZsn2ko_lbhNbU1mAXZXa5iMHaEKReTPX/exec';
     const TOTAL_EXAM_TIME = 3600; // 60 minutes in seconds
     const SUBMISSION_TIMEOUT_MS = 12000;
@@ -1091,6 +1119,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let remainingTime = TOTAL_EXAM_TIME;
     let timerInterval = null;
     let currentPassageIndex = 0;
+
+    const styleRadioGroup = (radioName) => {
+        if (supportsHasSelector || !radioName) return;
+        const radios = document.querySelectorAll(`input[type="radio"][name="${radioName}"]`);
+        radios.forEach(radio => {
+            const label = radio.closest('.mc-option-label');
+            if (label) {
+                label.classList.toggle('is-checked', radio.checked);
+            }
+        });
+    };
+
+    const refreshAllRadioStyles = () => {
+        if (supportsHasSelector) return;
+        const processed = new Set();
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            if (radio.name && !processed.has(radio.name)) {
+                processed.add(radio.name);
+                styleRadioGroup(radio.name);
+            }
+        });
+    };
 
     // --- DOM Element References ---
     const screens = {
@@ -1168,7 +1218,7 @@ document.addEventListener('DOMContentLoaded', () => {
             remainingTime: remainingTime
         };
         try {
-            localStorage.setItem('examState', JSON.stringify(state));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         } catch (e) {
             console.error("Error saving state to localStorage:", e);
         }
@@ -1179,7 +1229,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const loadState = () => {
         try {
-            const savedState = JSON.parse(localStorage.getItem('examState'));
+            const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
             if (savedState && savedState.studentID) {
                 studentIdInput.value = savedState.studentID;
             }
@@ -1201,7 +1251,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const radioInputs = document.querySelectorAll(`input[name="q${qNum}"]`);
             if (radioInputs.length > 0) {
                 const inputToSelect = Array.from(radioInputs).find(input => input.value === answer);
-                if (inputToSelect) inputToSelect.checked = true;
+                if (inputToSelect) {
+                    inputToSelect.checked = true;
+                    styleRadioGroup(inputToSelect.name);
+                }
             } else {
                 // Handle text inputs, including the new inline ones for questions 33-40
                 const textInput = document.getElementById(`q${qNum}`);
@@ -1210,6 +1263,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+        refreshAllRadioStyles();
     };
     
     /**
@@ -1231,6 +1285,7 @@ document.addEventListener('DOMContentLoaded', () => {
             targetElement.focus({ preventScroll: true });
             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+        refreshAllRadioStyles();
     };
 
     /**
@@ -1415,6 +1470,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (qNum) {
                 answers[qNum] = target.value;
+                if (target.type === 'radio') {
+                    styleRadioGroup(target.name);
+                }
                 saveState();
             }
         }
@@ -1431,7 +1489,7 @@ document.addEventListener('DOMContentLoaded', () => {
         studentID = enteredID;
 
         try {
-            const savedState = JSON.parse(localStorage.getItem('examState'));
+            const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
             if (savedState && savedState.studentID === studentID) {
                 restoreSession(savedState);
             } else {
@@ -1477,6 +1535,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentLevelDisplay.textContent = `Current Level: ${EXAM_LEVEL}`;
     loadState();
     showScreen('studentId');
+    refreshAllRadioStyles();
 
 });
 
