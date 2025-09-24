@@ -79,7 +79,7 @@
       --dur-3: 320ms;
 
       /* Mobile-safe touch target */
-      --target-min: 44px;
+      --target-min: 38px;
 
       /* Container max */
       --container-max: 900px;
@@ -494,6 +494,13 @@
 
     .mc-option-label:hover { background-color: var(--hover-sage); }
 
+    .mc-option-label:has(input[type="radio"]:checked),
+    .mc-option-label.is-checked {
+      border-color: color-mix(in srgb, var(--primary-sage) 55%, transparent);
+      background-color: color-mix(in srgb, var(--primary-sage) 12%, #fff 88%);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary-sage) 45%, transparent 55%);
+    }
+
     .mc-option-item .option-control {
       flex-shrink: 0;
       inline-size: 24px;
@@ -506,9 +513,11 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
     }
 
-    .mc-option-item input[type="radio"]:checked + .option-control { border-color: var(--primary-sage); }
+    .mc-option-label input[type="radio"]:checked + .option-control,
+    .mc-option-item input[type="radio"]:checked + label .option-control { border-color: var(--primary-sage); }
 
-    .mc-option-item input[type="radio"]:checked + .option-control::after {
+    .mc-option-label input[type="radio"]:checked + .option-control::after,
+    .mc-option-item input[type="radio"]:checked + label .option-control::after {
       content: '';
       position: absolute;
       inset: 50% auto auto 50%;
@@ -526,10 +535,17 @@
       font-size: 1rem;
     }
 
-    .mc-option-item input[type="radio"]:focus-visible + .option-control,
+    .mc-option-label input[type="radio"]:focus-visible + .option-control,
+    .mc-option-item input[type="radio"]:focus-visible + label .option-control {
+      outline: none;
+      box-shadow: var(--ring);
+    }
+
     .mc-option-label:focus-visible {
       outline: none;
       box-shadow: var(--ring);
+      border-color: color-mix(in srgb, var(--primary-sage) 55%, transparent);
+      background-color: color-mix(in srgb, var(--primary-sage) 12%, #fff 88%);
     }
 
     /* Slide controls */
@@ -714,8 +730,8 @@
       display: inline-flex;
       align-items: center;
       width: clamp(6.5ch, 24vw, 11ch);
-      min-height: 2.5rem;
-      padding: 0.4em 0.55em;
+      min-height: clamp(2rem, 4.8vw, 2.3rem);
+      padding: 0.35em 0.5em;
       margin: 0 0.25em 0.3em;
       font: inherit;
       line-height: 1.2;
@@ -825,50 +841,50 @@
                     <div class="mc-question" data-question-number="8">
                         <div class="mc-question-header"><p class="mc-question-text">8. Fatima lives with four other people.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q8-true" name="q8" value="True"><label for="q8-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q8-false" name="q8" value="False"><label for="q8-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q8-true" name="q8" value="True"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q8-false" name="q8" value="False"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="9">
                         <div class="mc-question-header"><p class="mc-question-text">9. Her mother works at a hospital.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q9-true" name="q9" value="True"><label for="q9-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q9-false" name="q9" value="False"><label for="q9-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q9-true" name="q9" value="True"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q9-false" name="q9" value="False"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="10">
                         <div class="mc-question-header"><p class="mc-question-text">10. Fatima takes the bus to school.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q10-true" name="q10" value="True"><label for="q10-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q10-false" name="q10" value="False"><label for="q10-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q10-true" name="q10" value="True"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q10-false" name="q10" value="False"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
                      <div class="mc-question" data-question-number="11">
                         <div class="mc-question-header"><p class="mc-question-text">11. She likes English because she enjoys learning new words.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q11-true" name="q11" value="True"><label for="q11-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q11-false" name="q11" value="False"><label for="q11-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q11-true" name="q11" value="True"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q11-false" name="q11" value="False"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="12">
                         <div class="mc-question-header"><p class="mc-question-text">12. She thinks Maths is easy.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q12-true" name="q12" value="True"><label for="q12-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q12-false" name="q12" value="False"><label for="q12-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q12-true" name="q12" value="True"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q12-false" name="q12" value="False"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="13">
                         <div class="mc-question-header"><p class="mc-question-text">13. She watches television before she does her homework.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q13-true" name="q13" value="True"><label for="q13-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q13-false" name="q13" value="False"><label for="q13-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q13-true" name="q13" value="True"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q13-false" name="q13" value="False"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="14">
                         <div class="mc-question-header"><p class="mc-question-text">14. Her family travels by train to see her grandmother.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q14-true" name="q14" value="True"><label for="q14-true" class="mc-option-label"><span class="option-control"></span><span class="option-text">True</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q14-false" name="q14" value="False"><label for="q14-false" class="mc-option-label"><span class="option-control"></span><span class="option-text">False</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q14-true" name="q14" value="True"><span class="option-control"></span><span class="option-text">True</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q14-false" name="q14" value="False"><span class="option-control"></span><span class="option-text">False</span></label></div>
                         </div>
                     </div>
 
@@ -908,81 +924,81 @@
                     <div class="mc-question" data-question-number="21">
                         <div class="mc-question-header"><p class="mc-question-text">21. When does the family go to the city farm?</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q21-a" name="q21" value="A"><label for="q21-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. Every day</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q21-b" name="q21" value="B"><label for="q21-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. Every Saturday</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q21-c" name="q21" value="C"><label for="q21-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. Every Sunday</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q21-a" name="q21" value="A"><span class="option-control"></span><span class="option-text">A. Every day</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q21-b" name="q21" value="B"><span class="option-control"></span><span class="option-text">B. Every Saturday</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q21-c" name="q21" value="C"><span class="option-control"></span><span class="option-text">C. Every Sunday</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="22">
                         <div class="mc-question-header"><p class="mc-question-text">22. The text says the farm is...</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q22-a" name="q22" value="A"><label for="q22-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. far from their home.</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q22-b" name="q22" value="B"><label for="q22-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. not very big.</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q22-c" name="q22" value="C"><label for="q22-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. very noisy.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q22-a" name="q22" value="A"><span class="option-control"></span><span class="option-text">A. far from their home.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q22-b" name="q22" value="B"><span class="option-control"></span><span class="option-text">B. not very big.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q22-c" name="q22" value="C"><span class="option-control"></span><span class="option-text">C. very noisy.</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="23">
                         <div class="mc-question-header"><p class="mc-question-text">23. The writer thinks the lambs are...</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q23-a" name="q23" value="A"><label for="q23-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. very small.</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q23-b" name="q23" value="B"><label for="q23-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. very cute.</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q23-c" name="q23" value="C"><label for="q23-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. very white.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q23-a" name="q23" value="A"><span class="option-control"></span><span class="option-text">A. very small.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q23-b" name="q23" value="B"><span class="option-control"></span><span class="option-text">B. very cute.</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q23-c" name="q23" value="C"><span class="option-control"></span><span class="option-text">C. very white.</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="24">
                         <div class="mc-question-header"><p class="mc-question-text">24. Who in the family likes the chickens?</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q24-a" name="q24" value="A"><label for="q24-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. The writer</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q24-b" name="q24" value="B"><label for="q24-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. The mother</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q24-c" name="q24" value="C"><label for="q24-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. The father</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q24-a" name="q24" value="A"><span class="option-control"></span><span class="option-text">A. The writer</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q24-b" name="q24" value="B"><span class="option-control"></span><span class="option-text">B. The mother</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q24-c" name="q24" value="C"><span class="option-control"></span><span class="option-text">C. The father</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="25">
                         <div class="mc-question-header"><p class="mc-question-text">25. Where can they see the eggs?</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q25-a" name="q25" value="A"><label for="q25-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. In the grass</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q25-b" name="q25" value="B"><label for="q25-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. In a basket</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q25-c" name="q25" value="C"><label for="q25-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. In the garden</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q25-a" name="q25" value="A"><span class="option-control"></span><span class="option-text">A. In the grass</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q25-b" name="q25" value="B"><span class="option-control"></span><span class="option-text">B. In a basket</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q25-c" name="q25" value="C"><span class="option-control"></span><span class="option-text">C. In the garden</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="26">
                         <div class="mc-question-header"><p class="mc-question-text">26. What does the mother like at the farm?</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q26-a" name="q26" value="A"><label for="q26-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. The sheep</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q26-b" name="q26" value="B"><label for="q26-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. The eggs</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q26-c" name="q26" value="C"><label for="q26-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. The flowers</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q26-a" name="q26" value="A"><span class="option-control"></span><span class="option-text">A. The sheep</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q26-b" name="q26" value="B"><span class="option-control"></span><span class="option-text">B. The eggs</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q26-c" name="q26" value="C"><span class="option-control"></span><span class="option-text">C. The flowers</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="27">
                         <div class="mc-question-header"><p class="mc-question-text">27. What time do they go home?</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q27-a" name="q27" value="A"><label for="q27-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. In the morning</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q27-b" name="q27" value="B"><label for="q27-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. At one o'clock</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q27-c" name="q27" value="C"><label for="q27-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. In the evening</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q27-a" name="q27" value="A"><span class="option-control"></span><span class="option-text">A. In the morning</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q27-b" name="q27" value="B"><span class="option-control"></span><span class="option-text">B. At one o'clock</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q27-c" name="q27" value="C"><span class="option-control"></span><span class="option-text">C. In the evening</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="28">
                         <div class="mc-question-header"><p class="mc-question-text">28. The family has a __________ time at the farm.</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q28-a" name="q28" value="A"><label for="q28-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. nice</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q28-b" name="q28" value="B"><label for="q28-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. long</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q28-c" name="q28" value="C"><label for="q28-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. quiet</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q28-a" name="q28" value="A"><span class="option-control"></span><span class="option-text">A. nice</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q28-b" name="q28" value="B"><span class="option-control"></span><span class="option-text">B. long</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q28-c" name="q28" value="C"><span class="option-control"></span><span class="option-text">C. quiet</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="29">
                         <div class="mc-question-header"><p class="mc-question-text">29. Who is sometimes in the garden?</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q29-a" name="q29" value="A"><label for="q29-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. The father</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q29-b" name="q29" value="B"><label for="q29-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. A worker</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q29-c" name="q29" value="C"><label for="q29-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. The writer</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q29-a" name="q29" value="A"><span class="option-control"></span><span class="option-text">A. The father</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q29-b" name="q29" value="B"><span class="option-control"></span><span class="option-text">B. A worker</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q29-c" name="q29" value="C"><span class="option-control"></span><span class="option-text">C. The writer</span></label></div>
                         </div>
                     </div>
                     <div class="mc-question" data-question-number="30">
                         <div class="mc-question-header"><p class="mc-question-text">30. How does the writer feel after the visit?</p></div>
                         <div class="mc-options-container">
-                            <div class="mc-option-item"><input type="radio" id="q30-a" name="q30" value="A"><label for="q30-a" class="mc-option-label"><span class="option-control"></span><span class="option-text">A. Tired</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q30-b" name="q30" value="B"><label for="q30-b" class="mc-option-label"><span class="option-control"></span><span class="option-text">B. Sad</span></label></div>
-                            <div class="mc-option-item"><input type="radio" id="q30-c" name="q30" value="C"><label for="q30-c" class="mc-option-label"><span class="option-control"></span><span class="option-text">C. Happy</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q30-a" name="q30" value="A"><span class="option-control"></span><span class="option-text">A. Tired</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q30-b" name="q30" value="B"><span class="option-control"></span><span class="option-text">B. Sad</span></label></div>
+                            <div class="mc-option-item"><label class="mc-option-label"><input type="radio" id="q30-c" name="q30" value="C"><span class="option-control"></span><span class="option-text">C. Happy</span></label></div>
                         </div>
                     </div>
 
@@ -1044,6 +1060,18 @@
     document.addEventListener('DOMContentLoaded', () => {
         // --- CONSTANTS ---
         const EXAM_LEVEL = 'A1';
+
+        const STORAGE_KEY = `examState-${EXAM_LEVEL}`;
+
+        const LEGACY_STORAGE_KEY = 'examState';
+
+        if (LEGACY_STORAGE_KEY !== STORAGE_KEY && localStorage.getItem(LEGACY_STORAGE_KEY)) {
+
+            localStorage.removeItem(LEGACY_STORAGE_KEY);
+
+        }
+
+        const supportsHasSelector = typeof CSS !== 'undefined' && CSS.supports && CSS.supports('selector(:has(*))');
         const GS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuncyjolsXX1u9plOYDzujafMIROGIkOOjZsn2ko_lbhNbU1mAXZXa5iMHaEKReTPX/exec';
         const TOTAL_TIME = 3600; // 60 minutes in seconds
         const SUBMISSION_TIMEOUT_MS = 12000;
@@ -1083,11 +1111,34 @@
         let remainingTime = TOTAL_TIME;
         let currentPassageIndex = 0;
 
+        function styleRadioGroup(radioName) {
+            if (supportsHasSelector || !radioName) return;
+            const radios = document.querySelectorAll(`input[type="radio"][name="${radioName}"]`);
+            radios.forEach(radio => {
+                const label = radio.closest('.mc-option-label');
+                if (label) {
+                    label.classList.toggle('is-checked', radio.checked);
+                }
+            });
+        }
+
+        function refreshAllRadioStyles() {
+            if (supportsHasSelector) return;
+            const handledNames = new Set();
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                if (radio.name && !handledNames.has(radio.name)) {
+                    handledNames.add(radio.name);
+                    styleRadioGroup(radio.name);
+                }
+            });
+        }
+
         // --- INITIALIZATION ---
         function init() {
             currentLevelSpan.textContent = `Current Level: ${EXAM_LEVEL}`;
             loadState();
             addEventListeners();
+            refreshAllRadioStyles();
         }
 
         function addEventListeners() {
@@ -1129,10 +1180,10 @@
                 return;
             }
 
-            const savedState = JSON.parse(localStorage.getItem('examState'));
+            const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
             if (savedState && savedState.studentID !== enteredID) {
                 // New student, reset state
-                localStorage.removeItem('examState');
+                localStorage.removeItem(STORAGE_KEY);
                 studentID = enteredID;
                 studentAnswers = {};
                 remainingTime = TOTAL_TIME;
@@ -1147,7 +1198,7 @@
 
         // --- STATE MANAGEMENT (LOCAL STORAGE) ---
         function loadState() {
-            const savedState = JSON.parse(localStorage.getItem('examState'));
+            const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
             if (savedState) {
                 studentIdInput.value = savedState.studentID || '';
                 studentAnswers = savedState.answers || {};
@@ -1164,7 +1215,7 @@
                 answers: studentAnswers,
                 remainingTime: remainingTime
             };
-            localStorage.setItem('examState', JSON.stringify(state));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         }
 
         function populateAnswers() {
@@ -1173,12 +1224,16 @@
                 const radioInputs = document.querySelectorAll(`input[type="radio"][name="q${qNum}"]`);
                 if (radioInputs.length > 0) {
                     const inputToSelect = document.querySelector(`input[name="q${qNum}"][value="${answer}"]`);
-                    if (inputToSelect) inputToSelect.checked = true;
+                    if (inputToSelect) {
+                        inputToSelect.checked = true;
+                        styleRadioGroup(inputToSelect.name);
+                    }
                 } else {
                     const textOrSelectInput = document.querySelector(`[data-question-number="${qNum}"]:not(.mc-question)`);
                     if (textOrSelectInput) textOrSelectInput.value = answer;
                 }
             });
+            refreshAllRadioStyles();
         }
 
         // --- TEST FUNCTIONALITY ---
@@ -1213,11 +1268,14 @@
         
         function handleAnswerChange(event) {
             const target = event.target;
-            const questionNumber = target.name.replace('q', '') || target.dataset.questionNumber;
-            if (questionNumber) {
-                studentAnswers[questionNumber] = target.value;
-                saveState();
+            const questionNumber = target.name ? target.name.replace('q', '') : target.dataset.questionNumber;
+            if (!questionNumber) return;
+
+            studentAnswers[questionNumber] = target.value;
+            if (target.type === 'radio') {
+                styleRadioGroup(target.name);
             }
+            saveState();
         }
 
         // --- TIMER ---
@@ -1344,7 +1402,7 @@
                 if (result.result === 'success') {
                     submissionStatus.textContent = 'Successfully submitted!';
                     submissionStatus.style.color = '#2E7D32';
-                    localStorage.removeItem('examState');
+                    localStorage.removeItem(STORAGE_KEY);
                     submissionConfirmed = true;
                     return;
                 }
