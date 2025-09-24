@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level B2 End of Year Reading Exam</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&family=Questrial&display=swap" rel="stylesheet">
     <style>
     /* =====================================================================
        Organic Sage UI — Mobile-first, stable, and soothing
@@ -37,8 +34,8 @@
       --ink-muted: #5A6B52;
 
       /* Typography */
-      --font-display: 'Questrial', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
-      --font-body: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-display: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
       /* Fluid typography scale */
       --step--1: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
@@ -109,6 +106,7 @@
       font-size: var(--step-0);
       line-height: 1.6;
       color: var(--forest-shadow);
+      background-color: var(--warm-cream);
       background:
         radial-gradient(1200px 1200px at -10% -10%, #FFFFFF 0%, transparent 50%),
         radial-gradient(1200px 1000px at 110% 10%, #FFF8F0 0%, transparent 50%),
@@ -121,6 +119,21 @@
 
     @media (prefers-reduced-motion: no-preference) {
       html { scroll-behavior: smooth; }
+    }
+
+    @media (prefers-reduced-data: reduce) {
+      body {
+        background: var(--warm-cream);
+      }
+
+      #activity-container {
+        box-shadow: none;
+        background: #fff;
+      }
+
+      .activity-btn {
+        box-shadow: none;
+      }
     }
 
     /* Better text wrapping on small screens */
@@ -808,6 +821,12 @@
 </head>
 <body>
 
+    <noscript>
+        <div style="padding:1rem; background:#fff3cd; color:#664d03; text-align:center; font-weight:600;">
+            JavaScript is required to run this exam experience. Please enable it and reload the page.
+        </div>
+    </noscript>
+
     <div id="app-wrapper">
         <main id="activity-container">
 
@@ -1141,9 +1160,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const LEGACY_STORAGE_KEY = 'examState';
 
-    if (LEGACY_STORAGE_KEY !== STORAGE_KEY && localStorage.getItem(LEGACY_STORAGE_KEY)) {
+    const storage = (() => {
+        let storageHealthy = true;
 
-        localStorage.removeItem(LEGACY_STORAGE_KEY);
+        const testAvailability = () => {
+            try {
+                const testKey = '__exam_storage_test__';
+                window.localStorage.setItem(testKey, '1');
+                window.localStorage.removeItem(testKey);
+                return true;
+            } catch (error) {
+                console.warn('Local storage unavailable, falling back to memory only mode.', error);
+                return false;
+            }
+        };
+
+        const isSupported = typeof window !== 'undefined' && 'localStorage' in window && testAvailability();
+
+        const safeRun = (operation) => {
+            if (!isSupported || !storageHealthy) {
+                return null;
+            }
+
+            try {
+                return operation();
+            } catch (error) {
+                storageHealthy = false;
+                console.warn('Local storage operation failed, disabling further writes.', error);
+                return null;
+            }
+        };
+
+        return {
+            getItem: (key) => safeRun(() => window.localStorage.getItem(key)),
+            setItem: (key, value) => safeRun(() => window.localStorage.setItem(key, value)),
+            removeItem: (key) => safeRun(() => window.localStorage.removeItem(key)),
+            isAvailable: () => isSupported && storageHealthy
+        };
+    })();
+
+    let fallbackState = null;
+
+    if (LEGACY_STORAGE_KEY !== STORAGE_KEY && storage.getItem(LEGACY_STORAGE_KEY)) {
+
+        storage.removeItem(LEGACY_STORAGE_KEY);
 
     }
 
@@ -1163,6 +1223,32 @@ document.addEventListener('DOMContentLoaded', () => {
         '27': 'NO', '28': 'YES', '29': 'YES', '30': 'NOT GIVEN', '31': 'YES', '32': 'YES',
         '33': 'considered', '34': 'emotional', '35': 'tangible', '36': 'connection',
         '37': 'attention', '38': 'speed', '39': 'competition', '40': 'value'
+    };
+
+    const getStoredState = () => {
+        const rawState = storage.getItem(STORAGE_KEY);
+        if (rawState) {
+            try {
+                return JSON.parse(rawState);
+            } catch (error) {
+                console.warn('Saved state could not be parsed. Resetting.', error);
+            }
+        }
+        return fallbackState;
+    };
+
+    const persistState = (state) => {
+        fallbackState = state;
+        if (storage.isAvailable()) {
+            storage.setItem(STORAGE_KEY, JSON.stringify(state));
+        }
+    };
+
+    const clearPersistedState = () => {
+        fallbackState = null;
+        if (storage.isAvailable()) {
+            storage.removeItem(STORAGE_KEY);
+        }
     };
 
     // --- State Variables ---
@@ -1261,7 +1347,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
-     * Saves the current application state to localStorage.
+     * Saves the current application state locally.
      */
     const saveState = () => {
         const state = {
@@ -1269,32 +1355,26 @@ document.addEventListener('DOMContentLoaded', () => {
             answers: answers,
             remainingTime: remainingTime
         };
-        try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        } catch (e) {
-            console.error("Error saving state to localStorage:", e);
-        }
+        persistState(state);
     };
 
     /**
-     * Loads state from localStorage on page load.
+     * Loads state from storage on page load.
      */
     const loadState = () => {
-        try {
-            const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
-            if (savedState && savedState.studentID) {
-                studentIdInput.value = savedState.studentID;
-            }
-        } catch (e) {
-            console.error("Error loading state from localStorage:", e);
+        const savedState = getStoredState();
+        if (savedState && savedState.studentID) {
+            fallbackState = savedState;
+            studentIdInput.value = savedState.studentID;
         }
     };
 
     /**
      * Restores answers and timer from a saved state.
-     * @param {object} savedState - The state object from localStorage.
+     * @param {object} savedState - The state object from storage.
      */
     const restoreSession = (savedState) => {
+        fallbackState = savedState;
         answers = savedState.answers || {};
         remainingTime = savedState.remainingTime || TOTAL_EXAM_TIME;
         
@@ -1476,6 +1556,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (result.result === 'success') {
                 submissionStatus.textContent = 'Successfully submitted!';
                 submissionStatus.style.color = 'var(--primary-sage)';
+                clearPersistedState();
                 submissionConfirmed = true;
                 return;
             }
@@ -1540,20 +1621,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         studentID = enteredID;
 
-        try {
-            const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
-            if (savedState && savedState.studentID === studentID) {
-                restoreSession(savedState);
-            } else {
-                answers = {};
-                remainingTime = TOTAL_EXAM_TIME;
-            }
-        } catch (e) {
-            console.error("Could not parse saved state, starting fresh.", e);
+        const savedState = getStoredState();
+        if (savedState && savedState.studentID === studentID) {
+            restoreSession(savedState);
+        } else {
+            clearPersistedState();
             answers = {};
             remainingTime = TOTAL_EXAM_TIME;
         }
-        
+
         saveState();
         showScreen('test');
         startTimer();
