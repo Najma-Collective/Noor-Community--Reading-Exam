@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B2 Practice Exam</title>
+    <title>Level B2 End of Year Reading Exam</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&family=Questrial&display=swap" rel="stylesheet">
@@ -718,6 +718,16 @@
         color: var(--ink);
       }
 
+      .guidance-panel {
+        background: color-mix(in srgb, #23261F 85%, #1B1E19 15%);
+        border-color: rgba(184, 197, 166, 0.28);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+      }
+
+      .guidance-panel h3 {
+        color: color-mix(in srgb, var(--secondary-sage) 75%, #E9EFE5 25%);
+      }
+
       #progress-bar {
         background: linear-gradient(90deg, var(--secondary-sage), color-mix(in srgb, var(--primary-sage) 70%, #000 30%));
       }
@@ -732,6 +742,37 @@
       h1 { font-size: clamp(1.75rem, 5vw, 2rem); }
       h2.rubric { font-size: var(--step--1); margin-bottom: 20px; }
       .mc-question-text { font-size: clamp(1.05rem, 2.6vw, 1.1rem); }
+    }
+
+    .guidance-panel {
+      margin: var(--space-5) 0 var(--space-6);
+      padding: clamp(1rem, 2.4vw, 1.75rem);
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--warm-cream) 82%, #fff 18%);
+      border: 1px solid color-mix(in srgb, var(--border-sage) 68%, #d8d2c4 32%);
+      box-shadow: var(--shadow-1);
+    }
+
+    .guidance-panel h3 {
+      margin-top: 0;
+      margin-bottom: var(--space-3);
+      font-family: var(--font-display);
+      font-size: var(--step-1);
+      color: var(--deep-forest);
+      letter-spacing: 0.01em;
+    }
+
+    .guidance-panel p,
+    .guidance-panel ul {
+      margin-bottom: var(--space-3);
+    }
+
+    .guidance-panel ul {
+      padding-left: 1.25rem;
+    }
+
+    .guidance-panel li {
+      margin-bottom: var(--space-2);
     }
 
     .inline-gap {
@@ -772,8 +813,18 @@
 
             <!-- Screen 1: Student ID Screen -->
             <section id="student-id-screen" class="screen">
-                <h1>End of Year Exam</h1>
-                <h2 class="rubric">Welcome! Please enter your Student ID to begin or to resume a previous session. Your progress is saved automatically.</h2>
+                <h1>Level B2 End of Year Reading Exam</h1>
+                <div class="guidance-panel" role="note" aria-label="Exam preparation guidance">
+                    <h3>Strategic Start</h3>
+                    <p>Give yourself a calm minute before you begin: breathe deeply, adjust your seat, and set your focus. We know you have continued to study through uncertainty, and this assessment values your resilience and analytical reading skills.</p>
+                    <ul>
+                        <li>Confirm your Student ID and remember you have 60 minutes to engage with three passages that demand inference and evaluation.</li>
+                        <li>Preview the question sets to identify themes, writer attitudes, data, and vocabulary you will need to track.</li>
+                        <li>Use the provided note paper for quick outlines or comparisons, and pause your work if an interruption or safety alert occurs so you can follow the safety steps outlined at the start.</li>
+                    </ul>
+                    <p>Approach each passage with purpose, reference evidence for every answer, and revisit any question before you submit.</p>
+                </div>
+                <h2 class="rubric">Enter your Student ID to begin or resume. Answers save automatically, even if electricity or connectivity becomes unstable.</h2>
                 <div class="input-group">
                     <label for="student-id-input">Student ID</label>
                     <input type="text" id="student-id-input" placeholder="Enter your ID">
@@ -793,7 +844,7 @@
                     <div id="progress-bar"></div>
                 </div>
                 <p id="progress-text">Passage 1 of 3</p>
-                <h2 class="rubric">Answer each question to the best of your ability. Use the 'Previous' and 'Next' buttons to navigate between passages. Your work is saved as you go.</h2>
+                <h2 class="rubric">Interpret each passage closely. Use the navigation to revisit texts, compare evidence, and take the short breaks permitted in your exam plan if external events interrupt your focus. Every response is saved instantly.</h2>
                 
                 <div id="passages-container">
                     <!-- Passage 1 -->
@@ -1068,7 +1119,7 @@
             <!-- Screen 3: Submission Screen -->
             <section id="submission-screen" class="screen hidden">
                 <h1>Submission</h1>
-                <h2 class="rubric">Your exam is complete. Review your answers below. You can download a CSV copy for your records or submit your results directly to your instructor.</h2>
+                <h2 class="rubric">Your exam is complete. Take a grounding breath, confirm any required uploads are attached, and submit your results when you feel ready.</h2>
                 <textarea id="submission-code" readonly></textarea>
                 <div id="submission-controls">
                     <button id="download-csv-btn" class="activity-btn">Download Results as CSV</button>

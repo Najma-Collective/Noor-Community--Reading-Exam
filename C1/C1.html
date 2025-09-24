@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>End of Year Exam</title>
+    <title>Level C1 End of Year Reading Exam</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&family=Questrial&display=swap" rel="stylesheet">
@@ -710,6 +710,16 @@
         color: var(--ink);
       }
 
+      .guidance-panel {
+        background: color-mix(in srgb, #23261F 85%, #1B1E19 15%);
+        border-color: rgba(184, 197, 166, 0.28);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+      }
+
+      .guidance-panel h3 {
+        color: color-mix(in srgb, var(--secondary-sage) 75%, #E9EFE5 25%);
+      }
+
       #progress-bar {
         background: linear-gradient(90deg, var(--secondary-sage), color-mix(in srgb, var(--primary-sage) 70%, #000 30%));
       }
@@ -729,6 +739,37 @@
     /* --- START ADDED RULE FOR INLINE INPUTS --- */
     /* This rule is added to fulfill the user's request for inline fill-in-the-blank inputs,
        as the default `width: 100%` on inputs breaks the paragraph flow for this question type. */
+    .guidance-panel {
+      margin: var(--space-5) 0 var(--space-6);
+      padding: clamp(1rem, 2.4vw, 1.75rem);
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--warm-cream) 82%, #fff 18%);
+      border: 1px solid color-mix(in srgb, var(--border-sage) 68%, #d8d2c4 32%);
+      box-shadow: var(--shadow-1);
+    }
+
+    .guidance-panel h3 {
+      margin-top: 0;
+      margin-bottom: var(--space-3);
+      font-family: var(--font-display);
+      font-size: var(--step-1);
+      color: var(--deep-forest);
+      letter-spacing: 0.01em;
+    }
+
+    .guidance-panel p,
+    .guidance-panel ul {
+      margin-bottom: var(--space-3);
+    }
+
+    .guidance-panel ul {
+      padding-left: 1.25rem;
+    }
+
+    .guidance-panel li {
+      margin-bottom: var(--space-2);
+    }
+
     .inline-gap {
       display: inline-flex;
       align-items: center;
@@ -778,8 +819,18 @@
 
             <!-- Screen 1: Student ID -->
             <section id="student-id-screen" class="screen">
-                <h1>End of Year Exam</h1>
-                <h2 class="rubric">Welcome! Please enter your Student ID to begin or to resume a previous session. Your progress is saved automatically.</h2>
+                <h1>Level C1 End of Year Reading Exam</h1>
+                <div class="guidance-panel" role="note" aria-label="Exam preparation guidance">
+                    <h3>Adopt a Scholar's Mindset</h3>
+                    <p>Take intentional breaths, align your posture, and focus your attention before beginning. We honour the persistence you have shown learning amid instability; this exam is designed to let your advanced reading skills shine.</p>
+                    <ul>
+                        <li>Confirm your Student ID and plan for 60 minutes to analyse three complex passages requiring synthesis, evaluation, and precise vocabulary control.</li>
+                        <li>Skim the question prompts first to spot tasks involving author stance, rhetorical purpose, and data interpretation.</li>
+                        <li>Use note paper to map arguments or contrasting viewpoints, and pause your work if external events or safety announcements interrupt the room so you can follow the safety steps outlined at the start.</li>
+                    </ul>
+                    <p>Engage critically with each text, justify every answer with evidence, and revisit items as needed before submitting.</p>
+                </div>
+                <h2 class="rubric">Enter your Student ID to begin or resume. Your progress saves automatically, safeguarding your work through any brief power or connectivity issues.</h2>
                 <div class="input-group">
                     <label for="student-id-input">Student ID</label>
                     <input type="text" id="student-id-input" placeholder="Enter your ID">
@@ -795,7 +846,7 @@
                     <span id="current-level">Current Level: C1</span>
                     <span id="timer" aria-live="polite">60:00</span>
                 </header>
-                <h2 class="rubric">Answer each question to the best of your ability. Use the 'Previous' and 'Next' buttons to navigate between passages. Your work is saved as you go.</h2>
+                <h2 class="rubric">Interrogate each passage with a critical lens. Use the navigation to compare arguments across texts, and take the short breaks permitted in your exam plan if any disruption affects your concentration. Every response is saved instantly.</h2>
                 
                 <div class="progress-bar-container">
                     <div id="progress-bar"></div>
@@ -1070,7 +1121,7 @@
             <!-- Screen 3: Submission -->
             <section id="submission-screen" class="screen hidden">
                 <h1>Submission</h1>
-                <h2 class="rubric">Your exam is complete. Review your answers below. You can download a CSV copy for your records or submit your results directly to your instructor.</h2>
+                <h2 class="rubric">Your exam is complete. Take a grounding breath, confirm any required uploads are attached, and submit your results when you feel ready.</h2>
                 <textarea id="submission-code" readonly></textarea>
                 <div id="submission-controls">
                     <button class="activity-btn" id="download-csv-btn">Download Results as CSV</button>
